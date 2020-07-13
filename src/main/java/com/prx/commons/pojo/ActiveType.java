@@ -1,0 +1,39 @@
+package com.prx.commons.pojo;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ *
+ * @author Luis A. Mata <luis.antonio.mata@gmail.com>
+ */
+@JsonPropertyOrder({
+    "id",
+    "name",
+    "description",
+    "active"
+})
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ActiveType implements Serializable {
+
+    @JsonProperty("id")
+    private Long id;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("description")
+    private String description;
+    @JsonProperty("active")
+    private Boolean active;
+
+    @Override
+    public String toString() {
+        return String.format("%s{id: %d, description: %s, active: %b}", this.getClass().getSimpleName(), id, name, description, active);
+    }
+
+}
