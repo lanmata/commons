@@ -1,6 +1,5 @@
 package com.prx.commons.to.grid;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.to.Response;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,9 +15,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder({
-        "list"
-})
 @EqualsAndHashCode(callSuper = true)
 public class ClosingDataResponse extends Response {
     private List<DataValueMarketTo> list;

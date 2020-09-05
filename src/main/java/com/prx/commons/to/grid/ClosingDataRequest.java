@@ -1,7 +1,7 @@
 package com.prx.commons.to.grid;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.DataValueMarket;
 import com.prx.commons.to.Request;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,16 +21,13 @@ import static com.prx.commons.util.JsonUtil.toJson;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder({
-        "list"
-})
 @EqualsAndHashCode(callSuper = true)
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ClosingDataRequest extends Request {
     @ApiModelProperty(
             name = "list",
             value = "Lista de objetos de tipo {@link DataValueMarket}"
     )
-    @JsonProperty("list")
     private List<DataValueMarket> dataValueMarketList;
 
     @Override

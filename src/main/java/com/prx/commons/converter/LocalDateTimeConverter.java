@@ -1,5 +1,7 @@
 package com.prx.commons.converter;
 
+import lombok.NoArgsConstructor;
+
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -10,6 +12,7 @@ import javax.persistence.Converter;
  *
  * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
  */
+@NoArgsConstructor
 @Converter(autoApply = true)
 public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
 

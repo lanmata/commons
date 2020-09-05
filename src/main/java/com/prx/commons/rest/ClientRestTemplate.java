@@ -1,7 +1,6 @@
 package com.prx.commons.rest;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
@@ -23,17 +22,17 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
  * @author <a href="mailto:lui.antonio.mata@gmail.com">Luis Mata</a>
  * @since 2019-08-23
  */
-public abstract class ClientRestTemplate {
-    private static final Logger LOGGER = LogManager.getLogger(ClientRestTemplate.class);
+@NoArgsConstructor
+public class ClientRestTemplate {
     protected RestTemplate restTemplate;
     @Autowired
-    MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter;
+    protected MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter;
 
     /**
      * Inicializa las propiedades para el cliente de servicio REST
      */
     @PostConstruct
-    void init() {
+    protected void init() {
         List<MediaType> supportedMediaTypes = new ArrayList<>();
         supportedMediaTypes.add(APPLICATION_JSON);
         mappingJackson2HttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);

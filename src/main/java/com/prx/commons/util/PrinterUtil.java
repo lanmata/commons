@@ -1,10 +1,12 @@
 package com.prx.commons.util;
 
+import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
+@NoArgsConstructor
 public class PrinterUtil {
     @Value("${log.debug}")
     private Boolean isDebug;

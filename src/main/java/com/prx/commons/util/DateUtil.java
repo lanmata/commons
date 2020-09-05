@@ -8,30 +8,29 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Clase utilitaria para gestion y formato de fechas
  *
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
  */
-public class DateUtil implements Cloneable {
-
-    /* Constructor privado para no permitir creacion de objeto por instancia */
-    private DateUtil() {
-    }
-
+public final class DateUtil {
     private static final String STR_DDMMYY = "dd/MM/yyyy";
     private static final String PATTERN_DATE = "yyyy-MM-dd";
     private static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
     private static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd\'T\'HH:mm:ss";
     private static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
-    public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(PATTERN_DATE);
-    public static final SimpleDateFormat SIMPLE_DATE_FORMAT_DDMMYY = new SimpleDateFormat(STR_DDMMYY);
-    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT = new SimpleDateFormat(PATTERN_DATE_TIME);
-    public static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME_MIL);
-    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_T = new SimpleDateFormat(PATTERN_DATE_TIME_T);
-    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_MIL = new SimpleDateFormat(PATTERN_DATE_TIME_MIL);
+    public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(PATTERN_DATE, Locale.ROOT);
+    public static final SimpleDateFormat SIMPLE_DATE_FORMAT_DDMMYY = new SimpleDateFormat(STR_DDMMYY, Locale.ROOT);
+    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT = new SimpleDateFormat(PATTERN_DATE_TIME, Locale.ROOT);
+    public static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME_MIL, Locale.ROOT);
+    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_T = new SimpleDateFormat(PATTERN_DATE_TIME_T, Locale.ROOT);
+    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_MIL = new SimpleDateFormat(PATTERN_DATE_TIME_MIL, Locale.ROOT);
 
+    /* Constructor privado para no permitir creacion de objeto por instancia */
+    private DateUtil() {
+    }
     /**
      * Convierte una fecha contenida en un String a un objeto Calendar
      *
@@ -59,18 +58,10 @@ public class DateUtil implements Cloneable {
     }
 
     public static boolean validateDate(LocalDate now, LocalDate dateTime) {
-        return (now.isEqual(dateTime));
+        return now.isEqual(dateTime);
     }
 
     public static Date toDate(LocalDateTime localDateTime){
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
-    }
-
-    /**
-     * Sobre escritura de metodo clone para garantizar un solo objeto en ejecucion
-     **/
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return this;
     }
 }

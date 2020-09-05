@@ -15,7 +15,7 @@ import java.util.List;
  * @version 1.0
  * @since 19-Oct-2014 09:38:25 a.m.
  */
-public class ValidatorCommons {
+public final class ValidatorCommons {
 
     private ValidatorCommons() {
     }
@@ -108,7 +108,7 @@ public class ValidatorCommons {
      * @author Luis Mata
      */
     public static boolean esNoNulo(Object objeto) {
-        return (!esNulo(objeto));
+        return !esNulo(objeto);
     }
 
     /**
@@ -149,7 +149,7 @@ public class ValidatorCommons {
      * @author Luis Mata
      */
     public static long totalTiempo(long tInicio) {
-        return (System.currentTimeMillis() - tInicio);
+        return System.currentTimeMillis() - tInicio;
     }
 
     /**
@@ -181,8 +181,8 @@ public class ValidatorCommons {
      */
     public static boolean validaIgualdad(final String valorA, final String valorB) {
         //Valida
-        return (esNoNulo(valorA) && esNoNulo(valorB)) //la NO nulidad
-                || (!esVacio(valorA) && !esVacio(valorB)) //que no sea vacio
-                || (valorA.equals(valorB));              //la igualdad literal
+        return esNoNulo(valorA) && esNoNulo(valorB) //la NO nulidad
+                || !esVacio(valorA) && !esVacio(valorB) //que no sea vacio
+                || valorA.equals(valorB);              //la igualdad literal
     }
 }

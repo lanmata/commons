@@ -1,33 +1,26 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.enums.keys.ParityKey;
-import static com.prx.commons.util.JsonUtil.toJson;
-import java.io.Serializable;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder({
-    "low",
-    "high",
-    "open",
-    "close",
-    "parityKey"
-})
+import java.io.Serializable;
+
+import static com.prx.commons.util.JsonUtil.toJson;
+
 @Data
+@EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class InfoTicker extends DataValueMarket implements Serializable {
 
-    @JsonProperty("low")
     private Double low;
-    @JsonProperty("high")
     private Double high;
-    @JsonProperty("open")
     private Double open;
-    @JsonProperty("close")
     private Double close;
-    @JsonProperty("parityKey")
     private ParityKey parityKey;
 
     @Override

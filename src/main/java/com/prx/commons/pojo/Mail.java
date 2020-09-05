@@ -1,39 +1,30 @@
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import static com.prx.commons.util.JsonUtil.toJson;
-import java.io.Serializable;
-import java.util.Map;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.Map;
+
+import static com.prx.commons.util.JsonUtil.toJson;
 
 /**
  *
  * @author Luis Mata <lmata@netgo.cl>
  */
-@JsonPropertyOrder({
-    "from",
-    "to",
-    "subject",
-    "content",
-    "model"
-})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Mail implements Serializable {
 
-    @JsonProperty("from")
     private String from;
-    @JsonProperty("to")
     private String to;
-    @JsonProperty("subject")
     private String subject;
-    @JsonProperty("content")
     private String content;
-    @JsonProperty("model")
     private Map model;
 
     @Override

@@ -9,7 +9,7 @@ import static java.time.LocalDateTime.now;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
  * @since 2019-11-27
  */
-public class MessageActivityUtil {
+public final class MessageActivityUtil {
 
     private MessageActivityUtil(){}
 

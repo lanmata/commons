@@ -7,7 +7,7 @@ import com.google.gson.Gson;
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
  * @since 2017-03-15
  */
-public class JsonUtil implements Cloneable {
+public final class JsonUtil {
 
     private static final Gson GSON;
 
@@ -21,12 +21,6 @@ public class JsonUtil implements Cloneable {
 
     public static String toJson(Object objSource) {
         return GSON.toJson(objSource);
-    }
-
-    /* Sobre escritura de metodo clone para garantizar un solo objeto en ejecucion */
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return this;
     }
 
 }

@@ -12,7 +12,7 @@ public enum CriptocurrencyType {
     TRON("TRX"),
     CARDANO("ADA"),
     BITCOIN_CASH("BCH"),
-    EOS(("EOS")),
+    EOS("EOS"),
     //FIAT
     USD("USD"),
     CLP("CLP");

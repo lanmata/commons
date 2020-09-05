@@ -2,6 +2,7 @@ package com.prx.commons.config;
 
 import com.netflix.discovery.DiscoveryClient;
 import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
  * @since 2020-02-15
  */
 @Configuration
+@NoArgsConstructor
 public class DiscoveryClientConfig {
     @Value("${security.discovery.client.name}")
     private String clientName;

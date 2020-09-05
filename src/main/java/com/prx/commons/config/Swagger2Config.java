@@ -1,6 +1,7 @@
 package com.prx.commons.config;
 
 import com.fasterxml.classmate.TypeResolver;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ import java.lang.reflect.WildcardType;
  */
 @EnableSwagger2
 @Configuration
+@NoArgsConstructor
 public class Swagger2Config {
     @Autowired
     private TypeResolver typeResolver;

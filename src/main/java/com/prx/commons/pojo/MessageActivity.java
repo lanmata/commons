@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.prx.commons.util.JsonUtil.toJson;
 
@@ -26,7 +24,7 @@ public class MessageActivity implements Serializable {
     /**
      * Campo conpuesto por clave-valor, donde la clave es el codigo y valor es el mensaje que se informa
      */
-    private Map<Integer, String> messages = new HashMap<>();
+    private Map<Integer, String> messages = new ConcurrentHashMap<>();
     /**
      * Objeto respuesta esperado
      */
