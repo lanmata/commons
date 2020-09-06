@@ -5,20 +5,22 @@
     <parent>
         <groupId>com.prx</groupId>
         <artifactId>prx-central</artifactId>
-        <version>1.0.3.20200713-01</version>
+        <version>1.0.3.20200904-01</version>
         <relativePath>../central</relativePath> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.prx.commons</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX componentes comunes</name>
-    <version>1.0.3.20200713-01</version>
+    <version>1.0.3.20200904-01</version>
 
     <developers>
         <developer>
+            <id>lmata</id>
             <name>Luis Antonio Mata</name>
             <email>luis.antonio.mata@gmail.com</email>
-            <organization>PRX Innova</organization>
+            <url>www.prx-dev.com</url>
+            <organization>PRX Dev Innova</organization>
             <organizationUrl>www.prx.com</organizationUrl>
         </developer>
     </developers>
@@ -81,14 +83,14 @@
 <!--            <version>5.2.3.RELEASE</version>-->
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger2</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger-ui</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

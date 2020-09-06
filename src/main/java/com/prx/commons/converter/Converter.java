@@ -37,16 +37,16 @@ public abstract class Converter<A, B> {
         return fromB.apply(b);
     }
 
-    public B convertFromPojo(final A a) {
+    public B convertFromA(final A a) {
         return fromA.apply(a);
     }
 
-    public List<A> createFromDataObject(final Collection<B> bCollection) {
+    public List<A> createFromB(final Collection<B> bCollection) {
         return bCollection.stream().map(this::convertFromB).collect(Collectors.toList());
     }
 
-    public List<B> createFromPojo(final Collection<A> aCollection) {
-        return aCollection.stream().map(this::convertFromPojo).collect(Collectors.toList());
+    public List<B> createFromA(final Collection<A> aCollection) {
+        return aCollection.stream().map(this::convertFromA).collect(Collectors.toList());
     }
 
 }

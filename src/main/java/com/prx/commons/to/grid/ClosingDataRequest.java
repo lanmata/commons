@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.DataValueMarket;
 import com.prx.commons.to.Request;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,10 +23,6 @@ import static com.prx.commons.util.JsonUtil.toJson;
 @EqualsAndHashCode(callSuper = true)
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ClosingDataRequest extends Request {
-    @ApiModelProperty(
-            name = "list",
-            value = "Lista de objetos de tipo {@link DataValueMarket}"
-    )
     private List<DataValueMarket> dataValueMarketList;
 
     @Override

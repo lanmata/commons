@@ -34,6 +34,7 @@ public class Person implements Serializable {
     private String gender;
     private String birthdate;
     private List<Contact> contactList;
+    private List<User> userList;
 
 
     @Override
