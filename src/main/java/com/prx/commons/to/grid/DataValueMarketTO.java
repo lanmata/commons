@@ -1,5 +1,5 @@
 /*
- *  @(#)HubRequest.java
+ *  @(#)DataValueMarketTo.java
  *
  *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -11,44 +11,33 @@
  *  verbatim with this file.
  */
 
-package com.prx.commons.to.bridge;
+package com.prx.commons.to.grid;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.DataValueMarket;
-import com.prx.commons.to.Request;
 import static com.prx.commons.util.JsonUtil.toJson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 /**
- * HubRequest.
+ * DataValueMarketTo.
  *
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
- * @version 1.0.3, 29-09-2020
+ * @version 1.0.3, 18-08-2019
  */
-@JsonPropertyOrder({
-    "dataValueMarkets"
-})
 @Data
-@AllArgsConstructor
+@JsonNaming
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class HubRequest extends Request {
-
-    /**
-     * Colecci&oacute;n de tipo {@link DataValueMarket}
-     */
-    @JsonProperty("dataValueMarkets")
-    private List<DataValueMarket> dataValueMarkets;
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class DataValueMarketTO extends DataValueMarket {
+    private String market;
+    private String instrument;
 
     @Override
-    public String toString() {
+    public String toString(){
         return toJson(this);
     }
-
 }

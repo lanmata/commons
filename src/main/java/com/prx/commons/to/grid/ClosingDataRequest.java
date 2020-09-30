@@ -1,9 +1,22 @@
+/*
+ *  @(#)ClosingDataRequest.java
+ *
+ *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
+ *
+ *  All rights to this product are owned by Luis Antonio Mata Mata and may only
+ *  be used under the terms of its associated license document. You may NOT
+ *  copy, modify, sublicense, or distribute this source file or portions of
+ *  it unless previously authorized in writing by Luis Antonio Mata Mata.
+ *  In any event, this notice and the above copyright must always be included
+ *  verbatim with this file.
+ */
+
 package com.prx.commons.to.grid;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.DataValueMarket;
 import com.prx.commons.to.Request;
+import static com.prx.commons.util.JsonUtil.toJson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,17 +24,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-import static com.prx.commons.util.JsonUtil.toJson;
-
 /**
- * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
- * @since 2019-08-18
+ * ClosingDataRequest.
+ *
+ * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @version 1.0.3, 18-08-2019
  */
 @Data
+@JsonNaming
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ClosingDataRequest extends Request {
     private List<DataValueMarket> dataValueMarketList;
 

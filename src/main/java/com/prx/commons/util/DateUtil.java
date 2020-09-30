@@ -1,3 +1,16 @@
+/*
+ *  @(#)DateUtil.java
+ *
+ *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
+ *
+ *  All rights to this product are owned by Luis Antonio Mata Mata and may only
+ *  be used under the terms of its associated license document. You may NOT
+ *  copy, modify, sublicense, or distribute this source file or portions of
+ *  it unless previously authorized in writing by Luis Antonio Mata Mata.
+ *  In any event, this notice and the above copyright must always be included
+ *  verbatim with this file.
+ */
+
 package com.prx.commons.util;
 
 import java.text.ParseException;
@@ -13,18 +26,20 @@ import java.util.Locale;
 /**
  * Clase utilitaria para gestion y formato de fechas
  *
- * @author Luis A. Mata <luis.antonio.mata@gmail.com>
+ * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @version 1.0.3, 29-09-2020
  */
 public final class DateUtil {
     private static final String STR_DDMMYY = "dd/MM/yyyy";
     private static final String PATTERN_DATE = "yyyy-MM-dd";
     private static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
-    private static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd\'T\'HH:mm:ss";
+    private static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
     private static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(PATTERN_DATE, Locale.ROOT);
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT_DDMMYY = new SimpleDateFormat(STR_DDMMYY, Locale.ROOT);
     public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT = new SimpleDateFormat(PATTERN_DATE_TIME, Locale.ROOT);
     public static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME_MIL, Locale.ROOT);
+    public static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE, Locale.ROOT);
     public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_T = new SimpleDateFormat(PATTERN_DATE_TIME_T, Locale.ROOT);
     public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_MIL = new SimpleDateFormat(PATTERN_DATE_TIME_MIL, Locale.ROOT);
 

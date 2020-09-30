@@ -1,5 +1,5 @@
 /*
- *  @(#)Response.java
+ *  @(#)PlatformTOTest.java
  *
  *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -11,37 +11,25 @@
  *  verbatim with this file.
  */
 
-package com.prx.commons.to;
+package com.prx.commons.to.client;
 
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-
-import static com.prx.commons.util.JsonUtil.toJson;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
- * Response.
+ * PlatformTOTest.
  *
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.0, 29-09-2020
  */
-@Data
-@JsonNaming
-@NoArgsConstructor
-@EqualsAndHashCode
-@AllArgsConstructor
-public class Response {
+class PlatformTOTest {
 
-    private LocalDateTime dateTime;
-    private Integer code;
-    private String message;
+    @Test
+    void testGettersAndSetters(){
+        final var platformTO = new PlatformTO();
 
-    @Override
-    public String toString() {
-        return toJson(this);
+        platformTO.setStatus(1);
+        assertNotNull(platformTO.getStatus());
     }
+
 }
