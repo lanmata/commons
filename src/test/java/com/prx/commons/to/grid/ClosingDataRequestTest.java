@@ -14,14 +14,14 @@
 package com.prx.commons.to.grid;
 
 import com.prx.commons.pojo.DataValueMarket;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
-
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
  * ClosingDataRequestTest.
@@ -32,8 +32,8 @@ import java.util.ArrayList;
 class ClosingDataRequestTest {
 
     @Test
-    void testGettersAndSetters(){
-        final var localDateTime = LocalDateTime.of(2020,10,29,21,31);
+    void testGettersAndSetters() {
+        final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var clock = Clock.fixed(localDateTime.toInstant(ZoneOffset.UTC), ZoneId.systemDefault());
         final var closingDataRequest = new ClosingDataRequest();
         final var dataValueMarket = new DataValueMarket();
@@ -57,10 +57,12 @@ class ClosingDataRequestTest {
         closingDataRequest.setAppToken("token de aplicacion");
         closingDataRequest.setDateTime(LocalDateTime.now(clock));
 
-        assertNotNull(closingDataRequest.getDateTime());
-        assertNotNull(closingDataRequest.getAppName());
-        assertNotNull(closingDataRequest.getAppToken());
-        assertNotNull(closingDataRequest.getDataValueMarketList());
+        assertAll("Getters And Setters",
+            () -> assertNotNull(closingDataRequest.getDateTime()),
+            () -> assertNotNull(closingDataRequest.getAppName()),
+            () -> assertNotNull(closingDataRequest.getAppToken()),
+            () -> assertNotNull(closingDataRequest.getDataValueMarketList())
+                 );
     }
 
 }

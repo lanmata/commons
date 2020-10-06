@@ -18,12 +18,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.pojo.DataValueMarket;
 import com.prx.commons.to.Request;
 import static com.prx.commons.util.JsonUtil.toJson;
-import lombok.AllArgsConstructor;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 /**
  * HubRequest.
@@ -35,8 +33,7 @@ import java.util.List;
     "dataValueMarkets"
 })
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class HubRequest extends Request {
 

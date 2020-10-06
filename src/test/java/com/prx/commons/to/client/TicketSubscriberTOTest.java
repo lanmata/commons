@@ -13,7 +13,8 @@
 
 package com.prx.commons.to.client;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -25,8 +26,8 @@ import org.junit.jupiter.api.Test;
 class TicketSubscriberTOTest {
 
     @Test
-    void testGettersAndSetters(){
-        final var ticketSubscriberTO =  new TicketSubscriberTO();
+    void testGettersAndSetters() {
+        final var ticketSubscriberTO = new TicketSubscriberTO();
         final var platformTO = new PlatformTO();
 
         platformTO.setStatus(1);
@@ -41,16 +42,18 @@ class TicketSubscriberTOTest {
         ticketSubscriberTO.setSymbol("USCCLP");
         ticketSubscriberTO.setVersion("1125");
 
-        assertNotNull(ticketSubscriberTO.getChanId());
-        assertNotNull(ticketSubscriberTO.getChannel());
-        assertNotNull(ticketSubscriberTO.getCode());
-        assertNotNull(ticketSubscriberTO.getEvent());
-        assertNotNull(ticketSubscriberTO.getMsg());
-        assertNotNull(ticketSubscriberTO.getPair());
-        assertNotNull(ticketSubscriberTO.getPlatform());
-        assertNotNull(ticketSubscriberTO.getServerId());
-        assertNotNull(ticketSubscriberTO.getSymbol());
-        assertNotNull(ticketSubscriberTO.getVersion());
+        assertAll("GettersAndSetters",
+            () -> assertNotNull(ticketSubscriberTO.getChanId()),
+            () -> assertNotNull(ticketSubscriberTO.getChannel()),
+            () -> assertNotNull(ticketSubscriberTO.getCode()),
+            () -> assertNotNull(ticketSubscriberTO.getEvent()),
+            () -> assertNotNull(ticketSubscriberTO.getMsg()),
+            () -> assertNotNull(ticketSubscriberTO.getPair()),
+            () -> assertNotNull(ticketSubscriberTO.getPlatform()),
+            () -> assertNotNull(ticketSubscriberTO.getServerId()),
+            () -> assertNotNull(ticketSubscriberTO.getSymbol()),
+            () -> assertNotNull(ticketSubscriberTO.getVersion())
+                 );
     }
 
 }

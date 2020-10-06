@@ -13,13 +13,15 @@
 
 package com.prx.commons.to.bridge;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
-
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
  * HubResponseTest.
@@ -30,17 +32,22 @@ import java.time.ZoneOffset;
 class HubResponseTest {
 
     @Test
-    void testGettersAndSetters(){
+    void testGettersAndSetters() {
         final var hubResponse = new HubResponse();
-        final var localDateTime = LocalDateTime.of(2020,10,29,21,31);
+        final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var clock = Clock.fixed(localDateTime.toInstant(ZoneOffset.UTC), ZoneId.systemDefault());
         hubResponse.setCode(200);
         hubResponse.setDateTime(LocalDateTime.now(clock));
         hubResponse.setMessage("Mensaje de respuesta");
 
-        assertNotNull(hubResponse.getCode());
-        assertNotNull(hubResponse.getMessage());
-        assertNotNull(hubResponse.getDateTime());
+        assertAll("Getters And Setters",
+            () -> assertNotNull(hubResponse.getCode()),
+            () -> assertNotNull(hubResponse.getMessage()),
+            () -> assertNotNull(hubResponse.getDateTime()),
+            () -> assertFalse(hubResponse.canEqual(this)),
+            () -> assertNotEquals(-1,hubResponse.hashCode()),
+            () -> assertNotNull(hubResponse.toString())
+                 );
     }
 
 }

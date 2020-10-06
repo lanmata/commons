@@ -26,4 +26,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class HubResponse extends Response {
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }

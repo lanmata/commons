@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~  @(#)pom.xml
+  ~
+  ~  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
+  ~
+  ~  All rights to this product are owned by Luis Antonio Mata Mata and may only
+  ~  be used under the terms of its associated license document. You may NOT
+  ~  copy, modify, sublicense, or distribute this source file or portions of
+  ~  it unless previously authorized in writing by Luis Antonio Mata Mata.
+  ~  In any event, this notice and the above copyright must always be included
+  ~  verbatim with this file.
+  -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -106,6 +119,30 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -114,6 +151,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -223,7 +267,6 @@
                 <configuration>
                     <show>public</show>
                     <nohelp>true</nohelp>
-                    <aggregate>true</aggregate>
                 </configuration>
             </plugin>
         </plugins>

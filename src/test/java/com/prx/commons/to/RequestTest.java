@@ -13,13 +13,13 @@
 
 package com.prx.commons.to;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
-
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
  * RequestTest.
@@ -30,8 +30,8 @@ import java.time.ZoneOffset;
 class RequestTest {
 
     @Test
-    void testGettersAndSetters(){
-        final var localDateTime = LocalDateTime.of(2020,10,29,21,31);
+    void testGettersAndSetters() {
+        final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var request = new Request();
         final var clock = Clock.fixed(localDateTime.toInstant(ZoneOffset.UTC), ZoneId.systemDefault());
 
@@ -39,9 +39,11 @@ class RequestTest {
         request.setAppToken("Token de aplicacion");
         request.setDateTime(LocalDateTime.now(clock));
 
-        assertNotNull(request.getAppName());
-        assertNotNull(request.getAppToken());
-        assertNotNull(request.getDateTime());
+        assertAll("Getter And Setter",
+            () -> assertNotNull(request.getAppName()),
+            () -> assertNotNull(request.getAppToken()),
+            () -> assertNotNull(request.getDateTime())
+                 );
     }
 
 }

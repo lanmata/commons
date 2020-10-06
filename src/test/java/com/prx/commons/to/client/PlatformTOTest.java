@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 class PlatformTOTest {
 
     @Test
-    void testGettersAndSetters(){
+    void testGettersAndSetters() {
         final var platformTO = new PlatformTO();
 
         platformTO.setStatus(1);

@@ -14,14 +14,16 @@
 package com.prx.commons.to.bridge;
 
 import com.prx.commons.pojo.DataValueMarket;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
-
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
  * HubRequestTest.
@@ -32,8 +34,8 @@ import java.util.ArrayList;
 class HubRequestTest {
 
     @Test
-    void testGettersAndSetters(){
-        final var localDateTime = LocalDateTime.of(2020,10,29,21,31);
+    void testGettersAndSetters() {
+        final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var clock = Clock.fixed(localDateTime.toInstant(ZoneOffset.UTC), ZoneId.systemDefault());
         final var dataValueMarket = new DataValueMarket();
         final var list = new ArrayList<DataValueMarket>();
@@ -57,10 +59,15 @@ class HubRequestTest {
         hubRequest.setAppToken("token de aplicacion");
         hubRequest.setDateTime(LocalDateTime.now(clock));
 
-        assertNotNull(hubRequest.getDateTime());
-        assertNotNull(hubRequest.getAppName());
-        assertNotNull(hubRequest.getAppToken());
-        assertNotNull(hubRequest.getDataValueMarkets());
+        assertAll("Getters And Setters",
+            () -> assertNotNull(hubRequest.getAppName()),
+            () -> assertNotNull(hubRequest.getDateTime()),
+            () -> assertNotNull(hubRequest.getAppToken()),
+            () -> assertFalse(hubRequest.canEqual(this)),
+            () -> assertNotNull(hubRequest.getDataValueMarkets()),
+            () -> assertNotEquals(-1, hubRequest.hashCode()),
+            () -> assertNotNull(hubRequest.toString())
+                 );
     }
 
 }

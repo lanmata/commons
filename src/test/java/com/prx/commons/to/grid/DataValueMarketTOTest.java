@@ -1,5 +1,5 @@
 /*
- *  @(#)DataValueMarketToTest.java
+ *  @(#)DataValueMarketTOTest.java
  *
  *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -13,13 +13,13 @@
 
 package com.prx.commons.to.grid;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
-
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
  * DataValueMarketToTest.
@@ -30,8 +30,8 @@ import java.time.ZoneOffset;
 class DataValueMarketTOTest {
 
     @Test
-    void testGettersAndSetters(){
-        final var localDateTime = LocalDateTime.of(2020,10,29,21,31);
+    void testGettersAndSetters() {
+        final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var clock = Clock.fixed(localDateTime.toInstant(ZoneOffset.UTC), ZoneId.systemDefault());
         final var dataValueMarketTO = new DataValueMarketTO();
 
@@ -48,18 +48,20 @@ class DataValueMarketTOTest {
         dataValueMarketTO.setVolume(225.21D);
         dataValueMarketTO.setLow(1255.33D);
 
-        assertNotNull(dataValueMarketTO.getInstrument());
-        assertNotNull(dataValueMarketTO.getMarket());
-        assertNotNull(dataValueMarketTO.getAsk());
-        assertNotNull(dataValueMarketTO.getBid());
-        assertNotNull(dataValueMarketTO.getClose());
-        assertNotNull(dataValueMarketTO.getHigh());
-        assertNotNull(dataValueMarketTO.getDateTime());
-        assertNotNull(dataValueMarketTO.getInstrumentId());
-        assertNotNull(dataValueMarketTO.getLast());
-        assertNotNull(dataValueMarketTO.getMarketId());
-        assertNotNull(dataValueMarketTO.getVolume());
-        assertNotNull(dataValueMarketTO.getLow());
+        assertAll("Getters And Setters",
+            () -> assertNotNull(dataValueMarketTO.getAsk()),
+            () -> assertNotNull(dataValueMarketTO.getBid()),
+            () -> assertNotNull(dataValueMarketTO.getLow()),
+            () -> assertNotNull(dataValueMarketTO.getLast()),
+            () -> assertNotNull(dataValueMarketTO.getHigh()),
+            () -> assertNotNull(dataValueMarketTO.getClose()),
+            () -> assertNotNull(dataValueMarketTO.getMarket()),
+            () -> assertNotNull(dataValueMarketTO.getVolume()),
+            () -> assertNotNull(dataValueMarketTO.getMarketId()),
+            () -> assertNotNull(dataValueMarketTO.getDateTime()),
+            () -> assertNotNull(dataValueMarketTO.getInstrument()),
+            () -> assertNotNull(dataValueMarketTO.getInstrumentId())
+                 );
     }
 
 }

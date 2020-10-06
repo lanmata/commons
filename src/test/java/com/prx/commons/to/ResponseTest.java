@@ -13,6 +13,7 @@
 
 package com.prx.commons.to;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +31,8 @@ import java.time.ZoneOffset;
 class ResponseTest {
 
     @Test
-    void testGettersAndSetters(){
-        final var localDateTime = LocalDateTime.of(2020,10,29,21,31);
+    void testGettersAndSetters() {
+        final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var response = new Response();
         final var clock = Clock.fixed(localDateTime.toInstant(ZoneOffset.UTC), ZoneId.systemDefault());
 
@@ -39,9 +40,11 @@ class ResponseTest {
         response.setCode(200);
         response.setDateTime(LocalDateTime.now(clock));
 
-        assertNotNull(response.getCode());
-        assertNotNull(response.getMessage());
-        assertNotNull(response.getDateTime());
+        assertAll("Getters And Setters",
+            () -> assertNotNull(response.getCode()),
+            () -> assertNotNull(response.getMessage()),
+            () -> assertNotNull(response.getDateTime())
+                 );
     }
 
 }
