@@ -16,11 +16,17 @@ package com.prx.commons.util;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+/**
+ * PrinterUtil.
+ *
+ * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @version 1.0.0, 29-09-2019
+ */
+@Service
 @NoArgsConstructor
-public class PrinterUtil {
+public final class PrinterUtil {
 
     @Value("${log.debug}")
     private Boolean isDebug;
@@ -42,9 +48,9 @@ public class PrinterUtil {
      *
      * @param object Objeto de tipo {@link Object}
      * @param logger Objeto de tipo {@link Logger}
-     * @param enable Objeto de tipo {@link Boolean}
+     * @param enable Objeto de tipo {@link boolean}
      */
-    public void print(Object object, Logger logger, Boolean enable){
+    public void print(Object object, Logger logger, boolean enable){
         if(enable){
             logger.info(object);
         }

@@ -40,7 +40,7 @@ class HubResponseTest {
         hubResponse.setDateTime(LocalDateTime.now(clock));
         hubResponse.setMessage("Mensaje de respuesta");
 
-        assertAll("Getters And Setters",
+        assertAll("Test para Getters And Setters",
             () -> assertNotNull(hubResponse.getCode()),
             () -> assertNotNull(hubResponse.getMessage()),
             () -> assertNotNull(hubResponse.getDateTime()),

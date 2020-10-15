@@ -15,7 +15,6 @@ package com.prx.commons.util;
 
 import com.prx.commons.pojo.MessageActivity;
 import com.prx.commons.to.Response;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
@@ -27,12 +26,13 @@ import java.time.ZoneId;
  */
 public final class MessageActivityUtil {
 
-    private MessageActivityUtil(){}
+    private MessageActivityUtil(){throw new UnsupportedOperationException();}
 
     /**
+     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@lnik MessageActivity}.
      *
-     * @param messageActivity
-     * @return
+     * @param messageActivity {@link MessageActivity}
+     * @return {@link Response}
      */
     public static Response toResponse(MessageActivity messageActivity){
         Response response = new Response();
@@ -42,10 +42,10 @@ public final class MessageActivityUtil {
     }
 
     /**
+     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@lnik MessageActivity}.
      *
-     * @param messageActivity
-     * @param response
-     * @return
+     * @param messageActivity {@link MessageActivity}
+     * @param response {@link Response}
      */
     public static void toResponse(MessageActivity messageActivity, Response response){
         messageActivity.getMessages().forEach((code, message)-> {

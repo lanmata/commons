@@ -14,12 +14,12 @@
 package com.prx.commons.to.grid;
 
 import com.prx.commons.to.Response;
+import com.prx.commons.util.JsonUtil;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * ClosingDataResponse.
@@ -33,4 +33,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class ClosingDataResponse extends Response {
     private List<DataValueMarketTO> list;
+
+    @Override
+    public String toString() {
+        return JsonUtil.toJson(this);
+    }
 }

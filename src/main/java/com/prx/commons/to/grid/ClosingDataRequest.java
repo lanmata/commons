@@ -16,13 +16,12 @@ package com.prx.commons.to.grid;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.DataValueMarket;
 import com.prx.commons.to.Request;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * ClosingDataRequest.
@@ -40,6 +39,6 @@ public class ClosingDataRequest extends Request {
 
     @Override
     public String toString(){
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

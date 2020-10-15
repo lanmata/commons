@@ -14,14 +14,12 @@
 package com.prx.commons.to;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.prx.commons.util.JsonUtil;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-
-import static com.prx.commons.util.JsonUtil.toJson;
 
 /**
  * Request.
@@ -42,6 +40,6 @@ public class Request {
 
     @Override
     public String toString() {
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

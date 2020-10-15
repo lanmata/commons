@@ -15,11 +15,11 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import static com.prx.commons.util.JsonUtil.toJson;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 /**
  *
@@ -43,7 +43,7 @@ public class ActiveType implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%s{id: %d, description: %s, active: %b}", this.getClass().getSimpleName(), id, name, description, active);
+        return toJson(this);
     }
 
 }

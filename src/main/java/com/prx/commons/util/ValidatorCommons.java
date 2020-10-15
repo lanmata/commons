@@ -18,19 +18,21 @@
  */
 package com.prx.commons.util;
 
+import java.math.BigDecimal;
 import java.util.List;
+import javax.validation.constraints.NotNull;
 
 /**
  * Clase para propositos utilitarios de validacion. Permite determinar: - Tipos
  * de campos. - Duracion de tiempo. - Nulidad o no de objetos.
  *
  * @author Luis Mata
- * @version 1.0
- * @since 19-Oct-2014 09:38:25 a.m.
+ * @version 1.0, 19-Oct-2014 09:38:25 a.m.
  */
 public final class ValidatorCommons {
 
     private ValidatorCommons() {
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -38,19 +40,25 @@ public final class ValidatorCommons {
      * el valor contenido en el objeto de es tipo alfabetico. En caso de false
      * el valor contenido en el objeto de no es tipo alfabetico.
      *
-     * @param object Objeto a evaluar
-     * @return boolean
+     * @param object Objeto a evaluar, objeto de tipo {@link Object}
+     * @return boolean Objeto de tipo {@link boolean}
      *
      * @author Luis Mata
      */
-    public static boolean esAlfabetico(Object object) {
+    public static boolean esAlfabetico(@NotNull Object object) {
         boolean esValido = true;
-        String valor = object.toString();
+        final String valor;
 
-        for (int i = 0; i < valor.length(); i++) {
-            if (!Character.isDigit(valor.charAt(i))) {
-                esValido = false;
+        if (esNoNulo(object)){
+            valor = object instanceof String ? (String) object : object.toString();
+            for (int i = 0; i < valor.length(); i++) {
+                if (Character.isDigit(valor.charAt(i))) {
+                    esValido = false;
+                    break;
+                }
             }
+        }else {
+            esValido = false;
         }
 
         return esValido;
@@ -61,39 +69,34 @@ public final class ValidatorCommons {
      * valor contenido en el objeto de es tipo numerico. En caso de false el
      * valor contenido en el objeto de no es tipo numerico.
      *
-     * @param object Objeto a evaluar
-     * @return boolean
+     * @param object Objeto a evaluar, objeto de tipo {@link Object}
+     * @return boolean Objeto de tipo {@link Object}
      *
      * @author Luis Mata
      */
-    public static boolean esNumerico(Object object) {
-        boolean esValido = false;
-        String valor;
+    public static boolean esNumerico(@NotNull Object object) {
+        return object instanceof Integer
+                   || object instanceof Double
+                   || object instanceof Long
+                   || object instanceof BigDecimal;
+    }
 
-        validarCampor:
-        if (object instanceof Integer) {
-            esValido = true;
-            break validarCampor;
-        } else if (object instanceof Double) {
-            esValido = true;
-            break validarCampor;
-        } else if (object instanceof Long) {
-            esValido = true;
-            break validarCampor;
-        } else if (object instanceof String) {
-            valor = object.toString();
-            for (int i = 0; i < valor.length(); i++) {
-                if (Character.isDigit(valor.charAt(i))) {
-                    esValido = true;
-                }
+    /**
+     * Determina si el valor de un objeto dado es numerico. En caso de true, el
+     * valor contenido en el objeto de es tipo numerico. En caso de false el
+     * valor contenido en el objeto de no es tipo numerico.
+     *
+     * @param valor {@link String}
+     * @return boolean Objeto de tipo {@link boolean}
+     */
+    public static boolean esNumerico(@NotNull  String valor) {
+        for (int i = 0; i < valor.length(); i++) {
+            if (!Character.isDigit(valor.charAt(i))) {
+                return false;
             }
         }
 
-        return esValido;
-    }
-
-    public static boolean esNumerico(String valor) {
-        return false;
+        return true;
     }
 
     /**
@@ -101,8 +104,8 @@ public final class ValidatorCommons {
      * valor contenido en el objeto de es tipo nulo. En caso de false el valor
      * contenido en el objeto de no es tipo nulo.
      *
-     * @param objeto Objeto a evaluar
-     * @return boolean
+     * @param objeto Objeto a evaluar, Objeto de tipo {@link Object}
+     * @return boolean, Objeto de tipo {@link boolean}
      *
      * @author Luis Mata
      */
@@ -115,8 +118,8 @@ public final class ValidatorCommons {
      * true,el valor contenido en el objeto de no es tipo nulo. En caso de false
      * el valor contenido en el objeto de es tipo nulo.
      *
-     * @param objeto Objeto a evaluar
-     * @return boolean
+     * @param objeto Objeto a evaluar, Objeto de tipo {@link Object}
+     * @return boolean, Objeto de tipo {@link boolean}
      *
      * @author Luis Mata
      */
@@ -129,12 +132,12 @@ public final class ValidatorCommons {
      * caso de true,el valor contenido en el objeto de es vacio. En caso de
      * false el valor contenido en el objeto de no es vacio.
      *
-     * @param valor Objeto de tipo String a evaluar
-     * @return boolean
+     * @param valor Objeto de tipo String a evaluar, Objeto de tipo {@link Object}
+     * @return boolean, Objeto de tipo {@link boolean}
      *
      * @author Luis Mata
      */
-    public static boolean esVacio(String valor) {
+    public static boolean esVacio(@NotNull String valor) {
         return valor.isEmpty();
     }
 
@@ -143,12 +146,12 @@ public final class ValidatorCommons {
      * de true,el valor contenido en el objeto de es vacio. En caso de false el
      * valor contenido en el objeto de no es vacio.
      *
-     * @param valor
-     * @return boolean
+     * @param valor Objeto de tipo {@link List}
+     * @return boolean, Objeto de tipo {@link boolean}
      *
      * @author Luis Mata
      */
-    public static boolean esVacio(List valor) {
+    public static boolean esVacio(@NotNull List valor) {
         return valor.isEmpty();
     }
 
@@ -156,8 +159,8 @@ public final class ValidatorCommons {
      * Calcula la duracion del tiempo utilizado en base al parametro tInicio y
      * el tiempo actual.
      *
-     * @param tInicio
-     * @return long
+     * @param tInicio Objeto de tipo {@link long}
+     * @return long Objeto de tipo {@link long}
      *
      * @author Luis Mata
      */
@@ -169,33 +172,27 @@ public final class ValidatorCommons {
      * Determina si el valor contenido en el parametro recibido cumple las
      * reglas definidas para la correcta formacion de un correo electronico.
      *
-     * @param valor
-     * @return boolean
+     * @param valor {@link String}
+     * @return boolean Objeto de tipo {@link boolean}
      *
      * @author Luis Mata
      */
-    public static boolean esEmail(String valor) {
+    public static boolean esEmail(@NotNull String valor) {
         String expresion = "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})";
-        boolean valido = false;
-
-        if (valor.matches(expresion)) {
-            valido = true;
-        }
-
-        return valido;
+        return valor.matches(expresion);
     }
 
     /**
      * Valida la correspondencia inequivoca del valorA y valorB
      *
-     * @param valorA
-     * @param valorB
+     * @param valorA {@link String}
+     * @param valorB {@link String}
      * @return boolean
      */
     public static boolean validaIgualdad(final String valorA, final String valorB) {
         //Valida
         return esNoNulo(valorA) && esNoNulo(valorB) //la NO nulidad
-                   || !esVacio(valorA) && !esVacio(valorB) //que no sea vacio
-                   || valorA.equals(valorB);              //la igualdad literal
+                   && !esVacio(valorA) && !esVacio(valorB) //que no sea vacio
+                   && valorA.equals(valorB);              //la igualdad literal
     }
 }

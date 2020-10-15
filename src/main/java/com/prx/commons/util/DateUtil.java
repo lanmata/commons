@@ -31,36 +31,45 @@ import java.util.Locale;
  */
 public final class DateUtil {
 
-    private static final String STR_DDMMYY = "dd/MM/yyyy";
-    public static final SimpleDateFormat SIMPLE_DATE_FORMAT_DDMMYY = new SimpleDateFormat(STR_DDMMYY, Locale.ROOT);
-    private static final String PATTERN_DATE = "yyyy-MM-dd";
-    public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(PATTERN_DATE, Locale.ROOT);
-    public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE, Locale.ROOT);
-    private static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
-    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT = new SimpleDateFormat(PATTERN_DATE_TIME, Locale.ROOT);
-    private static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
-    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_T = new SimpleDateFormat(PATTERN_DATE_TIME_T,
-        Locale.ROOT);
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT_T;
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT_DDMMYY;
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT;
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT;
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT_MIL;
+    public static final DateTimeFormatter DATE_TIME_FORMATTER;
+    public static final DateTimeFormatter DATE_FORMATTER;
     private static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
-    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME_MIL,
-        Locale.ROOT);
-    public static final SimpleDateFormat SIMPLE_DATE_TIME_FORMAT_MIL = new SimpleDateFormat(PATTERN_DATE_TIME_MIL,
-        Locale.ROOT);
+    private static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
+    private static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
+    private static final String PATTERN_DATE = "yyyy-MM-dd";
+    private static final String STR_DDMMYY = "dd/MM/yyyy";
+    static {
+        DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME_MIL, Locale.ROOT);
+        DATE_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE, Locale.ROOT);
+        SIMPLE_DATE_TIME_FORMAT_T = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE_TIME_T,
+            Locale.ROOT));
+        SIMPLE_DATE_TIME_FORMAT_MIL =ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE_TIME_MIL,
+            Locale.ROOT));
+        SIMPLE_DATE_TIME_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE_TIME, Locale.ROOT));
+        SIMPLE_DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE, Locale.ROOT));
+        SIMPLE_DATE_FORMAT_DDMMYY = ThreadLocal.withInitial(() -> new SimpleDateFormat(STR_DDMMYY, Locale.ROOT));
+    }
 
     /**
      * Constructor privado para no permitir creacion de objeto por instancia
      */
     private DateUtil() {
+        throw new UnsupportedOperationException();
     }
 
     /**
-     * Convierte una fecha contenida en un String a un objeto Calendar
+     * Convierte una fecha contenida en un {@link String} a un objeto {@link Calendar}
      *
-     * @param strDateMail Fecha de corrreo
-     * @param simpleDateFormat Formato de fecha
-     * @param timeDefault Hora por defecto
-     * @return Retorna un objeto de tipo Calendar
-     * @throws ParseException Lanza una excepcion de tipo ParseException
+     * @param strDateMail Fecha de corrreo, objeto de tipo {@link String}
+     * @param simpleDateFormat Formato de fecha, objeto de tipo {@link SimpleDateFormat}
+     * @param timeDefault Hora por defecto, objeto de tipo {@link boolean}
+     * @return Retorna un objeto de tipo {@link Calendar}
+     * @throws ParseException Lanza una excepcion de tipo {@link ParseException}
      */
     public static Calendar convertStringToCalendar(String strDateMail, SimpleDateFormat simpleDateFormat,
         boolean timeDefault) throws ParseException {

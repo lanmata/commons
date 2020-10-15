@@ -13,8 +13,10 @@
 
 package com.prx.commons.rest;
 
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
@@ -24,22 +26,17 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Plantilla para implementaci&oacute;n de cliente
  *
  * @author <a href="mailto:lui.antonio.mata@gmail.com">Luis Mata</a>
  * @since 2019-08-23
  */
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class ClientRestTemplate {
 
+    protected final MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter;
     protected RestTemplate restTemplate;
-    @Autowired
-    protected MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter;
 
     /**
      * Inicializa las propiedades para el cliente de servicio REST
@@ -55,7 +52,7 @@ public class ClientRestTemplate {
 
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
 
-        // Inicializamos rest template agregando interceptor para hacer debug de mensajes y convertidor de mensajes.
+        // Inicializa el rest template agregando un interceptor para hacer debug de mensajes y convertidor de mensajes.
         restTemplate = new RestTemplate(new BufferingClientHttpRequestFactory(new SimpleClientHttpRequestFactory()));
         restTemplate.setInterceptors(interceptors);
         restTemplate.setMessageConverters(messageConverters);

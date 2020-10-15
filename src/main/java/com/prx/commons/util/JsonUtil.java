@@ -15,8 +15,9 @@ package com.prx.commons.util;
 import com.google.gson.Gson;
 
 /**
- * @author Luis A. Mata <luis.antonio.mata@gmail.com>
- * @since 2017-03-15
+ *
+ * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @version 1.0.3, 29-09-2020
  */
 public final class JsonUtil {
 
@@ -28,8 +29,16 @@ public final class JsonUtil {
 
     /* Constructor privado para no permitir creacion de objeto por instancia */
     private JsonUtil() {
+        throw new UnsupportedOperationException();
     }
 
+    /**
+     * Recibe un objeto de tipo {@link Object} para convertir en un objeto de tipo {@link String} con un contenido en
+     * formato JSON.
+     *
+     * @param objSource Objeto de tipo {@link Object}
+     * @return Objeto de tipo {@link String}
+     */
     public static String toJson(Object objSource) {
         return GSON.toJson(objSource);
     }

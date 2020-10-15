@@ -16,32 +16,34 @@ package com.prx.commons.util;
 import com.prx.commons.enums.keys.SizeKey;
 import com.prx.commons.pojo.SizeDescriptor;
 
+/**
+ * Clase utilitaria para gestion de archivos
+ *
+ * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @version 1.0.3, 29-09-2020
+ */
 public final class FileUtil {
 
     private static final long MIN_RESULT = 8L;
     private static final int ONE_VALUE = 1;
     private static final long BYTE_SIZE = 1024L;
 
-    private FileUtil(){}
+    private FileUtil(){throw new UnsupportedOperationException();}
 
     /**
      * Retona el peso de un archivo
      *
-     * @param ordinalSize Objeto de tipo int
-     * @param size Objeto de tipo long
+     * @param ordinalSize Objeto de tipo {@link int}
+     * @param size Objeto de tipo {@link long}
      * @return Objeto de tipo {@link SizeDescriptor}
      */
     public static SizeDescriptor getSizeDescriptor(int ordinalSize, long size){
         long result = size / BYTE_SIZE;
-        SizeDescriptor sizeDescriptor;
 
         if(result > MIN_RESULT){
-            sizeDescriptor = getSizeDescriptor(ordinalSize + ONE_VALUE, result);
+            return getSizeDescriptor(ordinalSize + ONE_VALUE, result);
         }else {
-            sizeDescriptor = new SizeDescriptor(SizeKey.values()[ordinalSize], size);
-
+            return new SizeDescriptor(SizeKey.values()[ordinalSize], size);
         }
-
-        return sizeDescriptor;
     }
 }

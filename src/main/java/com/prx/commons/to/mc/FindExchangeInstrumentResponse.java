@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.ExchangeInstrument;
 import com.prx.commons.to.Response;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,6 +39,6 @@ public class FindExchangeInstrumentResponse extends Response {
 
     @Override
     public String toString(){
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

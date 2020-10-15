@@ -16,12 +16,11 @@ package com.prx.commons.to.client;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 /**
  * PlatformTO.
@@ -43,6 +42,6 @@ public class PlatformTO implements Serializable {
     private Integer status;
 
     public String toString(){
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }
