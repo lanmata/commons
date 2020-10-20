@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
@@ -55,7 +57,10 @@ class ClosingDataResponseTest {
             () -> assertNotNull(closingDataResponse.getList()),
             () -> assertNotNull(closingDataResponse.getCode()),
             () -> assertNotNull(closingDataResponse.getMessage()),
-            () -> assertNotNull(closingDataResponse.getDateTime())
+            () -> assertNotNull(closingDataResponse.getDateTime()),
+            () -> assertNotNull(closingDataResponse.toString()),
+            () -> assertNotEquals(new ClosingDataResponse(), closingDataResponse),
+            () -> assertNotEquals(1,closingDataResponse.hashCode())
                   );
     }
 

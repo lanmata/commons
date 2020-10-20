@@ -13,27 +13,22 @@
 
 package com.prx.commons.to.messenger;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.to.Request;
 import com.prx.commons.util.JsonUtil;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
  */
-@Data
-@JsonInclude
+@Getter
+@Setter
+@JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class NotifyMessageRequest extends Request {
 
     private String message;

@@ -42,7 +42,8 @@ class RequestTest {
         assertAll("Getter And Setter",
             () -> assertNotNull(request.getAppName()),
             () -> assertNotNull(request.getAppToken()),
-            () -> assertNotNull(request.getDateTime())
+            () -> assertNotNull(request.getDateTime()),
+            () -> assertNotNull(request.toString())
                  );
     }
 

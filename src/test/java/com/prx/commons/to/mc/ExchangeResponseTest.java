@@ -49,7 +49,10 @@ class ExchangeResponseTest {
             ()-> assertNotNull(exchangeResponse.getExchange()),
             ()-> assertNotNull(exchangeResponse.getCode()),
             ()-> assertNotNull(exchangeResponse.getDateTime()),
-            ()-> assertNotNull(exchangeResponse.getMessage())
+            ()-> assertNotNull(exchangeResponse.getMessage()),
+            ()-> assertNotNull(exchangeResponse.toString()),
+            ()-> assertNotEquals(1, exchangeResponse.hashCode()),
+            ()-> assertNotEquals(new ExchangeResponse(), exchangeResponse)
                  );
     }
 

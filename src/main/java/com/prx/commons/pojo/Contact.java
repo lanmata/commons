@@ -16,9 +16,10 @@ package com.prx.commons.pojo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.util.JsonUtil;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import java.io.Serializable;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
@@ -26,10 +27,10 @@ import lombok.NoArgsConstructor;
  */
 @JsonPropertyOrder({"id", "content", "contactTypeId", "person", "active"
 })
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
-public class Contact {
+public class Contact implements Serializable {
 
     @JsonProperty("id")
     private Integer id;

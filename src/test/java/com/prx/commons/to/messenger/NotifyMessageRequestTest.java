@@ -16,7 +16,9 @@ package com.prx.commons.to.messenger;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -44,8 +46,10 @@ class NotifyMessageRequestTest {
             () -> assertNotNull(notifyMessageRequest.getMessage()),
             () -> assertNotNull(notifyMessageRequest.getAppName()),
             () -> assertNotNull(notifyMessageRequest.getAppToken()),
-            () -> assertNotNull(notifyMessageRequest.getClass())
-            );
+            () -> assertNotEquals(1,notifyMessageRequest.hashCode()),
+            () -> assertNotEquals(notifyMessageRequest,new NotifyMessageRequest()),
+            () -> assertNotNull(notifyMessageRequest.toString())
+                 );
     }
 
 }

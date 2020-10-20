@@ -41,8 +41,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @since 2019-08-18
  */
 @Slf4j
-@EnableSwagger2
 @Configuration
+@EnableSwagger2
 @RequiredArgsConstructor
 public class Swagger2Config {
 
@@ -77,8 +77,12 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         Collection<VendorExtension> vendorExtensionList = new ArrayList();
-        VendorExtensionImpl vendorExtension = new VendorExtensionImpl("Nombre", "Valor");
+        final var vendorExtension = new VendorExtensionImpl();
+
+        vendorExtension.setName("Nombre");
+        vendorExtension.setValue("Valor");
         vendorExtensionList.add(vendorExtension);
+
         log.info("Swagger procesa contenido de autor");
         return new ApiInfo(title, description, appVersion, "urn:tos",
             new Contact(contactName, contactUrl, contactEmail), "API License", "http://www.api-license-url.com",

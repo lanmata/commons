@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
 public final class PrinterUtil {
 
     @Value("${log.debug}")
-    private Boolean isDebug;
+    private boolean isDebug;
 
     /**
      * Imprime la traza si dentro de los parametros de configuracion esta en modo debug

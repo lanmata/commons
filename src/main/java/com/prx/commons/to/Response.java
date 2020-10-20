@@ -15,12 +15,10 @@ package com.prx.commons.to;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.util.JsonUtil;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Response.
@@ -28,11 +26,10 @@ import java.time.LocalDateTime;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.0, 29-09-2020
  */
-@Data
+@Getter
+@Setter
 @JsonNaming
 @NoArgsConstructor
-@EqualsAndHashCode
-@AllArgsConstructor
 public class Response {
 
     private LocalDateTime dateTime;

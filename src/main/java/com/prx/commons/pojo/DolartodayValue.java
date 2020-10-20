@@ -14,11 +14,11 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
@@ -39,8 +39,8 @@ import lombok.NoArgsConstructor;
     "localbitcoin_ref",
     "dolartoday"
 })
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class DolartodayValue {
 
@@ -77,6 +77,6 @@ public class DolartodayValue {
 
     @Override
     public String toString() {
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

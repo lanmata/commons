@@ -20,7 +20,6 @@ package com.prx.commons.util;
 
 import java.math.BigDecimal;
 import java.util.List;
-import javax.validation.constraints.NotNull;
 
 /**
  * Clase para propositos utilitarios de validacion. Permite determinar: - Tipos
@@ -29,9 +28,12 @@ import javax.validation.constraints.NotNull;
  * @author Luis Mata
  * @version 1.0, 19-Oct-2014 09:38:25 a.m.
  */
-public final class ValidatorCommons {
-
-    private ValidatorCommons() {
+public final class ValidatorCommonsUtil {
+    private static final String STR_EMAIL_PATTERN;
+    static {
+        STR_EMAIL_PATTERN = "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})";
+    }
+    private ValidatorCommonsUtil() {
         throw new UnsupportedOperationException();
     }
 
@@ -45,7 +47,7 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static boolean esAlfabetico(@NotNull Object object) {
+    public static boolean esAlfabetico(final Object object) {
         boolean esValido = true;
         final String valor;
 
@@ -74,7 +76,7 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static boolean esNumerico(@NotNull Object object) {
+    public static boolean esNumerico(final Object object) {
         return object instanceof Integer
                    || object instanceof Double
                    || object instanceof Long
@@ -89,7 +91,7 @@ public final class ValidatorCommons {
      * @param valor {@link String}
      * @return boolean Objeto de tipo {@link boolean}
      */
-    public static boolean esNumerico(@NotNull  String valor) {
+    public static boolean esNumerico(final String valor) {
         for (int i = 0; i < valor.length(); i++) {
             if (!Character.isDigit(valor.charAt(i))) {
                 return false;
@@ -109,7 +111,7 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static boolean esNulo(Object objeto) {
+    public static boolean esNulo(final Object objeto) {
         return objeto == null;
     }
 
@@ -123,7 +125,7 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static boolean esNoNulo(Object objeto) {
+    public static boolean esNoNulo(final Object objeto) {
         return !esNulo(objeto);
     }
 
@@ -137,7 +139,7 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static boolean esVacio(@NotNull String valor) {
+    public static boolean esVacio(final String valor) {
         return valor.isEmpty();
     }
 
@@ -151,7 +153,7 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static boolean esVacio(@NotNull List valor) {
+    public static boolean esListaVacia(final List<Object> valor) {
         return valor.isEmpty();
     }
 
@@ -164,7 +166,7 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static long totalTiempo(long tInicio) {
+    public static long totalTiempo(final long tInicio) {
         return System.currentTimeMillis() - tInicio;
     }
 
@@ -177,9 +179,8 @@ public final class ValidatorCommons {
      *
      * @author Luis Mata
      */
-    public static boolean esEmail(@NotNull String valor) {
-        String expresion = "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})";
-        return valor.matches(expresion);
+    public static boolean esEmail(final String valor) {
+        return valor.matches(STR_EMAIL_PATTERN);
     }
 
     /**

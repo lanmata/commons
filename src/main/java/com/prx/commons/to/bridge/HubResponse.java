@@ -14,7 +14,6 @@
 package com.prx.commons.to.bridge;
 
 import com.prx.commons.to.Response;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -24,8 +23,4 @@ import lombok.NoArgsConstructor;
  * @version 1.0.3, 29-09-2020
  */
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class HubResponse extends Response {
-
-
-}
+public class HubResponse extends Response {}

@@ -16,10 +16,9 @@ package com.prx.commons.to.grid;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.DataValueMarket;
 import com.prx.commons.util.JsonUtil;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * DataValueMarketTo.
@@ -27,11 +26,10 @@ import lombok.NoArgsConstructor;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 18-08-2019
  */
-@Data
+@Getter
+@Setter
 @JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 public class DataValueMarketTO extends DataValueMarket {
     private String market;
     private String instrument;

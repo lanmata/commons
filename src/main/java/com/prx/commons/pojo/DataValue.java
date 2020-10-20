@@ -16,14 +16,13 @@ package com.prx.commons.pojo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.enums.types.OperationType;
-import static com.prx.commons.util.JsonUtil.toJson;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import com.prx.commons.util.JsonUtil;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
@@ -31,8 +30,8 @@ import java.time.LocalDateTime;
  */
 @JsonPropertyOrder({"id", "lastValue", "currencyPairExchange", "dateTime", "operationType", "amount"
 })
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class DataValue implements Serializable {
 
@@ -51,6 +50,6 @@ public class DataValue implements Serializable {
 
     @Override
     public String toString(){
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

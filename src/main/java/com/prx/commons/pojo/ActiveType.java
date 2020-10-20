@@ -15,11 +15,11 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
 import java.io.Serializable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
  */
 @JsonPropertyOrder({"id", "name", "description", "active"
 })
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class ActiveType implements Serializable {
 
@@ -43,7 +43,7 @@ public class ActiveType implements Serializable {
 
     @Override
     public String toString() {
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 
 }

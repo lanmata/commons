@@ -13,6 +13,8 @@
 
 package com.prx.commons.to.client;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +31,12 @@ class PlatformTOTest {
         final var platformTO = new PlatformTO();
 
         platformTO.setStatus(1);
-        assertNotNull(platformTO.getStatus());
+        assertAll("Test Getters And Setters",
+            () -> assertNotNull(platformTO.getStatus()),
+            () ->assertNotNull(platformTO.toString()),
+            () ->assertNotEquals(1, platformTO.hashCode()),
+            () ->assertNotEquals(new PlatformTO(), platformTO)
+                 );
     }
 
 }

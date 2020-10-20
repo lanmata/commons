@@ -20,7 +20,6 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
@@ -63,9 +62,9 @@ class HubRequestTest {
             () -> assertNotNull(hubRequest.getAppName()),
             () -> assertNotNull(hubRequest.getDateTime()),
             () -> assertNotNull(hubRequest.getAppToken()),
-            () -> assertFalse(hubRequest.canEqual(this)),
             () -> assertNotNull(hubRequest.getDataValueMarkets()),
             () -> assertNotEquals(-1, hubRequest.hashCode()),
+            () -> assertNotEquals(new HubRequest(), hubRequest),
             () -> assertNotNull(hubRequest.toString())
                  );
     }

@@ -12,27 +12,24 @@
  */
 package com.prx.commons.to.mc;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.ExchangeInstrument;
 import com.prx.commons.to.Response;
 import com.prx.commons.util.JsonUtil;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @since 2019-07-06
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
  */
-@Data
+@Getter
+@Setter
+@JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class FindExchangeInstrumentResponse extends Response {
 
     private List<ExchangeInstrument> list;

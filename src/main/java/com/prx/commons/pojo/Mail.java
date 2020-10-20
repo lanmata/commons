@@ -12,33 +12,32 @@
  */
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
 import java.io.Serializable;
 import java.util.Map;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Luis Mata <lmata@netgo.cl>
  */
-@Data
+@Setter
+@Getter
+@JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Mail implements Serializable {
 
     private String from;
     private String to;
     private String subject;
     private String content;
-    private Map model;
+    private transient Map<String, Object> model;
 
     @Override
     public String toString() {
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

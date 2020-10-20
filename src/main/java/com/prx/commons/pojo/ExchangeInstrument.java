@@ -15,15 +15,15 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import static com.prx.commons.util.JsonUtil.toJson;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.prx.commons.util.JsonUtil;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @JsonPropertyOrder({"exchangeId", "instrumentId", "active", "identifier"
 })
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class ExchangeInstrument {
 
@@ -37,7 +37,7 @@ public class ExchangeInstrument {
     private String identifier;
 
     public String toString(){
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 
 }

@@ -44,7 +44,6 @@ class HubResponseTest {
             () -> assertNotNull(hubResponse.getCode()),
             () -> assertNotNull(hubResponse.getMessage()),
             () -> assertNotNull(hubResponse.getDateTime()),
-            () -> assertFalse(hubResponse.canEqual(this)),
             () -> assertNotEquals(-1,hubResponse.hashCode()),
             () -> assertNotNull(hubResponse.toString())
                  );

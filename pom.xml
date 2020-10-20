@@ -43,8 +43,8 @@
         <java.version>13</java.version>
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
-        <sonar.coverage.exclusions>**/*.xml,**/*Application.*</sonar.coverage.exclusions>
-        <sonar.exclusions>**/*.xml,**/*Application.*</sonar.exclusions>
+        <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*</sonar.coverage.exclusions>
+        <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*</sonar.exclusions>
     </properties>
 
     <dependencies>
@@ -222,6 +222,11 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${maven.plugin.jacoco.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>${sonar.coverage.exclusions}</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>

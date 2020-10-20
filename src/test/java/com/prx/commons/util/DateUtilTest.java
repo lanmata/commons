@@ -14,13 +14,17 @@
 package com.prx.commons.util;
 
 import static com.prx.commons.util.DateUtil.SIMPLE_DATE_FORMAT;
+import static com.prx.commons.util.DateUtil.SIMPLE_DATE_FORMAT_DDMMYY;
+import static com.prx.commons.util.DateUtil.SIMPLE_DATE_TIME_FORMAT;
+import static com.prx.commons.util.DateUtil.SIMPLE_DATE_TIME_FORMAT_MIL;
+import static com.prx.commons.util.DateUtil.SIMPLE_DATE_TIME_FORMAT_T;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +40,7 @@ class DateUtilTest {
     void constructor() throws NoSuchMethodException {
         final var constructor = DateUtil.class.getDeclaredConstructor();
         constructor.setAccessible(true);
-        Assertions.assertThrows(InvocationTargetException.class, constructor::newInstance);
+        assertThrows(InvocationTargetException.class, constructor::newInstance);
     }
 
     @Test
@@ -52,7 +56,13 @@ class DateUtilTest {
 
     @Test
     void convertStringToCalendar() throws ParseException {
+        assertNotNull(DateUtil.convertStringToCalendar("2020-10-23 23:10:45", SIMPLE_DATE_TIME_FORMAT.get(),true));
         assertNotNull(DateUtil.convertStringToCalendar("2020-10-23", SIMPLE_DATE_FORMAT.get(),true));
+        assertNotNull(DateUtil.convertStringToCalendar("23/10/2020", SIMPLE_DATE_FORMAT_DDMMYY.get(),false));
+        assertNotNull(DateUtil.convertStringToCalendar(null, SIMPLE_DATE_TIME_FORMAT_T.get(),true));
+        assertNotNull(DateUtil.convertStringToCalendar("", SIMPLE_DATE_TIME_FORMAT_MIL.get(),true));
+        assertNotNull(DateUtil.convertStringToCalendar("2020-10-23", SIMPLE_DATE_FORMAT.get(),false));
+
     }
 
 }

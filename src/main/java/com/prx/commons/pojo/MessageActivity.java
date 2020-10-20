@@ -13,14 +13,13 @@
 
 package com.prx.commons.pojo;
 
-import static com.prx.commons.util.JsonUtil.toJson;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import com.prx.commons.util.JsonUtil;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Se utiliza para describir las acciones o ejecuciones realizadas y el resultado de ellas para informar a los componentes
@@ -29,8 +28,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
  * @since 2019-11-27
  */
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class MessageActivity implements Serializable {
 
@@ -41,9 +40,9 @@ public class MessageActivity implements Serializable {
     /**
      * Objeto respuesta esperado
      */
-    private Object objectResponse;
+    private transient Object objectResponse;
 
     public String toString(){
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

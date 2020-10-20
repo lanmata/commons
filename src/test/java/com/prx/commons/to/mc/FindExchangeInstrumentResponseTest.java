@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
@@ -80,7 +81,10 @@ class FindExchangeInstrumentResponseTest {
             () -> assertNotNull(findExchangeInstrumentResponse.getCode()),
             () -> assertNotNull(findExchangeInstrumentResponse.getList()),
             () -> assertNotNull(findExchangeInstrumentResponse.getMessage()),
-            () -> assertNotNull(findExchangeInstrumentResponse.getDateTime())
+            () -> assertNotNull(findExchangeInstrumentResponse.getDateTime()),
+            () -> assertNotNull(findExchangeInstrumentResponse.toString()),
+            () -> assertNotEquals(new FindExchangeInstrumentResponse(), findExchangeInstrumentResponse),
+            () -> assertNotEquals(1, findExchangeInstrumentResponse.hashCode())
                  );
 
     }

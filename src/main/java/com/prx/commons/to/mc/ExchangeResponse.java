@@ -13,25 +13,22 @@
 
 package com.prx.commons.to.mc;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.Exchange;
 import com.prx.commons.to.Response;
 import com.prx.commons.util.JsonUtil;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
  */
-@Data
+@Getter
+@Setter
+@JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ExchangeResponse extends Response {
 
     private Exchange exchange;

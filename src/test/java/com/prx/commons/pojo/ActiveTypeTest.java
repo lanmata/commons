@@ -14,6 +14,7 @@
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
@@ -38,8 +39,11 @@ class ActiveTypeTest {
             () -> assertNotNull(activeType.getActive()),
             () -> assertNotNull(activeType.getDescription()),
             () -> assertNotNull(activeType.getId()),
-            () -> assertNotNull(activeType.getName())
-            );
+            () -> assertNotNull(activeType.getName()),
+            () -> assertNotNull(activeType.toString()),
+            () -> assertNotEquals(1, activeType.hashCode()),
+            () -> assertNotEquals(new ActiveType(), activeType)
+                 );
     }
 
 }

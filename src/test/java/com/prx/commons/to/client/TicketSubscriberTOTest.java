@@ -13,6 +13,7 @@
 
 package com.prx.commons.to.client;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
@@ -52,7 +53,10 @@ class TicketSubscriberTOTest {
             () -> assertNotNull(ticketSubscriberTO.getPlatform()),
             () -> assertNotNull(ticketSubscriberTO.getServerId()),
             () -> assertNotNull(ticketSubscriberTO.getSymbol()),
-            () -> assertNotNull(ticketSubscriberTO.getVersion())
+            () -> assertNotNull(ticketSubscriberTO.getVersion()),
+            () -> assertNotNull(ticketSubscriberTO.toString()),
+            () -> assertNotEquals(1, ticketSubscriberTO.hashCode()),
+            () -> assertNotEquals(new TicketSubscriberTO(), ticketSubscriberTO)
                  );
     }
 

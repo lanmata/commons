@@ -14,7 +14,6 @@
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
@@ -40,9 +39,11 @@ class ContactTest {
             () -> assertNotNull(contact.getActive()),
             () -> assertNotNull(contact.getContactTypeId()),
             () -> assertNotNull(contact.getContent()),
+            () -> assertNotNull(contact.getPerson()),
             () -> assertNotNull(contact.getId()),
-            () -> assertNotEquals(new Contact(), contact),
-            () -> assertFalse(contact.hashCode() == 0)
+            () -> assertNotNull(contact.toString()),
+            () -> assertNotEquals(1, contact.hashCode()),
+            () -> assertNotEquals(new Contact(), contact)
                  );
     }
 

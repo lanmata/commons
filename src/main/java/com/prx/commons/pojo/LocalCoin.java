@@ -12,22 +12,21 @@
  */
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
 import java.io.Serializable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
  */
-@Data
+@Getter
+@Setter
+@JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class LocalCoin implements Serializable {
 
     private Integer id;
@@ -37,7 +36,7 @@ public class LocalCoin implements Serializable {
 
     @Override
     public String toString(){
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 
 }

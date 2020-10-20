@@ -17,9 +17,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import static com.prx.commons.util.JsonUtil.toJson;
 import java.io.Serializable;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
 @JsonPropertyOrder({
     "id", "name", "description", "currencySource", "currencyTarget", "active"
 })
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class Exchange implements Serializable {
 

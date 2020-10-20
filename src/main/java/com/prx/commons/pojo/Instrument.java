@@ -12,22 +12,21 @@
  */
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.prx.commons.util.JsonUtil;
 import java.io.Serializable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
  */
-@Data
-@AllArgsConstructor
+@Setter
+@Getter
+@JsonNaming
 @NoArgsConstructor
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Instrument implements Serializable {
 
     private Long id;
@@ -39,6 +38,6 @@ public class Instrument implements Serializable {
 
     @Override
     public String toString() {
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

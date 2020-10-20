@@ -17,6 +17,7 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
@@ -60,7 +61,10 @@ class DataValueMarketTOTest {
             () -> assertNotNull(dataValueMarketTO.getMarketId()),
             () -> assertNotNull(dataValueMarketTO.getDateTime()),
             () -> assertNotNull(dataValueMarketTO.getInstrument()),
-            () -> assertNotNull(dataValueMarketTO.getInstrumentId())
+            () -> assertNotNull(dataValueMarketTO.getInstrumentId()),
+            () -> assertNotNull(dataValueMarketTO.toString()),
+            () -> assertNotEquals(dataValueMarketTO, new DataValueMarketTO()),
+            () -> assertNotEquals(1, dataValueMarketTO.hashCode())
                  );
     }
 

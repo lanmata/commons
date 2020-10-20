@@ -12,15 +12,18 @@
  */
 package com.prx.commons.pojo;
 
-import lombok.AllArgsConstructor;
+import com.prx.commons.util.JsonUtil;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import springfox.documentation.service.VendorExtension;
 
 /**
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
  * @since 6/9/2020
  */
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
 public class VendorExtensionImpl implements VendorExtension<Object> {
 
@@ -28,13 +31,9 @@ public class VendorExtensionImpl implements VendorExtension<Object> {
     private String value;
 
     @Override
-    public String getName() {
-        return name;
+    public String toString(){
+        return JsonUtil.toJson(this);
     }
 
-    @Override
-    public Object getValue() {
-        return value;
-    }
 
 }

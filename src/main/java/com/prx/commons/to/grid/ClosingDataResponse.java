@@ -13,13 +13,13 @@
 
 package com.prx.commons.to.grid;
 
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.to.Response;
 import com.prx.commons.util.JsonUtil;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * ClosingDataResponse.
@@ -27,10 +27,10 @@ import lombok.NoArgsConstructor;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 18-08-2019
  */
-@Data
+@Getter
+@Setter
+@JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 public class ClosingDataResponse extends Response {
     private List<DataValueMarketTO> list;
 
