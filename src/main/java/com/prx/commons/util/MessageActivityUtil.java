@@ -1,22 +1,38 @@
+/*
+ *  @(#)MessageActivityUtil.java
+ *
+ *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
+ *
+ *  All rights to this product are owned by Luis Antonio Mata Mata and may only
+ *  be used under the terms of its associated license document. You may NOT
+ *  copy, modify, sublicense, or distribute this source file or portions of
+ *  it unless previously authorized in writing by Luis Antonio Mata Mata.
+ *  In any event, this notice and the above copyright must always be included
+ *  verbatim with this file.
+ */
+
 package com.prx.commons.util;
 
 import com.prx.commons.pojo.MessageActivity;
 import com.prx.commons.to.Response;
-
-import static java.time.LocalDateTime.now;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 /**
- * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
- * @since 2019-11-27
+ * MessageActivityUtil.
+ *
+ * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @version 1.0.0, 29-09-2020
  */
-public class MessageActivityUtil {
+public final class MessageActivityUtil {
 
-    private MessageActivityUtil(){}
+    private MessageActivityUtil(){throw new UnsupportedOperationException();}
 
     /**
+     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@lnik MessageActivity}.
      *
-     * @param messageActivity
-     * @return
+     * @param messageActivity {@link MessageActivity}
+     * @return {@link Response}
      */
     public static Response toResponse(MessageActivity messageActivity){
         Response response = new Response();
@@ -26,10 +42,10 @@ public class MessageActivityUtil {
     }
 
     /**
+     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@lnik MessageActivity}.
      *
-     * @param messageActivity
-     * @param response
-     * @return
+     * @param messageActivity {@link MessageActivity}
+     * @param response {@link Response}
      */
     public static void toResponse(MessageActivity messageActivity, Response response){
         messageActivity.getMessages().forEach((code, message)-> {
@@ -37,6 +53,6 @@ public class MessageActivityUtil {
             response.setMessage(message);
         });
 
-        response.setDateTime(now().toString());
+        response.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));
     }
 }

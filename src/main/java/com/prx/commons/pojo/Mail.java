@@ -1,43 +1,43 @@
+/*
+ *  @(#)Mail.java
+ *
+ *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
+ *
+ *  All rights to this product are owned by Luis Antonio Mata Mata and may only
+ *  be used under the terms of its associated license document. You may NOT
+ *  copy, modify, sublicense, or distribute this source file or portions of
+ *  it unless previously authorized in writing by Luis Antonio Mata Mata.
+ *  In any event, this notice and the above copyright must always be included
+ *  verbatim with this file.
+ */
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import static com.prx.commons.util.JsonUtil.toJson;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.prx.commons.util.JsonUtil;
 import java.io.Serializable;
 import java.util.Map;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Luis Mata <lmata@netgo.cl>
  */
-@JsonPropertyOrder({
-    "from",
-    "to",
-    "subject",
-    "content",
-    "model"
-})
-@Data
+@Setter
+@Getter
+@JsonNaming
 @NoArgsConstructor
-@AllArgsConstructor
 public class Mail implements Serializable {
 
-    @JsonProperty("from")
     private String from;
-    @JsonProperty("to")
     private String to;
-    @JsonProperty("subject")
     private String subject;
-    @JsonProperty("content")
     private String content;
-    @JsonProperty("model")
-    private Map model;
+    private transient Map<String, Object> model;
 
     @Override
     public String toString() {
-        return toJson(this);
+        return JsonUtil.toJson(this);
     }
 }

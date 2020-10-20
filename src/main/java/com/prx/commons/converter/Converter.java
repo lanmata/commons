@@ -1,4 +1,19 @@
+/*
+ *  @(#)Converter.java
+ *
+ *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
+ *
+ *  All rights to this product are owned by Luis Antonio Mata Mata and may only
+ *  be used under the terms of its associated license document. You may NOT
+ *  copy, modify, sublicense, or distribute this source file or portions of
+ *  it unless previously authorized in writing by Luis Antonio Mata Mata.
+ *  In any event, this notice and the above copyright must always be included
+ *  verbatim with this file.
+ */
+
 package com.prx.commons.converter;
+
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.List;
@@ -9,35 +24,42 @@ import java.util.stream.Collectors;
  * Definicion de clase abstracta para conversion entre dos tipos de objetos
  *
  * @author Luis A. Mata <luis.antonio.mata@gmail.com>
- * @param <P>
- * @param <R>
+ * @param <A>
+ * @param <B>
  */
-public abstract class Converter<P, R> {
+@NoArgsConstructor
+public abstract class Converter<A, B> {
 
-    protected Function<P, R> fromPojo;
-    protected Function<R, P> fromDO;
+    protected Function<A, B> fromA;
+    protected Function<B, A> fromB;
 
-    protected abstract void initFunction();
-
-    protected void setFunction(final Function<P, R> fromPojo, final Function<R, P> fromDO) {
-        this.fromPojo = fromPojo;
-        this.fromDO = fromDO;
+    protected void initFunction(){
+        setFunction(this::getB,this::getA);
     }
 
-    public final P convertFromDataObject(final R dataObject) {
-        return fromDO.apply(dataObject);
+    protected abstract A getA(B b);
+
+    protected abstract B getB(A a);
+
+    protected void setFunction(final Function<A, B> fromA, final Function<B, A> fromB) {
+        this.fromA = fromA;
+        this.fromB = fromB;
     }
 
-    public final R convertFromPojo(final P pojo) {
-        return fromPojo.apply(pojo);
+    public A convertFromB(final B b) {
+        return fromB.apply(b);
     }
 
-    public final List<P> createFromDataObject(final Collection<R> dataObjects) {
-        return dataObjects.stream().map(this::convertFromDataObject).collect(Collectors.toList());
+    public B convertFromA(final A a) {
+        return fromA.apply(a);
     }
 
-    public final List<R> createFromPojo(final Collection<P> pojos) {
-        return pojos.stream().map(this::convertFromPojo).collect(Collectors.toList());
+    public List<A> createFromB(final Collection<B> bCollection) {
+        return bCollection.stream().map(this::convertFromB).collect(Collectors.toList());
+    }
+
+    public List<B> createFromA(final Collection<A> aCollection) {
+        return aCollection.stream().map(this::convertFromA).collect(Collectors.toList());
     }
 
 }

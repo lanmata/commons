@@ -1,0 +1,25 @@
+springfox:
+  documentation:
+    swagger:
+      v2:
+        use-model-v3: true
+    swagger-ui:
+      base-url: /documentacion
+swagger:
+  base-package: 'com.prx.commons'
+  api-info:
+    title: 'PRX Commons'
+    description: 'Componente de objetos comunes'
+    contact:
+      name: 'Luis Antonio Mata'
+      url: 'www.prx.test'
+      email: 'luis.antonio.mata@gmail.com'
+
+security:
+  discovery:
+    client:
+      name: prx-commons
+      trust-store-file: prx_commons.jks
+      trust-store-password: prx-commons
+      max-total-connections: 10
+      max-connections-per-host: 10
