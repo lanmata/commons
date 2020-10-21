@@ -49,8 +49,8 @@ public final class MessageActivityUtil {
      */
     public static void toResponse(MessageActivity messageActivity, Response response){
         messageActivity.getMessages().forEach((code, message)-> {
-            response.setCode(code);
-            response.setMessage(message);
+            response.setCode((Integer) code);
+            response.setMessage((String) message);
         });
 
         response.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));
