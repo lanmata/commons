@@ -29,12 +29,12 @@ public final class MessageActivityUtil {
     private MessageActivityUtil(){throw new UnsupportedOperationException();}
 
     /**
-     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@lnik MessageActivity}.
+     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@link MessageActivity}.
      *
      * @param messageActivity {@link MessageActivity}
      * @return {@link Response}
      */
-    public static Response toResponse(MessageActivity messageActivity){
+    public static Response toResponse(MessageActivity<?> messageActivity){
         Response response = new Response();
         toResponse(messageActivity, response);
 
@@ -42,15 +42,15 @@ public final class MessageActivityUtil {
     }
 
     /**
-     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@lnik MessageActivity}.
+     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@link MessageActivity}.
      *
      * @param messageActivity {@link MessageActivity}
      * @param response {@link Response}
      */
-    public static void toResponse(MessageActivity messageActivity, Response response){
+    public static void toResponse(MessageActivity<?> messageActivity, Response response){
         messageActivity.getMessages().forEach((code, message)-> {
-            response.setCode((Integer) code);
-            response.setMessage((String) message);
+            response.setCode(code);
+            response.setMessage(message);
         });
 
         response.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));

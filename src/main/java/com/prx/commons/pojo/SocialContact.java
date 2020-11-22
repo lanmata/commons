@@ -19,7 +19,9 @@ import lombok.NoArgsConstructor;
 
 /**
  *
- * @author Luis A. Mata <luis.antonio.mata@gmail.com>
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 @JsonNaming
 @NoArgsConstructor

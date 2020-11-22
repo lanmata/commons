@@ -13,11 +13,13 @@
 package com.prx.commons.util;
 
 import com.prx.commons.pojo.MessageActivity;
-import java.lang.reflect.InvocationTargetException;
-import java.util.concurrent.ConcurrentHashMap;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * MessageActivityUtilTest.
@@ -36,8 +38,8 @@ class MessageActivityUtilTest {
 
     @Test
     void toResponse() {
-        final var messageActivity = new MessageActivity();
-        final var messageActivity1 = new MessageActivity();
+        final var messageActivity = new MessageActivity<Map<Integer, String>>();
+        final var messageActivity1 = new MessageActivity<Map<Integer, String>>();
         final var mapMessage = new ConcurrentHashMap<Integer, String>();
         mapMessage.put(0,"Valor 00");
         mapMessage.put(1,"Valor 01");

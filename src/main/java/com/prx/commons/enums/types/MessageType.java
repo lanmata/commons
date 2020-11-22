@@ -14,7 +14,10 @@
 package com.prx.commons.enums.types;
 
 /**
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * MessageType.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 public enum MessageType {
     SUSCRIPTION, SUSPENSION, RECOVERY, SUSCRIPTION_CONFIRMATION, RECOVERY_CONFIRMATION

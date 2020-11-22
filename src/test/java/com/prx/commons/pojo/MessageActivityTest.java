@@ -29,16 +29,16 @@ class MessageActivityTest {
 
     @Test
     void gettersAndSetters(){
-        final var messageActivity = new MessageActivity();
+        final var messageActivity = new MessageActivity<User>();
 
         messageActivity.setMessages(new ConcurrentHashMap<>());
-        messageActivity.setObjectResponse(new Object());
+        messageActivity.setObjectResponse(new User());
 
         assertAll("Test Getters And Setters",
             () -> assertNotNull(messageActivity.getMessages()),
             () -> assertNotNull(messageActivity.getObjectResponse()),
             () -> assertNotEquals(1, messageActivity.hashCode()),
-            () -> assertNotEquals(new MessageActivity(), messageActivity),
+            () -> assertNotEquals(new MessageActivity<User>(), messageActivity),
             () -> assertNotNull(messageActivity.toString())
                  );
     }

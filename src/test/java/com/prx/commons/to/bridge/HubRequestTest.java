@@ -54,8 +54,8 @@ class HubRequestTest {
         list.add(dataValueMarket);
 
         hubRequest.setDataValueMarkets(list);
-        hubRequest.setAppName("Nombre de aplicacion");
-        hubRequest.setAppToken("token de aplicacion");
+        hubRequest.setAppName("Nombre de aplicación");
+        hubRequest.setAppToken("token de aplicación");
         hubRequest.setDateTime(LocalDateTime.now(clock));
 
         assertAll("Getters And Setters",

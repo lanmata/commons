@@ -10,37 +10,32 @@
  *  In any event, this notice and the above copyright must always be included
  *  verbatim with this file.
  */
-
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.util.JsonUtil;
-import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
+ * Contact.
  *
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
-@JsonPropertyOrder({"id", "content", "contactTypeId", "person", "active"
-})
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonPropertyOrder({"id", "content", "contactTypeId", "person", "active"})
 public class Contact implements Serializable {
 
-    @JsonProperty("id")
     private Integer id;
-    @JsonProperty("content")
     private String content;
-    @JsonProperty("contactTypeId")
     private Integer contactTypeId;
-    @JsonProperty("person")
     private Person person;
-    @JsonProperty("active")
     private Boolean active;
 
     @Override

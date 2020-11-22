@@ -57,14 +57,14 @@ class FindExchangeInstrumentResponseTest {
         instrument.setName("CLPBS");
         instrument.setCoinSource(coinSource);
         instrument.setCoinTarget(coinTarget);
-        instrument.setDescription("Descripcion");
+        instrument.setDescription("Descripción");
 
         exchange.setId(111L);
         exchange.setActive(true);
         exchange.setName("Bitcan");
         exchange.setTimeZone("UTC-3");
         exchange.setInstruments(instruments);
-        exchange.setDescription("Descripcion");
+        exchange.setDescription("Descripción");
         exchange.setHeadquarters("Headquarters");
 
         exchangeInstrument.setActive(true);

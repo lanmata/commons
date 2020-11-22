@@ -13,14 +13,12 @@
 
 package com.prx.commons.to.grid;
 
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
 
 /**
  * ClosingDataResponseTest.
@@ -53,15 +51,7 @@ class ClosingDataResponseTest {
         closingDataResponse.setMessage("Respuesta de solicitud");
         closingDataResponse.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));
 
-        assertAll ("Getters And Setters",
-            () -> assertNotNull(closingDataResponse.getList()),
-            () -> assertNotNull(closingDataResponse.getCode()),
-            () -> assertNotNull(closingDataResponse.getMessage()),
-            () -> assertNotNull(closingDataResponse.getDateTime()),
-            () -> assertNotNull(closingDataResponse.toString()),
-            () -> assertNotEquals(new ClosingDataResponse(), closingDataResponse),
-            () -> assertNotEquals(1,closingDataResponse.hashCode())
-                  );
+        assertAll("Getters And Setters", () -> assertNotNull(closingDataResponse.getList()), () -> assertNotNull(closingDataResponse.getCode()), () -> assertNotNull(closingDataResponse.getMessage()), () -> assertNotNull(closingDataResponse.getDateTime()), () -> assertNotNull(closingDataResponse.toString()), () -> assertNotEquals(new ClosingDataResponse(), closingDataResponse), () -> assertNotEquals(1, closingDataResponse.hashCode()));
     }
 
 }

@@ -24,35 +24,81 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Clase utilitaria para gestion y formato de fechas
+ * Clase utilitaria para gesti&oacute;n y formato de fechas
  *
- * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
 public final class DateUtil {
 
-    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT_T;
-    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT_DDMMYY;
-    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT;
-    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT;
+    /**
+     * Formato de fecha yyyy/MM/dd, Por ejemplo: 2000/01/30
+     */
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT_WITH_SEPARATOR_DDMMYY;
+    /**
+     * Formato de fecha yyyy-MM-dd HH:mm:ss.SSS, Por ejemplo: 2000-01-30 12:30:25.369
+     */
     public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT_MIL;
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-ddTHH:mm:ss, Por ejemplo: 2000-01-30T12:30:25
+     */
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT_T;
+    /**
+     * Patr&oacute;n para fecha yyyyMMdd, Por ejemplo: 20000130
+     */
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT_DDMMYY;
+    /**
+     * Patr&oacute;n para fecha yyyyMMdd, Por ejemplo: 20000130
+     */
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT;
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
+     */
+    public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT;
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss.SSS, Por ejemplo: 2000-01-30 12:30:25.369
+     */
     public static final DateTimeFormatter DATE_TIME_FORMATTER;
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
+     */
     public static final DateTimeFormatter DATE_FORMATTER;
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss.SSS, Por ejemplo: 2000-01-30 12:30:25.369
+     */
     private static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-ddTHH:mm:ss, Por ejemplo: 2000-01-30T12:30:25
+     */
     private static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss, Por ejemplo: 2000-01-30 12:30:25
+     */
     private static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
+    /**
+     * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
+     */
     private static final String PATTERN_DATE = "yyyy-MM-dd";
-    private static final String STR_DDMMYY = "dd/MM/yyyy";
+    /**
+     * Patr&oacute;n para fecha yyyyMMdd, Por ejemplo: 20000130
+     */
+    private static final String PATTERN_DDMMYY = "ddMMyyyy";
+    /**
+     * Patr&oacute;n para fecha yyyy/MM/dd, Por ejemplo: 2000/01/30
+     */
+    private static final String PATTERN_WIT_SEPARATOR_DDMMYY = "dd/MM/yyyy";
     static {
         DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME_MIL, Locale.ROOT);
         DATE_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE, Locale.ROOT);
         SIMPLE_DATE_TIME_FORMAT_T = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE_TIME_T,
             Locale.ROOT));
-        SIMPLE_DATE_TIME_FORMAT_MIL =ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE_TIME_MIL,
+        SIMPLE_DATE_TIME_FORMAT_MIL = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE_TIME_MIL,
             Locale.ROOT));
         SIMPLE_DATE_TIME_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE_TIME, Locale.ROOT));
         SIMPLE_DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DATE, Locale.ROOT));
-        SIMPLE_DATE_FORMAT_DDMMYY = ThreadLocal.withInitial(() -> new SimpleDateFormat(STR_DDMMYY, Locale.ROOT));
+        SIMPLE_DATE_FORMAT_DDMMYY = ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_DDMMYY, Locale.ROOT));
+        SIMPLE_DATE_FORMAT_WITH_SEPARATOR_DDMMYY =
+            ThreadLocal.withInitial(() -> new SimpleDateFormat(PATTERN_WIT_SEPARATOR_DDMMYY, Locale.ROOT));
     }
 
     /**
@@ -69,7 +115,7 @@ public final class DateUtil {
      * @param simpleDateFormat Formato de fecha, objeto de tipo {@link SimpleDateFormat}
      * @param timeDefault Hora por defecto, objeto de tipo {@link boolean}
      * @return Retorna un objeto de tipo {@link Calendar}
-     * @throws ParseException Lanza una excepcion de tipo {@link ParseException}
+     * @throws ParseException Lanza una excepci&oacute;n de tipo {@link ParseException}
      */
     public static Calendar convertStringToCalendar(String strDateMail, SimpleDateFormat simpleDateFormat,
         boolean timeDefault) throws ParseException {

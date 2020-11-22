@@ -23,8 +23,9 @@ import lombok.Setter;
 
 /**
  *
- * @since 2019-07-06
- * @author Luis A. Mata <luis.antonio.mata@gmail.com>
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 06-07-2019
  */
 @Getter
 @Setter

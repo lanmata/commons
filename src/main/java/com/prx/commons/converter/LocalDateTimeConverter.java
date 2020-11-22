@@ -10,7 +10,6 @@
  *  In any event, this notice and the above copyright must always be included
  *  verbatim with this file.
  */
-
 package com.prx.commons.converter;
 
 import lombok.NoArgsConstructor;
@@ -22,8 +21,10 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
+ * LocalDateTimeConverter.
  *
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 @NoArgsConstructor
 @Converter(autoApply = true)

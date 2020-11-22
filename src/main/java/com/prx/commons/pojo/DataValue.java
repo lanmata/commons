@@ -13,39 +13,34 @@
 
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.enums.types.OperationType;
 import com.prx.commons.util.JsonUtil;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 /**
+ * DataValue.
  *
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
-@JsonPropertyOrder({"id", "lastValue", "currencyPairExchange", "dateTime", "operationType", "amount"
-})
 @Setter
 @Getter
 @NoArgsConstructor
+@JsonPropertyOrder({"id", "lastValue", "currencyPairExchange", "dateTime", "operationType", "amount"})
 public class DataValue implements Serializable {
 
-    @JsonProperty("id")
     private Long id;
-    @JsonProperty("lastValue")
     private BigDecimal lastValue;
-    @JsonProperty("currencyPairExchange")
     private CurrencyPairExchange currencyPairExchange;
-    @JsonProperty("dateTime")
     private LocalDateTime dateTime;
-    @JsonProperty("operationType")
     private OperationType operationType;
-    @JsonProperty("amount")
     private BigDecimal amount;
 
     @Override

@@ -27,7 +27,9 @@ public final class JsonUtil {
         GSON = new Gson();
     }
 
-    /* Constructor privado para no permitir creacion de objeto por instancia */
+    /**
+     * Constructor privado para no permitir creaci&oacute;n de objeto por instancia
+     */
     private JsonUtil() {
         throw new UnsupportedOperationException();
     }

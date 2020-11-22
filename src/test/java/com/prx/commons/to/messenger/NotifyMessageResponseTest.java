@@ -32,7 +32,7 @@ class NotifyMessageResponseTest {
 
         notifiMessageResponse.setCode(200);
         notifiMessageResponse.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));
-        notifiMessageResponse.setMessage("Exito");
+        notifiMessageResponse.setMessage("Éxito");
 
         assertAll("Getters And Setters",
             () -> assertNotNull(notifiMessageResponse.getCode()),

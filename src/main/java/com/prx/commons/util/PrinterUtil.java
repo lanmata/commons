@@ -32,7 +32,7 @@ public final class PrinterUtil {
     private boolean isDebug;
 
     /**
-     * Imprime la traza si dentro de los parametros de configuracion esta en modo debug
+     * Imprime la traza si dentro de los par&aacute;metros de configuraci&oacute;n esta en modo debug
      *
      * @param object Objeto de tipo {@link Object}
      * @param logger Objeto de tipo {@link Logger}
@@ -44,7 +44,7 @@ public final class PrinterUtil {
     }
 
     /**
-     * Imprime la traza si el parametro {@code enable} es {@code true}
+     * Imprime la traza si el par&aacute;metro {@code enable} es {@code true}
      *
      * @param object Objeto de tipo {@link Object}
      * @param logger Objeto de tipo {@link Logger}

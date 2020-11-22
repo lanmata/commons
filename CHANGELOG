@@ -7,5 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## Version 1.0.3
-- Actualización de las dependencias
-- Incorporación de clase para comunicación por canal seguro SSL/HTTPS
+- Actualización de las dependencias.
+- Incorporación de clase para comunicación por canal seguro SSL/HTTPS.
+- Incorporación de la clase StandardExcepción para la captura y propagación de fallos.

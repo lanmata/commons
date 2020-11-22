@@ -35,8 +35,8 @@ class RequestTest {
         final var request = new Request();
         final var clock = Clock.fixed(localDateTime.toInstant(ZoneOffset.UTC), ZoneId.systemDefault());
 
-        request.setAppName("Nombre de applicacion");
-        request.setAppToken("Token de aplicacion");
+        request.setAppName("Nombre de aplicación");
+        request.setAppToken("Token de aplicación");
         request.setDateTime(LocalDateTime.now(clock));
 
         assertAll("Getter And Setter",

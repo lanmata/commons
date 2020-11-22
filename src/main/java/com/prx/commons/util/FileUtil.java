@@ -17,7 +17,7 @@ import com.prx.commons.enums.keys.SizeKey;
 import com.prx.commons.pojo.SizeDescriptor;
 
 /**
- * Clase utilitaria para gestion de archivos
+ * Clase utilitaria para gesti&oacute;n de archivos
  *
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 29-09-2020
@@ -31,7 +31,7 @@ public final class FileUtil {
     private FileUtil(){throw new UnsupportedOperationException();}
 
     /**
-     * Retona el peso de un archivo
+     * Retorna el peso de un archivo
      *
      * @param ordinalSize Objeto de tipo {@link int}
      * @param size Objeto de tipo {@link long}

@@ -31,16 +31,16 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class MessageActivity implements Serializable {
+public class MessageActivity <T> implements Serializable {
 
     /**
-     * Campo conpuesto por clave-valor, donde la clave es el codigo y valor es el mensaje que se informa
+     * Campo compuesto por clave-valor, donde la clave es el c&oacute;digo y valor es el mensaje que se informa
      */
     private Map<Integer, String> messages = new ConcurrentHashMap<>();
     /**
      * Objeto respuesta esperado
      */
-    private transient Object objectResponse;
+    private transient T objectResponse;
 
     public String toString(){
         return JsonUtil.toJson(this);

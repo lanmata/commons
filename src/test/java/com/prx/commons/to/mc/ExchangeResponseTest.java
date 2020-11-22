@@ -37,13 +37,13 @@ class ExchangeResponseTest {
         exchange.setInstruments(new ArrayList<>());
         exchange.setId(11L);
         exchange.setHeadquarters("HHH");
-        exchange.setDescription("Descripcion de exchange");
+        exchange.setDescription("Descripción de exchange");
         exchange.setActive(true);
 
         exchangeResponse.setExchange(exchange);
         exchangeResponse.setCode(200);
         exchangeResponse.setDateTime(LocalDateTime.now());
-        exchangeResponse.setMessage("Exito");
+        exchangeResponse.setMessage("Éxito");
 
         assertAll("Getters And Setters",
             ()-> assertNotNull(exchangeResponse.getExchange()),
