@@ -13,7 +13,10 @@
 package com.prx.commons.enums.types;
 
 /**
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * CriptocurrencyType.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 public enum CriptocurrencyType {
     ETHER("ETH"), BITCOIN("BTC"), IOTA("IOT"), NANO(""), TRON("TRX"), CARDANO("ADA"), BITCOIN_CASH("BCH"), EOS(
@@ -26,6 +29,11 @@ public enum CriptocurrencyType {
         this.strCurrency = strCurrency;
     }
 
+    /**
+     * Retorna el acr&oacute;nimo de la moneda.
+     *
+     * @return {@link String}
+     */
     public String getStrCurrency() {
         return strCurrency;
     }

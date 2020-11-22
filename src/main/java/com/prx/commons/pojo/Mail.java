@@ -14,15 +14,18 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.util.JsonUtil;
-import java.io.Serializable;
-import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.Map;
+
 /**
+ * Mail.
  *
- * @author Luis Mata <lmata@netgo.cl>
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 @Setter
 @Getter

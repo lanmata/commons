@@ -54,8 +54,8 @@ class ClosingDataRequestTest {
         list.add(dataValueMarket);
 
         closingDataRequest.setDataValueMarketList(list);
-        closingDataRequest.setAppName("Nombre de aplicacion");
-        closingDataRequest.setAppToken("token de aplicacion");
+        closingDataRequest.setAppName("Nombre de aplicación");
+        closingDataRequest.setAppToken("token de aplicación");
         closingDataRequest.setDateTime(LocalDateTime.now(clock));
 
         assertAll("Getters And Setters",

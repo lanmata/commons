@@ -31,7 +31,7 @@ class ActiveTypeTest {
         final var activeType = new ActiveType();
 
         activeType.setActive(true);
-        activeType.setDescription("Descrición");
+        activeType.setDescription("Descripción");
         activeType.setId(1L);
         activeType.setName("Nombre de activo");
 

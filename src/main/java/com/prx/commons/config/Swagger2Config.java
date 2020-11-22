@@ -14,9 +14,6 @@ package com.prx.commons.config;
 
 import com.fasterxml.classmate.TypeResolver;
 import com.prx.commons.pojo.VendorExtensionImpl;
-import java.lang.reflect.WildcardType;
-import java.util.ArrayList;
-import java.util.Collection;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,12 +31,17 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.lang.reflect.WildcardType;
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Clase para la configuraci&oacute;n de Swagger2
  *
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
  * @since 2019-08-18
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 @Slf4j
 @Configuration
 @EnableSwagger2

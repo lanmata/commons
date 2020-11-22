@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 /**
  * FileUtilTest.
  *
- * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.0, 14-10-2020
  */
 class FileUtilTest {

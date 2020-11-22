@@ -14,10 +14,12 @@
 
 package com.prx.commons.enums.types;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * CriptocurrencyTypeTest.
@@ -29,13 +31,10 @@ class CriptocurrencyTypeTest {
 
     @Test
     void keys() {
+        Arrays.stream(CriptocurrencyType.values()).map(tp -> Arrays.asList(CriptocurrencyType.values()).contains(tp))
+            .forEach(Assertions::assertTrue);
 
-        for (final var tp : CriptocurrencyType.values()) {
-            assertTrue(Arrays.asList(CriptocurrencyType.values()).contains(tp));
-        }
-
-        assertAll("Test String currency",
-            () -> assertNotNull(CriptocurrencyType.BITCOIN.getStrCurrency()),
+        assertAll("Test String currency", () -> assertNotNull(CriptocurrencyType.BITCOIN.getStrCurrency()),
             () -> assertNotNull(CriptocurrencyType.BITCOIN_CASH.getStrCurrency()),
             () -> assertNotNull(CriptocurrencyType.CARDANO.getStrCurrency()),
             () -> assertNotNull(CriptocurrencyType.CLP.getStrCurrency()),
@@ -44,7 +43,7 @@ class CriptocurrencyTypeTest {
             () -> assertNotNull(CriptocurrencyType.NANO.getStrCurrency()),
             () -> assertNotNull(CriptocurrencyType.TRON.getStrCurrency()),
             () -> assertNotNull(CriptocurrencyType.USD.getStrCurrency()),
-            () -> assertNotNull(CriptocurrencyType.IOTA.getStrCurrency())
-                 );
+            () -> assertNotNull(CriptocurrencyType.IOTA.getStrCurrency()));
     }
+
 }

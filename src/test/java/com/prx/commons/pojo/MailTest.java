@@ -13,11 +13,10 @@
  */
 package com.prx.commons.pojo;
 
-import java.util.HashMap;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
 
 /**
  * MailTest.
@@ -25,6 +24,7 @@ import org.junit.jupiter.api.Test;
  * @author Luis Antonio Mata
  * @version 1.0.0, 19-10-2020
  */
+@SuppressWarnings("Convert2Diamond")
 class MailTest {
 
     @Test

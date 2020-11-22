@@ -13,12 +13,15 @@
 package com.prx.commons.enums.types;
 
 /**
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * ContactType.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 public enum ContactType {
     EMAIL, PHONE, WHATSAPP, TELEGRAM, TWITTER;
 
-    public static ContactType getConctactType(int value) {
+    public static ContactType getContactType(int value) {
         return ContactType.values()[value];
     }
 

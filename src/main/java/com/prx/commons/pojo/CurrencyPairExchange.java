@@ -21,7 +21,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * CurrencyPairExchange.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 @JsonPropertyOrder({
     "id", "currencyBase", "currencyVariable", "decimalDisplay", "enabled"

@@ -35,7 +35,7 @@ class NotifyMessageRequestTest {
 
         notifyMessageRequest.setCritical(true);
         notifyMessageRequest.setListDestiny(new ArrayList<>());
-        notifyMessageRequest.setMessage("Exito");
+        notifyMessageRequest.setMessage("Éxito");
         notifyMessageRequest.setAppName("App X");
         notifyMessageRequest.setAppToken("ABC1289");
         notifyMessageRequest.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));

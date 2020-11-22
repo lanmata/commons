@@ -13,7 +13,10 @@
 package com.prx.commons.enums.keys;
 
 /**
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * BitfinexTradingKeys.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 public enum BitfinexTradingKeys {
     SYMBOL, BID, BID_SIZE, ASK, ASK_SIZE, DAILY_CHANGE, DAILY_CHANGE_PERC, LAST_PRICE, VOLUME, HIGH, LOW

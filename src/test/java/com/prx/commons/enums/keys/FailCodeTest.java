@@ -1,5 +1,5 @@
 /*
- * @(#)${NAME}.java.
+ * @(#)FailCodeTest.java
  *
  * Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -11,27 +11,27 @@
  * verbatim with this file.
  *
  */
+package com.prx.commons.enums.keys;
 
-package com.prx.commons.enums.types;
-
-import java.util.Arrays;
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
- * ContactTypeTest.
+ * FailCodeTest.
  *
- * @author Luis Antonio Mata
- * @version 1.0.0, 20-10-2020
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
+ * @version 1.0.3.20200904-01, 21-11-2020
  */
-class ContactTypeTest {
+class FailCodeTest {
 
     @Test
     void keys() {
-        for (final var tp : ContactType.values()) {
-            assertTrue(Arrays.asList(ContactType.values()).contains(tp));
-            assertNotNull(ContactType.getContactType(tp.ordinal()));
+        for (final var tp : FailCode.values()) {
+            assertTrue(Arrays.asList(FailCode.values()).contains(tp));
+            assertNotEquals(-1, tp.getCode());
+            assertNotNull(tp.getStatus());
         }
     }
 

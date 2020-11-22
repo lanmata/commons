@@ -14,14 +14,13 @@
 package com.prx.commons.util;
 
 import com.prx.commons.pojo.Contact;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Test;
 
 /**
  * ValidatorCommonsTest.
@@ -29,6 +28,7 @@ import org.junit.jupiter.api.Test;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.0, 14-10-2020
  */
+@SuppressWarnings("ConstantConditions")
 class ValidatorCommonsUtilTest {
 
     @Test
@@ -76,12 +76,6 @@ class ValidatorCommonsUtilTest {
     }
 
     @Test
-    void esNoNulo() {
-        assertTrue(ValidatorCommonsUtil.esNoNulo("ASDFGHJK"));
-        assertFalse(ValidatorCommonsUtil.esNoNulo(null));
-    }
-
-    @Test
     void esVacio() {
         assertAll("Test esVacio",
             () -> assertTrue(ValidatorCommonsUtil.esVacio("")),
@@ -107,14 +101,6 @@ class ValidatorCommonsUtilTest {
     void totalTiempo() {
         assertTrue(ValidatorCommonsUtil.totalTiempo(145859654L) > 1L);
         assertFalse(ValidatorCommonsUtil.totalTiempo(145859654L) < 1L);
-    }
-
-    @Test
-    void esEmail() {
-        assertAll("Test esEmail",
-            () -> assertTrue(ValidatorCommonsUtil.esEmail("usuario@dominio.ext")),
-            () -> assertFalse(ValidatorCommonsUtil.esEmail("usuario"))
-                 );
     }
 
     @Test

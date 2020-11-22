@@ -11,28 +11,26 @@
  * verbatim with this file.
  *
  */
-
 package com.prx.commons.enums.types;
 
-import java.util.Arrays;
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import org.junit.jupiter.api.Test;
-
 /**
- * ContactTypeTest.
+ * ErrorType.
  *
- * @author Luis Antonio Mata
- * @version 1.0.0, 20-10-2020
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
+ * @version 1.0.3.20200904-01, 21-11-2020
  */
-class ContactTypeTest {
+public interface ErrorType {
+    /**
+     * Retorna el identificador del error generado.
+     *
+     * @return Objeto de tipo {@link int}.
+     */
+    int getCode();
 
-    @Test
-    void keys() {
-        for (final var tp : ContactType.values()) {
-            assertTrue(Arrays.asList(ContactType.values()).contains(tp));
-            assertNotNull(ContactType.getContactType(tp.ordinal()));
-        }
-    }
-
+    /**
+     * Retorna el status del error.
+     *
+     * @return Objeto de tipo {@link String}.
+     */
+    String getStatus();
 }

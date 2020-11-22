@@ -13,7 +13,10 @@
 package com.prx.commons.enums.keys;
 
 /**
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * ExchangeKeys.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 public enum ExchangeKeys {
     BITSTAMP(1), BITFINEX(2), OKCOIN(3);

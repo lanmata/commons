@@ -13,7 +13,10 @@
 package com.prx.commons.enums.types;
 
 /**
- * @author Luis Antonio Mata <luis.antonio.mata@gmail.com>
+ * IdentificationType
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 public enum IdentificationType {
     PASSPORT, IDENTIFICATION

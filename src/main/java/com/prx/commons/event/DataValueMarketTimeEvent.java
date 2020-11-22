@@ -21,7 +21,8 @@ import org.springframework.context.ApplicationEvent;
  * Clase para manejo de evento programado, realiza la obtención y procesamiento
  * de los datos pertenecientes a los valores publicados por el mercado
  *
- * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
  */
 public class DataValueMarketTimeEvent extends ApplicationEvent {
 
@@ -31,7 +32,7 @@ public class DataValueMarketTimeEvent extends ApplicationEvent {
     /**
      *
      * @param source Objeto de tipo {@link Object}, referencia a la fuente o procedencia del evento.
-     * @param dataValueMarkets Objeto de tipo {@link List}<{@link DataValueMarket}>. Contiene una lista de
+     * @param dataValueMarkets Objeto de tipo {@link List}. Contiene una lista de
      *                         con los valores de mercado.
      */
     public DataValueMarketTimeEvent(Object source, List<DataValueMarket> dataValueMarkets) {
