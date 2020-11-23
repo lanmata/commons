@@ -66,27 +66,27 @@ public final class DateUtil {
     /**
      * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss.SSS, Por ejemplo: 2000-01-30 12:30:25.369
      */
-    private static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
+    public static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
     /**
      * Patr&oacute;n para fecha yyyy-MM-ddTHH:mm:ss, Por ejemplo: 2000-01-30T12:30:25
      */
-    private static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
+    public static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
     /**
      * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss, Por ejemplo: 2000-01-30 12:30:25
      */
-    private static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
+    public static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
     /**
      * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
      */
-    private static final String PATTERN_DATE = "yyyy-MM-dd";
+    public static final String PATTERN_DATE = "yyyy-MM-dd";
     /**
      * Patr&oacute;n para fecha yyyyMMdd, Por ejemplo: 20000130
      */
-    private static final String PATTERN_DDMMYY = "ddMMyyyy";
+    public static final String PATTERN_DDMMYY = "ddMMyyyy";
     /**
      * Patr&oacute;n para fecha yyyy/MM/dd, Por ejemplo: 2000/01/30
      */
-    private static final String PATTERN_WIT_SEPARATOR_DDMMYY = "dd/MM/yyyy";
+    public static final String PATTERN_WIT_SEPARATOR_DDMMYY = "dd/MM/yyyy";
     static {
         DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME_MIL, Locale.ROOT);
         DATE_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE, Locale.ROOT);

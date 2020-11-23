@@ -46,7 +46,7 @@ public class DiscoveryClientConfig {
         EurekaJerseyClientImpl.EurekaJerseyClientBuilder builder =
             new EurekaJerseyClientImpl.EurekaJerseyClientBuilder();
 
-        builder.withClientName(discoveryClientProperties.getClientName());
+        builder.withClientName(discoveryClientProperties.getName());
         builder.withTrustStoreFile(discoveryClientProperties.getTrustStoreFile(),
             discoveryClientProperties.getTrustStorePassword());
         builder.withMaxTotalConnections(10);

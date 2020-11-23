@@ -13,12 +13,15 @@
 
 package com.prx.commons.to;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.prx.commons.util.DateUtil;
 import com.prx.commons.util.JsonUtil;
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 /**
  * Request.
@@ -32,6 +35,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Request {
 
+    @JsonFormat(pattern = DateUtil.PATTERN_DATE_TIME)
     private LocalDateTime dateTime;
     private String appName;
     private String appToken;

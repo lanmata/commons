@@ -13,12 +13,10 @@
  */
 package com.prx.commons.pojo;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 /**
  * PersonTest.
@@ -33,23 +31,19 @@ class PersonTest {
         final var person = new Person();
 
         person.setBirthdate(LocalDate.of(1979, 4, 14));
-        person.setContactList(new ArrayList<>());
         person.setFirstName("Pepe");
         person.setGender("M");
         person.setId(1L);
         person.setLastName("Perez");
         person.setMiddleName("Lolo");
-        person.setUserList(new ArrayList<>());
 
         assertAll("Test Getters And Setters",
-            () -> assertNotNull(person.getId()),
+            () -> assertNotEquals(-1,person.getId()),
             () -> assertNotNull(person.getGender()),
             () -> assertNotNull(person.getBirthdate()),
             () -> assertNotNull(person.getFirstName()),
             () -> assertNotNull(person.getMiddleName()),
             () -> assertNotNull(person.getLastName()),
-            () -> assertNotNull(person.getContactList()),
-            () -> assertNotNull(person.getUserList()),
             () -> assertNotNull(person.toString()),
             () -> assertNotEquals(1, person.hashCode()),
             () -> assertNotEquals(new Person(), person)

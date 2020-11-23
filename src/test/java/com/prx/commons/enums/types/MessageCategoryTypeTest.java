@@ -24,12 +24,12 @@ import org.junit.jupiter.api.Test;
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
-class MessageTypeTest {
+class MessageCategoryTypeTest {
 
     @Test
     void keys() {
-        for (final var tp : MessageType.values()) {
-            assertTrue(Arrays.asList(MessageType.values()).contains(tp));
+        for (final var tp : MessageCategoryType.values()) {
+            assertTrue(Arrays.asList(MessageCategoryType.values()).contains(tp));
         }
     }
 }

@@ -13,14 +13,14 @@
 
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.util.JsonUtil;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * DataValueMarket.
@@ -46,27 +46,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DataValueMarket implements Serializable {
 
-    @JsonProperty("bid")
     private Double bid;
-    @JsonProperty("ask")
     private Double ask;
-    @JsonProperty("last")
     private Double last;
-    @JsonProperty("low")
     private Double low;
-    @JsonProperty("high")
     private Double high;
-    @JsonProperty("open")
     private Double open;
-    @JsonProperty("close")
     private Double close;
-    @JsonProperty("volume")
     private Double volume;
-    @JsonProperty("dateTime")
     private LocalDateTime dateTime;
-    @JsonProperty("instrumentId")
     private Long instrumentId;
-    @JsonProperty("market")
     private Long marketId;
 
     @Override

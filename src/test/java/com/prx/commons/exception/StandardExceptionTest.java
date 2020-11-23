@@ -37,6 +37,16 @@ class StandardExceptionTest {
     }
 
     @Test
+    void testStandaloneException3(){
+        assertThrows(StandardException.class, () -> {throw new StandardException(FailCode.FORBIDDEN, new Exception());});
+    }
+
+    @Test
+    void testStandaloneException4(){
+        assertThrows(StandardException.class, () -> {throw new StandardException("Commons", FailCode.FORBIDDEN, new Exception());});
+    }
+
+    @Test
     void testGetters(){
         final var standarException = new StandardException(FailCode.UNAUTHORIZED);
         assertNotNull(standarException.getApp());

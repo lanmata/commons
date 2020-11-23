@@ -29,13 +29,13 @@ class DiscoveryClientPropertiesTest {
         final var discoveryClient = new DiscoveryClientProperties();
         discoveryClient.setMaxTotalConnections(100);
         discoveryClient.setMaxConnectionsPerHost(10);
-        discoveryClient.setClientName("Nombre de cliente");
+        discoveryClient.setName("Nombre de cliente");
         discoveryClient.setTrustStoreFile("nombre_archivo");
         discoveryClient.setTrustStorePassword("·$%&/()kadsfjdasf");
 
         assertEquals(100, discoveryClient.getMaxTotalConnections());
         assertEquals(10, discoveryClient.getMaxConnectionsPerHost());
-        assertEquals("Nombre de cliente", discoveryClient.getClientName());
+        assertEquals("Nombre de cliente", discoveryClient.getName());
         assertEquals("nombre_archivo", discoveryClient.getTrustStoreFile());
         assertEquals("·$%&/()kadsfjdasf", discoveryClient.getTrustStorePassword());
     }

@@ -12,16 +12,17 @@
  */
 package com.prx.commons.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.prx.commons.util.DateUtil;
 import com.prx.commons.util.JsonUtil;
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  *
@@ -31,11 +32,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@JsonNaming
 @NoArgsConstructor
 public class Person implements Serializable {
 
-    private Long id;
+    private long id;
     @NotNull
     @Size(min = 2, max = 20)
     private String firstName;
@@ -43,10 +43,10 @@ public class Person implements Serializable {
     private String middleName;
     @Size(min = 2, max = 20)
     private String lastName;
+    @Size(min = 1, max = 1)
     private String gender;
+    @JsonFormat(pattern = DateUtil.PATTERN_DATE)
     private LocalDate birthdate;
-    private List<Contact> contactList;
-    private List<User> userList;
 
     @Override
     public String toString() {

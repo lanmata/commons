@@ -13,7 +13,7 @@
  */
 package com.prx.commons.exception;
 
-import com.prx.commons.enums.keys.FailCode;
+import com.prx.commons.enums.types.MessageType;
 
 /**
  * StandardException.
@@ -23,29 +23,52 @@ import com.prx.commons.enums.keys.FailCode;
  */
 public class StandardException extends RuntimeException {
 
-    private final FailCode failCode;
+    private final MessageType messageType;
     private final String application;
     private static final String APP_NODEF = "NO-DEF";
 
     /**
      * Constructor.
      *
-     * @param failCode {@link FailCode}
+     * @param messageType {@link MessageType}
      */
-    public StandardException(final FailCode failCode) {
-        this(APP_NODEF, failCode);
+    public StandardException(final MessageType messageType) {
+        this(APP_NODEF, messageType);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param messageType {@link MessageType}
+     */
+    public StandardException(final MessageType messageType, Throwable throwable) {
+        this(APP_NODEF, messageType, throwable);
     }
 
     /**
      * Constructor
      *
-     * @param app      {@link String}
-     * @param failCode {@link FailCode}
+     * @param app         {@link String}
+     * @param messageType {@link MessageType}
      */
-    public StandardException(final String app, final FailCode failCode) {
+    public StandardException(final String app, final MessageType messageType) {
         super();
-        this.failCode = failCode;
+        this.messageType = messageType;
         this.application = app;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param app         {@link String}
+     * @param messageType {@link MessageType}
+     * @param throwable   {@link Throwable}
+     */
+    public StandardException(final String app, final MessageType messageType, Throwable throwable) {
+        super();
+        this.messageType = messageType;
+        this.application = app;
+        this.initCause(throwable);
     }
 
     /**
@@ -54,7 +77,7 @@ public class StandardException extends RuntimeException {
      * @return {@link int}
      */
     public int getCode() {
-        return this.failCode.getCode();
+        return this.messageType.getCode();
     }
 
     /**
@@ -63,7 +86,7 @@ public class StandardException extends RuntimeException {
      * @return {@link String}
      */
     public String getStatus() {
-        return this.failCode.getStatus();
+        return this.messageType.getStatus();
     }
 
     /**

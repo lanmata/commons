@@ -13,7 +13,7 @@
  */
 package com.prx.commons.enums.keys;
 
-import com.prx.commons.enums.types.ErrorType;
+import com.prx.commons.enums.types.MessageType;
 
 /**
  * FailCode. Define el estada para excepciones y manejo de errores durante la ejecuc&oacute;n
@@ -21,7 +21,7 @@ import com.prx.commons.enums.types.ErrorType;
  * @author Luis Antonio Mata
  * @version 1.0.3.20200904-01, 21-11-2020
  */
-public enum FailCode implements ErrorType {
+public enum FailCode implements MessageType {
     BAD_REQUEST(400, "La solicitud no fue comprendida por el servidor, sintaxis incorrecta."),
     UNAUTHORIZED(401, "La solicitud requiere información de autenticación de usuario."),
     FORBIDDEN(403, "Solicitud no autorizada. El cliente no tiene accesos a el contenido.");
@@ -41,7 +41,7 @@ public enum FailCode implements ErrorType {
 
     /**
      * Retorna c&oacute;digo de fallo.
-     * @return {link int}
+     * @return {@link int}
      */
     @Override public int getCode() {
         return code;
