@@ -38,12 +38,14 @@ class StandardExceptionTest {
 
     @Test
     void testStandaloneException3(){
-        assertThrows(StandardException.class, () -> {throw new StandardException(FailCode.FORBIDDEN, new Exception());});
+        final var exception = new Exception();
+        assertThrows(StandardException.class, () -> {throw new StandardException(FailCode.FORBIDDEN, exception);});
     }
 
     @Test
     void testStandaloneException4(){
-        assertThrows(StandardException.class, () -> {throw new StandardException("Commons", FailCode.FORBIDDEN, new Exception());});
+        final var exception = new Exception();
+        assertThrows(StandardException.class, () -> {throw new StandardException("Commons", FailCode.FORBIDDEN, exception);});
     }
 
     @Test

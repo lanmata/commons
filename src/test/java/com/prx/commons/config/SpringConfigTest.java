@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan("com.prx")
-class SpringTestConfig {
+class SpringConfigTest {
 
     @Test
     void testLoadContext() {

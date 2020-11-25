@@ -12,13 +12,15 @@
  */
 package com.prx.commons.enums.types;
 
+import java.io.Serializable;
+
 /**
  * ErrorType.
  *
  * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3.20200904-01, 21-11-2020
  */
-public interface MessageType {
+public interface MessageType extends Serializable {
     /**
      * Retorna el identificador del error generado.
      *
