@@ -1,5 +1,5 @@
 /*
- * @(#)${NAME}.java.
+ * @(#)RolTest.java
  *
  * Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -9,8 +9,8 @@
  * it unless previously authorized in writing by Luis Antonio Mata Mata.
  * In any event, this notice and the above copyright must always be included
  * verbatim with this file.
- *
  */
+
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,18 +19,16 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 /**
- * UserTest.
+ * RolTest.
  *
- * @author Luis Antonio Mata
- * @version 1.0.0, 19-10-2020
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
+ * @version 1.0.3.20200904-01, 31-01-2021
  */
-class UserTest {
+class RolTest {
 
     @Test
-    void gettersAndSetters(){
-        final var user = new User();
-        final var roles = new ArrayList<Rol>();
-        final var rol = new Rol();
+    void testGettersAndSetters(){
+        var rol = new Rol();
         var features = new ArrayList<Feature>();
         var feature =  new Feature();
 
@@ -44,25 +42,16 @@ class UserTest {
         rol.setDescription("Descripción de rol");
         rol.setFeatures(features);
         rol.setActive(true);
-
-        roles.add(rol);
-        user.setActive(true);
-        user.setAlias("Alias de usuario");
-        user.setId(1L);
-        user.setPerson(new Person());
-        user.setPassword("WERtyuik4567890");
-        user.setRoles(roles);
-
         assertAll("Getters And Setters",
-            () -> assertNotNull(user.getId()),
-            () -> assertNotNull(user.getAlias()),
-            () -> assertNotNull(user.getPassword()),
-            () -> assertNotNull(user.getPerson()),
-            () -> assertNotNull(user.getRoles()),
-            () -> assertTrue(user.isActive()),
-            () -> assertNotNull(user.toString()),
-            () -> assertNotEquals(1, user.hashCode()),
-            () -> assertNotEquals(new User(), user)
-                 );
+            () -> assertNotNull(rol.getId()),
+            () -> assertNotNull(rol.getName()),
+            () -> assertNotNull(rol.getActive()),
+            () -> assertNotNull(rol.getDescription()),
+            () -> assertNotNull(rol.getFeatures()),
+            () -> assertNotNull(rol.toString()),
+            () -> assertNotEquals(1, rol.hashCode()),
+            () -> assertNotEquals(new Rol(), rol)
+        );
     }
+
 }

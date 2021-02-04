@@ -14,6 +14,7 @@
 package com.prx.commons.util;
 
 import com.prx.commons.pojo.Contact;
+import com.prx.commons.pojo.ContactType;
 import com.prx.commons.pojo.Person;
 import java.lang.reflect.InvocationTargetException;
 import org.junit.jupiter.api.Assertions;
@@ -38,9 +39,15 @@ class JsonUtilTest {
     @Test
     void toJson() {
         final var contact = new Contact();
+        var contactType = new ContactType();
+
+        contactType.setId(1L);
+        contactType.setName("Tipo de contacto");
+        contactType.setDescription("Descripción tipo de contacto");
+        contactType.setActive(true);
 
         contact.setActive(true);
-        contact.setContactTypeId(2);
+        contact.setContactType(contactType);
         contact.setContent("Contenido");
         contact.setPerson(new Person());
         contact.setId(1);
