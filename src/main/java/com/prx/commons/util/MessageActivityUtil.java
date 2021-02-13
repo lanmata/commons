@@ -48,11 +48,8 @@ public final class MessageActivityUtil {
      * @param response {@link Response}
      */
     public static void toResponse(MessageActivity<?> messageActivity, Response response){
-        messageActivity.getMessages().forEach((code, message)-> {
-            response.setCode(code);
-            response.setMessage(message);
-        });
-
+        response.setMessage(messageActivity.getMessage());
+        response.setCode(messageActivity.getCode());
         response.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));
     }
 }

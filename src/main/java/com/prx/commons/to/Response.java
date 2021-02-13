@@ -15,15 +15,16 @@ package com.prx.commons.to;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.util.JsonUtil;
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 /**
  * Response.
  *
- * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'></a>Luis Antonio Mata</a>
  * @version 1.0.0, 29-09-2020
  */
 @Getter
@@ -32,8 +33,17 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Response {
 
+    /**
+     * Fecha y hora de emisi&oacute;n.
+     */
     private LocalDateTime dateTime;
+    /**
+     * C&oacute;digo de respuesta.
+     */
     private Integer code;
+    /**
+     * Mensaje de respuesta.
+     */
     private String message;
 
     @Override
