@@ -33,7 +33,7 @@ import java.util.List;
 @JsonNaming
 @NoArgsConstructor
 public class Rol implements Serializable {
-    private Long id;
+    private Integer id;
     private String name;
     private String description;
     private List<Feature> features;

@@ -39,7 +39,7 @@ class UserTest {
         feature.setDescription("Descripción de feature");
         feature.setActive(true);
         features.add(feature);
-        rol.setId(1L);
+        rol.setId(1);
         rol.setName("Rol");
         rol.setDescription("Descripción de rol");
         rol.setFeatures(features);
