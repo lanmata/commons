@@ -13,14 +13,13 @@
 
 package com.prx.commons.to.grid;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
 
 /**
  * DataValueMarketToTest.
@@ -49,23 +48,23 @@ class DataValueMarketTOTest {
         dataValueMarketTO.setVolume(225.21D);
         dataValueMarketTO.setLow(1255.33D);
 
-        assertAll("Getters And Setters",
-            () -> assertNotNull(dataValueMarketTO.getAsk()),
-            () -> assertNotNull(dataValueMarketTO.getBid()),
-            () -> assertNotNull(dataValueMarketTO.getLow()),
-            () -> assertNotNull(dataValueMarketTO.getLast()),
-            () -> assertNotNull(dataValueMarketTO.getHigh()),
-            () -> assertNotNull(dataValueMarketTO.getClose()),
-            () -> assertNotNull(dataValueMarketTO.getMarket()),
-            () -> assertNotNull(dataValueMarketTO.getVolume()),
-            () -> assertNotNull(dataValueMarketTO.getMarketId()),
-            () -> assertNotNull(dataValueMarketTO.getDateTime()),
-            () -> assertNotNull(dataValueMarketTO.getInstrument()),
-            () -> assertNotNull(dataValueMarketTO.getInstrumentId()),
-            () -> assertNotNull(dataValueMarketTO.toString()),
-            () -> assertNotEquals(dataValueMarketTO, new DataValueMarketTO()),
-            () -> assertNotEquals(1, dataValueMarketTO.hashCode())
-                 );
+        Assertions.assertAll("Getters And Setters",
+                () -> Assertions.assertNotNull(dataValueMarketTO.getAsk()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getBid()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getLow()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getLast()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getHigh()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getClose()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getMarket()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getVolume()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getMarketId()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getDateTime()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getInstrument()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.getInstrumentId()),
+                () -> Assertions.assertNotNull(dataValueMarketTO.toString()),
+                () -> Assertions.assertNotEquals(dataValueMarketTO, new DataValueMarketTO()),
+                () -> Assertions.assertNotEquals(1, dataValueMarketTO.hashCode())
+        );
     }
 
 }

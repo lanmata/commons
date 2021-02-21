@@ -13,6 +13,7 @@
 package com.prx.commons.config;
 
 import com.fasterxml.classmate.TypeResolver;
+import com.google.common.base.Predicate;
 import com.prx.commons.pojo.VendorExtensionImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.context.request.async.DeferredResult;
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.AlternateTypeRules;
@@ -67,7 +69,7 @@ public class Swagger2Config {
     @Bean
     public Docket swaggerApi() {
         log.info("Inicia carga de Swagger");
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage(basePackage))
+        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
                    .paths(PathSelectors.regex("/.*")).build().pathMapping("/").genericModelSubstitutes(
                 ResponseEntity.class).alternateTypeRules(AlternateTypeRules.newRule(typeResolver
                                                                                         .resolve(DeferredResult.class,

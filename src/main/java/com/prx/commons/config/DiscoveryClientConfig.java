@@ -19,6 +19,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.net.ssl.SSLContext;
+
 /**
  * DiscoveryClientProperties. Clase para la configuración de las conexiones segura con el componente
  * netgo-service-monitor
@@ -41,19 +43,29 @@ public class DiscoveryClientConfig {
      * @return {@link DiscoveryClient.DiscoveryClientOptionalArgs}
      */
     @Bean
-    public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() {
+    public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs(EurekaJerseyClientImpl.EurekaJerseyClientBuilder sslContext) {
         DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
+        args.setEurekaJerseyClient(sslContext.build());
+
+        return args;
+    }
+
+    /**
+     * Obtiene un contructor de clientes para Eureka a traves de Jersey.
+     *
+     * @return Objeto de tipo {@link SSLContext}
+     */
+    @Bean
+    public EurekaJerseyClientImpl.EurekaJerseyClientBuilder sslContext() {
         EurekaJerseyClientImpl.EurekaJerseyClientBuilder builder =
-            new EurekaJerseyClientImpl.EurekaJerseyClientBuilder();
+                new EurekaJerseyClientImpl.EurekaJerseyClientBuilder();
 
         builder.withClientName(discoveryClientProperties.getName());
         builder.withTrustStoreFile(discoveryClientProperties.getTrustStoreFile(),
-            discoveryClientProperties.getTrustStorePassword());
+                discoveryClientProperties.getTrustStorePassword());
         builder.withMaxTotalConnections(10);
         builder.withMaxConnectionsPerHost(10);
-        args.setEurekaJerseyClient(builder.build());
-
-        return args;
+        return builder;
     }
 
 }

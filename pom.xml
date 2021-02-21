@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~  @(#)pom.xml
-  ~
-  ~  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
-  ~
-  ~  All rights to this product are owned by Luis Antonio Mata Mata and may only
-  ~  be used under the terms of its associated license document. You may NOT
-  ~  copy, modify, sublicense, or distribute this source file or portions of
-  ~  it unless previously authorized in writing by Luis Antonio Mata Mata.
-  ~  In any event, this notice and the above copyright must always be included
-  ~  verbatim with this file.
-  -->
-
+IMPORTANTE CONSIDERAR:
+    Los servicios establecen comunicacion a traves de canal seguro via HTPPS, una parte de la comunicion se realiza con
+    un servicio para el registro de servicios, la implementacion generada hace uso de un cliente en la comunicacion con
+    Jersey, especificamente para el DiscoveryClient que se comunica con Eureka, las dependencias requeridas son:
+    *  com.sun.jersey.jersey-client.1.19.1
+    * com.sun.jersey.jersey-core.1.19.4
+    * com.sun.jersey.contribs.jersey-apache-client4.1.19.4
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.prx</groupId>
         <artifactId>prx-central</artifactId>
-        <version>1.0.3.20200904-01</version>
-        <relativePath>../central</relativePath> <!-- lookup parent from repository -->
+        <version>1.0.3.20210220-01</version>
     </parent>
 
     <groupId>com.prx.commons</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX componentes comunes</name>
-    <version>1.0.3.20200904-01</version>
+    <version>1.0.3.20210220-01</version>
 
     <developers>
         <developer>
@@ -75,11 +70,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <scope>compile</scope>
         </dependency>
@@ -97,54 +87,45 @@
             <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-apache-client4</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-bean-validators</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-models</artifactId>
-            <version>2.1.4</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>

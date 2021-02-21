@@ -14,10 +14,12 @@
 
 package com.prx.commons.enums.types;
 
-import java.util.Arrays;
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
 /**
  * ContactTypeTest.
@@ -30,7 +32,7 @@ class ContactTypeTest {
     @Test
     void keys() {
         for (final var tp : ContactType.values()) {
-            assertTrue(Arrays.asList(ContactType.values()).contains(tp));
+            Assertions.assertTrue(Arrays.asList(ContactType.values()).contains(tp));
             assertNotNull(ContactType.getContactType(tp.ordinal()));
         }
     }

@@ -14,9 +14,10 @@
 
 package com.prx.commons.enums.types;
 
-import java.util.Arrays;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * IdentificationTypeTest.
@@ -29,7 +30,7 @@ class IdentificationTypeTest {
     @Test
     void keys() {
         for (final var tp : IdentificationType.values()) {
-            assertTrue(Arrays.asList(IdentificationType.values()).contains(tp));
+            Assertions.assertTrue(Arrays.asList(IdentificationType.values()).contains(tp));
         }
     }
 }

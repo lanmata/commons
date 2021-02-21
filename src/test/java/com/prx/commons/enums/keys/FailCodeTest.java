@@ -13,7 +13,7 @@
  */
 package com.prx.commons.enums.keys;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -29,9 +29,9 @@ class FailCodeTest {
     @Test
     void keys() {
         for (final var tp : FailCode.values()) {
-            assertTrue(Arrays.asList(FailCode.values()).contains(tp));
-            assertNotEquals(-1, tp.getCode());
-            assertNotNull(tp.getStatus());
+            Assertions.assertTrue(Arrays.asList(FailCode.values()).contains(tp));
+            Assertions.assertNotEquals(-1, tp.getCode());
+            Assertions.assertNotNull(tp.getStatus());
         }
     }
 

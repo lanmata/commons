@@ -14,9 +14,10 @@
 
 package com.prx.commons.enums.types;
 
-import java.util.Arrays;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * OperationTypeTest.
@@ -29,7 +30,7 @@ class OperationTypeTest {
     @Test
     void keys() {
         for (final var tp : OperationType.values()) {
-            assertTrue(Arrays.asList(OperationType.values()).contains(tp));
+            Assertions.assertTrue(Arrays.asList(OperationType.values()).contains(tp));
         }
     }
 

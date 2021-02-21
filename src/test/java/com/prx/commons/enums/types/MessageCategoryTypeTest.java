@@ -14,9 +14,10 @@
 
 package com.prx.commons.enums.types;
 
-import java.util.Arrays;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * MessageTypeTest.
@@ -29,7 +30,7 @@ class MessageCategoryTypeTest {
     @Test
     void keys() {
         for (final var tp : MessageCategoryType.values()) {
-            assertTrue(Arrays.asList(MessageCategoryType.values()).contains(tp));
+            Assertions.assertTrue(Arrays.asList(MessageCategoryType.values()).contains(tp));
         }
     }
 }
