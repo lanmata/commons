@@ -21,6 +21,7 @@ import java.io.Serializable;
  * @version 1.0.3.20200904-01, 21-11-2020
  */
 public interface MessageType extends Serializable {
+    DefaultMessage DEFAULT_MESSAGE = DefaultMessage.EMPTY;
     /**
      * Retorna el identificador del error generado.
      *
@@ -34,4 +35,30 @@ public interface MessageType extends Serializable {
      * @return Objeto de tipo {@link String}.
      */
     String getStatus();
+
+
+}
+
+enum DefaultMessage implements MessageType {
+
+    EMPTY(0,"");
+
+    private final int code;
+    private final String status;
+
+    DefaultMessage(int code, String status){
+        this.code = code;
+        this.status = status;
+    }
+
+    @Override
+    public int getCode() {
+        return code;
+    }
+
+    @Override
+    public String getStatus() {
+        return status;
+    }
+
 }
