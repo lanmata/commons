@@ -28,15 +28,12 @@ public interface MessageType extends Serializable {
      * @return Objeto de tipo {@link int}.
      */
     int getCode();
-
     /**
      * Retorna el status del error.
      *
      * @return Objeto de tipo {@link String}.
      */
     String getStatus();
-
-
 }
 
 enum DefaultMessage implements MessageType {
