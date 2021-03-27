@@ -13,9 +13,7 @@
 
 package com.prx.commons.to.client;
 
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -43,20 +41,20 @@ class TicketSubscriberTOTest {
         ticketSubscriberTO.setSymbol("USCCLP");
         ticketSubscriberTO.setVersion("1125");
 
-        assertAll("GettersAndSetters",
-            () -> assertNotNull(ticketSubscriberTO.getChanId()),
-            () -> assertNotNull(ticketSubscriberTO.getChannel()),
-            () -> assertNotNull(ticketSubscriberTO.getCode()),
-            () -> assertNotNull(ticketSubscriberTO.getEvent()),
-            () -> assertNotNull(ticketSubscriberTO.getMsg()),
-            () -> assertNotNull(ticketSubscriberTO.getPair()),
-            () -> assertNotNull(ticketSubscriberTO.getPlatform()),
-            () -> assertNotNull(ticketSubscriberTO.getServerId()),
-            () -> assertNotNull(ticketSubscriberTO.getSymbol()),
-            () -> assertNotNull(ticketSubscriberTO.getVersion()),
-            () -> assertNotNull(ticketSubscriberTO.toString()),
-            () -> assertNotEquals(1, ticketSubscriberTO.hashCode()),
-            () -> assertNotEquals(new TicketSubscriberTO(), ticketSubscriberTO)
+        Assertions.assertAll("GettersAndSetters",
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getChanId()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getChannel()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getCode()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getEvent()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getMsg()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getPair()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getPlatform()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getServerId()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getSymbol()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.getVersion()),
+            () -> Assertions.assertNotNull(ticketSubscriberTO.toString()),
+            () -> Assertions.assertNotEquals(1, ticketSubscriberTO.hashCode()),
+            () -> Assertions.assertNotEquals(new TicketSubscriberTO(), ticketSubscriberTO)
                  );
     }
 

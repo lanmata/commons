@@ -29,12 +29,12 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonPropertyOrder({"id", "content", "contactTypeId", "person", "active"})
+@JsonPropertyOrder({"id", "content", "contactType", "person", "active"})
 public class Contact implements Serializable {
 
     private Integer id;
     private String content;
-    private Integer contactTypeId;
+    private ContactType contactType;
     private Person person;
     private Boolean active;
 

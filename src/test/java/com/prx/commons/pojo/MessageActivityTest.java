@@ -13,11 +13,9 @@
  */
 package com.prx.commons.pojo;
 
-import java.util.concurrent.ConcurrentHashMap;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * MessageActivityTest.
@@ -31,11 +29,13 @@ class MessageActivityTest {
     void gettersAndSetters(){
         final var messageActivity = new MessageActivity<User>();
 
-        messageActivity.setMessages(new ConcurrentHashMap<>());
+        messageActivity.setCode(200);
+        messageActivity.setMessage("Mensaje de respuesta.");
         messageActivity.setObjectResponse(new User());
 
         assertAll("Test Getters And Setters",
-            () -> assertNotNull(messageActivity.getMessages()),
+            () -> assertNotNull(messageActivity.getCode()),
+            () -> assertNotNull(messageActivity.getMessage()),
             () -> assertNotNull(messageActivity.getObjectResponse()),
             () -> assertNotEquals(1, messageActivity.hashCode()),
             () -> assertNotEquals(new MessageActivity<User>(), messageActivity),

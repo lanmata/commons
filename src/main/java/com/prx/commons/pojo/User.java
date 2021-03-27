@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User.
@@ -35,6 +36,7 @@ public class User implements Serializable {
     private String password;
     private boolean active;
     private Person person;
+    private List<Rol> roles;
 
     @Override
     public String toString() {

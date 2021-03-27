@@ -14,17 +14,16 @@
 
 package com.prx.commons.converter;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 
 /**
  * LocalDateTimeConverterTest.
@@ -32,7 +31,6 @@ import org.mockito.junit.MockitoJUnitRunner;
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
-@RunWith(MockitoJUnitRunner.class)
 class LocalDateTimeConverterTest {
     @InjectMocks
     LocalDateTimeConverter localDateTimeConverter;
@@ -44,9 +42,9 @@ class LocalDateTimeConverterTest {
 
     @Test
     void convert(){
-        assertNotNull(localDateTimeConverter.convertToDatabaseColumn(
+        Assertions.assertNotNull(localDateTimeConverter.convertToDatabaseColumn(
             LocalDateTime.now(ZoneId.systemDefault())));
-        assertNotNull(localDateTimeConverter.convertToEntityAttribute(
+        Assertions.assertNotNull(localDateTimeConverter.convertToEntityAttribute(
             Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis()))));
     }
 

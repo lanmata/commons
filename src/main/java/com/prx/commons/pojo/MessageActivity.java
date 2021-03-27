@@ -13,13 +13,13 @@
 
 package com.prx.commons.pojo;
 
+import com.prx.commons.to.Response;
 import com.prx.commons.util.JsonUtil;
-import java.io.Serializable;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
 
 /**
  * Se utiliza para describir las acciones o ejecuciones realizadas y el resultado de ellas para informar a los componentes
@@ -31,12 +31,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class MessageActivity <T> implements Serializable {
+public class MessageActivity <T> extends Response implements Serializable {
 
-    /**
-     * Campo compuesto por clave-valor, donde la clave es el c&oacute;digo y valor es el mensaje que se informa
-     */
-    private Map<Integer, String> messages = new ConcurrentHashMap<>();
     /**
      * Objeto respuesta esperado
      */

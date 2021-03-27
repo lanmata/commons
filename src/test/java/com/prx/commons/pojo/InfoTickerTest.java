@@ -14,12 +14,11 @@
 package com.prx.commons.pojo;
 
 import com.prx.commons.enums.keys.ParityKey;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.Test;
 
 /**
  * InfoTickerTest.
@@ -46,22 +45,22 @@ class InfoTickerTest {
         infoTicker.setMarketId(2L);
         infoTicker.setVolume(2203D);
 
-        assertAll("Test Getters And Setters",
-            () -> assertNotNull(infoTicker.getClose()),
-            () -> assertNotNull(infoTicker.getHigh()),
-            () -> assertNotNull(infoTicker.getLow()),
-            () -> assertNotNull(infoTicker.getOpen()),
-            () -> assertNotNull(infoTicker.getParityKey()),
-            () -> assertNotNull(infoTicker.getAsk()),
-            () -> assertNotNull(infoTicker.getBid()),
-            () -> assertNotNull(infoTicker.getDateTime()),
-            () -> assertNotNull(infoTicker.getInstrumentId()),
-            () -> assertNotNull(infoTicker.getMarketId()),
-            () -> assertNotNull(infoTicker.getLast()),
-            () -> assertNotNull(infoTicker.getVolume()),
-            () -> assertNotNull(infoTicker.toString()),
-            () -> assertNotEquals(1, infoTicker.hashCode()),
-            () -> assertNotEquals(new InfoTicker(), infoTicker)
+        Assertions.assertAll("Test Getters And Setters",
+            () -> Assertions.assertNotNull(infoTicker.getClose()),
+            () -> Assertions.assertNotNull(infoTicker.getHigh()),
+            () -> Assertions.assertNotNull(infoTicker.getLow()),
+            () -> Assertions.assertNotNull(infoTicker.getOpen()),
+            () -> Assertions.assertNotNull(infoTicker.getParityKey()),
+            () -> Assertions.assertNotNull(infoTicker.getAsk()),
+            () -> Assertions.assertNotNull(infoTicker.getBid()),
+            () -> Assertions.assertNotNull(infoTicker.getDateTime()),
+            () -> Assertions.assertNotNull(infoTicker.getInstrumentId()),
+            () -> Assertions.assertNotNull(infoTicker.getMarketId()),
+            () -> Assertions.assertNotNull(infoTicker.getLast()),
+            () -> Assertions.assertNotNull(infoTicker.getVolume()),
+            () -> Assertions.assertNotNull(infoTicker.toString()),
+            () -> Assertions.assertNotEquals(1, infoTicker.hashCode()),
+            () -> Assertions.assertNotEquals(new InfoTicker(), infoTicker)
                  );
     }
 

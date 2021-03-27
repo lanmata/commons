@@ -14,10 +14,10 @@
 
 package com.prx.commons.enums.keys;
 
-import java.util.Arrays;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * SizeKeyTest.
@@ -30,8 +30,8 @@ class SizeKeyTest {
     @Test
     void keys() {
         for (final var tp : SizeKey.values()) {
-            assertTrue(Arrays.asList(SizeKey.values()).contains(tp));
-            assertNotNull(tp.toString());
+            Assertions.assertTrue(Arrays.asList(SizeKey.values()).contains(tp));
+            Assertions.assertNotNull(tp.toString());
         }
     }
 

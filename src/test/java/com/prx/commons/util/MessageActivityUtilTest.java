@@ -14,12 +14,12 @@ package com.prx.commons.util;
 
 import com.prx.commons.pojo.MessageActivity;
 import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * MessageActivityUtilTest.
@@ -40,12 +40,10 @@ class MessageActivityUtilTest {
     void toResponse() {
         final var messageActivity = new MessageActivity<Map<Integer, String>>();
         final var messageActivity1 = new MessageActivity<Map<Integer, String>>();
-        final var mapMessage = new ConcurrentHashMap<Integer, String>();
-        mapMessage.put(0,"Valor 00");
-        mapMessage.put(1,"Valor 01");
-        mapMessage.put(2,"Valor 02");
-        messageActivity.setMessages(mapMessage);
-        messageActivity1.setMessages(new ConcurrentHashMap<>());
+        messageActivity.setCode(200);
+        messageActivity.setMessage("Valor 00");
+        messageActivity1.setCode(201);
+        messageActivity1.setMessage("Valor 001");
         assertNotNull(MessageActivityUtil.toResponse(messageActivity));
         assertNotNull(MessageActivityUtil.toResponse(messageActivity1));
     }

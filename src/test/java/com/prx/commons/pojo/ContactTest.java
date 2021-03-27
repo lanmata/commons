@@ -29,15 +29,21 @@ class ContactTest {
     @Test
     void testGettersAndSetters(){
         var contact = new Contact();
+        var contactType = new ContactType();
+
+        contactType.setId(1L);
+        contactType.setName("Tipo de contacto");
+        contactType.setDescription("Descripción tipo de contacto");
+        contactType.setActive(true);
 
         contact.setId(1);
         contact.setPerson(new Person());
         contact.setContent("Contenido");
-        contact.setContactTypeId(1);
+        contact.setContactType(contactType);
         contact.setActive(true);
         assertAll("Getters And Setters",
             () -> assertNotNull(contact.getActive()),
-            () -> assertNotNull(contact.getContactTypeId()),
+            () -> assertNotNull(contact.getContactType()),
             () -> assertNotNull(contact.getContent()),
             () -> assertNotNull(contact.getPerson()),
             () -> assertNotNull(contact.getId()),

@@ -14,9 +14,10 @@
 
 package com.prx.commons.enums.keys;
 
-import java.util.Arrays;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * ParityKeyTest.
@@ -29,7 +30,7 @@ class ParityKeyTest {
     @Test
     void keys() {
         for (final var tp : ParityKey.values()) {
-            assertTrue(Arrays.asList(ParityKey.values()).contains(tp));
+            Assertions.assertTrue(Arrays.asList(ParityKey.values()).contains(tp));
         }
     }
 

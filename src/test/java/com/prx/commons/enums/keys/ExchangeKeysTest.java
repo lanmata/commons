@@ -14,11 +14,10 @@
 
 package com.prx.commons.enums.keys;
 
-import java.util.Arrays;
-import static org.junit.Assert.assertNotEquals;
 import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.assertAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * ExchangeKeysTest.
@@ -34,10 +33,10 @@ class ExchangeKeysTest {
             Assertions.assertTrue(Arrays.asList(ExchangeKeys.values()).contains(tp));
         }
 
-        assertAll("Test String ID",
-            () -> assertNotEquals(0,ExchangeKeys.BITFINEX.getId()),
-            () -> assertNotEquals(0,ExchangeKeys.BITSTAMP.getId()),
-            () -> assertNotEquals(0,ExchangeKeys.OKCOIN.getId())
+        Assertions.assertAll("Test String ID",
+            () -> Assertions.assertNotEquals(0,ExchangeKeys.BITFINEX.getId()),
+            () -> Assertions.assertNotEquals(0,ExchangeKeys.BITSTAMP.getId()),
+            () -> Assertions.assertNotEquals(0,ExchangeKeys.OKCOIN.getId())
                  );
     }
 
