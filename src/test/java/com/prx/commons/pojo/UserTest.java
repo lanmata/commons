@@ -29,8 +29,8 @@ class UserTest {
     @Test
     void gettersAndSetters(){
         final var user = new User();
-        final var roles = new ArrayList<Rol>();
-        final var rol = new Rol();
+        final var roles = new ArrayList<Role>();
+        final var rol = new Role();
         var features = new ArrayList<Feature>();
         var feature =  new Feature();
 
@@ -39,7 +39,7 @@ class UserTest {
         feature.setDescription("Descripción de feature");
         feature.setActive(true);
         features.add(feature);
-        rol.setId(1);
+        rol.setId(1L);
         rol.setName("Rol");
         rol.setDescription("Descripción de rol");
         rol.setFeatures(features);

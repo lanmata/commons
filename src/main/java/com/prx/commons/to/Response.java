@@ -13,6 +13,7 @@
 
 package com.prx.commons.to;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.util.JsonUtil;
 import lombok.Getter;
@@ -20,6 +21,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+
+import static com.prx.commons.util.DateUtil.PATTERN_DATE_TIME;
 
 /**
  * Response.
@@ -36,6 +39,7 @@ public class Response {
     /**
      * Fecha y hora de emisi&oacute;n.
      */
+    @JsonFormat(pattern = PATTERN_DATE_TIME)
     private LocalDateTime dateTime;
     /**
      * C&oacute;digo de respuesta.

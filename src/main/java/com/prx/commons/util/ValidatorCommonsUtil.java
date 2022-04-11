@@ -136,7 +136,7 @@ public final class ValidatorCommonsUtil {
      *
      * @author Luis Mata
      */
-    public static boolean esListaVacia(final List<Object> valor) {
+    public static boolean esListaVacia(final List<?> valor) {
         return valor.isEmpty();
     }
 

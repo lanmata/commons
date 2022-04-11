@@ -16,7 +16,7 @@ package com.prx.commons.pojo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.util.JsonUtil;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -43,7 +43,7 @@ import java.time.LocalDateTime;
 })
 @Getter
 @Setter
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class DataValueMarket implements Serializable {
 
     private Double bid;
