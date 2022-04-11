@@ -24,11 +24,11 @@ import java.util.ArrayList;
  * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3.20200904-01, 31-01-2021
  */
-class RolTest {
+class RoleTest {
 
     @Test
     void testGettersAndSetters(){
-        var rol = new Rol();
+        var rol = new Role();
         var features = new ArrayList<Feature>();
         var feature =  new Feature();
 
@@ -37,7 +37,7 @@ class RolTest {
         feature.setDescription("Descripción de feature");
         feature.setActive(true);
         features.add(feature);
-        rol.setId(1);
+        rol.setId(1L);
         rol.setName("Rol");
         rol.setDescription("Descripción de rol");
         rol.setFeatures(features);
@@ -50,7 +50,7 @@ class RolTest {
             () -> assertNotNull(rol.getFeatures()),
             () -> assertNotNull(rol.toString()),
             () -> assertNotEquals(1, rol.hashCode()),
-            () -> assertNotEquals(new Rol(), rol)
+            () -> assertNotEquals(new Role(), rol)
         );
     }
 

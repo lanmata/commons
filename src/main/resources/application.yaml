@@ -18,8 +18,8 @@ swagger:
 security:
   discovery:
     client:
-      name: prx-commons
-      trust-store-file: prx_commons.jks
-      trust-store-password: prx-commons
+      name: prx-backbone-rest
+      trust-store-file: prx_backbone_rest.jks
+      trust-store-password: prx-backbone-rest
       max-total-connections: 10
       max-connections-per-host: 10

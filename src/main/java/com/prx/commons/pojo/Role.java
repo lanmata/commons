@@ -32,8 +32,8 @@ import java.util.List;
 @Setter
 @JsonNaming
 @NoArgsConstructor
-public class Rol implements Serializable {
-    private Integer id;
+public class Role implements Serializable {
+    private Long id;
     private String name;
     private String description;
     private List<Feature> features;

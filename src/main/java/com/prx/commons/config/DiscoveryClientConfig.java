@@ -44,9 +44,8 @@ public class DiscoveryClientConfig {
      */
     @Bean
     public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs(EurekaJerseyClientImpl.EurekaJerseyClientBuilder sslContext) {
-        DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
+        var args = new DiscoveryClient.DiscoveryClientOptionalArgs();
         args.setEurekaJerseyClient(sslContext.build());
-
         return args;
     }
 
@@ -57,9 +56,7 @@ public class DiscoveryClientConfig {
      */
     @Bean
     public EurekaJerseyClientImpl.EurekaJerseyClientBuilder sslContext() {
-        EurekaJerseyClientImpl.EurekaJerseyClientBuilder builder =
-                new EurekaJerseyClientImpl.EurekaJerseyClientBuilder();
-
+        var builder = new EurekaJerseyClientImpl.EurekaJerseyClientBuilder();
         builder.withClientName(discoveryClientProperties.getName());
         builder.withTrustStoreFile(discoveryClientProperties.getTrustStoreFile(),
                 discoveryClientProperties.getTrustStorePassword());

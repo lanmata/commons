@@ -72,9 +72,17 @@ public final class DateUtil {
      */
     public static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
     /**
+     * Patr&oacute;n para fecha yyyyMMddHHmmss, Por ejemplo: 20200130123025
+     */
+    public static final String PATTERN_DATETIME_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
+    /**
      * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss, Por ejemplo: 2000-01-30 12:30:25
      */
     public static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
+    /**
+     * Patr&oacute;n para fecha yyMMddHHmmss, Por ejemplo: 200130123025
+     */
+    public static final String PATTERN_DATETIME_YYMMDDHHMMSS = "yyMMddHHmmss";
     /**
      * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
      */

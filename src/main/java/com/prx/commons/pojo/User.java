@@ -36,7 +36,7 @@ public class User implements Serializable {
     private String password;
     private boolean active;
     private Person person;
-    private List<Rol> roles;
+    private List<Role> roles;
 
     @Override
     public String toString() {

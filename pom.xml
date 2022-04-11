@@ -14,13 +14,13 @@ IMPORTANTE CONSIDERAR:
     <parent>
         <groupId>com.prx</groupId>
         <artifactId>prx-central</artifactId>
-        <version>1.0.3.20210220-01</version>
+        <version>1.0.3.20211214-01</version>
     </parent>
 
     <groupId>com.prx.commons</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX componentes comunes</name>
-    <version>1.0.3.20210220-01</version>
+    <version>1.0.3.20211214-01</version>
 
     <developers>
         <developer>
@@ -45,7 +45,7 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.10.2</version>
+            <version>${jackson-annotations.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -56,18 +56,18 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.2.Final</version>
+            <version>${hibernate-jpa.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-client</artifactId>
-            <version>1.19.1</version>
+            <version>${jersey-client.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-core</artifactId>
-            <version>1.19.4</version>
+            <version>${jersey-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
@@ -100,16 +100,17 @@ IMPORTANTE CONSIDERAR:
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
         <!-- END - Dependencias comunes -->
-        <!-- START - Dependencias para pruebas unitarias -->
+
+        <!-- START - Documentation  Open API -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.3</version>
         </dependency>
+        <!-- END - Documentation  Open API -->
+
+        <!-- START - Dependencias para pruebas unitarias -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -141,7 +142,7 @@ IMPORTANTE CONSIDERAR:
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>${junit.version}</version>
+                <version>${junit.jupiter.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -150,6 +151,16 @@ IMPORTANTE CONSIDERAR:
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
