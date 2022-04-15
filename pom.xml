@@ -128,6 +128,13 @@ IMPORTANTE CONSIDERAR:
             <type>jar</type>
         </dependency>
         <!-- END - Dependencias para pruebas unitarias -->
+        <!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+            <version>0.50</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -290,20 +297,16 @@ IMPORTANTE CONSIDERAR:
         </plugins>
     </reporting>
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
             <id>central</id>
-            <name>default-maven-virtual</name>
+            <name>a0kaj8sklairw-artifactory-primary-0-releases</name>
             <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
         </repository>
-        <repository>
-            <snapshots/>
+        <snapshotRepository>
             <id>snapshots</id>
-            <name>default-maven-virtual</name>
+            <name>a0kaj8sklairw-artifactory-primary-0-snapshots</name>
             <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
-        </repository>
-    </repositories>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
