@@ -58,6 +58,7 @@ under the License.
       <id>snapshots</id>
     </server>
   </servers>
+<profiles>
 	<profile>
       <repositories>
         <repository>
