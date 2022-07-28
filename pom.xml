@@ -304,6 +304,11 @@ IMPORTANTE CONSIDERAR:
             <name>a0kaj8sklairw-artifactory-primary-0-releases</name>
             <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
         </repository>
+        <repository>
+            <id>snapshots</id>
+            <name>a0kaj8sklairw-artifactory-primary-0-snapshots</name>
+            <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
+        </repository>
     </repositories>
 
     <distributionManagement>
