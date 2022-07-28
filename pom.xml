@@ -38,6 +38,7 @@ IMPORTANTE CONSIDERAR:
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <sonar.organization>prx-open</sonar.organization>
     </properties>
 
     <dependencies>
@@ -296,6 +297,14 @@ IMPORTANTE CONSIDERAR:
             </plugin>
         </plugins>
     </reporting>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>a0kaj8sklairw-artifactory-primary-0-releases</name>
+            <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
+        </repository>
+    </repositories>
 
     <distributionManagement>
         <repository>
