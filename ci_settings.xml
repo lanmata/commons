@@ -46,6 +46,7 @@ under the License.
 <settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+<servers>
 	<server>
       <username>luis.antonio.mata@gmail.com</username>
       <password>AKCp8krVNcabpydAKZfLu2vE4ZCQw2P6jwSDuRVKqgGf145rF73sTfdxaRNqnudCsx2UaLTTq</password>
