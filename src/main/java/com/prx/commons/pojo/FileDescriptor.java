@@ -15,14 +15,7 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
-@NoArgsConstructor
 @JsonPropertyOrder({"name", "sizeDescriptor", "type", "path"
 })
 public class FileDescriptor {
@@ -36,7 +29,56 @@ public class FileDescriptor {
     @JsonProperty("path")
     private String path;
 
-    public String toString(){
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public FileDescriptor() {
+        //Default constructor.
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public SizeDescriptor getSizeDescriptor() {
+        return this.sizeDescriptor;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public String getPath() {
+        return this.path;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("sizeDescriptor")
+    public void setSizeDescriptor(SizeDescriptor sizeDescriptor) {
+        this.sizeDescriptor = sizeDescriptor;
+    }
+
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonProperty("path")
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    @Override
+    public String toString() {
+        return "FileDescriptor{" +
+                "name='" + name + '\'' +
+                ", sizeDescriptor=" + sizeDescriptor +
+                ", type='" + type + '\'' +
+                ", path='" + path + '\'' +
+                '}';
     }
 }

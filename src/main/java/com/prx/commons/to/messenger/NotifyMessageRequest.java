@@ -15,30 +15,57 @@ package com.prx.commons.to.messenger;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.to.Request;
-import com.prx.commons.util.JsonUtil;
+
 import java.util.List;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
- *
- *
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 public class NotifyMessageRequest extends Request {
 
     private String message;
     private List<String> listDestiny;
     private Boolean critical;
 
+    /**
+     * Default constructor.
+     */
+    public NotifyMessageRequest() {
+        super();
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<String> getListDestiny() {
+        return listDestiny;
+    }
+
+    public void setListDestiny(List<String> listDestiny) {
+        this.listDestiny = listDestiny;
+    }
+
+    public Boolean getCritical() {
+        return critical;
+    }
+
+    public void setCritical(Boolean critical) {
+        this.critical = critical;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "NotifyMessageRequest{" +
+                "message='" + message + '\'' +
+                ", listDestiny=" + listDestiny +
+                ", critical=" + critical +
+                '}';
     }
 }

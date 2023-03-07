@@ -13,10 +13,6 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -26,10 +22,7 @@ import java.io.Serializable;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 public class LocalCoin implements Serializable {
 
     private Integer id;
@@ -37,9 +30,52 @@ public class LocalCoin implements Serializable {
     private String name;
     private Boolean active;
 
-    @Override
-    public String toString(){
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public LocalCoin() {
+        //Default constructor.
     }
 
+    public Integer getId() {
+        return this.id;
+    }
+
+    public String getSymbol() {
+        return this.symbol;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return "LocalCoin{" +
+                "id=" + id +
+                ", symbol='" + symbol + '\'' +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                '}';
+    }
 }

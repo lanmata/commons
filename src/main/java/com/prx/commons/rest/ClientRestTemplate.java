@@ -15,8 +15,6 @@ package com.prx.commons.rest;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
@@ -32,17 +30,20 @@ import org.springframework.web.client.RestTemplate;
  * @author <a href="mailto:lui.antonio.mata@gmail.com">Luis Mata</a>
  * @since 2019-08-23
  */
-@RequiredArgsConstructor
 public class ClientRestTemplate {
 
     protected final MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter;
     protected RestTemplate restTemplate;
 
+    public ClientRestTemplate(MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter) {
+        this.mappingJackson2HttpMessageConverter = mappingJackson2HttpMessageConverter;
+        init();
+    }
+
     /**
      * Inicializa las propiedades para el cliente de servicio REST
      */
-    @PostConstruct
-    protected void init() {
+    protected final void init() {
         List<MediaType> supportedMediaTypes = new ArrayList<>();
         supportedMediaTypes.add(APPLICATION_JSON);
         mappingJackson2HttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);

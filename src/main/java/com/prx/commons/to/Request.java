@@ -16,10 +16,6 @@ package com.prx.commons.to;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.util.DateUtil;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -29,10 +25,7 @@ import java.time.LocalDateTime;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 29-09-2020
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 public class Request {
 
     @JsonFormat(pattern = DateUtil.PATTERN_DATE_TIME)
@@ -40,8 +33,43 @@ public class Request {
     private String appName;
     private String appToken;
 
+    /**
+     * Default constructor.
+     */
+    public Request() {
+        //Default constructor.
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
+    public String getAppToken() {
+        return appToken;
+    }
+
+    public void setAppToken(String appToken) {
+        this.appToken = appToken;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "Request{" +
+                "dateTime=" + dateTime +
+                ", appName='" + appName + '\'' +
+                ", appToken='" + appToken + '\'' +
+                '}';
     }
 }

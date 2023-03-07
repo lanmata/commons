@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
 class ExchangeInstrumentTest {
 
     @Test
-    void gettersAndSetters(){
+    void test_default_constructor(){
         final var exchangeInstrument = new ExchangeInstrument();
 
         exchangeInstrument.setIdentifier("Identificador 0001");
@@ -46,6 +46,22 @@ class ExchangeInstrumentTest {
             () -> assertNotEquals(1, exchangeInstrument.hashCode()),
             () -> assertNotEquals(new ExchangeInstrument(), exchangeInstrument)
                  );
+    }
+
+    @Test
+    void test(){
+        final var exchangeInstrument = new ExchangeInstrument(new Exchange(), new Instrument(), true, "Identifier 001");
+
+        assertAll("Test Getters And Setters",
+                () -> assertNotNull(exchangeInstrument.getActive()),
+                () -> assertTrue(exchangeInstrument.getActive()),
+                () -> assertNotNull(exchangeInstrument.getExchange()),
+                () -> assertNotNull(exchangeInstrument.getIdentifier()),
+                () -> assertNotNull(exchangeInstrument.getInstrument()),
+                () -> assertNotNull(exchangeInstrument.toString()),
+                () -> assertNotEquals(1, exchangeInstrument.hashCode()),
+                () -> assertNotEquals(new ExchangeInstrument(), exchangeInstrument)
+        );
     }
 
 }

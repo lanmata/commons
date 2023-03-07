@@ -38,7 +38,7 @@ class ContactTest {
 
         contact.setId(1);
         contact.setPerson(new Person());
-        contact.setContent("Contenido");
+        contact.setContent("Content");
         contact.setContactType(contactType);
         contact.setActive(true);
         assertAll("Getters And Setters",

@@ -13,10 +13,6 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -26,9 +22,6 @@ import java.io.Serializable;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Getter
-@Setter
-@NoArgsConstructor
 @JsonPropertyOrder({"id", "content", "contactType", "person", "active"})
 public class Contact implements Serializable {
 
@@ -38,8 +31,58 @@ public class Contact implements Serializable {
     private Person person;
     private Boolean active;
 
+    public Contact() {
+        //Default constructor
+    }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
+    public ContactType getContactType() {
+        return this.contactType;
+    }
+
+    public Person getPerson() {
+        return this.person;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setContactType(ContactType contactType) {
+        this.contactType = contactType;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "Contact{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", contactType=" + contactType +
+                ", person=" + person +
+                ", active=" + active +
+                '}';
     }
 }

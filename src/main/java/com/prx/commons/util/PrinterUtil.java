@@ -13,7 +13,6 @@
 
 package com.prx.commons.util;
 
-import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -25,11 +24,17 @@ import org.springframework.stereotype.Service;
  * @version 1.0.0, 29-09-2019
  */
 @Service
-@NoArgsConstructor
 public final class PrinterUtil {
 
     @Value("${log.debug}")
     private boolean isDebug;
+
+    /**
+     * Default constructor.
+     */
+    public PrinterUtil() {
+        // Default constructor.
+    }
 
     /**
      * Imprime la traza si dentro de los par&aacute;metros de configuraci&oacute;n esta en modo debug

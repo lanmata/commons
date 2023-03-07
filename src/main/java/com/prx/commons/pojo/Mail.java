@@ -13,10 +13,6 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -27,10 +23,7 @@ import java.util.Map;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Setter
-@Getter
 @JsonNaming
-@NoArgsConstructor
 public class Mail implements Serializable {
 
     private String from;
@@ -39,8 +32,61 @@ public class Mail implements Serializable {
     private String content;
     private transient Map<String, Object> model;
 
+    /**
+     * Default constructor.
+     */
+    public Mail() {
+        //Default constructor.
+    }
+
+    public String getFrom() {
+        return this.from;
+    }
+
+    public String getTo() {
+        return this.to;
+    }
+
+    public String getSubject() {
+        return this.subject;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
+    public Map<String, Object> getModel() {
+        return this.model;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setModel(Map<String, Object> model) {
+        this.model = model;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "Mail{" +
+                "from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", subject='" + subject + '\'' +
+                ", content='" + content + '\'' +
+                ", model=" + model +
+                '}';
     }
 }

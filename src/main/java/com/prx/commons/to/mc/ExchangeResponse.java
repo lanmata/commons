@@ -16,28 +16,35 @@ package com.prx.commons.to.mc;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.Exchange;
 import com.prx.commons.to.Response;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
- *
- *
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 public class ExchangeResponse extends Response {
 
     private Exchange exchange;
 
-    @Override
-    public String toString() {
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public ExchangeResponse() {
+        super();
     }
 
+    public Exchange getExchange() {
+        return exchange;
+    }
+
+    public void setExchange(Exchange exchange) {
+        this.exchange = exchange;
+    }
+
+    @Override
+    public String toString() {
+        return "ExchangeResponse{" +
+                "exchange=" + exchange +
+                '}';
+    }
 }
