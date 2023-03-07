@@ -15,8 +15,12 @@
 package com.prx.commons.converter;
 
 import java.util.ArrayList;
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
+import java.util.Objects;
+import java.util.function.Function;
+
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * ConverterImpl.
@@ -27,8 +31,25 @@ import org.junit.jupiter.api.Test;
 class ConverterTest {
 
     @Test
-    void test(){
+    void test_default_constructor(){
         final var converterTest = new ConverterImpTest();
+        converterTest.init();
+        var object =  converterTest.convertFromA(converterTest.convertFromB("value"));
+        var values = new ArrayList<String>();
+        var objects = new ArrayList<>();
+        values.add(object.toString());
+        objects.add(object);
+        assertNotNull(object.toString());
+        assertNotNull(object);
+        assertNotNull(converterTest.createFromA(values));
+        assertNotNull(converterTest.createFromB(objects));
+    }
+
+    @Test
+    void test(){
+        Function<String, Object> fA = (String value) -> value;
+        Function<Object, String> fB = Object::toString;
+        final var converterTest = new ConverterImpTest(fA, fB);
         converterTest.init();
         var object =  converterTest.convertFromA(converterTest.convertFromB("value"));
         var values = new ArrayList<String>();
@@ -45,6 +66,9 @@ class ConverterTest {
 
         ConverterImpTest(){
             super();
+        }
+        ConverterImpTest(Function<String, Object> fromA, Function<Object, String> fromB){
+            super(fromA, fromB);
         }
 
         void init(){

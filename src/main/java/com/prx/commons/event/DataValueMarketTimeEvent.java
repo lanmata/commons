@@ -14,7 +14,6 @@ package com.prx.commons.event;
 
 import com.prx.commons.pojo.DataValueMarket;
 import java.util.List;
-import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -26,7 +25,6 @@ import org.springframework.context.ApplicationEvent;
  */
 public class DataValueMarketTimeEvent extends ApplicationEvent {
 
-    @Getter
     private final List<DataValueMarket> dataValueMarkets;
 
     /**
@@ -40,4 +38,7 @@ public class DataValueMarketTimeEvent extends ApplicationEvent {
         this.dataValueMarkets = dataValueMarkets;
     }
 
+    public List<DataValueMarket> getDataValueMarkets() {
+        return dataValueMarkets;
+    }
 }

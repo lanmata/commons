@@ -15,10 +15,6 @@ package com.prx.commons.to;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -30,10 +26,7 @@ import static com.prx.commons.util.DateUtil.PATTERN_DATE_TIME;
  * @author <a href='mailto:luis.antonio.mata@gmail.com'></a>Luis Antonio Mata</a>
  * @version 1.0.0, 29-09-2020
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 public class Response {
 
     /**
@@ -50,8 +43,43 @@ public class Response {
      */
     private String message;
 
+    /**
+     * Default constructor.
+     */
+    public Response() {
+        //Default constructor.
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "Response{" +
+                "dateTime=" + dateTime +
+                ", code=" + code +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

@@ -13,12 +13,9 @@
 
 package com.prx.commons.converter;
 
-import lombok.NoArgsConstructor;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Definici&oacute;n de clase abstracta para conversi&oacute;n entre dos tipos de objetos
@@ -29,7 +26,6 @@ import java.util.stream.Collectors;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@NoArgsConstructor
 public abstract class Converter<A, B> {
 
     /**
@@ -40,6 +36,23 @@ public abstract class Converter<A, B> {
      * Function con paridades B y A
      */
     protected Function<B, A> fromB;
+
+    /**
+     * Default constructor.
+     */
+    protected Converter() {
+        //Default constructor
+    }
+
+    /**
+     *
+     * @param fromA
+     * @param fromB
+     */
+    protected Converter(Function<A, B> fromA, Function<B, A> fromB) {
+        this.fromA = fromA;
+        this.fromB = fromB;
+    }
 
     /**
      * Iniciliza los objetos de tipo {@link Function} encargados de la conversi&oacute;n de datos.
@@ -108,7 +121,7 @@ public abstract class Converter<A, B> {
      * @return {@link List}
      */
     public List<A> createFromB(final Collection<B> bCollection) {
-        return bCollection.stream().map(this::convertFromB).collect(Collectors.toList());
+        return bCollection.stream().map(this::convertFromB).toList();
     }
 
     /**
@@ -120,7 +133,7 @@ public abstract class Converter<A, B> {
      * @return {@link List}
      */
     public List<B> createFromA(final Collection<A> aCollection) {
-        return aCollection.stream().map(this::convertFromA).collect(Collectors.toList());
+        return aCollection.stream().map(this::convertFromA).toList();
     }
 
 }

@@ -14,13 +14,9 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.prx.commons.util.DateUtil;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -30,9 +26,6 @@ import java.time.LocalDate;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Getter
-@Setter
-@NoArgsConstructor
 public class Person implements Serializable {
 
     private long id;
@@ -48,9 +41,71 @@ public class Person implements Serializable {
     @JsonFormat(pattern = DateUtil.PATTERN_DATE)
     private LocalDate birthdate;
 
-    @Override
-    public String toString() {
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public Person() {
+        //Default constructor.
     }
 
+    public long getId() {
+        return this.id;
+    }
+
+    public @NotNull @Size(min = 2, max = 20) String getFirstName() {
+        return this.firstName;
+    }
+
+    public @Size(min = 2, max = 20) String getMiddleName() {
+        return this.middleName;
+    }
+
+    public @Size(min = 2, max = 20) String getLastName() {
+        return this.lastName;
+    }
+
+    public @Size(min = 1, max = 1) String getGender() {
+        return this.gender;
+    }
+
+    public LocalDate getBirthdate() {
+        return this.birthdate;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(@NotNull @Size(min = 2, max = 20) String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(@Size(min = 2, max = 20) String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setLastName(@Size(min = 2, max = 20) String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setGender(@Size(min = 1, max = 1) String gender) {
+        this.gender = gender;
+    }
+
+    @JsonFormat(pattern = DateUtil.PATTERN_DATE)
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthdate=" + birthdate +
+                '}';
+    }
 }

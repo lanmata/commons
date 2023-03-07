@@ -14,11 +14,8 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.prx.commons.util.JsonUtil;
+
 import java.io.Serializable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * CurrencyPairExchange.
@@ -29,9 +26,6 @@ import lombok.Setter;
 @JsonPropertyOrder({
     "id", "currencyBase", "currencyVariable", "decimalDisplay", "enabled"
 })
-@Setter
-@Getter
-@NoArgsConstructor
 class CurrencyPairExchange implements Serializable {
 
     @JsonProperty("id")
@@ -45,8 +39,66 @@ class CurrencyPairExchange implements Serializable {
     @JsonProperty("enabled")
     private Boolean enabled;
 
+    /**
+     * Default constructor.
+     */
+    public CurrencyPairExchange() {
+        // Default constructor.
+    }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public Integer getCurrencyBase() {
+        return this.currencyBase;
+    }
+
+    public Integer getCurrencyVariable() {
+        return this.currencyVariable;
+    }
+
+    public Integer getDecimalDisplay() {
+        return this.decimalDisplay;
+    }
+
+    public Boolean getEnabled() {
+        return this.enabled;
+    }
+
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @JsonProperty("currencyBase")
+    public void setCurrencyBase(Integer currencyBase) {
+        this.currencyBase = currencyBase;
+    }
+
+    @JsonProperty("currencyVariable")
+    public void setCurrencyVariable(Integer currencyVariable) {
+        this.currencyVariable = currencyVariable;
+    }
+
+    @JsonProperty("decimalDisplay")
+    public void setDecimalDisplay(Integer decimalDisplay) {
+        this.decimalDisplay = decimalDisplay;
+    }
+
+    @JsonProperty("enabled")
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "CurrencyPairExchange{" +
+                "id=" + id +
+                ", currencyBase=" + currencyBase +
+                ", currencyVariable=" + currencyVariable +
+                ", decimalDisplay=" + decimalDisplay +
+                ", enabled=" + enabled +
+                '}';
     }
 }

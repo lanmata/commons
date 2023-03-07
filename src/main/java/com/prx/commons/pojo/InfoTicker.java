@@ -16,24 +16,34 @@ package com.prx.commons.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.enums.keys.ParityKey;
-import com.prx.commons.util.JsonUtil;
-import java.io.Serializable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+import java.io.Serializable;
+
 @JsonNaming
-@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InfoTicker extends DataValueMarket implements Serializable {
 
     private ParityKey parityKey;
 
-    @Override
-    public String toString() {
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public InfoTicker() {
+        super();
     }
 
+    public ParityKey getParityKey() {
+        return this.parityKey;
+    }
+
+    public void setParityKey(ParityKey parityKey) {
+        this.parityKey = parityKey;
+    }
+
+    @Override
+    public String toString() {
+        return "InfoTicker{" +
+                "parityKey=" + parityKey +
+                '}';
+    }
 }

@@ -13,6 +13,7 @@
  */
 package com.prx.commons.util;
 
+import com.prx.commons.pojo.ActiveType;
 import com.prx.commons.pojo.Contact;
 import com.prx.commons.pojo.ContactType;
 import com.prx.commons.pojo.Person;
@@ -38,21 +39,14 @@ class JsonUtilTest {
 
     @Test
     void toJson() {
-        final var contact = new Contact();
-        var contactType = new ContactType();
+        final var activeType = new ActiveType();
 
-        contactType.setId(1L);
-        contactType.setName("Tipo de contacto");
-        contactType.setDescription("Descripción tipo de contacto");
-        contactType.setActive(true);
+        activeType.setActive(true);
+        activeType.setDescription("Descripción");
+        activeType.setId(1L);
+        activeType.setName("Nombre de activo");
 
-        contact.setActive(true);
-        contact.setContactType(contactType);
-        contact.setContent("Contenido");
-        contact.setPerson(new Person());
-        contact.setId(1);
-
-        assertNotNull(JsonUtil.toJson(contact));
+        assertNotNull(JsonUtil.toJson(activeType));
     }
 
 }

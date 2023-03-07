@@ -14,10 +14,6 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -41,9 +37,6 @@ import java.time.LocalDateTime;
         "instrumentId",
         "market"
 })
-@Getter
-@Setter
-@RequiredArgsConstructor
 public class DataValueMarket implements Serializable {
 
     private Double bid;
@@ -58,10 +51,116 @@ public class DataValueMarket implements Serializable {
     private Long instrumentId;
     private Long marketId;
 
-    @Override
-    public String toString() {
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public DataValueMarket() {
+        //Default constructor.
     }
 
+    public Double getBid() {
+        return bid;
+    }
+
+    public void setBid(Double bid) {
+        this.bid = bid;
+    }
+
+    public Double getAsk() {
+        return ask;
+    }
+
+    public void setAsk(Double ask) {
+        this.ask = ask;
+    }
+
+    public Double getLast() {
+        return last;
+    }
+
+    public void setLast(Double last) {
+        this.last = last;
+    }
+
+    public Double getLow() {
+        return low;
+    }
+
+    public void setLow(Double low) {
+        this.low = low;
+    }
+
+    public Double getHigh() {
+        return high;
+    }
+
+    public void setHigh(Double high) {
+        this.high = high;
+    }
+
+    public Double getOpen() {
+        return open;
+    }
+
+    public void setOpen(Double open) {
+        this.open = open;
+    }
+
+    public Double getClose() {
+        return close;
+    }
+
+    public void setClose(Double close) {
+        this.close = close;
+    }
+
+    public Double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Double volume) {
+        this.volume = volume;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Long getInstrumentId() {
+        return instrumentId;
+    }
+
+    public void setInstrumentId(Long instrumentId) {
+        this.instrumentId = instrumentId;
+    }
+
+    public Long getMarketId() {
+        return marketId;
+    }
+
+    public void setMarketId(Long marketId) {
+        this.marketId = marketId;
+    }
+
+    @Override
+    public String toString() {
+        return "DataValueMarket{" +
+                "bid=" + bid +
+                ", ask=" + ask +
+                ", last=" + last +
+                ", low=" + low +
+                ", high=" + high +
+                ", open=" + open +
+                ", close=" + close +
+                ", volume=" + volume +
+                ", dateTime=" + dateTime +
+                ", instrumentId=" + instrumentId +
+                ", marketId=" + marketId +
+                '}';
+    }
 }
 
