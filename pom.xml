@@ -17,7 +17,6 @@ IMPORTANTE CONSIDERAR:
         <version>0.0.2-2023</version>
     </parent>
 
-    <groupId>com.prx.commons</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX Commons components</name>
     <version>0.0.2-2023</version>
