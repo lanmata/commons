@@ -170,7 +170,7 @@ IMPORTANTE CONSIDERAR:
         <repository>
             <id>repsy</id>
             <name>My Private Maven Repository on Repsy</name>
-            <url>https://repo.repsy.io/mvn/lmata/1$Pormenos</url>
+            <url>https://repo.repsy.io/mvn/lmata/prx</url>
         </repository>
         <repository>
             <id>maven_central</id>
