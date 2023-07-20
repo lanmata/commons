@@ -80,7 +80,6 @@
 	<rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition" />
 	<rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators" />
 	<rule ref="category/java/errorprone.xml/AvoidUsingOctalValues" />
-	<rule ref="category/java/errorprone.xml/BadComparison" />
 	<rule ref="category/java/errorprone.xml/BrokenNullCheck" />
 	<rule ref="category/java/errorprone.xml/CheckSkipResult" />
 	<rule ref="category/java/errorprone.xml/ClassCastExceptionWithToArray" />
@@ -97,7 +96,6 @@
 	<rule ref="category/java/errorprone.xml/InstantiationToGetClass" />
 	<rule ref="category/java/errorprone.xml/JumbledIncrementer" />
 	<rule ref="category/java/errorprone.xml/MisplacedNullCheck" />
-	<rule ref="category/java/errorprone.xml/MissingBreakInSwitch" />
 	<rule ref="category/java/errorprone.xml/MissingStaticMethodInNonInstantiatableClass" />
 	<rule ref="category/java/errorprone.xml/NonCaseLabelInSwitchStatement" />
 	<rule ref="category/java/errorprone.xml/NonStaticInitializer" />
