@@ -26,7 +26,7 @@ import java.io.Serializable;
  */
 @JsonNaming
 public class ContactType implements Serializable {
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private Boolean active;
@@ -38,11 +38,11 @@ public class ContactType implements Serializable {
         //Default constructor
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -73,8 +73,8 @@ public class ContactType implements Serializable {
     @Override
     public String toString() {
         return "ContactType{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "id='" + id +
+                "', name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", active=" + active +
                 '}';

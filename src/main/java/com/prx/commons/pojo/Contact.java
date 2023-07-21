@@ -25,7 +25,7 @@ import java.io.Serializable;
 @JsonPropertyOrder({"id", "content", "contactType", "person", "active"})
 public class Contact implements Serializable {
 
-    private Integer id;
+    private String id;
     private String content;
     private ContactType contactType;
     private Person person;
@@ -35,7 +35,7 @@ public class Contact implements Serializable {
         //Default constructor
     }
 
-    public Integer getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -55,7 +55,7 @@ public class Contact implements Serializable {
         return this.active;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -78,8 +78,8 @@ public class Contact implements Serializable {
     @Override
     public String toString() {
         return "Contact{" +
-                "id=" + id +
-                ", content='" + content + '\'' +
+                "id='" + id +
+                "', content='" + content + '\'' +
                 ", contactType=" + contactType +
                 ", person=" + person +
                 ", active=" + active +

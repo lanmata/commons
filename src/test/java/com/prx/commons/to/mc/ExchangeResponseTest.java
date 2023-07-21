@@ -14,9 +14,14 @@
 package com.prx.commons.to.mc;
 
 import com.prx.commons.pojo.Exchange;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -27,8 +32,38 @@ import org.junit.jupiter.api.Test;
  */
 class ExchangeResponseTest {
 
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link ExchangeResponse}
+     *   <li>{@link ExchangeResponse#setExchange(Exchange)}
+     *   <li>{@link ExchangeResponse#toString()}
+     *   <li>{@link ExchangeResponse#getExchange()}
+     * </ul>
+     */
     @Test
-    void testGetterAndSetter(){
+    void testConstructor() {
+        ExchangeResponse actualExchangeResponse = new ExchangeResponse();
+        Exchange exchange = new Exchange();
+        exchange.setActive(true);
+        exchange.setDescription("The characteristics of someone or something");
+        exchange.setHeadquarters("Headquarters");
+        exchange.setId(1L);
+        exchange.setInstruments(new ArrayList<>());
+        exchange.setName("Name");
+        exchange.setTimeZone("UTC");
+        actualExchangeResponse.setExchange(exchange);
+        String actualToStringResult = actualExchangeResponse.toString();
+        assertSame(exchange, actualExchangeResponse.getExchange());
+        assertEquals(
+                "ExchangeResponse{exchange={\"id\":1,\"name\":\"Name\",\"description\":\"The characteristics of someone or"
+                        + " something\",\"timeZone\":\"UTC\",\"headquarters\":\"Headquarters\",\"active\":true,\"instruments\":[]}}",
+                actualToStringResult);
+    }
+
+    @Test
+    void testGetterAndSetter() {
         final var exchangeResponse = new ExchangeResponse();
         final var exchange = new Exchange();
 
@@ -46,14 +81,14 @@ class ExchangeResponseTest {
         exchangeResponse.setMessage("Éxito");
 
         assertAll("Getters And Setters",
-            ()-> assertNotNull(exchangeResponse.getExchange()),
-            ()-> assertNotNull(exchangeResponse.getCode()),
-            ()-> assertNotNull(exchangeResponse.getDateTime()),
-            ()-> assertNotNull(exchangeResponse.getMessage()),
-            ()-> assertNotNull(exchangeResponse.toString()),
-            ()-> assertNotEquals(1, exchangeResponse.hashCode()),
-            ()-> assertNotEquals(new ExchangeResponse(), exchangeResponse)
-                 );
+                () -> assertNotNull(exchangeResponse.getExchange()),
+                () -> assertNotNull(exchangeResponse.getCode()),
+                () -> assertNotNull(exchangeResponse.getDateTime()),
+                () -> assertNotNull(exchangeResponse.getMessage()),
+                () -> assertNotNull(exchangeResponse.toString()),
+                () -> assertNotEquals(1, exchangeResponse.hashCode()),
+                () -> assertNotEquals(new ExchangeResponse(), exchangeResponse)
+        );
     }
 
 }

@@ -16,6 +16,7 @@ package com.prx.commons.pojo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * MessageActivityTest.
@@ -26,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MessageActivityTest {
 
     @Test
-    void gettersAndSetters(){
+    void gettersAndSetters() {
         final var messageActivity = new MessageActivity<User>();
 
         messageActivity.setCode(200);
@@ -34,13 +35,29 @@ class MessageActivityTest {
         messageActivity.setObjectResponse(new User());
 
         assertAll("Test Getters And Setters",
-            () -> assertNotNull(messageActivity.getCode()),
-            () -> assertNotNull(messageActivity.getMessage()),
-            () -> assertNotNull(messageActivity.getObjectResponse()),
-            () -> assertNotEquals(1, messageActivity.hashCode()),
-            () -> assertNotEquals(new MessageActivity<User>(), messageActivity),
-            () -> assertNotNull(messageActivity.toString())
-                 );
+                () -> assertNotNull(messageActivity.getCode()),
+                () -> assertNotNull(messageActivity.getMessage()),
+                () -> assertNotNull(messageActivity.getObjectResponse()),
+                () -> assertNotEquals(1, messageActivity.hashCode()),
+                () -> assertNotEquals(new MessageActivity<User>(), messageActivity),
+                () -> assertNotNull(messageActivity.toString())
+        );
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link MessageActivity}
+     *   <li>{@link MessageActivity#setObjectResponse(Object)}
+     *   <li>{@link MessageActivity#toString()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        MessageActivity<Object> actualMessageActivity = new MessageActivity<>();
+        actualMessageActivity.setObjectResponse("Object Response");
+        assertEquals("MessageActivity{objectResponse=Object Response}", actualMessageActivity.toString());
     }
 
 }

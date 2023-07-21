@@ -14,6 +14,8 @@
 
 package com.prx.commons.enums.keys;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +35,19 @@ class SizeKeyTest {
             Assertions.assertTrue(Arrays.asList(SizeKey.values()).contains(tp));
             Assertions.assertNotNull(tp.toString());
         }
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>{@link SizeKey#valueOf(String)}
+     *   <li>{@link SizeKey#toString()}
+     * </ul>
+     */
+    @Test
+    void testValueOf() {
+        assertEquals("b", SizeKey.valueOf("BYTES").toString());
     }
 
 }

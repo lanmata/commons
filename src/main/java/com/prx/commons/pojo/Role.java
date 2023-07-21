@@ -26,7 +26,7 @@ import java.util.List;
  */
 @JsonNaming
 public class Role implements Serializable {
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private List<Feature> features;
@@ -39,7 +39,7 @@ public class Role implements Serializable {
         //Default constructor.
     }
 
-    public Long getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -59,7 +59,7 @@ public class Role implements Serializable {
         return this.active;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -82,8 +82,8 @@ public class Role implements Serializable {
     @Override
     public String toString() {
         return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "id='" + id +
+                "', name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", features=" + features +
                 ", active=" + active +

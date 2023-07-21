@@ -14,8 +14,11 @@
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -26,8 +29,41 @@ import org.junit.jupiter.api.Test;
  */
 class ActiveTypeTest {
 
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link ActiveType}
+     *   <li>{@link ActiveType#setActive(Boolean)}
+     *   <li>{@link ActiveType#setDescription(String)}
+     *   <li>{@link ActiveType#setId(Long)}
+     *   <li>{@link ActiveType#setName(String)}
+     *   <li>{@link ActiveType#toString()}
+     *   <li>{@link ActiveType#getActive()}
+     *   <li>{@link ActiveType#getDescription()}
+     *   <li>{@link ActiveType#getId()}
+     *   <li>{@link ActiveType#getName()}
+     * </ul>
+     */
     @Test
-    void testGettersAndSetters(){
+    void testConstructor() {
+        ActiveType actualActiveType = new ActiveType();
+        actualActiveType.setActive(true);
+        actualActiveType.setDescription("The characteristics of someone or something");
+        actualActiveType.setId(1L);
+        actualActiveType.setName("Name");
+        String actualToStringResult = actualActiveType.toString();
+        assertTrue(actualActiveType.getActive());
+        assertEquals("The characteristics of someone or something", actualActiveType.getDescription());
+        assertEquals(1L, actualActiveType.getId().longValue());
+        assertEquals("Name", actualActiveType.getName());
+        assertEquals(
+                "ActiveType{id=1, name='Name', description='The characteristics of someone or something'," + " active=true}",
+                actualToStringResult);
+    }
+
+    @Test
+    void testGettersAndSetters() {
         final var activeType = new ActiveType();
 
         activeType.setActive(true);
@@ -36,14 +72,14 @@ class ActiveTypeTest {
         activeType.setName("Nombre de activo");
 
         assertAll("Getters And Setters",
-            () -> assertNotNull(activeType.getActive()),
-            () -> assertNotNull(activeType.getDescription()),
-            () -> assertNotNull(activeType.getId()),
-            () -> assertNotNull(activeType.getName()),
-            () -> assertNotNull(activeType.toString()),
-            () -> assertNotEquals(1, activeType.hashCode()),
-            () -> assertNotEquals(new ActiveType(), activeType)
-                 );
+                () -> assertNotNull(activeType.getActive()),
+                () -> assertNotNull(activeType.getDescription()),
+                () -> assertNotNull(activeType.getId()),
+                () -> assertNotNull(activeType.getName()),
+                () -> assertNotNull(activeType.toString()),
+                () -> assertNotEquals(1, activeType.hashCode()),
+                () -> assertNotEquals(new ActiveType(), activeType)
+        );
     }
 
 }

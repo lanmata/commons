@@ -17,9 +17,14 @@ import com.prx.commons.pojo.ActiveType;
 import com.prx.commons.pojo.Contact;
 import com.prx.commons.pojo.ContactType;
 import com.prx.commons.pojo.Person;
+
 import java.lang.reflect.InvocationTargetException;
+
 import org.junit.jupiter.api.Assertions;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -35,6 +40,18 @@ class JsonUtilTest {
         final var constructor = JsonUtil.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         Assertions.assertThrows(InvocationTargetException.class, constructor::newInstance);
+    }
+
+    /**
+     * Method under test: {@link JsonUtil#toJson(Object)}
+     */
+    @Test
+    void testToJson() {
+        assertEquals("\"Obj Source\"", JsonUtil.toJson("Obj Source"));
+        assertEquals("null", JsonUtil.toJson(null));
+        assertEquals("\"42\"", JsonUtil.toJson("42"));
+        assertEquals("42", JsonUtil.toJson(42));
+        assertEquals("\"\"", JsonUtil.toJson(""));
     }
 
     @Test

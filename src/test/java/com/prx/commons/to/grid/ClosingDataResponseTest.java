@@ -14,6 +14,11 @@
 package com.prx.commons.to.grid;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -27,6 +32,26 @@ import java.util.ArrayList;
  * @version 1.0.0, 01-10-2020
  */
 class ClosingDataResponseTest {
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link ClosingDataResponse}
+     *   <li>{@link ClosingDataResponse#setList(List)}
+     *   <li>{@link ClosingDataResponse#toString()}
+     *   <li>{@link ClosingDataResponse#getList()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        ClosingDataResponse actualClosingDataResponse = new ClosingDataResponse();
+        ArrayList<DataValueMarketTO> list = new ArrayList<>();
+        actualClosingDataResponse.setList(list);
+        String actualToStringResult = actualClosingDataResponse.toString();
+        assertSame(list, actualClosingDataResponse.getList());
+        assertEquals("ClosingDataResponse{list=[]}", actualToStringResult);
+    }
 
     @Test
     void testGettersAndSetters() {

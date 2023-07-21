@@ -14,6 +14,9 @@
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -24,22 +27,54 @@ import org.junit.jupiter.api.Test;
  */
 class ContactTypeTest {
 
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link ContactType}
+     *   <li>{@link ContactType#setActive(Boolean)}
+     *   <li>{@link ContactType#setDescription(String)}
+     *   <li>{@link ContactType#setId(String)}
+     *   <li>{@link ContactType#setName(String)}
+     *   <li>{@link ContactType#toString()}
+     *   <li>{@link ContactType#getActive()}
+     *   <li>{@link ContactType#getDescription()}
+     *   <li>{@link ContactType#getId()}
+     *   <li>{@link ContactType#getName()}
+     * </ul>
+     */
     @Test
-    void testGettersAndSetters(){
+    void testConstructor() {
+        ContactType actualContactType = new ContactType();
+        actualContactType.setActive(true);
+        actualContactType.setDescription("The characteristics of someone or something");
+        actualContactType.setId("42");
+        actualContactType.setName("Name");
+        String actualToStringResult = actualContactType.toString();
+        assertTrue(actualContactType.getActive());
+        assertEquals("The characteristics of someone or something", actualContactType.getDescription());
+        assertEquals("42", actualContactType.getId());
+        assertEquals("Name", actualContactType.getName());
+        assertEquals("ContactType{id='42', name='Name', description='The characteristics of someone or something',"
+                + " active=true}", actualToStringResult);
+    }
+
+    @Test
+    void testGettersAndSetters() {
         var contactType = new ContactType();
 
-        contactType.setId(1L);
+        contactType.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         contactType.setName("Tipo de contacto");
         contactType.setDescription("Descripción tipo de contacto");
         contactType.setActive(true);
         assertAll("Getters And Setters",
-            () -> assertNotNull(contactType.getId()),
-            () -> assertNotNull(contactType.getName()),
-            () -> assertNotNull(contactType.getActive()),
-            () -> assertNotNull(contactType.getDescription()),
-            () -> assertNotNull(contactType.toString()),
-            () -> assertNotEquals(1, contactType.hashCode()),
-            () -> assertNotEquals(new ContactType(), contactType)
+                () -> assertNotNull(contactType.getId()),
+                () -> assertNotNull(contactType.getName()),
+                () -> assertNotNull(contactType.getActive()),
+                () -> assertNotNull(contactType.getDescription()),
+                () -> assertNotNull(contactType.toString()),
+                () -> assertNotEquals(1, contactType.hashCode()),
+                () -> assertNotEquals(new ContactType(), contactType)
         );
     }
 

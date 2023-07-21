@@ -17,10 +17,13 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -30,6 +33,17 @@ import org.junit.jupiter.api.Test;
  * @version 1.0.0, 30-09-2020
  */
 class HubResponseTest {
+
+    /**
+     * Method under test: default or parameterless constructor of {@link HubResponse}
+     */
+    @Test
+    void testConstructor() {
+        HubResponse actualHubResponse = new HubResponse();
+        assertNull(actualHubResponse.getCode());
+        assertNull(actualHubResponse.getMessage());
+        assertNull(actualHubResponse.getDateTime());
+    }
 
     @Test
     void testGettersAndSetters() {
@@ -41,12 +55,12 @@ class HubResponseTest {
         hubResponse.setMessage("Mensaje de respuesta");
 
         assertAll("Test para Getters And Setters",
-            () -> assertNotNull(hubResponse.getCode()),
-            () -> assertNotNull(hubResponse.getMessage()),
-            () -> assertNotNull(hubResponse.getDateTime()),
-            () -> assertNotEquals(-1,hubResponse.hashCode()),
-            () -> assertNotNull(hubResponse.toString())
-                 );
+                () -> assertNotNull(hubResponse.getCode()),
+                () -> assertNotNull(hubResponse.getMessage()),
+                () -> assertNotNull(hubResponse.getDateTime()),
+                () -> assertNotEquals(-1, hubResponse.hashCode()),
+                () -> assertNotNull(hubResponse.toString())
+        );
     }
 
 }

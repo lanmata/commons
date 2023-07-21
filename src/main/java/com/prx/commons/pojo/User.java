@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class User implements Serializable {
     
-    private Long id;
+    private String id;
     private String alias;
     private String password;
     private boolean active;
@@ -37,7 +37,7 @@ public class User implements Serializable {
         //Default constructor.
     }
 
-    public Long getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -61,7 +61,7 @@ public class User implements Serializable {
         return this.roles;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -88,8 +88,8 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", alias='" + alias + '\'' +
+                "id='" + id +
+                "', alias='" + alias + '\'' +
                 ", password='" + password + '\'' +
                 ", active=" + active +
                 ", person=" + person +
