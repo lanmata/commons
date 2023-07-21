@@ -14,7 +14,16 @@
 package com.prx.commons.exception;
 
 import com.prx.commons.enums.keys.FailCode;
+import com.prx.commons.enums.types.MessageType;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -26,30 +35,120 @@ import org.junit.jupiter.api.Test;
  */
 class StandardExceptionTest {
 
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>{@link StandardException#StandardException(MessageType)}
+     *   <li>{@link StandardException#getApp()}
+     * </ul>
+     */
     @Test
-    void testStandarException(){
-        assertThrows(StandardException.class, () -> {throw new StandardException(FailCode.FORBIDDEN);});
+    void testConstructor() {
+        assertEquals("NO-DEF", (new StandardException(null)).getApp());
+        assertEquals("App", (new StandardException("App", null)).getApp());
+    }
+
+    /**
+     * Method under test: {@link StandardException#StandardException(MessageType, Throwable)}
+     */
+    @Test
+    void testConstructor2() {
+        MessageType messageType = mock(MessageType.class);
+        StandardException actualStandardException = new StandardException(messageType, new Throwable());
+
+        assertEquals("NO-DEF", actualStandardException.getApp());
+        assertNull(actualStandardException.getStatus());
+    }
+
+    /**
+     * Method under test: {@link StandardException#StandardException(String, MessageType, Throwable)}
+     */
+    @Test
+    void testConstructor3() {
+        MessageType messageType = mock(MessageType.class);
+        StandardException actualStandardException = new StandardException("App", messageType, new Throwable());
+
+        assertEquals("App", actualStandardException.getApp());
+        assertNull(actualStandardException.getStatus());
+    }
+
+    /**
+     * Method under test: {@link StandardException#getCode()}
+     */
+    @Test
+    void testGetCode() {
+        MessageType messageType = mock(MessageType.class);
+        when(messageType.getCode()).thenReturn(1);
+        assertEquals(1, (new StandardException(messageType)).getCode());
+        verify(messageType).getCode();
+    }
+
+    /**
+     * Method under test: {@link StandardException#getCode()}
+     */
+    @Test
+    void testGetCode2() {
+        MessageType messageType = mock(MessageType.class);
+        when(messageType.getCode()).thenThrow(new StandardException(mock(MessageType.class)));
+        assertThrows(StandardException.class, () -> (new StandardException(messageType, new Throwable())).getCode());
+        verify(messageType).getCode();
+    }
+
+    /**
+     * Method under test: {@link StandardException#getStatus()}
+     */
+    @Test
+    void testGetStatus() {
+        MessageType messageType = mock(MessageType.class);
+        when(messageType.getStatus()).thenReturn("Status");
+        assertEquals("Status", (new StandardException(messageType)).getStatus());
+        verify(messageType).getStatus();
+    }
+
+    /**
+     * Method under test: {@link StandardException#getStatus()}
+     */
+    @Test
+    void testGetStatus2() {
+        MessageType messageType = mock(MessageType.class);
+        when(messageType.getStatus()).thenThrow(new StandardException(mock(MessageType.class)));
+        assertThrows(StandardException.class, () -> (new StandardException(messageType, new Throwable())).getStatus());
+        verify(messageType).getStatus();
     }
 
     @Test
-    void testStandaloneException2(){
-        assertThrows(StandardException.class, () -> {throw new StandardException("Commons", FailCode.FORBIDDEN);});
+    void testStandarException() {
+        assertThrows(StandardException.class, () -> {
+            throw new StandardException(FailCode.FORBIDDEN);
+        });
     }
 
     @Test
-    void testStandaloneException3(){
+    void testStandaloneException2() {
+        assertThrows(StandardException.class, () -> {
+            throw new StandardException("Commons", FailCode.FORBIDDEN);
+        });
+    }
+
+    @Test
+    void testStandaloneException3() {
         final var exception = new Exception();
-        assertThrows(StandardException.class, () -> {throw new StandardException(FailCode.FORBIDDEN, exception);});
+        assertThrows(StandardException.class, () -> {
+            throw new StandardException(FailCode.FORBIDDEN, exception);
+        });
     }
 
     @Test
-    void testStandaloneException4(){
+    void testStandaloneException4() {
         final var exception = new Exception();
-        assertThrows(StandardException.class, () -> {throw new StandardException("Commons", FailCode.FORBIDDEN, exception);});
+        assertThrows(StandardException.class, () -> {
+            throw new StandardException("Commons", FailCode.FORBIDDEN, exception);
+        });
     }
 
     @Test
-    void testGetters(){
+    void testGetters() {
         final var standarException = new StandardException(FailCode.UNAUTHORIZED);
         assertNotNull(standarException.getApp());
         assertNotEquals(-1, standarException.getCode());

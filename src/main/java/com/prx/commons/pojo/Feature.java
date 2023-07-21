@@ -25,7 +25,7 @@ import java.io.Serializable;
  */
 @JsonNaming
 public class Feature implements Serializable {
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private Boolean active;
@@ -37,7 +37,7 @@ public class Feature implements Serializable {
         //Default constructor.
     }
 
-    public Long getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -53,7 +53,7 @@ public class Feature implements Serializable {
         return this.active;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -72,8 +72,8 @@ public class Feature implements Serializable {
     @Override
     public String toString() {
         return "Feature{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "id='" + id +
+                "', name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", active=" + active +
                 '}';

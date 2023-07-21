@@ -26,7 +26,7 @@ import java.time.LocalDate;
  */
 @JsonPropertyOrder({"id", "number", "expirationDate", "identificationType", "person"})
 public class IdentificationDocument implements Serializable {
-    private int id;
+    private String id;
     private String number;
     private LocalDate expirationDate;
     private int identificationType;
@@ -39,7 +39,7 @@ public class IdentificationDocument implements Serializable {
         //Default constructor.
     }
 
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -59,7 +59,7 @@ public class IdentificationDocument implements Serializable {
         return this.person;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

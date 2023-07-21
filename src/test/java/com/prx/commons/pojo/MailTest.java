@@ -14,6 +14,11 @@
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -28,7 +33,7 @@ import java.util.HashMap;
 class MailTest {
 
     @Test
-    void gettersAndSetters(){
+    void gettersAndSetters() {
         final var mail = new Mail();
 
         mail.setContent("");
@@ -38,15 +43,52 @@ class MailTest {
         mail.setTo("usuario@dominio.ext, usuario2@dominio.ext");
 
         assertAll("Test Getters and Setters",
-            () -> assertNotNull(mail.getFrom()),
-            () -> assertNotNull(mail.getModel()),
-            () -> assertNotNull(mail.getContent()),
-            () -> assertNotNull(mail.getSubject()),
-            () -> assertNotNull(mail.getTo()),
-            () -> assertNotNull(mail.toString()),
-            () -> assertNotEquals(1, mail.hashCode()),
-            () -> assertNotEquals(new Mail(), mail)
-                 );
+                () -> assertNotNull(mail.getFrom()),
+                () -> assertNotNull(mail.getModel()),
+                () -> assertNotNull(mail.getContent()),
+                () -> assertNotNull(mail.getSubject()),
+                () -> assertNotNull(mail.getTo()),
+                () -> assertNotNull(mail.toString()),
+                () -> assertNotEquals(1, mail.hashCode()),
+                () -> assertNotEquals(new Mail(), mail)
+        );
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link Mail}
+     *   <li>{@link Mail#setContent(String)}
+     *   <li>{@link Mail#setFrom(String)}
+     *   <li>{@link Mail#setModel(Map)}
+     *   <li>{@link Mail#setSubject(String)}
+     *   <li>{@link Mail#setTo(String)}
+     *   <li>{@link Mail#toString()}
+     *   <li>{@link Mail#getContent()}
+     *   <li>{@link Mail#getFrom()}
+     *   <li>{@link Mail#getModel()}
+     *   <li>{@link Mail#getSubject()}
+     *   <li>{@link Mail#getTo()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        Mail actualMail = new Mail();
+        actualMail.setContent("Not all who wander are lost");
+        actualMail.setFrom("jane.doe@example.org");
+        HashMap<String, Object> model = new HashMap<>();
+        actualMail.setModel(model);
+        actualMail.setSubject("Hello from the Dreaming Spires");
+        actualMail.setTo("alice.liddell@example.org");
+        String actualToStringResult = actualMail.toString();
+        assertEquals("Not all who wander are lost", actualMail.getContent());
+        assertEquals("jane.doe@example.org", actualMail.getFrom());
+        assertSame(model, actualMail.getModel());
+        assertEquals("Hello from the Dreaming Spires", actualMail.getSubject());
+        assertEquals("alice.liddell@example.org", actualMail.getTo());
+        assertEquals("Mail{from='jane.doe@example.org', to='alice.liddell@example.org', subject='Hello from the Dreaming"
+                + " Spires', content='Not all who wander are lost', model={}}", actualToStringResult);
     }
 
 }

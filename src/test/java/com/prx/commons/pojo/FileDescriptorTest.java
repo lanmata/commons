@@ -14,8 +14,12 @@
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
+import com.prx.commons.enums.keys.SizeKey;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -27,7 +31,7 @@ import org.junit.jupiter.api.Test;
 class FileDescriptorTest {
 
     @Test
-    void gettersAndSetters(){
+    void gettersAndSetters() {
         final var fileDescriptor = new FileDescriptor();
 
         fileDescriptor.setName("Nombre");
@@ -36,14 +40,48 @@ class FileDescriptorTest {
         fileDescriptor.setType("LS");
 
         assertAll("Test Getters And Setters",
-            () -> assertNotNull(fileDescriptor.getName()),
-            () -> assertNotNull(fileDescriptor.getPath()),
-            () -> assertNotNull(fileDescriptor.getSizeDescriptor()),
-            () -> assertNotNull(fileDescriptor.getType()),
-            () -> assertNotNull(fileDescriptor.toString()),
-            () -> assertNotEquals(1, fileDescriptor.hashCode()),
-            () -> assertNotEquals(new FileDescriptor(), fileDescriptor)
-                 );
+                () -> assertNotNull(fileDescriptor.getName()),
+                () -> assertNotNull(fileDescriptor.getPath()),
+                () -> assertNotNull(fileDescriptor.getSizeDescriptor()),
+                () -> assertNotNull(fileDescriptor.getType()),
+                () -> assertNotNull(fileDescriptor.toString()),
+                () -> assertNotEquals(1, fileDescriptor.hashCode()),
+                () -> assertNotEquals(new FileDescriptor(), fileDescriptor)
+        );
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link FileDescriptor}
+     *   <li>{@link FileDescriptor#setName(String)}
+     *   <li>{@link FileDescriptor#setPath(String)}
+     *   <li>{@link FileDescriptor#setSizeDescriptor(SizeDescriptor)}
+     *   <li>{@link FileDescriptor#setType(String)}
+     *   <li>{@link FileDescriptor#toString()}
+     *   <li>{@link FileDescriptor#getName()}
+     *   <li>{@link FileDescriptor#getPath()}
+     *   <li>{@link FileDescriptor#getSizeDescriptor()}
+     *   <li>{@link FileDescriptor#getType()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        FileDescriptor actualFileDescriptor = new FileDescriptor();
+        actualFileDescriptor.setName("Name");
+        actualFileDescriptor.setPath("Path");
+        SizeDescriptor sizeDescriptor = new SizeDescriptor(SizeKey.BYTES, 10.0d);
+
+        actualFileDescriptor.setSizeDescriptor(sizeDescriptor);
+        actualFileDescriptor.setType("Type");
+        String actualToStringResult = actualFileDescriptor.toString();
+        assertEquals("Name", actualFileDescriptor.getName());
+        assertEquals("Path", actualFileDescriptor.getPath());
+        assertSame(sizeDescriptor, actualFileDescriptor.getSizeDescriptor());
+        assertEquals("Type", actualFileDescriptor.getType());
+        assertEquals("FileDescriptor{name='Name', sizeDescriptor=SizeDescriptor{sizeKey=b, size=10.0}, type='Type',"
+                + " path='Path'}", actualToStringResult);
     }
 
 }

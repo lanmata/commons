@@ -15,6 +15,8 @@ package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -26,12 +28,30 @@ import org.junit.jupiter.api.Test;
 class SocialContactTest {
 
     @Test
-    void gettersAndSetters(){
+    void gettersAndSetters() {
         final var socialContact = new SocialContact();
         assertNotNull(socialContact.toString());
         assertNotEquals(1, socialContact.hashCode());
         assertNotEquals(new SocialContact(), socialContact);
 
+    }
+
+    /**
+     * Method under test: default or parameterless constructor of {@link SocialContact}
+     */
+    @Test
+    @Disabled("TODO: Complete this test")
+    void testConstructor() {
+        // TODO: Complete this test.
+        //   Reason: T005 Trivial constructor.
+        //   See https://diff.blue/T005
+
+        // Arrange and Act
+        // TODO: Populate arranged inputs
+        SocialContact actualSocialContact = new SocialContact();
+
+        // Assert
+        // TODO: Add assertions on result
     }
 
 }

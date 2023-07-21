@@ -14,9 +14,11 @@
 package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -28,7 +30,7 @@ import org.junit.jupiter.api.Test;
 class LocalCoinTest {
 
     @Test
-    void gettersAndSetters(){
+    void gettersAndSetters() {
         final var localCoin = new LocalCoin();
 
         localCoin.setActive(true);
@@ -37,15 +39,46 @@ class LocalCoinTest {
         localCoin.setSymbol("LC");
 
         assertAll("Test Getters ANd Setters",
-            () -> assertNotNull(localCoin.getId()),
-            () -> assertTrue(localCoin.getActive()),
-            () -> assertNotNull(localCoin.getName()),
-            () -> assertNotNull(localCoin.toString()),
-            () -> assertNotNull(localCoin.getActive()),
-            () -> assertNotNull(localCoin.getSymbol()),
-            () -> assertNotEquals(1, localCoin.hashCode()),
-            () -> assertNotEquals(new LocalCoin(), localCoin)
-                 );
+                () -> assertNotNull(localCoin.getId()),
+                () -> assertTrue(localCoin.getActive()),
+                () -> assertNotNull(localCoin.getName()),
+                () -> assertNotNull(localCoin.toString()),
+                () -> assertNotNull(localCoin.getActive()),
+                () -> assertNotNull(localCoin.getSymbol()),
+                () -> assertNotEquals(1, localCoin.hashCode()),
+                () -> assertNotEquals(new LocalCoin(), localCoin)
+        );
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link LocalCoin}
+     *   <li>{@link LocalCoin#setActive(Boolean)}
+     *   <li>{@link LocalCoin#setId(Integer)}
+     *   <li>{@link LocalCoin#setName(String)}
+     *   <li>{@link LocalCoin#setSymbol(String)}
+     *   <li>{@link LocalCoin#toString()}
+     *   <li>{@link LocalCoin#getActive()}
+     *   <li>{@link LocalCoin#getId()}
+     *   <li>{@link LocalCoin#getName()}
+     *   <li>{@link LocalCoin#getSymbol()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        LocalCoin actualLocalCoin = new LocalCoin();
+        actualLocalCoin.setActive(true);
+        actualLocalCoin.setId(1);
+        actualLocalCoin.setName("Name");
+        actualLocalCoin.setSymbol("Symbol");
+        String actualToStringResult = actualLocalCoin.toString();
+        assertTrue(actualLocalCoin.getActive());
+        assertEquals(1, actualLocalCoin.getId().intValue());
+        assertEquals("Name", actualLocalCoin.getName());
+        assertEquals("Symbol", actualLocalCoin.getSymbol());
+        assertEquals("LocalCoin{id=1, symbol='Symbol', name='Name', active=true}", actualToStringResult);
     }
 
 }

@@ -28,7 +28,7 @@ import java.time.LocalDate;
  */
 public class Person implements Serializable {
 
-    private long id;
+    private String id;
     @NotNull
     @Size(min = 2, max = 20)
     private String firstName;
@@ -48,7 +48,7 @@ public class Person implements Serializable {
         //Default constructor.
     }
 
-    public long getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -72,7 +72,7 @@ public class Person implements Serializable {
         return this.birthdate;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -100,8 +100,8 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+                "id='" + id +
+                "', firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
