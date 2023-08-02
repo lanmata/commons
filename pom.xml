@@ -12,9 +12,10 @@ IMPORTANTE CONSIDERAR:
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.prx</groupId>
-        <artifactId>prx-central</artifactId>
-        <version>0.0.2-2023</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>prx-commons</artifactId>
@@ -35,36 +36,40 @@ IMPORTANTE CONSIDERAR:
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
+        <!--        MAVEN-->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.plugin.javadoc.version>3.2.0</maven.plugin.javadoc.version>
+        <maven.plugin.jacoco.version>0.8.8</maven.plugin.jacoco.version>
+        <maven.plugin.pmd.version>3.19.0</maven.plugin.pmd.version>
+        <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
         <sonar.organization>prx-open</sonar.organization>
+        <!--        REPOSITORY-->
+        <repsy.account.user>lmata</repsy.account.user>
+        <repsy.account.password>1$Pormenos</repsy.account.password>
+        <!--        SPRING -->
+        <spring-core.version>6.0.6</spring-core.version>
+        <spring-boot.version>3.1.2</spring-boot.version>
+        <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <!--        Test Dependencies-->
+        <!--        JUnit 4.x-->
+        <junit-core.version>4.13.1</junit-core.version>
+        <!--        JUnit 5.x-->
+        <junit.jupiter.version>5.9.1</junit.jupiter.version>
+        <junit.jupiter.core.version>5.9.1</junit.jupiter.core.version>
+        <!--        Mockito-->
+        <mockserver.junit.jupiter.version>5.11.2</mockserver.junit.jupiter.version>
+        <mockito.junit.jupiter.version>4.8.0</mockito.junit.jupiter.version>
+        <mockito.version>4.8.0</mockito.version>
+        <sonar.organization>prx-open</sonar.organization>
+        <!--        Coverage and Sonar-->
+        <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.coverage.exclusions>
+        <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.exclusions>
+        <project.ruleset>${project.basedir}/ruleset.xml</project.ruleset>
     </properties>
 
     <dependencies>
-        <!-- START - Dependencias exclusivas -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson-annotations.version}</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>${jersey-client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-core</artifactId>
-            <version>${jersey-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-apache-client4</artifactId>
-            <version>${jersey-client.version}</version>
-        </dependency>
-        <!-- END - Dependencias exclusivas -->
-        <!-- START - Dependencias comunes -->
+        <!-- Commons dependencies -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -76,27 +81,18 @@ IMPORTANTE CONSIDERAR:
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <version>${spring-boot.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- END - Dependencias comunes -->
-
-        <!-- START - Documentation  Open API -->
+        <!-- Open API Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.7.0</version>
         </dependency>
-        <!-- END - Documentation  Open API -->
-
-        <!-- START - Dependencias para pruebas unitarias -->
+        <!-- Unit test dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -114,7 +110,6 @@ IMPORTANTE CONSIDERAR:
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-        <!-- END - Dependencias para pruebas unitarias -->
         <!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
         <dependency>
             <groupId>org.webjars</groupId>
@@ -143,7 +138,6 @@ IMPORTANTE CONSIDERAR:
             <artifactId>log4j-core</artifactId>
             <version>2.20.0</version>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -229,16 +223,11 @@ IMPORTANTE CONSIDERAR:
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven.plugin.pmd.version}</version>
                 <configuration>
-                    <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-                    <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <linkXRef>false</linkXRef>
                     <rulesets>
@@ -328,14 +317,4 @@ IMPORTANTE CONSIDERAR:
             </plugin>
         </plugins>
     </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>${maven.plugin.jxr.version}</version>
-            </plugin>
-        </plugins>
-    </reporting>
 </project>
