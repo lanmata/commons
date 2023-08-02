@@ -11,7 +11,6 @@ module com.prx.commons {
     exports com.prx.commons.rest;
     exports com.prx.commons.util;
     requires java.base;
-    requires jakarta.inject;
     requires jakarta.validation;
     requires jakarta.persistence;
     requires org.slf4j;
@@ -19,7 +18,6 @@ module com.prx.commons {
     requires spring.boot;
     requires spring.beans;
     requires spring.context;
-    requires spring.cloud.netflix.eureka.client;
     requires io.swagger.v3.oas.annotations;
     requires com.fasterxml.jackson.databind;
     requires org.apache.logging.log4j;
