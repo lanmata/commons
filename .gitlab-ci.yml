@@ -13,3 +13,29 @@ sonarcloud-check:
     - merge_requests
     - master
     - develop
+qodana:
+  image:
+    name: jetbrains/qodana-jvm-community:2024.1
+    entrypoint: [""]
+  cache:
+    - key: qodana-2024.1-$CI_DEFAULT_BRANCH-$CI_COMMIT_REF_SLUG
+      fallback_keys:
+        - qodana-2024.1-$CI_DEFAULT_BRANCH-
+        - qodana-2024.1-
+      paths:
+        - .qodana/cache
+  variables:
+    QODANA_TOKEN: $qodana_token
+  script:
+    - qodana --save-report --results-dir=$CI_PROJECT_DIR/.qodana/results
+      --cache-dir=$CI_PROJECT_DIR/.qodana/cache -s ci_settings.xml
+  artifacts:
+    paths:
+      - .qodana/results/
+    expose_as: 'Qodana report'
+    reports:
+      codequality: .qodana/results/gl-code-quality-report.json
+  only:
+    - merge_requests
+    - master
+    - develop
