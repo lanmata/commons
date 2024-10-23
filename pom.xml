@@ -13,12 +13,12 @@ IMPORTANTE CONSIDERAR:
     <groupId>com.prx</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX Commons components</name>
-    <version>0.0.2-2023</version>
+    <version>1.0.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
+        <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -40,7 +40,7 @@ IMPORTANTE CONSIDERAR:
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.plugin.javadoc.version>3.2.0</maven.plugin.javadoc.version>
-        <maven.plugin.jacoco.version>0.8.8</maven.plugin.jacoco.version>
+        <maven.plugin.jacoco.version>0.8.10</maven.plugin.jacoco.version>
         <maven.plugin.pmd.version>3.19.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
         <sonar.organization>prx-open</sonar.organization>
@@ -49,18 +49,18 @@ IMPORTANTE CONSIDERAR:
         <repsy.account.password>1$Pormenos</repsy.account.password>
         <!--        SPRING -->
         <spring-core.version>6.0.6</spring-core.version>
-        <spring-boot.version>3.1.2</spring-boot.version>
-        <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <spring-boot.version>3.3.4</spring-boot.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <!--        Test Dependencies-->
         <!--        JUnit 4.x-->
         <junit-core.version>4.13.1</junit-core.version>
         <!--        JUnit 5.x-->
-        <junit.jupiter.version>5.9.3</junit.jupiter.version>
+        <junit.jupiter.version>5.10.3</junit.jupiter.version>
         <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
         <!--        Mockito-->
         <mockserver.junit.jupiter.version>5.11.2</mockserver.junit.jupiter.version>
         <mockito.junit.jupiter.version>4.8.0</mockito.junit.jupiter.version>
-        <mockito.version>4.8.0</mockito.version>
+        <mockito.version>5.14.2</mockito.version>
         <sonar.organization>prx-open</sonar.organization>
         <!--        Coverage and Sonar-->
         <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.coverage.exclusions>
@@ -90,7 +90,7 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.7.0</version>
+            <version>1.8.0</version>
         </dependency>
         <!-- Unit test dependencies -->
         <dependency>
@@ -112,11 +112,17 @@ IMPORTANTE CONSIDERAR:
             <scope>test</scope>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator-core</artifactId>
-            <version>0.52</version>
+            <version>0.59</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -125,21 +131,11 @@ IMPORTANTE CONSIDERAR:
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.20.0</version>
+            <version>2.23.1</version>
         </dependency>
     </dependencies>
 
@@ -188,6 +184,11 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar
+                    </argLine>
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
@@ -195,6 +196,7 @@ IMPORTANTE CONSIDERAR:
                         <version>9.1</version>
                     </dependency>
                 </dependencies>
+                <version>3.2.5</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -300,7 +302,7 @@ IMPORTANTE CONSIDERAR:
                                         <limit>
                                             <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.4</minimum>
+                                            <minimum>0.8</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
