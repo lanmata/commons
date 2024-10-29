@@ -14,8 +14,6 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.util.JsonUtil;
-import lombok.NoArgsConstructor;
 
 /**
  *
@@ -24,11 +22,12 @@ import lombok.NoArgsConstructor;
  * @version 1.0.3, 29-09-2020
  */
 @JsonNaming
-@NoArgsConstructor
 public class SocialContact {
 
-    @Override
-    public String toString(){
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public SocialContact() {
+        //Default constructor.
     }
 }

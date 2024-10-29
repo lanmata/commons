@@ -24,20 +24,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-.idea/.gitignore
-.idea/PipelineViewerConfig.xml
-.idea/commons.iml
-.idea/compiler.xml
-.idea/encodings.xml
-.idea/jarRepositories.xml
-.idea/libraries/
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
+.idea/*
 prx-commons.iml
-target/classes/banner.txt
-target/generated-sources/
-target/maven-status/
-target/pmd.xml
-target/pmd/
-target/site/
+target/*

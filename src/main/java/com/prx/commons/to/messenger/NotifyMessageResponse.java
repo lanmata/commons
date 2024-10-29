@@ -13,14 +13,17 @@
 package com.prx.commons.to.messenger;
 
 import com.prx.commons.to.Response;
-import lombok.NoArgsConstructor;
 
 /**
- *
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@NoArgsConstructor
 public class NotifyMessageResponse extends Response {
 
+    /**
+     * Default constructor.
+     */
+    public NotifyMessageResponse() {
+        super();
+    }
 }

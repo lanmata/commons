@@ -14,10 +14,6 @@
 package com.prx.commons.pojo;
 
 import com.prx.commons.to.Response;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -28,9 +24,6 @@ import java.io.Serializable;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
  * @since 2019-11-27
  */
-@Setter
-@Getter
-@NoArgsConstructor
 public class MessageActivity <T> extends Response implements Serializable {
 
     /**
@@ -38,7 +31,25 @@ public class MessageActivity <T> extends Response implements Serializable {
      */
     private transient T objectResponse;
 
-    public String toString(){
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public MessageActivity() {
+        super();
+    }
+
+    public T getObjectResponse() {
+        return this.objectResponse;
+    }
+
+    public void setObjectResponse(T objectResponse) {
+        this.objectResponse = objectResponse;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageActivity{" +
+                "objectResponse=" + objectResponse +
+                '}';
     }
 }

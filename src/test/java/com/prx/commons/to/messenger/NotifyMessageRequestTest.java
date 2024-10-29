@@ -16,9 +16,15 @@ package com.prx.commons.to.messenger;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -29,8 +35,37 @@ import org.junit.jupiter.api.Test;
  */
 class NotifyMessageRequestTest {
 
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link NotifyMessageRequest}
+     *   <li>{@link NotifyMessageRequest#setCritical(Boolean)}
+     *   <li>{@link NotifyMessageRequest#setListDestiny(List)}
+     *   <li>{@link NotifyMessageRequest#setMessage(String)}
+     *   <li>{@link NotifyMessageRequest#toString()}
+     *   <li>{@link NotifyMessageRequest#getCritical()}
+     *   <li>{@link NotifyMessageRequest#getListDestiny()}
+     *   <li>{@link NotifyMessageRequest#getMessage()}
+     * </ul>
+     */
     @Test
-    void testGetterAndSetter(){
+    void testConstructor() {
+        NotifyMessageRequest actualNotifyMessageRequest = new NotifyMessageRequest();
+        actualNotifyMessageRequest.setCritical(true);
+        ArrayList<String> listDestiny = new ArrayList<>();
+        actualNotifyMessageRequest.setListDestiny(listDestiny);
+        actualNotifyMessageRequest.setMessage("Not all who wander are lost");
+        String actualToStringResult = actualNotifyMessageRequest.toString();
+        assertTrue(actualNotifyMessageRequest.getCritical());
+        assertSame(listDestiny, actualNotifyMessageRequest.getListDestiny());
+        assertEquals("Not all who wander are lost", actualNotifyMessageRequest.getMessage());
+        assertEquals("NotifyMessageRequest{message='Not all who wander are lost', listDestiny=[], critical=true}",
+                actualToStringResult);
+    }
+
+    @Test
+    void testGetterAndSetter() {
         final var notifyMessageRequest = new NotifyMessageRequest();
 
         notifyMessageRequest.setCritical(true);
@@ -41,15 +76,15 @@ class NotifyMessageRequestTest {
         notifyMessageRequest.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));
 
         assertAll("Getters And Setters",
-            () -> assertNotNull(notifyMessageRequest.getCritical()),
-            () -> assertNotNull(notifyMessageRequest.getListDestiny()),
-            () -> assertNotNull(notifyMessageRequest.getMessage()),
-            () -> assertNotNull(notifyMessageRequest.getAppName()),
-            () -> assertNotNull(notifyMessageRequest.getAppToken()),
-            () -> assertNotEquals(1,notifyMessageRequest.hashCode()),
-            () -> assertNotEquals(notifyMessageRequest,new NotifyMessageRequest()),
-            () -> assertNotNull(notifyMessageRequest.toString())
-                 );
+                () -> assertNotNull(notifyMessageRequest.getCritical()),
+                () -> assertNotNull(notifyMessageRequest.getListDestiny()),
+                () -> assertNotNull(notifyMessageRequest.getMessage()),
+                () -> assertNotNull(notifyMessageRequest.getAppName()),
+                () -> assertNotNull(notifyMessageRequest.getAppToken()),
+                () -> assertNotEquals(1, notifyMessageRequest.hashCode()),
+                () -> assertNotEquals(notifyMessageRequest, new NotifyMessageRequest()),
+                () -> assertNotNull(notifyMessageRequest.toString())
+        );
     }
 
 }

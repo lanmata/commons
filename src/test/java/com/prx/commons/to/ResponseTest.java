@@ -14,7 +14,12 @@
 package com.prx.commons.to;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
@@ -30,6 +35,35 @@ import java.time.ZoneOffset;
  */
 class ResponseTest {
 
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link Response}
+     *   <li>{@link Response#setCode(Integer)}
+     *   <li>{@link Response#setDateTime(LocalDateTime)}
+     *   <li>{@link Response#setMessage(String)}
+     *   <li>{@link Response#toString()}
+     *   <li>{@link Response#getCode()}
+     *   <li>{@link Response#getDateTime()}
+     *   <li>{@link Response#getMessage()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        Response actualResponse = new Response();
+        actualResponse.setCode(1);
+        LocalDateTime dateTime = LocalDate.of(1970, 1, 1).atStartOfDay();
+        actualResponse.setDateTime(dateTime);
+        actualResponse.setMessage("Not all who wander are lost");
+        String actualToStringResult = actualResponse.toString();
+        assertEquals(1, actualResponse.getCode().intValue());
+        assertSame(dateTime, actualResponse.getDateTime());
+        assertEquals("Not all who wander are lost", actualResponse.getMessage());
+        assertEquals("Response{dateTime=1970-01-01T00:00, code=1, message='Not all who wander are lost'}",
+                actualToStringResult);
+    }
+
     @Test
     void testGettersAndSetters() {
         final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
@@ -41,10 +75,10 @@ class ResponseTest {
         response.setDateTime(LocalDateTime.now(clock));
 
         assertAll("Getters And Setters",
-            () -> assertNotNull(response.getCode()),
-            () -> assertNotNull(response.getMessage()),
-            () -> assertNotNull(response.getDateTime())
-                 );
+                () -> assertNotNull(response.getCode()),
+                () -> assertNotNull(response.getMessage()),
+                () -> assertNotNull(response.getDateTime())
+        );
     }
 
 }

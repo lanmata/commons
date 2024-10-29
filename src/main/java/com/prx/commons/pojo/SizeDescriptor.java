@@ -15,23 +15,51 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.enums.keys.SizeKey;
-import com.prx.commons.util.JsonUtil;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
-@AllArgsConstructor
 public class SizeDescriptor {
 
     private SizeKey sizeKey;
     private double size;
 
-    public String toString(){
-        return JsonUtil.toJson(this);
+    /**
+     *
+     * @param sizeKey
+     * @param size
+     */
+    public SizeDescriptor(SizeKey sizeKey, double size) {
+        this.sizeKey = sizeKey;
+        this.size = size;
+    }
+
+    /**
+     * Default constructor.
+     */
+    public SizeDescriptor() {
+        //Default constructor.
+    }
+
+    public SizeKey getSizeKey() {
+        return this.sizeKey;
+    }
+
+    public double getSize() {
+        return this.size;
+    }
+
+    public void setSizeKey(SizeKey sizeKey) {
+        this.sizeKey = sizeKey;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "SizeDescriptor{" +
+                "sizeKey=" + sizeKey +
+                ", size=" + size +
+                '}';
     }
 }

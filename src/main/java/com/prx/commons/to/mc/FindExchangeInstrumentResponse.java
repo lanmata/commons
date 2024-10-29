@@ -15,28 +15,37 @@ package com.prx.commons.to.mc;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.pojo.ExchangeInstrument;
 import com.prx.commons.to.Response;
-import com.prx.commons.util.JsonUtil;
+
 import java.util.List;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
- *
- *
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 06-07-2019
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 public class FindExchangeInstrumentResponse extends Response {
 
     private List<ExchangeInstrument> list;
 
+    /**
+     * Default constructor.
+     */
+    public FindExchangeInstrumentResponse() {
+        super();
+    }
+
+    public List<ExchangeInstrument> getList() {
+        return list;
+    }
+
+    public void setList(List<ExchangeInstrument> list) {
+        this.list = list;
+    }
+
     @Override
-    public String toString(){
-        return JsonUtil.toJson(this);
+    public String toString() {
+        return "FindExchangeInstrumentResponse{" +
+                "list=" + list +
+                '}';
     }
 }

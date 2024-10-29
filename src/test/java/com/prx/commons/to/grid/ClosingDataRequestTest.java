@@ -14,14 +14,20 @@
 package com.prx.commons.to.grid;
 
 import com.prx.commons.pojo.DataValueMarket;
+
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -31,6 +37,26 @@ import org.junit.jupiter.api.Test;
  * @version 1.0.0, 30-09-2020
  */
 class ClosingDataRequestTest {
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link ClosingDataRequest}
+     *   <li>{@link ClosingDataRequest#setDataValueMarketList(List)}
+     *   <li>{@link ClosingDataRequest#toString()}
+     *   <li>{@link ClosingDataRequest#getDataValueMarketList()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        ClosingDataRequest actualClosingDataRequest = new ClosingDataRequest();
+        ArrayList<DataValueMarket> dataValueMarketList = new ArrayList<>();
+        actualClosingDataRequest.setDataValueMarketList(dataValueMarketList);
+        String actualToStringResult = actualClosingDataRequest.toString();
+        assertSame(dataValueMarketList, actualClosingDataRequest.getDataValueMarketList());
+        assertEquals("ClosingDataRequest{dataValueMarketList=[]}", actualToStringResult);
+    }
 
     @Test
     void testGettersAndSetters() {
@@ -59,14 +85,14 @@ class ClosingDataRequestTest {
         closingDataRequest.setDateTime(LocalDateTime.now(clock));
 
         assertAll("Getters And Setters",
-            () -> assertNotNull(closingDataRequest.getDateTime()),
-            () -> assertNotNull(closingDataRequest.getAppName()),
-            () -> assertNotNull(closingDataRequest.getAppToken()),
-            () -> assertNotNull(closingDataRequest.getDataValueMarketList()),
-            () -> assertNotNull(closingDataRequest.toString()),
-            () -> assertNotEquals(1, closingDataRequest.hashCode()),
-            () -> assertNotEquals(new ClosingDataRequest(), closingDataRequest)
-                 );
+                () -> assertNotNull(closingDataRequest.getDateTime()),
+                () -> assertNotNull(closingDataRequest.getAppName()),
+                () -> assertNotNull(closingDataRequest.getAppToken()),
+                () -> assertNotNull(closingDataRequest.getDataValueMarketList()),
+                () -> assertNotNull(closingDataRequest.toString()),
+                () -> assertNotEquals(1, closingDataRequest.hashCode()),
+                () -> assertNotEquals(new ClosingDataRequest(), closingDataRequest)
+        );
     }
 
 }

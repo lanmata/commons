@@ -16,12 +16,18 @@ import com.prx.commons.pojo.Exchange;
 import com.prx.commons.pojo.ExchangeInstrument;
 import com.prx.commons.pojo.Instrument;
 import com.prx.commons.pojo.LocalCoin;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -31,6 +37,26 @@ import org.junit.jupiter.api.Test;
  * @version 1.0.0, 06-10-2020
  */
 class FindExchangeInstrumentResponseTest {
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link FindExchangeInstrumentResponse}
+     *   <li>{@link FindExchangeInstrumentResponse#setList(List)}
+     *   <li>{@link FindExchangeInstrumentResponse#toString()}
+     *   <li>{@link FindExchangeInstrumentResponse#getList()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        FindExchangeInstrumentResponse actualFindExchangeInstrumentResponse = new FindExchangeInstrumentResponse();
+        ArrayList<ExchangeInstrument> list = new ArrayList<>();
+        actualFindExchangeInstrumentResponse.setList(list);
+        String actualToStringResult = actualFindExchangeInstrumentResponse.toString();
+        assertSame(list, actualFindExchangeInstrumentResponse.getList());
+        assertEquals("FindExchangeInstrumentResponse{list=[]}", actualToStringResult);
+    }
+
     @Test
     void testGettersAndSetters() {
         final var findExchangeInstrumentResponse = new FindExchangeInstrumentResponse();
@@ -78,14 +104,14 @@ class FindExchangeInstrumentResponseTest {
         findExchangeInstrumentResponse.setDateTime(LocalDateTime.now(ZoneId.systemDefault()));
 
         assertAll("Getters And Setters",
-            () -> assertNotNull(findExchangeInstrumentResponse.getCode()),
-            () -> assertNotNull(findExchangeInstrumentResponse.getList()),
-            () -> assertNotNull(findExchangeInstrumentResponse.getMessage()),
-            () -> assertNotNull(findExchangeInstrumentResponse.getDateTime()),
-            () -> assertNotNull(findExchangeInstrumentResponse.toString()),
-            () -> assertNotEquals(new FindExchangeInstrumentResponse(), findExchangeInstrumentResponse),
-            () -> assertNotEquals(1, findExchangeInstrumentResponse.hashCode())
-                 );
+                () -> assertNotNull(findExchangeInstrumentResponse.getCode()),
+                () -> assertNotNull(findExchangeInstrumentResponse.getList()),
+                () -> assertNotNull(findExchangeInstrumentResponse.getMessage()),
+                () -> assertNotNull(findExchangeInstrumentResponse.getDateTime()),
+                () -> assertNotNull(findExchangeInstrumentResponse.toString()),
+                () -> assertNotEquals(new FindExchangeInstrumentResponse(), findExchangeInstrumentResponse),
+                () -> assertNotEquals(1, findExchangeInstrumentResponse.hashCode())
+        );
 
     }
 

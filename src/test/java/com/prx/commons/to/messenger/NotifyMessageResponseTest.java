@@ -15,7 +15,10 @@ package com.prx.commons.to.messenger;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -26,8 +29,19 @@ import org.junit.jupiter.api.Test;
  */
 class NotifyMessageResponseTest {
 
+    /**
+     * Method under test: default or parameterless constructor of {@link NotifyMessageResponse}
+     */
     @Test
-    void testGetterAndSetter(){
+    void testConstructor() {
+        NotifyMessageResponse actualNotifyMessageResponse = new NotifyMessageResponse();
+        assertNull(actualNotifyMessageResponse.getCode());
+        assertNull(actualNotifyMessageResponse.getMessage());
+        assertNull(actualNotifyMessageResponse.getDateTime());
+    }
+
+    @Test
+    void testGetterAndSetter() {
         final var notifiMessageResponse = new NotifyMessageResponse();
 
         notifiMessageResponse.setCode(200);
@@ -35,10 +49,10 @@ class NotifyMessageResponseTest {
         notifiMessageResponse.setMessage("Éxito");
 
         assertAll("Getters And Setters",
-            () -> assertNotNull(notifiMessageResponse.getCode()),
-            () -> assertNotNull(notifiMessageResponse.getDateTime()),
-            () -> assertNotNull(notifiMessageResponse.getMessage())
-            );
+                () -> assertNotNull(notifiMessageResponse.getCode()),
+                () -> assertNotNull(notifiMessageResponse.getDateTime()),
+                () -> assertNotNull(notifiMessageResponse.getMessage())
+        );
     }
 
 }

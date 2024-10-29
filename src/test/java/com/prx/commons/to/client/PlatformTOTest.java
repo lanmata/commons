@@ -14,8 +14,10 @@
 package com.prx.commons.to.client;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -26,17 +28,36 @@ import org.junit.jupiter.api.Test;
  */
 class PlatformTOTest {
 
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link PlatformTO}
+     *   <li>{@link PlatformTO#setStatus(Integer)}
+     *   <li>{@link PlatformTO#toString()}
+     *   <li>{@link PlatformTO#getStatus()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        PlatformTO actualPlatformTO = new PlatformTO();
+        actualPlatformTO.setStatus(1);
+        String actualToStringResult = actualPlatformTO.toString();
+        assertEquals(1, actualPlatformTO.getStatus().intValue());
+        assertEquals("PlatformTO{status=1}", actualToStringResult);
+    }
+
     @Test
     void testGettersAndSetters() {
         final var platformTO = new PlatformTO();
 
         platformTO.setStatus(1);
         assertAll("Test Getters And Setters",
-            () -> assertNotNull(platformTO.getStatus()),
-            () ->assertNotNull(platformTO.toString()),
-            () ->assertNotEquals(1, platformTO.hashCode()),
-            () ->assertNotEquals(new PlatformTO(), platformTO)
-                 );
+                () -> assertNotNull(platformTO.getStatus()),
+                () -> assertNotNull(platformTO.toString()),
+                () -> assertNotEquals(1, platformTO.hashCode()),
+                () -> assertNotEquals(new PlatformTO(), platformTO)
+        );
     }
 
 }

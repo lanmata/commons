@@ -13,12 +13,17 @@
 package com.prx.commons.util;
 
 import com.prx.commons.pojo.MessageActivity;
+import com.prx.commons.to.Response;
+
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
@@ -34,6 +39,39 @@ class MessageActivityUtilTest {
         final var constructor = MessageActivityUtil.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         Assertions.assertThrows(InvocationTargetException.class, constructor::newInstance);
+    }
+
+    /**
+     * Method under test: {@link MessageActivityUtil#toResponse(MessageActivity)}
+     */
+    @Test
+    void testToResponse() {
+        MessageActivity<?> messageActivity = new MessageActivity<>();
+        messageActivity.setCode(1);
+        messageActivity.setDateTime(LocalDate.of(1970, 1, 1).atStartOfDay());
+        messageActivity.setMessage("Not all who wander are lost");
+        Response actualToResponseResult = MessageActivityUtil.toResponse(messageActivity);
+        assertEquals(1, actualToResponseResult.getCode().intValue());
+        assertEquals("Not all who wander are lost", actualToResponseResult.getMessage());
+    }
+
+    /**
+     * Method under test: {@link MessageActivityUtil#toResponse(MessageActivity, Response)}
+     */
+    @Test
+    void testToResponse2() {
+        MessageActivity<?> messageActivity = new MessageActivity<>();
+        messageActivity.setCode(1);
+        messageActivity.setDateTime(LocalDate.of(1970, 1, 1).atStartOfDay());
+        messageActivity.setMessage("Not all who wander are lost");
+
+        Response response = new Response();
+        response.setCode(1);
+        response.setDateTime(LocalDate.of(1970, 1, 1).atStartOfDay());
+        response.setMessage("Not all who wander are lost");
+        MessageActivityUtil.toResponse(messageActivity, response);
+        assertEquals(1, response.getCode().intValue());
+        assertEquals("Not all who wander are lost", response.getMessage());
     }
 
     @Test

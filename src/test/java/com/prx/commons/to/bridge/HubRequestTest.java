@@ -14,14 +14,20 @@
 package com.prx.commons.to.bridge;
 
 import com.prx.commons.pojo.DataValueMarket;
+
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -31,6 +37,26 @@ import org.junit.jupiter.api.Test;
  * @version 1.0.3, 29-09-2020
  */
 class HubRequestTest {
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link HubRequest}
+     *   <li>{@link HubRequest#setDataValueMarkets(List)}
+     *   <li>{@link HubRequest#toString()}
+     *   <li>{@link HubRequest#getDataValueMarkets()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        HubRequest actualHubRequest = new HubRequest();
+        ArrayList<DataValueMarket> dataValueMarkets = new ArrayList<>();
+        actualHubRequest.setDataValueMarkets(dataValueMarkets);
+        String actualToStringResult = actualHubRequest.toString();
+        assertSame(dataValueMarkets, actualHubRequest.getDataValueMarkets());
+        assertEquals("HubRequest{dataValueMarkets=[]}", actualToStringResult);
+    }
 
     @Test
     void testGettersAndSetters() {
@@ -59,14 +85,14 @@ class HubRequestTest {
         hubRequest.setDateTime(LocalDateTime.now(clock));
 
         assertAll("Getters And Setters",
-            () -> assertNotNull(hubRequest.getAppName()),
-            () -> assertNotNull(hubRequest.getDateTime()),
-            () -> assertNotNull(hubRequest.getAppToken()),
-            () -> assertNotNull(hubRequest.getDataValueMarkets()),
-            () -> assertNotEquals(-1, hubRequest.hashCode()),
-            () -> assertNotEquals(new HubRequest(), hubRequest),
-            () -> assertNotNull(hubRequest.toString())
-                 );
+                () -> assertNotNull(hubRequest.getAppName()),
+                () -> assertNotNull(hubRequest.getDateTime()),
+                () -> assertNotNull(hubRequest.getAppToken()),
+                () -> assertNotNull(hubRequest.getDataValueMarkets()),
+                () -> assertNotEquals(-1, hubRequest.hashCode()),
+                () -> assertNotEquals(new HubRequest(), hubRequest),
+                () -> assertNotNull(hubRequest.toString())
+        );
     }
 
 }

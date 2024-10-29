@@ -13,6 +13,8 @@
 
 package com.prx.commons.to.grid;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +30,29 @@ import java.time.ZoneOffset;
  * @version 1.0.0, 30-09-2020
  */
 class DataValueMarketTOTest {
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link DataValueMarketTO}
+     *   <li>{@link DataValueMarketTO#setInstrument(String)}
+     *   <li>{@link DataValueMarketTO#setMarket(String)}
+     *   <li>{@link DataValueMarketTO#toString()}
+     *   <li>{@link DataValueMarketTO#getInstrument()}
+     *   <li>{@link DataValueMarketTO#getMarket()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        DataValueMarketTO actualDataValueMarketTO = new DataValueMarketTO();
+        actualDataValueMarketTO.setInstrument("Instrument");
+        actualDataValueMarketTO.setMarket("Market");
+        String actualToStringResult = actualDataValueMarketTO.toString();
+        assertEquals("Instrument", actualDataValueMarketTO.getInstrument());
+        assertEquals("Market", actualDataValueMarketTO.getMarket());
+        assertEquals("DataValueMarketTO{market='Market', instrument='Instrument'}", actualToStringResult);
+    }
 
     @Test
     void testGettersAndSetters() {

@@ -10,17 +10,17 @@ IMPORTANTE CONSIDERAR:
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.prx</groupId>
+    <artifactId>prx-commons</artifactId>
+    <name>PRX Commons components</name>
+    <version>1.0.0</version>
 
     <parent>
-        <groupId>com.prx</groupId>
-        <artifactId>prx-central</artifactId>
-        <version>1.0.3.20211214-01</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.prx.commons</groupId>
-    <artifactId>prx-commons</artifactId>
-    <name>PRX componentes comunes</name>
-    <version>1.0.3.20211214-01</version>
 
     <developers>
         <developer>
@@ -35,53 +35,41 @@ IMPORTANTE CONSIDERAR:
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
+        <!--        MAVEN-->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.plugin.javadoc.version>3.2.0</maven.plugin.javadoc.version>
+        <maven.plugin.jacoco.version>0.8.10</maven.plugin.jacoco.version>
+        <maven.plugin.pmd.version>3.19.0</maven.plugin.pmd.version>
+        <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
         <sonar.organization>prx-open</sonar.organization>
+        <!--        REPOSITORY-->
+        <repsy.account.user>lmata</repsy.account.user>
+        <repsy.account.password>1$Pormenos</repsy.account.password>
+        <!--        SPRING -->
+        <spring-core.version>6.0.6</spring-core.version>
+        <spring-boot.version>3.3.4</spring-boot.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <!--        Test Dependencies-->
+        <!--        JUnit 4.x-->
+        <junit-core.version>4.13.1</junit-core.version>
+        <!--        JUnit 5.x-->
+        <junit.jupiter.version>5.10.3</junit.jupiter.version>
+        <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
+        <!--        Mockito-->
+        <mockserver.junit.jupiter.version>5.11.2</mockserver.junit.jupiter.version>
+        <mockito.junit.jupiter.version>4.8.0</mockito.junit.jupiter.version>
+        <mockito.version>5.14.2</mockito.version>
+        <sonar.organization>prx-open</sonar.organization>
+        <!--        Coverage and Sonar-->
+        <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.coverage.exclusions>
+        <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.exclusions>
+        <project.ruleset>${project.basedir}/ruleset.xml</project.ruleset>
     </properties>
 
     <dependencies>
-        <!-- START - Dependencias exclusivas -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson-annotations.version}</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>${hibernate-jpa.version}</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>${jersey-client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-core</artifactId>
-            <version>${jersey-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-apache-client4</artifactId>
-            <version>1.19.4</version>
-        </dependency>
-        <!-- END - Dependencias exclusivas -->
-        <!-- START - Dependencias comunes -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <type>jar</type>
-        </dependency>
+        <!-- Commons dependencies -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -93,48 +81,61 @@ IMPORTANTE CONSIDERAR:
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${spring-boot.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- END - Dependencias comunes -->
-
-        <!-- START - Documentation  Open API -->
+        <!-- Open API Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.3</version>
+            <version>1.8.0</version>
         </dependency>
-        <!-- END - Documentation  Open API -->
-
-        <!-- START - Dependencias para pruebas unitarias -->
+        <!-- Unit test dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-        <!-- END - Dependencias para pruebas unitarias -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator-core</artifactId>
-            <version>0.50</version>
+            <version>0.59</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.23.1</version>
         </dependency>
     </dependencies>
 
@@ -157,8 +158,46 @@ IMPORTANTE CONSIDERAR:
         </dependencies>
     </dependencyManagement>
 
+    <repositories>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/lmata/prx</url>
+        </repository>
+        <repository>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/lmata/prx</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>9.1</version>
+                    </dependency>
+                </dependencies>
+                <version>3.2.5</version>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -189,15 +228,11 @@ IMPORTANTE CONSIDERAR:
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven.plugin.pmd.version}</version>
                 <configuration>
-                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <linkXRef>false</linkXRef>
                     <rulesets>
@@ -267,7 +302,7 @@ IMPORTANTE CONSIDERAR:
                                         <limit>
                                             <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.4</minimum>
+                                            <minimum>0.8</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
@@ -287,40 +322,4 @@ IMPORTANTE CONSIDERAR:
             </plugin>
         </plugins>
     </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>${maven.plugin.jxr.version}</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>a0kaj8sklairw-artifactory-primary-0-releases</name>
-            <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
-        </repository>
-        <repository>
-            <id>snapshots</id>
-            <name>a0kaj8sklairw-artifactory-primary-0-snapshots</name>
-            <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>a0kaj8sklairw-artifactory-primary-0-releases</name>
-            <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>a0kaj8sklairw-artifactory-primary-0-snapshots</name>
-            <url>https://prx.jfrog.io/artifactory/default-maven-virtual</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
