@@ -16,15 +16,9 @@ package com.prx.commons.pojo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @JsonPropertyOrder({"exchangeId", "instrumentId", "active", "identifier"
 })
-@Setter
-@Getter
-@NoArgsConstructor
 public class ExchangeInstrument {
 
     @JsonProperty("exchange")
@@ -35,6 +29,52 @@ public class ExchangeInstrument {
     private Boolean active;
     @JsonProperty("identifier")
     private String identifier;
+
+    /**
+     * Default constructor.
+     */
+    public ExchangeInstrument() {
+        //Default constructor
+    }
+
+    public ExchangeInstrument(Exchange exchange, Instrument instrument, Boolean active, String identifier) {
+        this.exchange = exchange;
+        this.instrument = instrument;
+        this.active = active;
+        this.identifier = identifier;
+    }
+
+    public Exchange getExchange() {
+        return exchange;
+    }
+
+    public void setExchange(Exchange exchange) {
+        this.exchange = exchange;
+    }
+
+    public Instrument getInstrument() {
+        return instrument;
+    }
+
+    public void setInstrument(Instrument instrument) {
+        this.instrument = instrument;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
 
     public String toString(){
         return JsonUtil.toJson(this);

@@ -15,11 +15,8 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.prx.commons.util.JsonUtil;
+
 import java.io.Serializable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  *
@@ -29,9 +26,6 @@ import lombok.Setter;
  */
 @JsonPropertyOrder({"id", "name", "description", "active"
 })
-@Setter
-@Getter
-@NoArgsConstructor
 public class ActiveType implements Serializable {
 
     @JsonProperty("id")
@@ -43,9 +37,56 @@ public class ActiveType implements Serializable {
     @JsonProperty("active")
     private Boolean active;
 
-    @Override
-    public String toString() {
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public ActiveType() {
+        //Default constructor.
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+    @JsonProperty("id")
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("description")
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @JsonProperty("active")
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return "ActiveType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", active=" + active +
+                '}';
+    }
 }

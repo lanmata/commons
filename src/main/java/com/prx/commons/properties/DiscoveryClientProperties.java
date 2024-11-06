@@ -13,9 +13,6 @@
 
 package com.prx.commons.properties;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -25,10 +22,7 @@ import org.springframework.stereotype.Component;
  * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3.20200904-01, 21-11-2020
  */
-@Getter
-@Setter
 @Component
-@NoArgsConstructor
 @ConfigurationProperties(prefix = "security.discovery.client")
 public class DiscoveryClientProperties {
 
@@ -38,4 +32,50 @@ public class DiscoveryClientProperties {
     private Integer maxTotalConnections;
     private Integer maxConnectionsPerHost;
 
+    /**
+     * Default constructor.
+     */
+    public DiscoveryClientProperties() {
+        //Default constructor.
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTrustStoreFile() {
+        return trustStoreFile;
+    }
+
+    public void setTrustStoreFile(String trustStoreFile) {
+        this.trustStoreFile = trustStoreFile;
+    }
+
+    public String getTrustStorePassword() {
+        return trustStorePassword;
+    }
+
+    public void setTrustStorePassword(String trustStorePassword) {
+        this.trustStorePassword = trustStorePassword;
+    }
+
+    public Integer getMaxTotalConnections() {
+        return maxTotalConnections;
+    }
+
+    public void setMaxTotalConnections(Integer maxTotalConnections) {
+        this.maxTotalConnections = maxTotalConnections;
+    }
+
+    public Integer getMaxConnectionsPerHost() {
+        return maxConnectionsPerHost;
+    }
+
+    public void setMaxConnectionsPerHost(Integer maxConnectionsPerHost) {
+        this.maxConnectionsPerHost = maxConnectionsPerHost;
+    }
 }

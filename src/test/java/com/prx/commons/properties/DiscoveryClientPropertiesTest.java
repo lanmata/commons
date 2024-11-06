@@ -14,6 +14,7 @@ package com.prx.commons.properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -23,6 +24,38 @@ import org.junit.jupiter.api.Test;
  * @version 1.0.3.20200904-01, 21-11-2020
  */
 class DiscoveryClientPropertiesTest {
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link DiscoveryClientProperties}
+     *   <li>{@link DiscoveryClientProperties#setMaxConnectionsPerHost(Integer)}
+     *   <li>{@link DiscoveryClientProperties#setMaxTotalConnections(Integer)}
+     *   <li>{@link DiscoveryClientProperties#setName(String)}
+     *   <li>{@link DiscoveryClientProperties#setTrustStoreFile(String)}
+     *   <li>{@link DiscoveryClientProperties#setTrustStorePassword(String)}
+     *   <li>{@link DiscoveryClientProperties#getMaxConnectionsPerHost()}
+     *   <li>{@link DiscoveryClientProperties#getMaxTotalConnections()}
+     *   <li>{@link DiscoveryClientProperties#getName()}
+     *   <li>{@link DiscoveryClientProperties#getTrustStoreFile()}
+     *   <li>{@link DiscoveryClientProperties#getTrustStorePassword()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        DiscoveryClientProperties actualDiscoveryClientProperties = new DiscoveryClientProperties();
+        actualDiscoveryClientProperties.setMaxConnectionsPerHost(3);
+        actualDiscoveryClientProperties.setMaxTotalConnections(3);
+        actualDiscoveryClientProperties.setName("Name");
+        actualDiscoveryClientProperties.setTrustStoreFile("Trust Store File");
+        actualDiscoveryClientProperties.setTrustStorePassword("iloveyou");
+        assertEquals(3, actualDiscoveryClientProperties.getMaxConnectionsPerHost().intValue());
+        assertEquals(3, actualDiscoveryClientProperties.getMaxTotalConnections().intValue());
+        assertEquals("Name", actualDiscoveryClientProperties.getName());
+        assertEquals("Trust Store File", actualDiscoveryClientProperties.getTrustStoreFile());
+        assertEquals("iloveyou", actualDiscoveryClientProperties.getTrustStorePassword());
+    }
 
     @Test
     void testGettersAndSetters() {

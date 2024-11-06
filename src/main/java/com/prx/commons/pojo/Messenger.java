@@ -13,10 +13,6 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -26,10 +22,7 @@ import java.io.Serializable;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Setter
-@Getter
 @JsonNaming
-@NoArgsConstructor
 public class Messenger implements Serializable {
 
     private String alias;
@@ -37,9 +30,52 @@ public class Messenger implements Serializable {
     private Integer messengerServiceId;
     private User user;
 
-    @Override
-    public String toString(){
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public Messenger() {
+        //Default constructor.
     }
 
+    public String getAlias() {
+        return this.alias;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Integer getMessengerServiceId() {
+        return this.messengerServiceId;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMessengerServiceId(Integer messengerServiceId) {
+        this.messengerServiceId = messengerServiceId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Messenger{" +
+                "alias='" + alias + '\'' +
+                ", name='" + name + '\'' +
+                ", messengerServiceId=" + messengerServiceId +
+                ", user=" + user +
+                '}';
+    }
 }

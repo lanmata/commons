@@ -16,11 +16,8 @@ package com.prx.commons.to.client;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.util.JsonUtil;
+
 import java.io.Serializable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * PlatformTO.
@@ -28,10 +25,7 @@ import lombok.Setter;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 18-08-2019
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class PlatformTO implements Serializable {
 
@@ -41,7 +35,25 @@ public class PlatformTO implements Serializable {
     @JsonProperty("status")
     private Integer status;
 
-    public String toString(){
-        return JsonUtil.toJson(this);
+    /**
+     * Default constructor.
+     */
+    public PlatformTO() {
+       // Default constructor.
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "PlatformTO{" +
+                "status=" + status +
+                '}';
     }
 }

@@ -15,11 +15,8 @@ package com.prx.commons.to.grid;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.to.Response;
-import com.prx.commons.util.JsonUtil;
+
 import java.util.List;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * ClosingDataResponse.
@@ -27,15 +24,29 @@ import lombok.Setter;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 18-08-2019
  */
-@Getter
-@Setter
 @JsonNaming
-@NoArgsConstructor
 public class ClosingDataResponse extends Response {
     private List<DataValueMarketTO> list;
 
+    /**
+     * Default constructor.
+     */
+    public ClosingDataResponse() {
+        super();
+    }
+
+    public List<DataValueMarketTO> getList() {
+        return list;
+    }
+
+    public void setList(List<DataValueMarketTO> list) {
+        this.list = list;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "ClosingDataResponse{" +
+                "list=" + list +
+                '}';
     }
 }

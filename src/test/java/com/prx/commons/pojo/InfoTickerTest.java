@@ -13,6 +13,8 @@
  */
 package com.prx.commons.pojo;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.prx.commons.enums.keys.ParityKey;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -29,7 +31,7 @@ import java.time.ZoneId;
 class InfoTickerTest {
 
     @Test
-    void gettersAndSetters(){
+    void gettersAndSetters() {
         final var infoTicker = new InfoTicker();
 
         infoTicker.setClose(225.25D);
@@ -46,22 +48,41 @@ class InfoTickerTest {
         infoTicker.setVolume(2203D);
 
         Assertions.assertAll("Test Getters And Setters",
-            () -> Assertions.assertNotNull(infoTicker.getClose()),
-            () -> Assertions.assertNotNull(infoTicker.getHigh()),
-            () -> Assertions.assertNotNull(infoTicker.getLow()),
-            () -> Assertions.assertNotNull(infoTicker.getOpen()),
-            () -> Assertions.assertNotNull(infoTicker.getParityKey()),
-            () -> Assertions.assertNotNull(infoTicker.getAsk()),
-            () -> Assertions.assertNotNull(infoTicker.getBid()),
-            () -> Assertions.assertNotNull(infoTicker.getDateTime()),
-            () -> Assertions.assertNotNull(infoTicker.getInstrumentId()),
-            () -> Assertions.assertNotNull(infoTicker.getMarketId()),
-            () -> Assertions.assertNotNull(infoTicker.getLast()),
-            () -> Assertions.assertNotNull(infoTicker.getVolume()),
-            () -> Assertions.assertNotNull(infoTicker.toString()),
-            () -> Assertions.assertNotEquals(1, infoTicker.hashCode()),
-            () -> Assertions.assertNotEquals(new InfoTicker(), infoTicker)
-                 );
+                () -> Assertions.assertNotNull(infoTicker.getClose()),
+                () -> Assertions.assertNotNull(infoTicker.getHigh()),
+                () -> Assertions.assertNotNull(infoTicker.getLow()),
+                () -> Assertions.assertNotNull(infoTicker.getOpen()),
+                () -> Assertions.assertNotNull(infoTicker.getParityKey()),
+                () -> Assertions.assertNotNull(infoTicker.getAsk()),
+                () -> Assertions.assertNotNull(infoTicker.getBid()),
+                () -> Assertions.assertNotNull(infoTicker.getDateTime()),
+                () -> Assertions.assertNotNull(infoTicker.getInstrumentId()),
+                () -> Assertions.assertNotNull(infoTicker.getMarketId()),
+                () -> Assertions.assertNotNull(infoTicker.getLast()),
+                () -> Assertions.assertNotNull(infoTicker.getVolume()),
+                () -> Assertions.assertNotNull(infoTicker.toString()),
+                () -> Assertions.assertNotEquals(1, infoTicker.hashCode()),
+                () -> Assertions.assertNotEquals(new InfoTicker(), infoTicker)
+        );
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>default or parameterless constructor of {@link InfoTicker}
+     *   <li>{@link InfoTicker#setParityKey(ParityKey)}
+     *   <li>{@link InfoTicker#toString()}
+     *   <li>{@link InfoTicker#getParityKey()}
+     * </ul>
+     */
+    @Test
+    void testConstructor() {
+        InfoTicker actualInfoTicker = new InfoTicker();
+        actualInfoTicker.setParityKey(ParityKey.ETHCLP);
+        String actualToStringResult = actualInfoTicker.toString();
+        assertEquals(ParityKey.ETHCLP, actualInfoTicker.getParityKey());
+        assertEquals("InfoTicker{parityKey=ETHCLP}", actualToStringResult);
     }
 
 }

@@ -14,6 +14,8 @@
 
 package com.prx.commons.enums.keys;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -34,10 +36,23 @@ class ExchangeKeysTest {
         }
 
         Assertions.assertAll("Test String ID",
-            () -> Assertions.assertNotEquals(0,ExchangeKeys.BITFINEX.getId()),
-            () -> Assertions.assertNotEquals(0,ExchangeKeys.BITSTAMP.getId()),
-            () -> Assertions.assertNotEquals(0,ExchangeKeys.OKCOIN.getId())
-                 );
+                () -> Assertions.assertNotEquals(0, ExchangeKeys.BITFINEX.getId()),
+                () -> Assertions.assertNotEquals(0, ExchangeKeys.BITSTAMP.getId()),
+                () -> Assertions.assertNotEquals(0, ExchangeKeys.OKCOIN.getId())
+        );
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>{@link ExchangeKeys#valueOf(String)}
+     *   <li>{@link ExchangeKeys#getId()}
+     * </ul>
+     */
+    @Test
+    void testValueOf() {
+        assertEquals(1, ExchangeKeys.valueOf("BITSTAMP").getId());
     }
 
 }

@@ -14,7 +14,6 @@
 package com.prx.commons.to.bridge;
 
 import com.prx.commons.to.Response;
-import lombok.NoArgsConstructor;
 
 /**
  * HubResponse.
@@ -22,5 +21,12 @@ import lombok.NoArgsConstructor;
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 29-09-2020
  */
-@NoArgsConstructor
-public class HubResponse extends Response {}
+public class HubResponse extends Response {
+
+    /**
+     * Default constructor.
+     */
+    public HubResponse() {
+        super();
+    }
+}

@@ -12,11 +12,6 @@
  */
 package com.prx.commons.pojo;
 
-import com.prx.commons.util.JsonUtil;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,20 +21,79 @@ import java.util.List;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@Getter
-@Setter
-@NoArgsConstructor
 public class User implements Serializable {
     
-    private Long id;
+    private String id;
     private String alias;
     private String password;
     private boolean active;
     private Person person;
     private List<Role> roles;
 
+    /**
+     * Default constructor.
+     */
+    public User() {
+        //Default constructor.
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getAlias() {
+        return this.alias;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public boolean isActive() {
+        return this.active;
+    }
+
+    public Person getPerson() {
+        return this.person;
+    }
+
+    public List<Role> getRoles() {
+        return this.roles;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
-        return JsonUtil.toJson(this);
+        return "User{" +
+                "id='" + id +
+                "', alias='" + alias + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", person=" + person +
+                ", roles=" + roles +
+                '}';
     }
 }

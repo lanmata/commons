@@ -13,6 +13,8 @@
  */
 package com.prx.commons.enums.keys;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +35,23 @@ class FailCodeTest {
             Assertions.assertNotEquals(-1, tp.getCode());
             Assertions.assertNotNull(tp.getStatus());
         }
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>{@link FailCode#valueOf(String)}
+     *   <li>{@link FailCode#getCode()}
+     *   <li>{@link FailCode#getStatus()}
+     * </ul>
+     */
+    @Test
+    void testValueOf() {
+        FailCode actualValueOfResult = FailCode.valueOf("BAD_REQUEST");
+        assertEquals(400, actualValueOfResult.getCode());
+        assertEquals("La solicitud no fue comprendida por el servidor, sintaxis incorrecta.",
+                actualValueOfResult.getStatus());
     }
 
 }
