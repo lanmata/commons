@@ -8,7 +8,8 @@ IMPORTANTE CONSIDERAR:
     * com.sun.jersey.jersey-core.1.19.4
     * com.sun.jersey.contribs.jersey-apache-client4.1.19.4
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.prx</groupId>
     <artifactId>prx-commons</artifactId>
@@ -39,30 +40,28 @@ IMPORTANTE CONSIDERAR:
         <!--        MAVEN-->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.plugin.javadoc.version>3.2.0</maven.plugin.javadoc.version>
-        <maven.plugin.jacoco.version>0.8.10</maven.plugin.jacoco.version>
-        <maven.plugin.pmd.version>3.19.0</maven.plugin.pmd.version>
+        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+        <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
+        <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
+        <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
+        <maven.plugin.pmd.version>3.21.2</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
-        <sonar.organization>prx-open</sonar.organization>
+        <maven.surefire.version>3.2.5</maven.surefire.version>
         <!--        REPOSITORY-->
         <repsy.account.user>lmata</repsy.account.user>
         <repsy.account.password>1$Pormenos</repsy.account.password>
         <!--        SPRING -->
-        <spring-core.version>6.0.6</spring-core.version>
+        <spring-core.version>6.1.13</spring-core.version>
         <spring-boot.version>3.3.4</spring-boot.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
-        <!--        Test Dependencies-->
-        <!--        JUnit 4.x-->
-        <junit-core.version>4.13.1</junit-core.version>
         <!--        JUnit 5.x-->
         <junit.jupiter.version>5.10.3</junit.jupiter.version>
         <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
         <!--        Mockito-->
         <mockserver.junit.jupiter.version>5.11.2</mockserver.junit.jupiter.version>
-        <mockito.junit.jupiter.version>4.8.0</mockito.junit.jupiter.version>
         <mockito.version>5.14.2</mockito.version>
-        <sonar.organization>prx-open</sonar.organization>
         <!--        Coverage and Sonar-->
+        <sonar.organization>prx-open</sonar.organization>
         <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.coverage.exclusions>
         <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.exclusions>
         <project.ruleset>${project.basedir}/ruleset.xml</project.ruleset>
@@ -196,7 +195,7 @@ IMPORTANTE CONSIDERAR:
                         <version>9.1</version>
                     </dependency>
                 </dependencies>
-                <version>3.2.5</version>
+                <version>${maven.surefire.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -211,15 +210,17 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>3.4.1</version>
                 <configuration>
-                    <rules><dependencyConvergence/></rules>
+                    <rules>
+                        <dependencyConvergence/>
+                    </rules>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
@@ -227,7 +228,7 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven.resource.plugin.version}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-pmd-plugin</artifactId>
