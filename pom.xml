@@ -14,7 +14,7 @@ IMPORTANTE CONSIDERAR:
     <groupId>com.prx</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX Commons components</name>
-    <version>1.0.1</version>
+    <version>1.0.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -51,7 +51,7 @@ IMPORTANTE CONSIDERAR:
         <repsy.account.user>lmata</repsy.account.user>
         <repsy.account.password>1$Pormenos</repsy.account.password>
         <!--        SPRING -->
-        <spring-core.version>6.1.14</spring-core.version>
+        <spring-core.version>6.1.13</spring-core.version>
         <spring-boot.version>3.3.4</spring-boot.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <!--        JUnit 5.x-->
@@ -77,7 +77,6 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring-core.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

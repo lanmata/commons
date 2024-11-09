@@ -68,10 +68,6 @@ public final class DateUtil {
      */
     public static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
     /**
-     * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss.S, Por ejemplo: 2024-01-23 10:25:33.000000
-     */
-    public static final String PATTERN_DATE_TIME_SHORTLY_MILLISECONDS = "yyyy-MM-dd HH:mm:ss.S";
-    /**
      * Patr&oacute;n para fecha yyyy-MM-ddTHH:mm:ss, Por ejemplo: 2000-01-30T12:30:25
      */
     public static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
