@@ -14,12 +14,12 @@ IMPORTANTE CONSIDERAR:
     <groupId>com.prx</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX Commons components</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
+        <version>3.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -36,7 +36,7 @@ IMPORTANTE CONSIDERAR:
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <!--        MAVEN-->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -44,21 +44,21 @@ IMPORTANTE CONSIDERAR:
         <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
         <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
         <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
-        <maven.plugin.pmd.version>3.21.2</maven.plugin.pmd.version>
+        <maven.plugin.pmd.version>3.23.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
         <maven.surefire.version>3.2.5</maven.surefire.version>
         <!--        REPOSITORY-->
-        <repsy.account.user>lmata</repsy.account.user>
-        <repsy.account.password>1$Pormenos</repsy.account.password>
+        <repsy.account.user>${env.REPSY_ACCOUNT_USER}</repsy.account.user>
+        <repsy.account.password>${env.REPSY_ACCOUNT_PASSWORD}</repsy.account.password>
         <!--        SPRING -->
         <spring-core.version>6.1.14</spring-core.version>
-        <spring-boot.version>3.3.4</spring-boot.version>
-        <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <spring-boot.version>3.4.0</spring-boot.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
         <!--        JUnit 5.x-->
-        <junit.jupiter.version>5.10.3</junit.jupiter.version>
+        <junit.jupiter.version>5.10.5</junit.jupiter.version>
         <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
         <!--        Mockito-->
-        <mockserver.junit.jupiter.version>5.11.2</mockserver.junit.jupiter.version>
+        <mockserver.junit.jupiter.version>5.15.0</mockserver.junit.jupiter.version>
         <mockito.version>5.14.2</mockito.version>
         <!--        Coverage and Sonar-->
         <sonar.organization>prx-open</sonar.organization>
@@ -135,7 +135,7 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.23.1</version>
+            <version>2.24.1</version>
         </dependency>
     </dependencies>
 
