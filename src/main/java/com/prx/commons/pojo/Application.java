@@ -1,5 +1,6 @@
 package com.prx.commons.pojo;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -7,7 +8,8 @@ import java.util.UUID;
 /**
  * Represents an application with its details.
  */
-public class Application {
+public class Application implements Serializable {
+
     private UUID id;
     private String name;
     private String description;
@@ -16,6 +18,7 @@ public class Application {
     private LocalDateTime lastUpdate;
     private UUID serviceTypeId;
     private List<User> userList;
+    private List<Role> roleList;
 
     public Application() {
         // Default constructor
@@ -163,5 +166,38 @@ public class Application {
      */
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+    /**
+     * Gets the list of roles associated with the application.
+     *
+     * @return the list of roles
+     */
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    /**
+     * Sets the list of roles associated with the application.
+     *
+     * @param roleList the list of users to set
+     */
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    @Override
+    public String toString() {
+        return "Application{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", active=" + active +
+                ", createdDate=" + createdDate +
+                ", lastUpdate=" + lastUpdate +
+                ", serviceTypeId=" + serviceTypeId +
+                ", userList=" + userList +
+                ", roleList=" + roleList +
+                '}';
     }
 }

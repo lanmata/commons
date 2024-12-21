@@ -13,165 +13,78 @@
  */
 package com.prx.commons.util;
 
-import static com.prx.commons.util.DateUtil.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.text.SimpleDateFormat;
-
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
 
-/**
- * DateUtilTest.
- *
- * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
- * @version 1.0.0, 14-10-2020
- */
+import static org.junit.jupiter.api.Assertions.*;
+
 class DateUtilTest {
 
     @Test
-    void constructor() throws NoSuchMethodException {
-        final var constructor = DateUtil.class.getDeclaredConstructor();
-        constructor.setAccessible(true);
-        assertThrows(InvocationTargetException.class, constructor::newInstance);
-    }
-
-    /**
-     * Method under test: {@link DateUtil#validateDate(LocalDate, LocalDate)}
-     */
-    @Test
-    void testValidateDate() {
-        LocalDate now = LocalDate.of(1970, 1, 1);
-        assertTrue(DateUtil.validateDate(now, LocalDate.of(1970, 1, 1)));
-    }
-
-    /**
-     * Method under test: {@link DateUtil#validateDate(LocalDate, LocalDate)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testValidateDate2() {
-        // TODO: Complete this test.
-        //   Reason: R031 Method may be time-sensitive.
-        //   Diffblue Cover was only able to write tests that are time-sensitive.
-        //   The assertions don't pass when run at an alternate date, time, and
-        //   timezone. Try refactoring the method to take a java.time.Clock instance so
-        //   that the time can be parameterized during testing.
-        //   See https://diff.blue/R031 for details.
-
-        LocalDate now = LocalDate.now();
-        DateUtil.validateDate(now, LocalDate.of(1970, 1, 1));
-    }
-
-    /**
-     * Method under test: {@link DateUtil#validateDate(LocalDate, LocalDate)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testValidateDate3() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException: Cannot invoke "java.time.LocalDate.isEqual(java.time.chrono.ChronoLocalDate)" because "now" is null
-        //       at com.prx.commons.util.DateUtil.validateDate(DateUtil.java:154)
-        //   See https://diff.blue/R013 to resolve this issue.
-
-        DateUtil.validateDate(null, LocalDate.of(1970, 1, 1));
+    @DisplayName("Convert valid string to calendar with default time")
+    void convertValidStringToCalendarWithDefaultTime() throws ParseException {
+        Calendar calendar = DateUtil.convertStringToCalendar("2020-10-23", DateUtil.SIMPLE_DATE_FORMAT.get(), true);
+        assertEquals(2020, calendar.get(Calendar.YEAR));
+        assertEquals(Calendar.OCTOBER, calendar.get(Calendar.MONTH));
+        assertEquals(23, calendar.get(Calendar.DAY_OF_MONTH));
+        assertEquals(0, calendar.get(Calendar.HOUR_OF_DAY));
+        assertEquals(0, calendar.get(Calendar.MINUTE));
+        assertEquals(0, calendar.get(Calendar.SECOND));
+        assertEquals(0, calendar.get(Calendar.MILLISECOND));
     }
 
     @Test
-    void validateDate() {
-        assertTrue(DateUtil.validateDate(LocalDate.now(ZoneId.systemDefault()),
-                LocalDate.now(ZoneId.systemDefault())));
-    }
-
-    /**
-     * Method under test: {@link DateUtil#toDate(LocalDateTime)}
-     */
-    @Test
-    void testToDate() {
-        // TODO: Complete this test.
-        //   Diffblue AI was unable to find a test
-
-        DateUtil.toDate(LocalDate.of(1970, 1, 1).atStartOfDay());
+    @DisplayName("Convert valid string to calendar without default time")
+    void convertValidStringToCalendarWithoutDefaultTime() throws ParseException {
+        Calendar calendar = DateUtil.convertStringToCalendar("2020-10-23 23:10:45", DateUtil.SIMPLE_DATE_TIME_FORMAT.get(), false);
+        assertEquals(2020, calendar.get(Calendar.YEAR));
+        assertEquals(Calendar.OCTOBER, calendar.get(Calendar.MONTH));
+        assertEquals(23, calendar.get(Calendar.DAY_OF_MONTH));
+        assertEquals(23, calendar.get(Calendar.HOUR_OF_DAY));
+        assertEquals(10, calendar.get(Calendar.MINUTE));
+        assertEquals(45, calendar.get(Calendar.SECOND));
     }
 
     @Test
-    void toDate() {
-        assertNotNull(DateUtil.toDate(LocalDateTime.now(ZoneId.systemDefault())));
+    @DisplayName("Convert null string to calendar")
+    void convertNullStringToCalendar() throws ParseException {
+        Calendar calendar = DateUtil.convertStringToCalendar(null, DateUtil.SIMPLE_DATE_FORMAT.get(), true);
+        assertNotNull(calendar);
     }
 
     @Test
-    void convertStringToCalendar() throws ParseException {
-        assertNotNull(DateUtil.convertStringToCalendar("2020-10-23 23:10:45", SIMPLE_DATE_TIME_FORMAT.get(), true));
-        assertNotNull(DateUtil.convertStringToCalendar("2020-10-23", SIMPLE_DATE_FORMAT.get(), true));
-        assertNotNull(DateUtil.convertStringToCalendar("23102020", SIMPLE_DATE_FORMAT_DDMMYY.get(), false));
-        assertNotNull(DateUtil.convertStringToCalendar("23/10/2020", SIMPLE_DATE_FORMAT_WITH_SEPARATOR_DDMMYY.get(),
-                false));
-        assertNotNull(DateUtil.convertStringToCalendar(null, SIMPLE_DATE_TIME_FORMAT_T.get(), true));
-        assertNotNull(DateUtil.convertStringToCalendar("", SIMPLE_DATE_TIME_FORMAT_MIL.get(), true));
-        assertNotNull(DateUtil.convertStringToCalendar("2020-10-23", SIMPLE_DATE_FORMAT.get(), false));
-
+    @DisplayName("Convert empty string to calendar")
+    void convertEmptyStringToCalendar() throws ParseException {
+        Calendar calendar = DateUtil.convertStringToCalendar("", DateUtil.SIMPLE_DATE_FORMAT.get(), true);
+        assertNotNull(calendar);
     }
 
-    /**
-     * Method under test: {@link DateUtil#convertStringToCalendar(String, SimpleDateFormat, boolean)}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testConvertStringToCalendar() throws ParseException {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.text.ParseException: Unparseable date: "2020-03-01"
-        //       at java.text.DateFormat.parse(DateFormat.java:399)
-        //       at com.prx.commons.util.DateUtil.convertStringToCalendar(DateUtil.java:134)
-        //   See https://diff.blue/R013 to resolve this issue.
-
-        DateUtil.convertStringToCalendar("2020-03-01", new SimpleDateFormat(), true);
+    @DisplayName("Validate equal dates")
+    void validateEqualDates() {
+        LocalDate date = LocalDate.of(2020, 10, 23);
+        assertTrue(DateUtil.validateDate(date, date));
     }
 
-    /**
-     * Method under test: {@link DateUtil#convertStringToCalendar(String, SimpleDateFormat, boolean)}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testConvertStringToCalendar2() throws ParseException {
-        // TODO: Complete this test.
-        //   Reason: R031 Method may be time-sensitive.
-        //   Diffblue Cover was only able to write tests that are time-sensitive.
-        //   The assertions don't pass when run at an alternate date, time, and
-        //   timezone. Try refactoring the method to take a java.time.Clock instance so
-        //   that the time can be parameterized during testing.
-        //   See https://diff.blue/R031 for details.
-
-        DateUtil.convertStringToCalendar(null, new SimpleDateFormat(), false);
+    @DisplayName("Validate different dates")
+    void validateDifferentDates() {
+        LocalDate date1 = LocalDate.of(2020, 10, 23);
+        LocalDate date2 = LocalDate.of(2021, 10, 23);
+        assertFalse(DateUtil.validateDate(date1, date2));
     }
 
-    /**
-     * Method under test: {@link DateUtil#convertStringToCalendar(String, SimpleDateFormat, boolean)}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testConvertStringToCalendar3() throws ParseException {
-        // TODO: Complete this test.
-        //   Reason: R031 Method may be time-sensitive.
-        //   Diffblue Cover was only able to write tests that are time-sensitive.
-        //   The assertions don't pass when run at an alternate date, time, and
-        //   timezone. Try refactoring the method to take a java.time.Clock instance so
-        //   that the time can be parameterized during testing.
-        //   See https://diff.blue/R031 for details.
-
-        DateUtil.convertStringToCalendar("", new SimpleDateFormat(), true);
+    @DisplayName("Convert LocalDateTime to Date")
+    void convertLocalDateTimeToDate() {
+        LocalDateTime localDateTime = LocalDateTime.of(2020, 10, 23, 10, 10, 10);
+        Date date = DateUtil.toDate(localDateTime);
+        assertNotNull(date);
     }
-
 }

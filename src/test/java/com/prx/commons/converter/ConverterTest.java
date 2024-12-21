@@ -14,225 +14,95 @@
 
 package com.prx.commons.converter;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-
-import org.junit.jupiter.api.Disabled;
-
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
 
-/**
- * ConverterImpl.
- *
- * @author Luis Antonio Mata
- * @version 1.0.0, 20-10-2020
- */
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class ConverterTest {
 
-    /**
-     * Method under test: {@link Converter#initFunction()}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testInitFunction() {
-        // TODO: Complete this test.
-        //   Reason: R005 Unable to load class.
-        //   Class: reactor.netty.http.server.HttpServer
-        //   Please check that the class is available on your test runtime classpath.
-        //   See https://diff.blue/R005 to resolve this issue.
-
-        // Arrange
-        // TODO: Populate arranged inputs
-        Converter<String, Object> converter = null;
-
-        // Act
-        converter.initFunction();
-
-        // Assert
-        // TODO: Add assertions on result
-    }
-
-    /**
-     * Method under test: {@link Converter#setFunction(Function, Function)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testSetFunction() {
-        // TODO: Complete this test.
-        //   Reason: R005 Unable to load class.
-        //   Class: reactor.netty.http.server.HttpServer
-        //   Please check that the class is available on your test runtime classpath.
-        //   See https://diff.blue/R005 to resolve this issue.
-
-        // Arrange
-        // TODO: Populate arranged inputs
-        Converter<String, Object> converter = null;
-        Function<String, Object> fromA = null;
-        Function<Object, String> fromB = null;
-
-        // Act
-        converter.setFunction(fromA, fromB);
-
-        // Assert
-        // TODO: Add assertions on result
-    }
-
-    /**
-     * Method under test: {@link Converter#convertFromB(Object)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testConvertFromB() {
-        // TODO: Complete this test.
-        //   Reason: R005 Unable to load class.
-        //   Class: reactor.netty.http.server.HttpServer
-        //   Please check that the class is available on your test runtime classpath.
-        //   See https://diff.blue/R005 to resolve this issue.
-
-        // Arrange
-        // TODO: Populate arranged inputs
-        Converter<String, Object> converter = null;
-        Object object = null;
-
-        // Act
-        String actualConvertFromBResult = converter.convertFromB(object);
-
-        // Assert
-        // TODO: Add assertions on result
+    @DisplayName("Convert from A to B")
+    void convertFromAToB() {
+        Function<String, Integer> fromA = Integer::parseInt;
+        Function<Integer, String> fromB = String::valueOf;
+        Converter<String, Integer> converter = new ConverterImpTest(fromA, fromB);
+        assertEquals(123, converter.convertFromA("123"));
     }
 
     @Test
-    void test_default_constructor() {
-        final var converterTest = new ConverterImpTest();
-        converterTest.init();
-        var object = converterTest.convertFromA(converterTest.convertFromB("value"));
-        var values = new ArrayList<String>();
-        var objects = new ArrayList<>();
-        values.add(object.toString());
-        objects.add(object);
-        assertNotNull(object.toString());
-        assertNotNull(object);
-        assertNotNull(converterTest.createFromA(values));
-        assertNotNull(converterTest.createFromB(objects));
+    @DisplayName("Convert from B to A")
+    void convertFromBToA() {
+        Function<String, Integer> fromA = Integer::parseInt;
+        Function<Integer, String> fromB = String::valueOf;
+        Converter<String, Integer> converter = new ConverterImpTest(fromA, fromB);
+        assertEquals("123", converter.convertFromB(123));
     }
 
     @Test
-    void test() {
-        Function<String, Object> fA = (String value) -> value;
-        Function<Object, String> fB = Object::toString;
-        final var converterTest = new ConverterImpTest(fA, fB);
-        converterTest.init();
-        var object = converterTest.convertFromA(converterTest.convertFromB("value"));
-        var values = new ArrayList<String>();
-        var objects = new ArrayList<>();
-        values.add(object.toString());
-        objects.add(object);
-        assertNotNull(object.toString());
-        assertNotNull(object);
-        assertNotNull(converterTest.createFromA(values));
-        assertNotNull(converterTest.createFromB(objects));
+    @DisplayName("Create from A collection")
+    void createFromACollection() {
+        Function<String, Integer> fromA = Integer::parseInt;
+        Function<Integer, String> fromB = String::valueOf;
+        Converter<String, Integer> converter = new ConverterImpTest(fromA, fromB);
+        List<String> aCollection = List.of("1", "2", "3");
+        List<Integer> result = converter.createFromA(aCollection);
+        assertEquals(List.of(1, 2, 3), result);
     }
 
-    /**
-     * Method under test: {@link Converter#convertFromA(Object)}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testConvertFromA() {
-        // TODO: Complete this test.
-        //   Reason: R005 Unable to load class.
-        //   Class: reactor.netty.http.server.HttpServer
-        //   Please check that the class is available on your test runtime classpath.
-        //   See https://diff.blue/R005 to resolve this issue.
-
-        // Arrange
-        // TODO: Populate arranged inputs
-        Converter<String, Object> converter = null;
-        String string = "";
-
-        // Act
-        Object actualConvertFromAResult = converter.convertFromA(string);
-
-        // Assert
-        // TODO: Add assertions on result
+    @DisplayName("Create from B collection")
+    void createFromBCollection() {
+        Function<String, Integer> fromA = Integer::parseInt;
+        Function<Integer, String> fromB = String::valueOf;
+        Converter<String, Integer> converter = new ConverterImpTest(fromA, fromB);
+        List<Integer> bCollection = List.of(1, 2, 3);
+        List<String> result = converter.createFromB(bCollection);
+        assertEquals(List.of("1", "2", "3"), result);
     }
 
-    /**
-     * Method under test: {@link Converter#createFromB(Collection)}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testCreateFromB() {
-        // TODO: Complete this test.
-        //   Reason: R005 Unable to load class.
-        //   Class: reactor.netty.http.server.HttpServer
-        //   Please check that the class is available on your test runtime classpath.
-        //   See https://diff.blue/R005 to resolve this issue.
-
-        // Arrange
-        // TODO: Populate arranged inputs
-        Converter<String, Object> converter = null;
-        Collection<Object> bCollection = null;
-
-        // Act
-        List<String> actualCreateFromBResult = converter.createFromB(bCollection);
-
-        // Assert
-        // TODO: Add assertions on result
+    @DisplayName("Create from empty A collection")
+    void createFromEmptyACollection() {
+        Function<String, Integer> fromA = Integer::parseInt;
+        Function<Integer, String> fromB = String::valueOf;
+        Converter<String, Integer> converter = new ConverterImpTest(fromA, fromB);
+        List<String> aCollection = Collections.emptyList();
+        List<Integer> result = converter.createFromA(aCollection);
+        assertTrue(result.isEmpty());
     }
 
-    /**
-     * Method under test: {@link Converter#createFromA(Collection)}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testCreateFromA() {
-        // TODO: Complete this test.
-        //   Reason: R005 Unable to load class.
-        //   Class: reactor.netty.http.server.HttpServer
-        //   Please check that the class is available on your test runtime classpath.
-        //   See https://diff.blue/R005 to resolve this issue.
-
-        // Arrange
-        // TODO: Populate arranged inputs
-        Converter<String, Object> converter = null;
-        Collection<String> aCollection = null;
-
-        // Act
-        List<Object> actualCreateFromAResult = converter.createFromA(aCollection);
-
-        // Assert
-        // TODO: Add assertions on result
+    @DisplayName("Create from empty B collection")
+    void createFromEmptyBCollection() {
+        Function<String, Integer> fromA = Integer::parseInt;
+        Function<Integer, String> fromB = String::valueOf;
+        Converter<String, Integer> converter = new ConverterImpTest(fromA, fromB);
+        List<Integer> bCollection = Collections.emptyList();
+        List<String> result = converter.createFromB(bCollection);
+        assertTrue(result.isEmpty());
     }
 
-    static class ConverterImpTest extends Converter<String, Object> {
+    static class ConverterImpTest extends Converter<String, Integer> {
 
-        ConverterImpTest() {
-            super();
-        }
-
-        ConverterImpTest(Function<String, Object> fromA, Function<Object, String> fromB) {
+        public ConverterImpTest(Function<String, Integer> fromA, Function<Integer, String> fromB) {
             super(fromA, fromB);
         }
 
-        void init() {
-            initFunction();
+        @Override
+        protected String getA(Integer integer) {
+            return integer.toString();
         }
 
         @Override
-        protected String getA(final Object o) {
-            return o.toString();
+        protected Integer getB(String s) {
+            return Integer.parseInt(s);
         }
-
-        @Override
-        protected Object getB(final String s) {
-            return s;
-        }
-
     }
 }
+

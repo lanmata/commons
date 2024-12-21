@@ -13,16 +13,15 @@
  */
 package com.prx.commons.pojo;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * MessengerTest.
@@ -80,22 +79,34 @@ class MessengerTest {
         person.setId("42");
         person.setLastName("Doe");
         person.setMiddleName("Middle Name");
+        Application application = new Application();
+        application.setActive(true);
+        application.setName("Application name");
+        application.setDescription("Application Description");
+        application.setId(UUID.fromString("6046db61-8b23-4c74-b7e1-656eaca4531f"));
+        application.setCreatedDate(LocalDateTime.parse("2024-12-21T07:56:19.881103"));
+        application.setLastUpdate(LocalDateTime.parse("2024-12-21T07:56:19.881103"));
         User user = new User();
         user.setActive(true);
         user.setAlias("Alias");
+        user.setEmail("username@domain.ext");
         user.setId("42");
         user.setPassword("iloveyou");
         user.setPerson(person);
         user.setRoles(new ArrayList<>());
+        user.setApplications(List.of(application));
         actualMessenger.setUser(user);
         String actualToStringResult = actualMessenger.toString();
         assertEquals("Alias", actualMessenger.getAlias());
         assertEquals(1, actualMessenger.getMessengerServiceId().intValue());
         assertEquals("Name", actualMessenger.getName());
         assertSame(user, actualMessenger.getUser());
-        assertEquals("Messenger{alias='Alias', name='Name', messengerServiceId=1, user=User{id='42', alias='Alias',"
-                + " password='iloveyou', active=true, person=Person{id='42', firstName='Jane', middleName='Middle Name',"
-                + " lastName='Doe', gender='Gender', birthdate=1970-01-01}, roles=[]}}", actualToStringResult);
+        assertEquals("Messenger{alias='Alias', name='Name', messengerServiceId=1, user=User{id='42', alias='Alias'," +
+                " password='iloveyou', email='username@domain.ext', active=true, person=Person{id='42', firstName='Jane'," +
+                " middleName='Middle Name', lastName='Doe', gender='Gender', birthdate=1970-01-01}, roles=[]," +
+                " applications=[Application{id=6046db61-8b23-4c74-b7e1-656eaca4531f, name='Application name'," +
+                " description='Application Description', active=true, createdDate=2024-12-21T07:56:19.881103," +
+                " lastUpdate=2024-12-21T07:56:19.881103, serviceTypeId=null, userList=null, roleList=null}]}}", actualToStringResult);
     }
 
 }

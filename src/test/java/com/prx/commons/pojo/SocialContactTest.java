@@ -13,45 +13,46 @@
  */
 package com.prx.commons.pojo;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-/**
- * SocialContactTest.
- *
- * @author Luis Antonio Mata
- * @version 1.0.0, 19-10-2020
- */
+import static org.junit.jupiter.api.Assertions.*;
+
 class SocialContactTest {
 
     @Test
-    void gettersAndSetters() {
-        final var socialContact = new SocialContact();
-        assertNotNull(socialContact.toString());
-        assertNotEquals(1, socialContact.hashCode());
-        assertNotEquals(new SocialContact(), socialContact);
-
+    @DisplayName("Default constructor initializes object")
+    void defaultConstructorInitializesObject() {
+        SocialContact socialContact = new SocialContact();
+        assertNotNull(socialContact);
     }
 
-    /**
-     * Method under test: default or parameterless constructor of {@link SocialContact}
-     */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testConstructor() {
-        // TODO: Complete this test.
-        //   Reason: T005 Trivial constructor.
-        //   See https://diff.blue/T005
-
-        // Arrange and Act
-        // TODO: Populate arranged inputs
-        SocialContact actualSocialContact = new SocialContact();
-
-        // Assert
-        // TODO: Add assertions on result
+    @DisplayName("toString returns non-null value")
+    void toStringReturnsNonNullValue() {
+        SocialContact socialContact = new SocialContact();
+        assertNotNull(socialContact.toString());
     }
 
+    @Test
+    @DisplayName("hashCode does not return default value")
+    void hashCodeDoesNotReturnDefaultValue() {
+        SocialContact socialContact = new SocialContact();
+        assertNotEquals(0, socialContact.hashCode());
+    }
+
+    @Test
+    @DisplayName("Equals method returns false for different objects")
+    void equalsMethodReturnsFalseForDifferentObjects() {
+        SocialContact socialContact1 = new SocialContact();
+        SocialContact socialContact2 = new SocialContact();
+        assertNotEquals(socialContact1, socialContact2);
+    }
+
+    @Test
+    @DisplayName("Equals method returns true for same object")
+    void equalsMethodReturnsTrueForSameObject() {
+        SocialContact socialContact = new SocialContact();
+        assertEquals(socialContact, socialContact);
+    }
 }
