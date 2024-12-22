@@ -26,9 +26,11 @@ public class User implements Serializable {
     private String id;
     private String alias;
     private String password;
+    private String email;
     private boolean active;
     private Person person;
     private List<Role> roles;
+    private List<Application> applications;
 
     /**
      * Default constructor.
@@ -49,6 +51,10 @@ public class User implements Serializable {
         return this.password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public boolean isActive() {
         return this.active;
     }
@@ -59,6 +65,10 @@ public class User implements Serializable {
 
     public List<Role> getRoles() {
         return this.roles;
+    }
+
+    public List<Application> getApplications() {
+        return applications;
     }
 
     public void setId(String id) {
@@ -73,6 +83,10 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setActive(boolean active) {
         this.active = active;
     }
@@ -85,15 +99,21 @@ public class User implements Serializable {
         this.roles = roles;
     }
 
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id +
                 "', alias='" + alias + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 ", active=" + active +
                 ", person=" + person +
                 ", roles=" + roles +
+                ", applications=" + applications +
                 '}';
     }
 }

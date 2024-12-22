@@ -65,10 +65,9 @@ public class StandardException extends RuntimeException {
      * @param throwable   {@link Throwable}
      */
     public StandardException(final String app, final MessageType messageType, Throwable throwable) {
-        super();
+        super(throwable);
         this.messageType = messageType;
         this.application = app;
-        this.initCause(throwable);
     }
 
     /**
@@ -85,8 +84,8 @@ public class StandardException extends RuntimeException {
      *
      * @return {@link String}
      */
-    public String getStatus() {
-        return this.messageType.getStatus();
+    public MessageType getStatus() {
+        return this.messageType;
     }
 
     /**

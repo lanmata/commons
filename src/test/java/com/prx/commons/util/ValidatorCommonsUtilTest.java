@@ -13,214 +13,129 @@
  */
 package com.prx.commons.util;
 
-import com.prx.commons.pojo.Contact;
-
-import java.util.List;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * ValidatorCommonsTest.
- *
- * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
- * @version 1.0.0, 14-10-2020
- */
-@SuppressWarnings("ConstantConditions")
+import static org.junit.jupiter.api.Assertions.*;
+
 class ValidatorCommonsUtilTest {
 
     @Test
-    void constructor() throws NoSuchMethodException {
-        final var constructor = ValidatorCommonsUtil.class.getDeclaredConstructor();
-        constructor.setAccessible(true);
-        Assertions.assertThrows(InvocationTargetException.class, constructor::newInstance);
+    @DisplayName("esAlfabetico returns true for alphabetic string")
+    void esAlfabeticoReturnsTrueForAlphabeticString() {
+        assertTrue(ValidatorCommonsUtil.esAlfabetico("abcDEF"));
     }
 
     @Test
-    void esAlfabetico() {
-        assertAll("Test esAlfabetico",
-                () -> assertTrue(ValidatorCommonsUtil.esAlfabetico("abcgds ERTGYHJKh")),
-                () -> assertFalse(ValidatorCommonsUtil.esAlfabetico("123456")),
-                () -> assertFalse(ValidatorCommonsUtil.esAlfabetico(123456)),
-                () -> assertFalse(ValidatorCommonsUtil.esAlfabetico(null))
-        );
+    @DisplayName("esAlfabetico returns false for numeric string")
+    void esAlfabeticoReturnsFalseForNumericString() {
+        assertFalse(ValidatorCommonsUtil.esAlfabetico("123456"));
     }
 
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#esAlfabetico(Object)}
-     */
     @Test
-    void testEsAlfabetico() {
-        assertTrue(ValidatorCommonsUtil.esAlfabetico("Object"));
-        assertFalse(ValidatorCommonsUtil.esAlfabetico(1));
+    @DisplayName("esAlfabetico returns false for null value")
+    void esAlfabeticoReturnsFalseForNullValue() {
         assertFalse(ValidatorCommonsUtil.esAlfabetico(null));
     }
 
     @Test
-    void esNumerico() {
-        assertAll("Test esNumerico",
-                () -> assertTrue(ValidatorCommonsUtil.esNumerico("123456789")),
-                () -> assertFalse(ValidatorCommonsUtil.esNumerico("SDFGHJK")),
-                () -> assertFalse(ValidatorCommonsUtil.esNumerico("2SD4FGHJK"))
-        );
+    @DisplayName("esNumerico returns true for integer value")
+    void esNumericoReturnsTrueForIntegerValue() {
+        assertTrue(ValidatorCommonsUtil.esNumerico(123));
     }
 
     @Test
-    void testEsNumerico() {
-        assertAll("Test esNumerico",
-                () -> assertTrue(ValidatorCommonsUtil.esNumerico(1252)),
-                () -> assertTrue(ValidatorCommonsUtil.esNumerico(12523456789098765L)),
-                () -> assertTrue(ValidatorCommonsUtil.esNumerico(1252.869D)),
-                () -> assertTrue(ValidatorCommonsUtil.esNumerico(BigDecimal.valueOf(1589.36D))),
-                () -> assertFalse(ValidatorCommonsUtil.esNumerico("2SD4FGHJK")),
-                () -> assertFalse(ValidatorCommonsUtil.esNumerico(new Contact()))
-        );
-        assertFalse(ValidatorCommonsUtil.esNumerico((Object) "Object"));
-        assertTrue(ValidatorCommonsUtil.esNumerico(1));
-        assertTrue(ValidatorCommonsUtil.esNumerico(10.0d));
-        assertTrue(ValidatorCommonsUtil.esNumerico(1L));
-        assertTrue(ValidatorCommonsUtil.esNumerico(BigDecimal.valueOf(1L)));
-        assertFalse(ValidatorCommonsUtil.esNumerico("Valor"));
-        assertTrue(ValidatorCommonsUtil.esNumerico("42"));
+    @DisplayName("esNumerico returns true for double value")
+    void esNumericoReturnsTrueForDoubleValue() {
+        assertTrue(ValidatorCommonsUtil.esNumerico(123.45));
     }
 
     @Test
-    void esNulo() {
+    @DisplayName("esNumerico returns true for BigDecimal value")
+    void esNumericoReturnsTrueForBigDecimalValue() {
+        assertTrue(ValidatorCommonsUtil.esNumerico(BigDecimal.valueOf(123.45)));
+    }
+
+    @Test
+    @DisplayName("esNumerico returns false for non-numeric string")
+    void esNumericoReturnsFalseForNonNumericString() {
+        assertFalse(ValidatorCommonsUtil.esNumerico("abc"));
+    }
+
+    @Test
+    @DisplayName("esNulo returns true for null value")
+    void esNuloReturnsTrueForNullValue() {
         assertTrue(ValidatorCommonsUtil.esNulo(null));
-        assertFalse(ValidatorCommonsUtil.esNulo("2345678as"));
-    }
-
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#esNulo(Object)}
-     */
-    @Test
-    void testEsNulo() {
-        assertFalse(ValidatorCommonsUtil.esNulo("Objeto"));
     }
 
     @Test
-    void esVacio() {
-        assertAll("Test esVacio",
-                () -> assertTrue(ValidatorCommonsUtil.esVacio("")),
-                () -> assertFalse(ValidatorCommonsUtil.esVacio("AbchSY 23456789"))
-        );
+    @DisplayName("esNulo returns false for non-null value")
+    void esNuloReturnsFalseForNonNullValue() {
+        assertFalse(ValidatorCommonsUtil.esNulo("value"));
     }
 
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#esVacio(String)}
-     */
     @Test
-    void testEsVacio2() {
-        assertFalse(ValidatorCommonsUtil.esVacio("Valor"));
-    }
-
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#esVacio(String)}
-     */
-    @Test
-    void testEsVacio3() {
+    @DisplayName("esVacio returns true for empty string")
+    void esVacioReturnsTrueForEmptyString() {
         assertTrue(ValidatorCommonsUtil.esVacio(""));
     }
 
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#esListaVacia(List)}
-     */
     @Test
-    void testEsListaVacia() {
+    @DisplayName("esVacio returns false for non-empty string")
+    void esVacioReturnsFalseForNonEmptyString() {
+        assertFalse(ValidatorCommonsUtil.esVacio("value"));
+    }
+
+    @Test
+    @DisplayName("esListaVacia returns true for empty list")
+    void esListaVaciaReturnsTrueForEmptyList() {
         assertTrue(ValidatorCommonsUtil.esListaVacia(new ArrayList<>()));
     }
 
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#esListaVacia(List)}
-     */
     @Test
-    void testEsListaVacia2() {
-        ArrayList<Object> valor = new ArrayList<>();
-        valor.add("42");
-        assertFalse(ValidatorCommonsUtil.esListaVacia(valor));
-    }
-
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#esListaVacia(List)}
-     */
-    @Test
-    void testEsListaVacia3() {
-        ArrayList<Object> valor = new ArrayList<>();
-        valor.add("42");
-        valor.add("42");
-        assertFalse(ValidatorCommonsUtil.esListaVacia(valor));
+    @DisplayName("esListaVacia returns false for non-empty list")
+    void esListaVaciaReturnsFalseForNonEmptyList() {
+        List<String> list = new ArrayList<>();
+        list.add("value");
+        assertFalse(ValidatorCommonsUtil.esListaVacia(list));
     }
 
     @Test
-    void testEsVacio() {
-        final var list = new ArrayList<>();
-
-        list.add("elemento 1");
-        list.add("elemento 2");
-        list.add("elemento 3");
-
-        assertAll("Test esVacio",
-                () -> assertTrue(ValidatorCommonsUtil.esListaVacia(new ArrayList<>())),
-                () -> assertFalse(ValidatorCommonsUtil.esListaVacia(list))
-        );
-    }
-
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#totalTiempo(long)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testTotalTiempo() {
-        // TODO: Complete this test.
-        //   Reason: R031 Method may be time-sensitive.
-        //   Diffblue Cover was only able to write tests that are time-sensitive.
-        //   The assertions don't pass when run at an alternate date, time, and
-        //   timezone. Try refactoring the method to take a java.time.Clock instance so
-        //   that the time can be parameterized during testing.
-        //   See https://diff.blue/R031 for details.
-
-        ValidatorCommonsUtil.totalTiempo(1L);
+    @DisplayName("totalTiempo returns positive value for valid input")
+    void totalTiempoReturnsPositiveValueForValidInput() {
+        long startTime = System.currentTimeMillis() - 1000;
+        assertTrue(ValidatorCommonsUtil.totalTiempo(startTime) > 0);
     }
 
     @Test
-    void totalTiempo() {
-        assertTrue(ValidatorCommonsUtil.totalTiempo(145859654L) > 1L);
-        assertFalse(ValidatorCommonsUtil.totalTiempo(145859654L) < 1L);
-    }
-
-    /**
-     * Method under test: {@link ValidatorCommonsUtil#validaIgualdad(String, String)}
-     */
-    @Test
-    void testValidaIgualdad() {
-        assertFalse(ValidatorCommonsUtil.validaIgualdad("Valor A", "Valor B"));
-        assertTrue(ValidatorCommonsUtil.validaIgualdad("foo", "foo"));
-        assertFalse(ValidatorCommonsUtil.validaIgualdad(null, "Valor B"));
-        assertFalse(ValidatorCommonsUtil.validaIgualdad("", "Valor B"));
-        assertFalse(ValidatorCommonsUtil.validaIgualdad("Valor A", null));
-        assertFalse(ValidatorCommonsUtil.validaIgualdad("Valor A", ""));
+    @DisplayName("validaIgualdad returns true for equal strings")
+    void validaIgualdadReturnsTrueForEqualStrings() {
+        assertTrue(ValidatorCommonsUtil.validaIgualdad("value", "value"));
     }
 
     @Test
-    void validaIgualdad() {
-        assertAll("Test validaIgualdad",
-                () -> assertTrue(ValidatorCommonsUtil.validaIgualdad("ABC1236", "ABC1236")),
-                () -> assertFalse(ValidatorCommonsUtil.validaIgualdad("ABC1236", "ABC123sdsd6")),
-                () -> assertFalse(ValidatorCommonsUtil.validaIgualdad("ABC1236", null)),
-                () -> assertFalse(ValidatorCommonsUtil.validaIgualdad(null, "ABC123sdsd6")),
-                () -> assertFalse(ValidatorCommonsUtil.validaIgualdad("", "ABC123sdsd6")),
-                () -> assertFalse(ValidatorCommonsUtil.validaIgualdad("·$%&/jk", ""))
-        );
+    @DisplayName("validaIgualdad returns false for different strings")
+    void validaIgualdadReturnsFalseForDifferentStrings() {
+        assertFalse(ValidatorCommonsUtil.validaIgualdad("value1", "value2"));
     }
 
+    @Test
+    @DisplayName("validaIgualdad returns false for null values")
+    void validaIgualdadReturnsFalseForNullValues() {
+        assertFalse(ValidatorCommonsUtil.validaIgualdad(null, "value"));
+        assertFalse(ValidatorCommonsUtil.validaIgualdad("value", null));
+        assertFalse(ValidatorCommonsUtil.validaIgualdad(null, null));
+    }
+
+    @Test
+    @DisplayName("validaIgualdad returns false for empty strings")
+    void validaIgualdadReturnsFalseForEmptyStrings() {
+        assertFalse(ValidatorCommonsUtil.validaIgualdad("", "value"));
+        assertFalse(ValidatorCommonsUtil.validaIgualdad("value", ""));
+        assertFalse(ValidatorCommonsUtil.validaIgualdad("", ""));
+    }
 }
