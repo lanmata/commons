@@ -12,7 +12,7 @@
  *
  */
 
-package com.prx.commons.enums.keys;
+package com.prx.commons.constants.keys;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,32 +22,37 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * SizeKeyTest.
+ * ExchangeKeysTest.
  *
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
-class SizeKeyTest {
+class ExchangeKeysTest {
 
     @Test
     void keys() {
-        for (final var tp : SizeKey.values()) {
-            Assertions.assertTrue(Arrays.asList(SizeKey.values()).contains(tp));
-            Assertions.assertNotNull(tp.toString());
+        for (final var tp : ExchangeKeys.values()) {
+            Assertions.assertTrue(Arrays.asList(ExchangeKeys.values()).contains(tp));
         }
+
+        Assertions.assertAll("Test String ID",
+                () -> Assertions.assertNotEquals(0, ExchangeKeys.BITFINEX.getId()),
+                () -> Assertions.assertNotEquals(0, ExchangeKeys.BITSTAMP.getId()),
+                () -> Assertions.assertNotEquals(0, ExchangeKeys.OKCOIN.getId())
+        );
     }
 
     /**
      * Methods under test:
      *
      * <ul>
-     *   <li>{@link SizeKey#valueOf(String)}
-     *   <li>{@link SizeKey#toString()}
+     *   <li>{@link ExchangeKeys#valueOf(String)}
+     *   <li>{@link ExchangeKeys#getId()}
      * </ul>
      */
     @Test
     void testValueOf() {
-        assertEquals("b", SizeKey.valueOf("BYTES").toString());
+        assertEquals(1, ExchangeKeys.valueOf("BITSTAMP").getId());
     }
 
 }

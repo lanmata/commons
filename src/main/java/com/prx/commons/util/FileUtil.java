@@ -13,7 +13,7 @@
 
 package com.prx.commons.util;
 
-import com.prx.commons.enums.keys.SizeKey;
+import com.prx.commons.constants.keys.SizeKey;
 import com.prx.commons.pojo.SizeDescriptor;
 
 /**

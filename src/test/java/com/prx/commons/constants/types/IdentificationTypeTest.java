@@ -12,7 +12,7 @@
  *
  */
 
-package com.prx.commons.enums.keys;
+package com.prx.commons.constants.types;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,18 +20,17 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * ParityKeyTest.
+ * IdentificationTypeTest.
  *
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
-class ParityKeyTest {
+class IdentificationTypeTest {
 
     @Test
     void keys() {
-        for (final var tp : ParityKey.values()) {
-            Assertions.assertTrue(Arrays.asList(ParityKey.values()).contains(tp));
+        for (final var tp : IdentificationType.values()) {
+            Assertions.assertTrue(Arrays.asList(IdentificationType.values()).contains(tp));
         }
     }
-
 }

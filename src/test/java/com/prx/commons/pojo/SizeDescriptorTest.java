@@ -13,7 +13,7 @@
  */
 package com.prx.commons.pojo;
 
-import com.prx.commons.enums.keys.SizeKey;
+import com.prx.commons.constants.keys.SizeKey;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;

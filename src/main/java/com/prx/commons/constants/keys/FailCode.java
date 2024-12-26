@@ -11,9 +11,9 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.enums.keys;
+package com.prx.commons.constants.keys;
 
-import com.prx.commons.enums.types.MessageType;
+import com.prx.commons.constants.types.MessageType;
 
 /**
  * FailCode. Define el estada para excepciones y manejo de errores durante la ejecuc&oacute;n

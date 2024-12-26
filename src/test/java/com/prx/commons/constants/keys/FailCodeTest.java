@@ -11,7 +11,7 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.enums.keys;
+package com.prx.commons.constants.keys;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

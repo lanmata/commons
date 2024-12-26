@@ -1,4 +1,4 @@
-package com.prx.commons.enums.types;
+package com.prx.commons.constants.types;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -12,7 +12,9 @@
  *
  */
 
-package com.prx.commons.enums.types;
+package com.prx.commons.constants.keys;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,18 +22,32 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * OperationTypeTest.
+ * SizeKeyTest.
  *
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
-class OperationTypeTest {
+class SizeKeyTest {
 
     @Test
     void keys() {
-        for (final var tp : OperationType.values()) {
-            Assertions.assertTrue(Arrays.asList(OperationType.values()).contains(tp));
+        for (final var tp : SizeKey.values()) {
+            Assertions.assertTrue(Arrays.asList(SizeKey.values()).contains(tp));
+            Assertions.assertNotNull(tp.toString());
         }
+    }
+
+    /**
+     * Methods under test:
+     *
+     * <ul>
+     *   <li>{@link SizeKey#valueOf(String)}
+     *   <li>{@link SizeKey#toString()}
+     * </ul>
+     */
+    @Test
+    void testValueOf() {
+        assertEquals("b", SizeKey.valueOf("BYTES").toString());
     }
 
 }

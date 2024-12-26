@@ -1,5 +1,5 @@
 /*
- *  @(#)IdentificationType.java
+ *  @(#)ExchangeKeys.java
  *
  *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -10,15 +10,25 @@
  *  In any event, this notice and the above copyright must always be included
  *  verbatim with this file.
  */
-package com.prx.commons.enums.types;
+package com.prx.commons.constants.keys;
 
 /**
- * IdentificationType
+ * ExchangeKeys.
  *
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-public enum IdentificationType {
-    PASSPORT, IDENTIFICATION
+public enum ExchangeKeys {
+    BITSTAMP(1), BITFINEX(2), OKCOIN(3);
+
+    private final int id;
+
+    ExchangeKeys(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 
 }

@@ -12,7 +12,7 @@
  *
  */
 
-package com.prx.commons.enums.types;
+package com.prx.commons.constants.keys;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,17 +20,18 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * MessageTypeTest.
+ * ParityKeyTest.
  *
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
-class MessageCategoryTypeTest {
+class ParityKeyTest {
 
     @Test
     void keys() {
-        for (final var tp : MessageCategoryType.values()) {
-            Assertions.assertTrue(Arrays.asList(MessageCategoryType.values()).contains(tp));
+        for (final var tp : ParityKey.values()) {
+            Assertions.assertTrue(Arrays.asList(ParityKey.values()).contains(tp));
         }
     }
+
 }

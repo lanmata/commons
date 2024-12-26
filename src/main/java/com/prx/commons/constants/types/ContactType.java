@@ -1,5 +1,5 @@
 /*
- *  @(#)SizeKey.java
+ *  @(#)ContactType.java
  *
  *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -10,20 +10,15 @@
  *  In any event, this notice and the above copyright must always be included
  *  verbatim with this file.
  */
-package com.prx.commons.enums.keys;
+package com.prx.commons.constants.types;
 
-public enum SizeKey {
-    BYTES("b"), KILOBYTES("kb"), MEGABYTES("mb"), GIGABYTES("gb"), TERABYTES("tb"), PETABYTES("pb"), EXABYTES(
-        "eb"), ZETABYTES("zb"), YOTABYTES("yb");
+/**
+ * ContactType.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
+ */
+public enum ContactType {
+    EMAIL, PHONE, WHATSAPP, TELEGRAM, TWITTER
 
-    private final String type;
-
-    SizeKey(String type) {
-        this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return type;
-    }
 }

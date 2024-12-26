@@ -1,5 +1,5 @@
 /*
- *  @(#)ParityKey.java
+ *  @(#)OperationType.java
  *
  *  Copyright (c) Luis Antonio Mata Mata. All rights reserved.
  *
@@ -11,15 +11,14 @@
  *  verbatim with this file.
  */
 
-package com.prx.commons.enums.keys;
+package com.prx.commons.constants.types;
 
 /**
- * ParityKey.
- *
+ * OperationType.
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-public enum ParityKey {
-    ETHCLP, ETHARS, ETHUSD, ETHEUR, ETHBRL, ETHMXN, XLMCLP, XLMARS, XLMEUR, XLMBRL, XLMMXN, BTCCLP, BTCARS, BTCEUR, BTCBRL, BTCMXN, EOSCLP, EOSARS, EOSEUR, EOSBRL, EOSMXN
+public enum OperationType {
+    SELL, BUY
 
 }

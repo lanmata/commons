@@ -12,7 +12,7 @@
  *
  */
 
-package com.prx.commons.enums.types;
+package com.prx.commons.constants.types;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,17 +20,17 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * IdentificationTypeTest.
+ * MessageTypeTest.
  *
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
-class IdentificationTypeTest {
+class MessageCategoryTypeTest {
 
     @Test
     void keys() {
-        for (final var tp : IdentificationType.values()) {
-            Assertions.assertTrue(Arrays.asList(IdentificationType.values()).contains(tp));
+        for (final var tp : MessageCategoryType.values()) {
+            Assertions.assertTrue(Arrays.asList(MessageCategoryType.values()).contains(tp));
         }
     }
 }

@@ -12,7 +12,7 @@
  *
  */
 
-package com.prx.commons.enums.keys;
+package com.prx.commons.constants.keys;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;

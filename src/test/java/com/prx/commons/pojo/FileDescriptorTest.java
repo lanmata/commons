@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-import com.prx.commons.enums.keys.SizeKey;
+import com.prx.commons.constants.keys.SizeKey;
 import org.junit.jupiter.api.Test;
 
 /**

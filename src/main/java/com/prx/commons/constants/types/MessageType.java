@@ -10,7 +10,7 @@
  * In any event, this notice and the above copyright must always be included
  * verbatim with this file.
  */
-package com.prx.commons.enums.types;
+package com.prx.commons.constants.types;
 
 import java.io.Serializable;
 
