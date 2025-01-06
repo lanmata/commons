@@ -14,7 +14,7 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.enums.keys.SizeKey;
+import com.prx.commons.constants.keys.SizeKey;
 
 @JsonNaming
 public class SizeDescriptor {

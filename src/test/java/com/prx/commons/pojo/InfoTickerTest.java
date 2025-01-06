@@ -15,7 +15,7 @@ package com.prx.commons.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.prx.commons.enums.keys.ParityKey;
+import com.prx.commons.constants.keys.ParityKey;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

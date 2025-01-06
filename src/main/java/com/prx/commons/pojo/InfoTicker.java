@@ -15,7 +15,7 @@ package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.prx.commons.enums.keys.ParityKey;
+import com.prx.commons.constants.keys.ParityKey;
 
 import java.io.Serializable;
 

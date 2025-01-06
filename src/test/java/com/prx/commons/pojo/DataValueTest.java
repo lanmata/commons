@@ -13,7 +13,7 @@
  */
 package com.prx.commons.pojo;
 
-import com.prx.commons.enums.types.OperationType;
+import com.prx.commons.constants.types.OperationType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

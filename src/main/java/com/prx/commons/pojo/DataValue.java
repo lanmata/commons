@@ -14,7 +14,7 @@
 package com.prx.commons.pojo;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.prx.commons.enums.types.OperationType;
+import com.prx.commons.constants.types.OperationType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
