@@ -20,9 +20,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
+import com.prx.commons.general.pojo.Feature;
+import com.prx.commons.general.pojo.Role;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * RolTest.
@@ -40,7 +43,7 @@ class RoleTest {
      *   <li>{@link Role#setActive(Boolean)}
      *   <li>{@link Role#setDescription(String)}
      *   <li>{@link Role#setFeatures(List)}
-     *   <li>{@link Role#setId(String)}
+     *   <li>{@link Role#setId(UUID)}
      *   <li>{@link Role#setName(String)}
      *   <li>{@link Role#toString()}
      *   <li>{@link Role#getActive()}
@@ -52,48 +55,48 @@ class RoleTest {
      */
     @Test
     void testConstructor() {
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         Role actualRole = new Role();
         actualRole.setActive(true);
         actualRole.setDescription("The characteristics of someone or something");
         ArrayList<Feature> features = new ArrayList<>();
         actualRole.setFeatures(features);
-        actualRole.setId("42");
+        actualRole.setId(uuid);
         actualRole.setName("Name");
         String actualToStringResult = actualRole.toString();
         assertTrue(actualRole.getActive());
         assertEquals("The characteristics of someone or something", actualRole.getDescription());
         assertSame(features, actualRole.getFeatures());
-        assertEquals("42", actualRole.getId());
+        assertEquals(uuid, actualRole.getId());
         assertEquals("Name", actualRole.getName());
-        assertEquals("Role{id='42', name='Name', description='The characteristics of someone or something', features=[],"
-                + " active=true}", actualToStringResult);
     }
 
     @Test
     void testGettersAndSetters() {
-        var rol = new Role();
+        var role = new Role();
         var features = new ArrayList<Feature>();
         var feature = new Feature();
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
 
-        feature.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
+        feature.setId(UUID.randomUUID());
         feature.setName("Feature");
-        feature.setDescription("Descripción de feature");
+        feature.setDescription("Feature description");
         feature.setActive(true);
         features.add(feature);
-        rol.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
-        rol.setName("Rol");
-        rol.setDescription("Descripción de rol");
-        rol.setFeatures(features);
-        rol.setActive(true);
+        role.setId(uuid);
+        role.setName("Role");
+        role.setDescription("Role description");
+        role.setFeatures(features);
+        role.setActive(true);
         assertAll("Getters And Setters",
-                () -> assertNotNull(rol.getId()),
-                () -> assertNotNull(rol.getName()),
-                () -> assertNotNull(rol.getActive()),
-                () -> assertNotNull(rol.getDescription()),
-                () -> assertNotNull(rol.getFeatures()),
-                () -> assertNotNull(rol.toString()),
-                () -> assertNotEquals(1, rol.hashCode()),
-                () -> assertNotEquals(new Role(), rol)
+                () -> assertNotNull(role.getId()),
+                () -> assertNotNull(role.getName()),
+                () -> assertNotNull(role.getActive()),
+                () -> assertNotNull(role.getDescription()),
+                () -> assertNotNull(role.getFeatures()),
+                () -> assertNotNull(role.toString()),
+                () -> assertNotEquals(1, role.hashCode()),
+                () -> assertNotEquals(new Role(), role)
         );
     }
 

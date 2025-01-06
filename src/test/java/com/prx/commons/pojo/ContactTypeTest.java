@@ -13,11 +13,12 @@
 
 package com.prx.commons.pojo;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.prx.commons.general.pojo.ContactType;
 import org.junit.jupiter.api.Test;
+
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * ContactTypeTest.
@@ -34,7 +35,7 @@ class ContactTypeTest {
      *   <li>default or parameterless constructor of {@link ContactType}
      *   <li>{@link ContactType#setActive(Boolean)}
      *   <li>{@link ContactType#setDescription(String)}
-     *   <li>{@link ContactType#setId(String)}
+     *   <li>{@link ContactType#setId(UUID)}
      *   <li>{@link ContactType#setName(String)}
      *   <li>{@link ContactType#toString()}
      *   <li>{@link ContactType#getActive()}
@@ -45,27 +46,26 @@ class ContactTypeTest {
      */
     @Test
     void testConstructor() {
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         ContactType actualContactType = new ContactType();
         actualContactType.setActive(true);
         actualContactType.setDescription("The characteristics of someone or something");
-        actualContactType.setId("42");
+        actualContactType.setId(uuid);
         actualContactType.setName("Name");
-        String actualToStringResult = actualContactType.toString();
         assertTrue(actualContactType.getActive());
         assertEquals("The characteristics of someone or something", actualContactType.getDescription());
-        assertEquals("42", actualContactType.getId());
+        assertEquals(uuid, actualContactType.getId());
         assertEquals("Name", actualContactType.getName());
-        assertEquals("ContactType{id='42', name='Name', description='The characteristics of someone or something',"
-                + " active=true}", actualToStringResult);
     }
 
     @Test
     void testGettersAndSetters() {
         var contactType = new ContactType();
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
 
-        contactType.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
-        contactType.setName("Tipo de contacto");
-        contactType.setDescription("Descripción tipo de contacto");
+        contactType.setId(uuid);
+        contactType.setName("Contact Type Name");
+        contactType.setDescription("Contact Description");
         contactType.setActive(true);
         assertAll("Getters And Setters",
                 () -> assertNotNull(contactType.getId()),

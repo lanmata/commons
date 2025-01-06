@@ -13,11 +13,16 @@
  */
 package com.prx.commons.pojo;
 
+import com.prx.commons.general.pojo.Application;
+import com.prx.commons.general.pojo.Person;
+import com.prx.commons.general.pojo.Role;
+import com.prx.commons.general.pojo.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,9 +31,10 @@ class UserTest {
     @Test
     @DisplayName("Set and get ID")
     void setAndGetId() {
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         User user = new User();
-        user.setId("12345");
-        assertEquals("12345", user.getId());
+        user.setId(uuid);
+        assertEquals(uuid, user.getId());
     }
 
     @Test

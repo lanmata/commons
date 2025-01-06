@@ -1,6 +1,6 @@
 package com.prx.commons.exception;
 
-import com.prx.commons.enums.types.MessageType;
+import com.prx.commons.constants.types.MessageType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

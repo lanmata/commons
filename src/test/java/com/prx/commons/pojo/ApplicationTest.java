@@ -1,5 +1,7 @@
 package com.prx.commons.pojo;
 
+import com.prx.commons.general.pojo.Application;
+import com.prx.commons.general.pojo.User;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;

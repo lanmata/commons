@@ -13,6 +13,8 @@
  */
 package com.prx.commons.pojo;
 
+import com.prx.commons.general.pojo.User;
+import com.prx.commons.message.pojo.to.MessageActivity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

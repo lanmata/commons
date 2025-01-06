@@ -19,6 +19,7 @@ import java.time.ZoneId;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import com.prx.commons.message.pojo.to.NotifyMessageResponse;
 import org.junit.jupiter.api.Test;
 
 /**

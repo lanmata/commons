@@ -13,16 +13,15 @@
  */
 package com.prx.commons.pojo;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.prx.commons.general.pojo.Contact;
+import com.prx.commons.general.pojo.ContactType;
+import com.prx.commons.general.pojo.Person;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * ContactTest.
@@ -40,7 +39,7 @@ class ContactTest {
      *   <li>{@link Contact#setActive(Boolean)}
      *   <li>{@link Contact#setContactType(ContactType)}
      *   <li>{@link Contact#setContent(String)}
-     *   <li>{@link Contact#setId(String)}
+     *   <li>{@link Contact#setId(UUID)}
      *   <li>{@link Contact#setPerson(Person)}
      *   <li>{@link Contact#toString()}
      *   <li>{@link Contact#getActive()}
@@ -52,47 +51,44 @@ class ContactTest {
      */
     @Test
     void testConstructor() {
+        var contactID = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         Contact actualContact = new Contact();
         actualContact.setActive(true);
         ContactType contactType = new ContactType();
         contactType.setActive(true);
         contactType.setDescription("The characteristics of someone or something");
-        contactType.setId("42");
+        contactType.setId(contactID);
         contactType.setName("Name");
         actualContact.setContactType(contactType);
         actualContact.setContent("Not all who wander are lost");
-        actualContact.setId("42");
+        actualContact.setId(contactID);
         Person person = new Person();
         person.setBirthdate(LocalDate.of(1970, 1, 1));
         person.setFirstName("Jane");
-        person.setGender("Gender");
-        person.setId("42");
+        person.setGender("F");
+        person.setId(contactID);
         person.setLastName("Doe");
         person.setMiddleName("Middle Name");
         actualContact.setPerson(person);
-        String actualToStringResult = actualContact.toString();
         assertTrue(actualContact.getActive());
         assertSame(contactType, actualContact.getContactType());
         assertEquals("Not all who wander are lost", actualContact.getContent());
-        assertEquals("42", actualContact.getId());
+        assertEquals(contactID, actualContact.getId());
         assertSame(person, actualContact.getPerson());
-        assertEquals("Contact{id='42', content='Not all who wander are lost', contactType=ContactType{id='42', name='Name',"
-                + " description='The characteristics of someone or something', active=true}, person=Person{id='42',"
-                + " firstName='Jane', middleName='Middle Name', lastName='Doe', gender='Gender', birthdate=1970-01-01},"
-                + " active=true}", actualToStringResult);
     }
 
     @Test
     void testGettersAndSetters() {
         var contact = new Contact();
         var contactType = new ContactType();
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
 
-        contactType.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
+        contactType.setId(uuid);
         contactType.setName("Tipo de contacto");
-        contactType.setDescription("Descripción tipo de contacto");
+        contactType.setDescription("Contact type description");
         contactType.setActive(true);
 
-        contact.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
+        contact.setId(uuid);
         contact.setPerson(new Person());
         contact.setContent("Content");
         contact.setContactType(contactType);

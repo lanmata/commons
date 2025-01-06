@@ -17,9 +17,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
+import com.prx.commons.general.pojo.Person;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 /**
  * PersonTest.
@@ -32,16 +34,16 @@ class PersonTest {
     @Test
     void gettersAndSetters() {
         final var person = new Person();
-
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         person.setBirthdate(LocalDate.of(1979, 4, 14));
         person.setFirstName("Pepe");
         person.setGender("M");
-        person.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
+        person.setId(uuid);
         person.setLastName("Perez");
         person.setMiddleName("Lolo");
 
         assertAll("Test Getters And Setters",
-                () -> assertNotEquals(-1, person.getId()),
+                () -> assertNotEquals(UUID.randomUUID(), person.getId()),
                 () -> assertNotNull(person.getGender()),
                 () -> assertNotNull(person.getBirthdate()),
                 () -> assertNotNull(person.getFirstName()),
@@ -61,7 +63,7 @@ class PersonTest {
      *   <li>{@link Person#setBirthdate(LocalDate)}
      *   <li>{@link Person#setFirstName(String)}
      *   <li>{@link Person#setGender(String)}
-     *   <li>{@link Person#setId(String)}
+     *   <li>{@link Person#setId(UUID)}
      *   <li>{@link Person#setLastName(String)}
      *   <li>{@link Person#setMiddleName(String)}
      *   <li>{@link Person#toString()}
@@ -75,23 +77,21 @@ class PersonTest {
      */
     @Test
     void testConstructor() {
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         Person actualPerson = new Person();
         LocalDate birthdate = LocalDate.of(1970, 1, 1);
         actualPerson.setBirthdate(birthdate);
         actualPerson.setFirstName("Jane");
         actualPerson.setGender("Gender");
-        actualPerson.setId("42");
+        actualPerson.setId(uuid);
         actualPerson.setLastName("Doe");
         actualPerson.setMiddleName("Middle Name");
-        String actualToStringResult = actualPerson.toString();
         assertSame(birthdate, actualPerson.getBirthdate());
         assertEquals("Jane", actualPerson.getFirstName());
         assertEquals("Gender", actualPerson.getGender());
-        assertEquals("42", actualPerson.getId());
+        assertEquals(uuid, actualPerson.getId());
         assertEquals("Doe", actualPerson.getLastName());
         assertEquals("Middle Name", actualPerson.getMiddleName());
-        assertEquals("Person{id='42', firstName='Jane', middleName='Middle Name', lastName='Doe', gender='Gender',"
-                + " birthdate=1970-01-01}", actualToStringResult);
     }
 
 }

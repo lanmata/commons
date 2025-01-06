@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.prx.commons.message.pojo.to.NotifyMessageRequest;
 import org.junit.jupiter.api.Test;
 
 /**

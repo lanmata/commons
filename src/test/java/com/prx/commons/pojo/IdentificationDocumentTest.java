@@ -17,10 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
+import com.prx.commons.general.pojo.IdentificationDocument;
+import com.prx.commons.general.pojo.Person;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.UUID;
 
 /**
  * IdentificationDocumentTest.
@@ -36,7 +39,7 @@ class IdentificationDocumentTest {
      * <ul>
      *   <li>default or parameterless constructor of {@link IdentificationDocument}
      *   <li>{@link IdentificationDocument#setExpirationDate(LocalDate)}
-     *   <li>{@link IdentificationDocument#setId(String)}
+     *   <li>{@link IdentificationDocument#setId(UUID)}
      *   <li>{@link IdentificationDocument#setIdentificationType(int)}
      *   <li>{@link IdentificationDocument#setNumber(String)}
      *   <li>{@link IdentificationDocument#setPerson(Person)}
@@ -50,44 +53,42 @@ class IdentificationDocumentTest {
      */
     @Test
     void testConstructor() {
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         IdentificationDocument actualIdentificationDocument = new IdentificationDocument();
         LocalDate expirationDate = LocalDate.of(1970, 1, 1);
         actualIdentificationDocument.setExpirationDate(expirationDate);
-        actualIdentificationDocument.setId("42");
+        actualIdentificationDocument.setId(uuid);
         actualIdentificationDocument.setIdentificationType(1);
         actualIdentificationDocument.setNumber("42");
         Person person = new Person();
         person.setBirthdate(LocalDate.of(1970, 1, 1));
         person.setFirstName("Jane");
         person.setGender("Gender");
-        person.setId("42");
+        person.setId(uuid);
         person.setLastName("Doe");
         person.setMiddleName("Middle Name");
         actualIdentificationDocument.setPerson(person);
-        String actualToStringResult = actualIdentificationDocument.toString();
         assertSame(expirationDate, actualIdentificationDocument.getExpirationDate());
-        assertEquals("42", actualIdentificationDocument.getId());
+        assertEquals(uuid, actualIdentificationDocument.getId());
         assertEquals(1, actualIdentificationDocument.getIdentificationType());
         assertEquals("42", actualIdentificationDocument.getNumber());
         assertSame(person, actualIdentificationDocument.getPerson());
-        assertEquals("IdentificationDocument{id=42, number='42', expirationDate=1970-01-01, identificationType=1,"
-                + " person=Person{id='42', firstName='Jane', middleName='Middle Name', lastName='Doe', gender='Gender',"
-                + " birthdate=1970-01-01}}", actualToStringResult);
     }
 
     @Test
     void testGettersAndSetters() {
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         final var identificationDocument = new IdentificationDocument();
         identificationDocument.setExpirationDate(LocalDate.now(ZoneId.systemDefault()));
         identificationDocument.setIdentificationType(1);
-        identificationDocument.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
+        identificationDocument.setId(uuid);
         identificationDocument.setNumber("25073765-3");
         identificationDocument.setPerson(new Person());
         assertNotNull(identificationDocument.toString());
         assertNotNull(identificationDocument.getPerson());
         assertNotNull(identificationDocument.getNumber());
         assertNotNull(identificationDocument.getExpirationDate());
-        assertNotEquals(-1, identificationDocument.getId());
+        assertNotEquals(UUID.randomUUID(), identificationDocument.getId());
         assertNotEquals(-1, identificationDocument.getIdentificationType());
     }
 

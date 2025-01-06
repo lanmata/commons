@@ -13,8 +13,8 @@
  */
 package com.prx.commons.util;
 
-import com.prx.commons.enums.keys.SizeKey;
-import com.prx.commons.pojo.SizeDescriptor;
+import com.prx.commons.constants.keys.SizeKey;
+import com.prx.commons.io.pojo.SizeDescriptor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

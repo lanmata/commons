@@ -13,6 +13,7 @@
  */
 package com.prx.commons.pojo;
 
+import com.prx.commons.general.pojo.SocialContact;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

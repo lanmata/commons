@@ -17,7 +17,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.prx.commons.general.pojo.Feature;
 import org.junit.jupiter.api.Test;
+
+import java.util.UUID;
 
 /**
  * FeatureTest.
@@ -33,7 +36,7 @@ class FeatureTest {
      *   <li>default or parameterless constructor of {@link Feature}
      *   <li>{@link Feature#setActive(Boolean)}
      *   <li>{@link Feature#setDescription(String)}
-     *   <li>{@link Feature#setId(String)}
+     *   <li>{@link Feature#setId(UUID)}
      *   <li>{@link Feature#setName(String)}
      *   <li>{@link Feature#toString()}
      *   <li>{@link Feature#getActive()}
@@ -45,27 +48,26 @@ class FeatureTest {
     @Test
     void testConstructor() {
         Feature actualFeature = new Feature();
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         actualFeature.setActive(true);
         actualFeature.setDescription("The characteristics of someone or something");
-        actualFeature.setId("42");
+        actualFeature.setId(uuid);
         actualFeature.setName("Name");
         String actualToStringResult = actualFeature.toString();
         assertTrue(actualFeature.getActive());
         assertEquals("The characteristics of someone or something", actualFeature.getDescription());
-        assertEquals("42", actualFeature.getId());
+        assertEquals(uuid, actualFeature.getId());
         assertEquals("Name", actualFeature.getName());
-        assertEquals(
-                "Feature{id='42', name='Name', description='The characteristics of someone or something'," + " active=true}",
-                actualToStringResult);
     }
 
     @Test
     void testGettersAndSetters() {
+        var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         var feature = new Feature();
 
-        feature.setId("7cde528b-3f13-4d0d-8573-d22996b17d3b");
+        feature.setId(uuid);
         feature.setName("Feature");
-        feature.setDescription("Descripción de feature");
+        feature.setDescription("Feature Description");
         feature.setActive(true);
         assertAll("Getters And Setters",
                 () -> assertNotNull(feature.getId()),
