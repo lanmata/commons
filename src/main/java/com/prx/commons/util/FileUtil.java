@@ -14,7 +14,7 @@
 package com.prx.commons.util;
 
 import com.prx.commons.constants.keys.SizeKey;
-import com.prx.commons.pojo.SizeDescriptor;
+import com.prx.commons.io.pojo.SizeDescriptor;
 
 /**
  * Clase utilitaria para gesti&oacute;n de archivos
