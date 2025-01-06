@@ -11,7 +11,7 @@
  *  verbatim with this file.
  */
 
-package com.prx.commons.message.pojo.to;
+package com.prx.commons.message.to;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.prx.commons.general.to.Request;

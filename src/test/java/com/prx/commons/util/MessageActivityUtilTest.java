@@ -12,7 +12,7 @@
  */
 package com.prx.commons.util;
 
-import com.prx.commons.message.pojo.to.MessageActivity;
+import com.prx.commons.message.to.MessageActivity;
 import com.prx.commons.general.to.Response;
 
 import java.time.LocalDate;

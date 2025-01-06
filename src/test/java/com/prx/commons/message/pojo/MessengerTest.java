@@ -11,7 +11,7 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.pojo;
+package com.prx.commons.message.pojo;
 
 import com.prx.commons.general.pojo.Application;
 import com.prx.commons.general.pojo.Person;

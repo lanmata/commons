@@ -11,9 +11,8 @@
  * verbatim with this file.
  */
 
-package com.prx.commons.pojo;
+package com.prx.commons.general.pojo;
 
-import com.prx.commons.general.pojo.ContactType;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

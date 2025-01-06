@@ -11,7 +11,7 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.to.messenger;
+package com.prx.commons.message.to;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -25,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.prx.commons.message.pojo.to.NotifyMessageRequest;
 import org.junit.jupiter.api.Test;
 
 /**

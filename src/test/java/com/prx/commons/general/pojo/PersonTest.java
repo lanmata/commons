@@ -11,13 +11,12 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.pojo;
+package com.prx.commons.general.pojo;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-import com.prx.commons.general.pojo.Person;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

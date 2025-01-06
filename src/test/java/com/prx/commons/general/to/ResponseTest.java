@@ -11,7 +11,7 @@
  *  verbatim with this file.
  */
 
-package com.prx.commons.to;
+package com.prx.commons.general.to;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.time.LocalDate;
 
-import com.prx.commons.general.to.Response;
 import org.junit.jupiter.api.Test;
 
 import java.time.Clock;

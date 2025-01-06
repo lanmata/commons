@@ -11,7 +11,7 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.pojo;
+package com.prx.commons.io.pojo;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,8 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 import com.prx.commons.constants.keys.SizeKey;
-import com.prx.commons.io.pojo.FileDescriptor;
-import com.prx.commons.io.pojo.SizeDescriptor;
 import org.junit.jupiter.api.Test;
 
 /**

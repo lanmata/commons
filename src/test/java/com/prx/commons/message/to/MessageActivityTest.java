@@ -11,10 +11,9 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.pojo;
+package com.prx.commons.message.to;
 
 import com.prx.commons.general.pojo.User;
-import com.prx.commons.message.pojo.to.MessageActivity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

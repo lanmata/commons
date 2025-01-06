@@ -11,12 +11,8 @@
  * verbatim with this file.
  *
  */
-package com.prx.commons.pojo;
+package com.prx.commons.general.pojo;
 
-import com.prx.commons.general.pojo.Application;
-import com.prx.commons.general.pojo.Person;
-import com.prx.commons.general.pojo.Role;
-import com.prx.commons.general.pojo.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
