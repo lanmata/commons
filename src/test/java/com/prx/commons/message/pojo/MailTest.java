@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.util.Map;
 
-import com.prx.commons.message.pojo.to.Mail;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

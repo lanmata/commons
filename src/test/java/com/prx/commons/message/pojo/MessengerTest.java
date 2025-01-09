@@ -16,7 +16,6 @@ package com.prx.commons.message.pojo;
 import com.prx.commons.general.pojo.Application;
 import com.prx.commons.general.pojo.Person;
 import com.prx.commons.general.pojo.User;
-import com.prx.commons.message.pojo.to.Messenger;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
