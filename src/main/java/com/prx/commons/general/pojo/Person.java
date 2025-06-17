@@ -20,6 +20,8 @@ import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /// @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
@@ -40,6 +42,7 @@ public class Person implements Serializable {
     @NotNull
     @JsonFormat(pattern = DateUtil.PATTERN_DATE)
     private LocalDate birthdate;
+    private List<Contact> contacts;
 
     /// Default constructor.
     public Person() {
@@ -76,6 +79,11 @@ public class Person implements Serializable {
         return this.birthdate;
     }
 
+    ///  @return Collection of Contact.
+    public List<Contact> getContacts() {
+        return this.contacts;
+    }
+
     ///  @param id the id of the person.
     public void setId(UUID id) {
         this.id = id;
@@ -107,6 +115,11 @@ public class Person implements Serializable {
         this.birthdate = birthdate;
     }
 
+    /// @param  contacts list
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
     ///  @return the string representation of the person.
     @Override
     public String toString() {
@@ -117,6 +130,7 @@ public class Person implements Serializable {
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthdate=" + birthdate +
+                (contacts != null ? ", contacts=" + contacts : "") +
                 '}';
     }
 }

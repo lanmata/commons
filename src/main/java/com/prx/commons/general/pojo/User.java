@@ -31,6 +31,9 @@ public class User implements Serializable {
     private String password;
     @Email
     private String email;
+    private Boolean notificationEmail;
+    private Boolean notificationSms;
+    private Boolean privacyOptOut;
     private boolean active;
     private Person person;
     private List<Role> roles;
@@ -59,6 +62,18 @@ public class User implements Serializable {
     /// @return the email of the user.
     public String getEmail() {
         return email;
+    }
+
+    public Boolean getNotificationEmail() {
+        return notificationEmail;
+    }
+
+    public Boolean getNotificationSms() {
+        return notificationSms;
+    }
+
+    public Boolean getPrivacyOptOut() {
+        return privacyOptOut;
     }
 
     /// @return the active status of the user.
@@ -101,6 +116,18 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public void setNotificationEmail(Boolean notificationEmail) {
+        this.notificationEmail = notificationEmail;
+    }
+
+    public void setNotificationSms(Boolean notificationSms) {
+        this.notificationSms = notificationSms;
+    }
+
+    public void setPrivacyOptOut(Boolean privacyOptOut) {
+        this.privacyOptOut = privacyOptOut;
+    }
+
     /// @param active status of the user.
     public void setActive(boolean active) {
         this.active = active;
@@ -126,9 +153,12 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id='" + id +
-                "', alias='" + alias + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                "', alias='" + alias +
+                ", password='" + password +
+                ", email='" + email +
+                ", notificationEmail=" + notificationEmail +
+                ", notificationSms=" + notificationSms +
+                ", privacyOptOut=" + privacyOptOut +
                 ", active=" + active +
                 ", person=" + person +
                 ", roles=" + roles +
