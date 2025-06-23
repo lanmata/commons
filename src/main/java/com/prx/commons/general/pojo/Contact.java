@@ -21,13 +21,12 @@ import java.util.UUID;
 ///
 /// @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
 /// @version 1.0.3, 29-09-2020
-@JsonPropertyOrder({"id", "content", "contactType", "person", "active"})
+@JsonPropertyOrder({"id", "content", "contactType", "active"})
 public class Contact implements Serializable {
 
     private UUID id;
     private String content;
     private ContactType contactType;
-    private Person person;
     private Boolean active;
 
     /// Default constructor.
@@ -51,11 +50,6 @@ public class Contact implements Serializable {
         return this.contactType;
     }
 
-    /// @return person of the contact.
-    public Person getPerson() {
-        return this.person;
-    }
-
     /// @return active of the contact.
     public Boolean getActive() {
         return this.active;
@@ -76,11 +70,6 @@ public class Contact implements Serializable {
         this.contactType = contactType;
     }
 
-    /// @param person of the contact.
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
     /// @param active of the contact.
     public void setActive(Boolean active) {
         this.active = active;
@@ -93,7 +82,6 @@ public class Contact implements Serializable {
                 "id='" + id +
                 "', content='" + content + '\'' +
                 ", contactType=" + contactType +
-                ", person=" + person +
                 ", active=" + active +
                 '}';
     }

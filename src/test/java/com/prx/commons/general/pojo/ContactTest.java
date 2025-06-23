@@ -15,7 +15,6 @@ package com.prx.commons.general.pojo;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,13 +36,11 @@ class ContactTest {
      *   <li>{@link Contact#setContactType(ContactType)}
      *   <li>{@link Contact#setContent(String)}
      *   <li>{@link Contact#setId(UUID)}
-     *   <li>{@link Contact#setPerson(Person)}
      *   <li>{@link Contact#toString()}
      *   <li>{@link Contact#getActive()}
      *   <li>{@link Contact#getContactType()}
      *   <li>{@link Contact#getContent()}
      *   <li>{@link Contact#getId()}
-     *   <li>{@link Contact#getPerson()}
      * </ul>
      */
     @Test
@@ -59,19 +56,10 @@ class ContactTest {
         actualContact.setContactType(contactType);
         actualContact.setContent("Not all who wander are lost");
         actualContact.setId(contactID);
-        Person person = new Person();
-        person.setBirthdate(LocalDate.of(1970, 1, 1));
-        person.setFirstName("Jane");
-        person.setGender("F");
-        person.setId(contactID);
-        person.setLastName("Doe");
-        person.setMiddleName("Middle Name");
-        actualContact.setPerson(person);
         assertTrue(actualContact.getActive());
         assertSame(contactType, actualContact.getContactType());
         assertEquals("Not all who wander are lost", actualContact.getContent());
         assertEquals(contactID, actualContact.getId());
-        assertSame(person, actualContact.getPerson());
     }
 
     @Test
@@ -86,7 +74,6 @@ class ContactTest {
         contactType.setActive(true);
 
         contact.setId(uuid);
-        contact.setPerson(new Person());
         contact.setContent("Content");
         contact.setContactType(contactType);
         contact.setActive(true);
@@ -94,7 +81,6 @@ class ContactTest {
                 () -> assertNotNull(contact.getActive()),
                 () -> assertNotNull(contact.getContactType()),
                 () -> assertNotNull(contact.getContent()),
-                () -> assertNotNull(contact.getPerson()),
                 () -> assertNotNull(contact.getId()),
                 () -> assertNotNull(contact.toString()),
                 () -> assertNotEquals(1, contact.hashCode()),
