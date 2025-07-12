@@ -13,7 +13,7 @@
  */
 package com.prx.commons.exception;
 
-import com.prx.commons.constants.types.MessageType;
+import com.prx.commons.constants.httpstatus.type.MessageType;
 
 /**
  * StandardException.

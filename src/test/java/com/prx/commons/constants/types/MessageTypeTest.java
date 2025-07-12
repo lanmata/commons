@@ -1,5 +1,6 @@
 package com.prx.commons.constants.types;
 
+import com.prx.commons.constants.httpstatus.type.MessageType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
