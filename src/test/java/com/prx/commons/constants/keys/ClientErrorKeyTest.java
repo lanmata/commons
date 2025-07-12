@@ -15,6 +15,7 @@ package com.prx.commons.constants.keys;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.prx.commons.constants.httpstatus.key.ClientErrorKey;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -26,12 +27,12 @@ import java.util.Arrays;
  * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3.20200904-01, 21-11-2020
  */
-class FailCodeTest {
+class ClientErrorKeyTest {
 
     @Test
     void keys() {
-        for (final var tp : FailCode.values()) {
-            Assertions.assertTrue(Arrays.asList(FailCode.values()).contains(tp));
+        for (final var tp : ClientErrorKey.values()) {
+            Assertions.assertTrue(Arrays.asList(ClientErrorKey.values()).contains(tp));
             Assertions.assertNotEquals(-1, tp.getCode());
             Assertions.assertNotNull(tp.getStatus());
         }
@@ -41,14 +42,14 @@ class FailCodeTest {
      * Methods under test:
      *
      * <ul>
-     *   <li>{@link FailCode#valueOf(String)}
-     *   <li>{@link FailCode#getCode()}
-     *   <li>{@link FailCode#getStatus()}
+     *   <li>{@link ClientErrorKey#valueOf(String)}
+     *   <li>{@link ClientErrorKey#getCode()}
+     *   <li>{@link ClientErrorKey#getStatus()}
      * </ul>
      */
     @Test
     void testValueOf() {
-        FailCode actualValueOfResult = FailCode.valueOf("BAD_REQUEST");
+        ClientErrorKey actualValueOfResult = ClientErrorKey.valueOf("BAD_REQUEST");
         assertEquals(400, actualValueOfResult.getCode());
         assertEquals("La solicitud no fue comprendida por el servidor, sintaxis incorrecta.",
                 actualValueOfResult.getStatus());

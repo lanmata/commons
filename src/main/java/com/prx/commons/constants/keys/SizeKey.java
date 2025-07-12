@@ -13,8 +13,15 @@
 package com.prx.commons.constants.keys;
 
 public enum SizeKey {
-    BYTES("b"), KILOBYTES("kb"), MEGABYTES("mb"), GIGABYTES("gb"), TERABYTES("tb"), PETABYTES("pb"), EXABYTES(
-        "eb"), ZETABYTES("zb"), YOTABYTES("yb");
+    BYTES("b"),
+    KILOBYTES("kb"),
+    MEGABYTES("mb"),
+    GIGABYTES("gb"),
+    TERABYTES("tb"),
+    PETABYTES("pb"),
+    EXABYTES("eb"),
+    ZETABYTES("zb"),
+    YOTABYTES("yb");
 
     private final String type;
 

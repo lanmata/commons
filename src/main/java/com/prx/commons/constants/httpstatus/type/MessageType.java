@@ -10,7 +10,7 @@
  * In any event, this notice and the above copyright must always be included
  * verbatim with this file.
  */
-package com.prx.commons.constants.types;
+package com.prx.commons.constants.httpstatus.type;
 
 import java.io.Serializable;
 
@@ -22,40 +22,25 @@ import java.io.Serializable;
  */
 public interface MessageType extends Serializable {
     DefaultMessage DEFAULT_MESSAGE = DefaultMessage.EMPTY;
+
     /**
-     * Retorna el identificador del error generado.
+     * Retrieves the code associated with the implementing class.
      *
-     * @return Objeto de tipo {@link int}.
+     * @return an integer representing the specific code of the object.
      */
     int getCode();
+
     /**
-     * Retorna el status del error.
+     * Converts and returns the error code as a string representation.
      *
-     * @return Objeto de tipo {@link String}.
+     * @return A string representation of the error code.
+     */
+    String getCodeToString();
+
+    /**
+     * Retrieves the status as a string.
+     *
+     * @return the status associated with the object.
      */
     String getStatus();
-}
-
-enum DefaultMessage implements MessageType {
-
-    EMPTY(0,"");
-
-    private final int code;
-    private final String status;
-
-    DefaultMessage(int code, String status){
-        this.code = code;
-        this.status = status;
-    }
-
-    @Override
-    public int getCode() {
-        return code;
-    }
-
-    @Override
-    public String getStatus() {
-        return status;
-    }
-
 }
