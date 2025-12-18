@@ -11,10 +11,10 @@ IMPORTANTE CONSIDERAR:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.prx</groupId>
-    <artifactId>prx-commons</artifactId>
-    <name>PRX Commons components</name>
-    <version>0.0.4</version>
+    <groupId>com.umdev</groupId>
+    <artifactId>commons</artifactId>
+    <name>UMDC Commons component</name>
+    <version>0.0.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -28,9 +28,9 @@ IMPORTANTE CONSIDERAR:
             <id>lmata</id>
             <name>Luis Antonio Mata</name>
             <email>luis.antonio.mata@gmail.com</email>
-            <url>www.prx-dev.com</url>
-            <organization>PRX Innovative</organization>
-            <organizationUrl>www.prx.com</organizationUrl>
+            <url>www.umdev-creative.com</url>
+            <organization>UM Dev Creative</organization>
+            <organizationUrl>www.umdev-creative.com</organizationUrl>
         </developer>
     </developers>
 
@@ -38,13 +38,14 @@ IMPORTANTE CONSIDERAR:
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>25</java.version>
         <!--        MAVEN-->
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
         <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
         <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
         <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
-        <maven.plugin.pmd.version>3.23.0</maven.plugin.pmd.version>
+        <maven.plugin.pmd.version>3.28.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
         <maven.surefire.version>3.5.2</maven.surefire.version>
         <!--        REPOSITORY-->
@@ -92,6 +93,11 @@ IMPORTANTE CONSIDERAR:
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20250517</version>
+        </dependency>
         <!-- Unit test dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -122,7 +128,7 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator-core</artifactId>
-            <version>0.60</version>
+            <version>0.59</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -224,6 +230,9 @@ IMPORTANTE CONSIDERAR:
                 <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <release>${maven.compiler.release}</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
