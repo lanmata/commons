@@ -11,15 +11,15 @@ IMPORTANTE CONSIDERAR:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.prx</groupId>
-    <artifactId>prx-commons</artifactId>
-    <name>PRX Commons components</name>
-    <version>0.0.4</version>
+    <groupId>com.umdev</groupId>
+    <artifactId>commons</artifactId>
+    <name>UMDC Commons component</name>
+    <version>0.0.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.1</version>
+        <version>4.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -28,32 +28,33 @@ IMPORTANTE CONSIDERAR:
             <id>lmata</id>
             <name>Luis Antonio Mata</name>
             <email>luis.antonio.mata@gmail.com</email>
-            <url>www.prx-dev.com</url>
-            <organization>PRX Innovative</organization>
-            <organizationUrl>www.prx.com</organizationUrl>
+            <url>www.umdev-creative.com</url>
+            <organization>UM Dev Creative</organization>
+            <organizationUrl>www.umdev-creative.com</organizationUrl>
         </developer>
     </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <!--        MAVEN-->
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
         <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
         <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
         <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
-        <maven.plugin.pmd.version>3.23.0</maven.plugin.pmd.version>
+        <maven.plugin.pmd.version>3.28.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
-        <maven.surefire.version>3.2.5</maven.surefire.version>
+        <maven.surefire.version>3.5.2</maven.surefire.version>
         <!--        REPOSITORY-->
         <repsy.account.user>${env.REPSY_ACCOUNT_USER}</repsy.account.user>
         <repsy.account.password>${env.REPSY_ACCOUNT_PASSWORD}</repsy.account.password>
         <!--        SPRING -->
-        <spring-core.version>6.2.1</spring-core.version>
-        <spring-boot.version>3.4.1</spring-boot.version>
-        <spring-cloud.version>2024.0.0</spring-cloud.version>
+        <spring-core.version>7.0.1</spring-core.version>
+        <spring-boot.version>4.0.0</spring-boot.version>
+        <spring-cloud.version>2025.1.0</spring-cloud.version>
         <!--        JUnit 5.x-->
         <junit.jupiter.version>5.11.3</junit.jupiter.version>
         <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
@@ -89,8 +90,13 @@ IMPORTANTE CONSIDERAR:
         <!-- Open API Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.8.0</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20250517</version>
         </dependency>
         <!-- Unit test dependencies -->
         <dependency>
@@ -160,14 +166,14 @@ IMPORTANTE CONSIDERAR:
 
     <repositories>
         <repository>
-            <id>repsy</id>
-            <name>My Private Maven Repository on Repsy</name>
-            <url>https://repo.repsy.io/mvn/lmata/prx</url>
-        </repository>
-        <repository>
             <id>maven_central</id>
             <name>Maven Central</name>
             <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/lmata/prx</url>
         </repository>
     </repositories>
 
@@ -193,7 +199,7 @@ IMPORTANTE CONSIDERAR:
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
-                        <version>9.1</version>
+                        <version>9.7.1</version>
                     </dependency>
                 </dependencies>
                 <version>${maven.surefire.version}</version>
@@ -224,6 +230,9 @@ IMPORTANTE CONSIDERAR:
                 <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <release>${maven.compiler.release}</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
