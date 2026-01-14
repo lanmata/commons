@@ -19,7 +19,7 @@ IMPORTANTE CONSIDERAR:
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0</version>
+        <version>4.0.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -53,7 +53,7 @@ IMPORTANTE CONSIDERAR:
         <repsy.account.password>${env.REPSY_ACCOUNT_PASSWORD}</repsy.account.password>
         <!--        SPRING -->
         <spring-core.version>7.0.1</spring-core.version>
-        <spring-boot.version>4.0.0</spring-boot.version>
+        <spring-boot.version>4.0.1</spring-boot.version>
         <spring-cloud.version>2025.1.0</spring-cloud.version>
         <!--        JUnit 5.x-->
         <junit.jupiter.version>6.0.1</junit.jupiter.version>
@@ -141,7 +141,7 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.24.3</version>
+            <version>2.25.2</version>
         </dependency>
     </dependencies>
 
@@ -207,12 +207,12 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>3.6.1</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.17.1</version>
+                <version>2.18.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
