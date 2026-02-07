@@ -11,10 +11,10 @@ IMPORTANTE CONSIDERAR:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.prx</groupId>
-    <artifactId>prx-commons</artifactId>
-    <name>PRX Commons components</name>
-    <version>0.0.4</version>
+    <groupId>com.umdev</groupId>
+    <artifactId>commons</artifactId>
+    <name>UMDC Commons component</name>
+    <version>0.0.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -28,9 +28,9 @@ IMPORTANTE CONSIDERAR:
             <id>lmata</id>
             <name>Luis Antonio Mata</name>
             <email>luis.antonio.mata@gmail.com</email>
-            <url>www.prx-dev.com</url>
-            <organization>PRX Innovative</organization>
-            <organizationUrl>www.prx.com</organizationUrl>
+            <url>www.umdev-creative.com</url>
+            <organization>UM Dev Creative</organization>
+            <organizationUrl>www.umdev-creative.com</organizationUrl>
         </developer>
     </developers>
 
@@ -38,6 +38,7 @@ IMPORTANTE CONSIDERAR:
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
         <!--        MAVEN-->
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
@@ -55,7 +56,7 @@ IMPORTANTE CONSIDERAR:
         <spring-boot.version>3.4.1</spring-boot.version>
         <spring-cloud.version>2024.0.0</spring-cloud.version>
         <!--        JUnit 5.x-->
-        <junit.jupiter.version>5.11.3</junit.jupiter.version>
+        <junit.jupiter.version>6.0.1</junit.jupiter.version>
         <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
         <!--        Mockito-->
         <mockserver.junit.jupiter.version>5.15.0</mockserver.junit.jupiter.version>
@@ -135,7 +136,7 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.24.3</version>
+            <version>2.25.3</version>
         </dependency>
     </dependencies>
 
@@ -193,7 +194,7 @@ IMPORTANTE CONSIDERAR:
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
-                        <version>9.1</version>
+                        <version>9.8</version>
                     </dependency>
                 </dependencies>
                 <version>${maven.surefire.version}</version>
@@ -201,17 +202,17 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>3.6.1</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.16.2</version>
+                <version>2.18.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.4.1</version>
+                <version>3.5.0</version>
                 <configuration>
                     <rules>
                         <dependencyConvergence/>
@@ -224,6 +225,9 @@ IMPORTANTE CONSIDERAR:
                 <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <release>${maven.compiler.release}</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
