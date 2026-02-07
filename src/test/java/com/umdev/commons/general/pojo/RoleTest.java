@@ -61,7 +61,6 @@ class RoleTest {
         actualRole.setFeatures(features);
         actualRole.setId(uuid);
         actualRole.setName("Name");
-        String actualToStringResult = actualRole.toString();
         assertTrue(actualRole.getActive());
         assertEquals("The characteristics of someone or something", actualRole.getDescription());
         assertSame(features, actualRole.getFeatures());

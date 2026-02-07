@@ -11,10 +11,10 @@ IMPORTANTE CONSIDERAR:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.umdev</groupId>
-    <artifactId>commons</artifactId>
-    <name>UMDC Commons component</name>
-    <version>0.0.1</version>
+    <groupId>com.prx</groupId>
+    <artifactId>prx-commons</artifactId>
+    <name>PRX Commons components</name>
+    <version>0.0.4</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -45,9 +45,9 @@ IMPORTANTE CONSIDERAR:
         <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
         <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
         <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
-        <maven.plugin.pmd.version>3.23.0</maven.plugin.pmd.version>
+        <maven.plugin.pmd.version>3.28.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
-        <maven.surefire.version>3.2.5</maven.surefire.version>
+        <maven.surefire.version>3.5.2</maven.surefire.version>
         <!--        REPOSITORY-->
         <repsy.account.user>${env.REPSY_ACCOUNT_USER}</repsy.account.user>
         <repsy.account.password>${env.REPSY_ACCOUNT_PASSWORD}</repsy.account.password>
@@ -90,8 +90,13 @@ IMPORTANTE CONSIDERAR:
         <!-- Open API Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.8.0</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20250517</version>
         </dependency>
         <!-- Unit test dependencies -->
         <dependency>
@@ -169,6 +174,11 @@ IMPORTANTE CONSIDERAR:
             <id>maven_central</id>
             <name>Maven Central</name>
             <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/lmata/prx</url>
         </repository>
     </repositories>
 

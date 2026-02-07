@@ -15,6 +15,13 @@ package com.umdev.commons.util;
 import com.google.gson.Gson;
 
 /**
+ * Utility class for handling JSON serialization and deserialization.
+ * This class uses the Gson library for converting objects to JSON strings.
+ * It is designed to provide a simple and reusable way to work with JSON
+ * data in Java-based applications.
+ *
+ * This class cannot be instantiated, and all utility methods are implemented
+ * as static methods.
  *
  * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
  * @version 1.0.3, 29-09-2020
@@ -28,18 +35,20 @@ public final class JsonUtil {
     }
 
     /**
-     * Constructor privado para no permitir creaci&oacute;n de objeto por instancia
+     * Private constructor to prevent instantiation of the utility class.
+     * This class is not meant to be instantiated and provides only static methods.
+     *
+     * @throws UnsupportedOperationException always when this constructor is invoked
      */
     private JsonUtil() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Recibe un objeto de tipo {@link Object} para convertir en un objeto de tipo {@link String} con un contenido en
-     * formato JSON.
+     * Converts the given object into its JSON representation.
      *
-     * @param objSource Objeto de tipo {@link Object}
-     * @return Objeto de tipo {@link String}
+     * @param objSource the object to be converted into a JSON string, must not be null
+     * @return a JSON formatted string representing the given object
      */
     public static String toJson(Object objSource) {
         return GSON.toJson(objSource);

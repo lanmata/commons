@@ -52,7 +52,6 @@ class FeatureTest {
         actualFeature.setDescription("The characteristics of someone or something");
         actualFeature.setId(uuid);
         actualFeature.setName("Name");
-        String actualToStringResult = actualFeature.toString();
         assertTrue(actualFeature.getActive());
         assertEquals("The characteristics of someone or something", actualFeature.getDescription());
         assertEquals(uuid, actualFeature.getId());
