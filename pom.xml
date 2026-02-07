@@ -11,15 +11,15 @@ IMPORTANTE CONSIDERAR:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.umdev</groupId>
-    <artifactId>commons</artifactId>
-    <name>UMDC Commons component</name>
-    <version>0.0.1</version>
+    <groupId>com.prx</groupId>
+    <artifactId>prx-commons</artifactId>
+    <name>PRX Commons components</name>
+    <version>0.0.4</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.1</version>
+        <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -52,9 +52,9 @@ IMPORTANTE CONSIDERAR:
         <repsy.account.user>${env.REPSY_ACCOUNT_USER}</repsy.account.user>
         <repsy.account.password>${env.REPSY_ACCOUNT_PASSWORD}</repsy.account.password>
         <!--        SPRING -->
-        <spring-core.version>7.0.1</spring-core.version>
-        <spring-boot.version>4.0.1</spring-boot.version>
-        <spring-cloud.version>2025.1.0</spring-cloud.version>
+        <spring-core.version>6.2.1</spring-core.version>
+        <spring-boot.version>3.4.1</spring-boot.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
         <!--        JUnit 5.x-->
         <junit.jupiter.version>6.0.1</junit.jupiter.version>
         <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
@@ -62,7 +62,7 @@ IMPORTANTE CONSIDERAR:
         <mockserver.junit.jupiter.version>5.15.0</mockserver.junit.jupiter.version>
         <mockito.version>5.14.2</mockito.version>
         <!--        Coverage and Sonar-->
-        <sonar.organization>prx</sonar.organization>
+        <sonar.organization>prx-open</sonar.organization>
         <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.coverage.exclusions>
         <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.exclusions>
         <project.ruleset>${project.basedir}/ruleset.xml</project.ruleset>
@@ -141,7 +141,7 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.25.2</version>
+            <version>2.25.3</version>
         </dependency>
     </dependencies>
 
@@ -165,6 +165,11 @@ IMPORTANTE CONSIDERAR:
     </dependencyManagement>
 
     <repositories>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/lmata/prx</url>
+        </repository>
         <repository>
             <id>maven_central</id>
             <name>Maven Central</name>
