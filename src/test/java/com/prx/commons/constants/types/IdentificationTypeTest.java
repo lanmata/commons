@@ -16,6 +16,7 @@ package com.prx.commons.constants.types;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.Arrays;
 
@@ -28,9 +29,11 @@ import java.util.Arrays;
 class IdentificationTypeTest {
 
     @Test
+    @DisplayName("IdentificationType contains expected enum values")
     void keys() {
         for (final var tp : IdentificationType.values()) {
             Assertions.assertTrue(Arrays.asList(IdentificationType.values()).contains(tp));
         }
     }
+
 }

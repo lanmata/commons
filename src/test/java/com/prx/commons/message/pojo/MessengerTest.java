@@ -17,6 +17,7 @@ import com.prx.commons.general.pojo.Application;
 import com.prx.commons.general.pojo.Person;
 import com.prx.commons.general.pojo.User;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MessengerTest {
 
     @Test
+    @DisplayName("Test Getters And Setters")
     void gettersAndSetters() {
         final var messenger = new Messenger();
         messenger.setAlias("lmata");

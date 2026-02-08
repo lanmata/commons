@@ -1,6 +1,7 @@
 package com.prx.commons.util;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.Base64;
 import java.util.UUID;
@@ -17,28 +18,33 @@ class JwtUtilTest {
     }
 
     @Test
+    @DisplayName("getUidFromToken returns null for null token")
     void getUidFromToken_nullToken_returnsNull() {
         assertNull(JwtUtil.getUidFromToken(null));
     }
 
     @Test
+    @DisplayName("getUidFromToken returns null for blank token")
     void getUidFromToken_blankToken_returnsNull() {
         assertNull(JwtUtil.getUidFromToken("   \t"));
     }
 
     @Test
+    @DisplayName("getUidFromToken returns null when token has too few parts")
     void getUidFromToken_tooFewParts_returnsNull() {
         assertNull(JwtUtil.getUidFromToken("abc"));
         assertNull(JwtUtil.getUidFromToken("a.b")); // exactly two parts? parts.length==2 is OK; but check 'a' only
     }
 
     @Test
+    @DisplayName("getUidFromToken returns null for invalid base64 payload")
     void getUidFromToken_invalidBase64_returnsNull() {
         String token = "a." + "!!not-base64!!" + ".c";
         assertNull(JwtUtil.getUidFromToken(token));
     }
 
     @Test
+    @DisplayName("getUidFromToken returns null when uid is missing or invalid")
     void getUidFromToken_missingUid_returnsNull() {
         String payload = "{\"sub\":\"x\"}";
         String payload1 = "{\"uid\": \"\"}";
@@ -53,13 +59,13 @@ class JwtUtilTest {
     }
 
     @Test
+    @DisplayName("getUidFromToken returns UUID when payload contains a valid uid")
     void getUidFromToken_validUuid_returnsUuid() {
         UUID id = UUID.randomUUID();
-        String payload = "{\"uid\": \"" + id.toString() + "\"}";
+        String payload = "{\"uid\": \"" + id + "\"}";
         String token = makeToken(payload);
         UUID result = JwtUtil.getUidFromToken(token);
         assertNotNull(result);
         assertEquals(id, result);
     }
 }
-

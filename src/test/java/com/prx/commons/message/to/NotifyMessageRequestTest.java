@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 /**
  * NotifyMessageRequestTest.
@@ -49,8 +50,9 @@ class NotifyMessageRequestTest {
      *   <li>{@link NotifyMessageRequest#getMessage()}
      * </ul>
      */
-    @Test
-    void testConstructor() {
+     @Test
+    @DisplayName("Constructor populates fields and toString produces expected output")
+     void testConstructor() {
         NotifyMessageRequest actualNotifyMessageRequest = new NotifyMessageRequest();
         actualNotifyMessageRequest.setCritical(true);
         ArrayList<String> listDestiny = new ArrayList<>();
@@ -65,6 +67,7 @@ class NotifyMessageRequestTest {
     }
 
     @Test
+    @DisplayName("Getters and setters produce non-null values after population")
     void testGetterAndSetter() {
         final var notifyMessageRequest = new NotifyMessageRequest();
 
@@ -82,7 +85,7 @@ class NotifyMessageRequestTest {
                 () -> assertNotNull(notifyMessageRequest.getAppName()),
                 () -> assertNotNull(notifyMessageRequest.getAppToken()),
                 () -> assertNotEquals(1, notifyMessageRequest.hashCode()),
-                () -> assertNotEquals(notifyMessageRequest, new NotifyMessageRequest()),
+                () -> assertNotEquals(new NotifyMessageRequest(), notifyMessageRequest),
                 () -> assertNotNull(notifyMessageRequest.toString())
         );
     }

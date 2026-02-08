@@ -1,17 +1,18 @@
 package com.prx.commons.constants.keys;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
-import java.util.Arrays;
+import static org.junit.jupiter.api.Assertions.*;
 
+@org.junit.jupiter.api.DisplayNameGeneration(org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores.class)
 class ManagementAuthKeyTest {
 
     @Test
+    @DisplayName("ManagementAuthKey enum values are accessible")
     void keys() {
-        for (final var managementAuthKey : ManagementAuthKey.values()) {
-            Assertions.assertTrue(Arrays.asList(ManagementAuthKey.values()).contains(managementAuthKey));
+        for (ManagementAuthKey key : ManagementAuthKey.values()) {
+            assertNotNull(key.value);
         }
     }
-
 }

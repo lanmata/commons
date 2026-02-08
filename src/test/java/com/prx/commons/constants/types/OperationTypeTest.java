@@ -16,6 +16,7 @@ package com.prx.commons.constants.types;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.Arrays;
 
@@ -28,6 +29,7 @@ import java.util.Arrays;
 class OperationTypeTest {
 
     @Test
+    @DisplayName("OperationType contains all its values in enumeration list")
     void keys() {
         for (final var tp : OperationType.values()) {
             Assertions.assertTrue(Arrays.asList(OperationType.values()).contains(tp));

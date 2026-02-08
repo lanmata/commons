@@ -15,6 +15,7 @@ package com.prx.commons.message.to;
 
 import com.prx.commons.general.pojo.User;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class MessageActivityTest {
 
     @Test
+    @DisplayName("Getters and setters operate as expected, and equals/hashCode behave")
     void gettersAndSetters() {
         final var messageActivity = new MessageActivity<User>();
 
@@ -55,6 +57,7 @@ class MessageActivityTest {
      * </ul>
      */
     @Test
+    @DisplayName("Constructor sets objectResponse and toString returns expected format")
     void testConstructor() {
         MessageActivity<Object> actualMessageActivity = new MessageActivity<>();
         actualMessageActivity.setObjectResponse("Object Response");

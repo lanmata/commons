@@ -104,12 +104,10 @@ public final class Validator {
     }
 
     /**
-     * Determina si el valor de un objeto dado es nulo. En caso de true, el
-     * valor contenido en el objeto de es tipo nulo. En caso de false el valor
-     * contenido en el objeto de no es tipo nulo.
+     * Checks whether the provided object is null.
      *
-     * @param objeto Objeto a evaluar, Objeto de tipo {@link Object}
-     * @return boolean, Objeto de tipo {@link boolean}
+     * @param objeto object to evaluate
+     * @return {@code true} when the object is null; {@code false} otherwise
      * @author Luis Mata
      * @since 11
      * @deprecated
@@ -120,12 +118,13 @@ public final class Validator {
     }
 
     /**
-     * @param valor Objeto de tipo String a evaluar, Objeto de tipo {@link Object}
-     * @return boolean, Objeto de tipo {@link boolean}
+     * Checks whether the provided string is null or empty.
+     *
+     * @param valor string to evaluate
+     * @return {@code true} when the string is null or empty; {@code false} otherwise
      * @author Luis Mata
      * @since 11
-     * @deprecated Determina si el valor de un objeto de tipo String es <b>vac&iacute;o</b>. En caso de true,el valor contenido en
-     * el objeto de es vacio. En caso de false el valor content en el objeto de no es vac&iacute;o.
+     * @deprecated
      */
     @Deprecated(since = "25")
     public static boolean esVacio(final String valor) {
@@ -133,12 +132,13 @@ public final class Validator {
     }
 
     /**
-     * @param valor Objeto de tipo {@link List}
-     * @return boolean, Objeto de tipo {@link boolean}
+     * Checks whether the provided list is empty.
+     *
+     * @param valor list to evaluate
+     * @return {@code true} when the list is empty; {@code false} otherwise
      * @author Luis Mata
      * @since 11
-     * @deprecated Determina si el valor de un objeto de tipo List es <b>vac&iacute;o</b>. En caso de true,el valor contenido en el
-     * objeto de es vac&iacute;o. En caso de false el valor contenido en el objeto de no es vac&iacute;o.
+     * @deprecated
      */
     @Deprecated(since = "25")
     public static boolean esListaVacia(final List<?> valor) {
@@ -146,11 +146,13 @@ public final class Validator {
     }
 
     /**
-     * @param tiempoInicial Objeto de tipo {@link long}
-     * @return long Objeto de tipo {@link long}
+     * Returns the elapsed time in milliseconds between the given start time and the current system time.
+     *
+     * @param tiempoInicial start time in milliseconds
+     * @return elapsed time in milliseconds
      * @author Luis Mata
      * @since 11
-     * @deprecated Calcula la duraci&oacute;n del tiempo utilizado en base al par&aacute;metro tInicio y el tiempo actual.
+     * @deprecated
      */
     @Deprecated(since = "25")
     public static long totalTiempo(final long tiempoInicial) {
@@ -158,16 +160,16 @@ public final class Validator {
     }
 
     /**
-     * Valida la correspondencia inequ&iacute;voca del valorA y valorB
+     * Validates whether two strings are equal and not empty/null.
      *
      * @param valorA {@link String}
      * @param valorB {@link String}
      * @return boolean
      */
     public static boolean validaIgualdad(final String valorA, final String valorB) {
-        //Valida
-        return !esVacio(valorA) && !esVacio(valorB) //que no sea vacío
-                && valorA.equals(valorB);              //la igualdad literal
+        // Validate
+        return !esVacio(valorA) && !esVacio(valorB) // not empty
+                && valorA.equals(valorB);              // literal equality
     }
 
     /**
@@ -196,7 +198,7 @@ public final class Validator {
                 return !enumeration.hasMoreElements();
             }
             case Iterator<?> iterator -> {
-                return iterator.hasNext();
+                return !iterator.hasNext();
             }
             default -> {
                 return false;

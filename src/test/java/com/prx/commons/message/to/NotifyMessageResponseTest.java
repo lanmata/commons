@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 /**
  * NotifyMessageResponseTest.
@@ -33,6 +34,7 @@ class NotifyMessageResponseTest {
      * Method under test: default or parameterless constructor of {@link NotifyMessageResponse}
      */
     @Test
+    @DisplayName("Test Constructor")
     void testConstructor() {
         NotifyMessageResponse actualNotifyMessageResponse = new NotifyMessageResponse();
         assertNull(actualNotifyMessageResponse.getCode());
@@ -41,6 +43,7 @@ class NotifyMessageResponseTest {
     }
 
     @Test
+    @DisplayName("Test Getter And Setter")
     void testGetterAndSetter() {
         final var notifiMessageResponse = new NotifyMessageResponse();
 

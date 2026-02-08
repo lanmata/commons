@@ -19,9 +19,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 /**
- * MessageActivityUtil.
+ * Utility to create a {@link Response} from a {@link MessageActivity} instance.
  *
- * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata</a>
  * @version 1.0.0, 29-09-2020
  */
 public final class MessageActivityUtil {
@@ -29,10 +29,10 @@ public final class MessageActivityUtil {
     private MessageActivityUtil(){throw new UnsupportedOperationException();}
 
     /**
-     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@link MessageActivity}.
+     * Creates a {@link Response} based on the provided {@link MessageActivity}.
      *
-     * @param messageActivity {@link MessageActivity}
-     * @return {@link Response}
+     * @param messageActivity source message activity
+     * @return newly created {@link Response}
      */
     public static Response toResponse(MessageActivity<?> messageActivity){
         Response response = new Response();
@@ -42,10 +42,10 @@ public final class MessageActivityUtil {
     }
 
     /**
-     * Genera un objeto de tipo {@link Response} en base a un objeto de tipo {@link MessageActivity}.
+     * Populates the given {@link Response} instance using values from {@link MessageActivity}.
      *
-     * @param messageActivity {@link MessageActivity}
-     * @param response {@link Response}
+     * @param messageActivity source message activity
+     * @param response response to populate
      */
     public static void toResponse(MessageActivity<?> messageActivity, Response response){
         response.setMessage(messageActivity.getMessage());

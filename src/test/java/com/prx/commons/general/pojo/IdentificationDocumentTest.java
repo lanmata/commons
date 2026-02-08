@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -50,6 +51,7 @@ class IdentificationDocumentTest {
      * </ul>
      */
     @Test
+    @DisplayName("Test Identification Document Constructor")
     void testConstructor() {
         var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         IdentificationDocument actualIdentificationDocument = new IdentificationDocument();
@@ -74,6 +76,7 @@ class IdentificationDocumentTest {
     }
 
     @Test
+    @DisplayName("Test Identification Document Getters and Setters")
     void testGettersAndSetters() {
         var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         final var identificationDocument = new IdentificationDocument();

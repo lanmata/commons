@@ -30,16 +30,16 @@ import static com.prx.commons.util.DateUtil.PATTERN_DATE_TIME;
 public class Response {
 
     /**
-     * Fecha y hora de emisi&oacute;n.
+     * Emission date and time.
      */
     @JsonFormat(pattern = PATTERN_DATE_TIME)
     private LocalDateTime dateTime;
     /**
-     * C&oacute;digo de respuesta.
+     * Response code.
      */
     private Integer code;
     /**
-     * Mensaje de respuesta.
+     * Response message.
      */
     private String message;
 

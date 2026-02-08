@@ -1,6 +1,7 @@
 package com.prx.commons.general.pojo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,12 +13,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class ApplicationTest {
 
     @Test
+    @DisplayName("Application instance initializes correctly")
     void applicationInitialization() {
         Application application = new Application();
         assertNotNull(application);
     }
 
     @Test
+    @DisplayName("Set and get ID")
     void setIdAndGetId() {
         Application application = new Application();
         UUID id = UUID.randomUUID();
@@ -26,6 +29,7 @@ class ApplicationTest {
     }
 
     @Test
+    @DisplayName("Set and get name")
     void setNameAndGetName() {
         Application application = new Application();
         String name = "Test Application";
@@ -34,6 +38,7 @@ class ApplicationTest {
     }
 
     @Test
+    @DisplayName("Set and get description")
     void setDescriptionAndGetDescription() {
         Application application = new Application();
         String description = "This is a test application.";
@@ -42,6 +47,7 @@ class ApplicationTest {
     }
 
     @Test
+    @DisplayName("Set and get active flag")
     void setActiveAndGetActive() {
         Application application = new Application();
         application.setActive(true);
@@ -49,6 +55,7 @@ class ApplicationTest {
     }
 
     @Test
+    @DisplayName("Set and get createdDate")
     void setCreatedDateAndGetCreatedDate() {
         Application application = new Application();
         LocalDateTime now = LocalDateTime.now();
@@ -57,6 +64,7 @@ class ApplicationTest {
     }
 
     @Test
+    @DisplayName("Set and get lastUpdate")
     void setLastUpdateAndGetLastUpdate() {
         Application application = new Application();
         LocalDateTime now = LocalDateTime.now();
@@ -65,6 +73,7 @@ class ApplicationTest {
     }
 
     @Test
+    @DisplayName("Set and get serviceTypeId")
     void setServiceTypeIdAndGetServiceTypeId() {
         Application application = new Application();
         UUID serviceTypeId = UUID.randomUUID();
@@ -73,6 +82,7 @@ class ApplicationTest {
     }
 
     @Test
+    @DisplayName("Set and get user list")
     void setUserListAndGetUserList() {
         Application application = new Application();
         List<User> userList = new ArrayList<>();

@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -52,6 +53,7 @@ class RoleTest {
      * </ul>
      */
     @Test
+    @DisplayName("Test Role Constructor and Getters")
     void testConstructor() {
         var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         Role actualRole = new Role();
@@ -69,6 +71,7 @@ class RoleTest {
     }
 
     @Test
+    @DisplayName("Test Role Getters and Setters")
     void testGettersAndSetters() {
         var role = new Role();
         var features = new ArrayList<Feature>();

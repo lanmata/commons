@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.UUID;
 
@@ -45,6 +46,7 @@ class FeatureTest {
      * </ul>
      */
     @Test
+    @DisplayName("Test Feature Constructor")
     void testConstructor() {
         Feature actualFeature = new Feature();
         var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
@@ -59,6 +61,7 @@ class FeatureTest {
     }
 
     @Test
+    @DisplayName("Test Feature Getters and Setters")
     void testGettersAndSetters() {
         var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         var feature = new Feature();
