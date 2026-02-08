@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.function.Function;
 
 /**
- * Definici&oacute;n de clase abstracta para conversi&oacute;n entre dos tipos de objetos
+ * Abstract class definition for converting between two object types.
  *
- * @param <A> Gen&eacute;rico
- * @param <B> Gen&eacute;rico
+ * @param <A> source generic type
+ * @param <B> target generic type
  *
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
@@ -29,11 +29,11 @@ import java.util.function.Function;
 public abstract class Converter<A, B> {
 
     /**
-     * Function con paridades A y B
+     * Function to convert from A to B
      */
     protected Function<A, B> fromA;
     /**
-     * Function con paridades B y A
+     * Function to convert from B to A
      */
     protected Function<B, A> fromB;
 
@@ -45,9 +45,10 @@ public abstract class Converter<A, B> {
     }
 
     /**
+     * Constructor with conversion functions.
      *
-     * @param fromA
-     * @param fromB
+     * @param fromA function converting A -> B
+     * @param fromB function converting B -> A
      */
     protected Converter(Function<A, B> fromA, Function<B, A> fromB) {
         this.fromA = fromA;
@@ -55,32 +56,30 @@ public abstract class Converter<A, B> {
     }
 
     /**
-     * Iniciliza los objetos de tipo {@link Function} encargados de la conversi&oacute;n de datos.
+     * Initializes the conversion functions using {@link #getA} and {@link #getB} implementations.
      */
     protected void initFunction() {
         setFunction(this::getB, this::getA);
     }
 
     /**
-     * Retorna un objeto de tipo {@link A}.
+     * Converts an instance of {@link B} to type {@link A}.
      *
-     * @param b {@link B}
-     *
-     * @return {@link A}
+     * @param b input value of type B
+     * @return converted value of type A
      */
     protected abstract A getA(B b);
 
     /**
-     * Retorna un objeto de tipo {@link B}.
+     * Converts an instance of {@link A} to type {@link B}.
      *
-     * @param a {@link A}
-     *
-     * @return {@link B}
+     * @param a input value of type A
+     * @return converted value of type B
      */
     protected abstract B getB(A a);
 
     /**
-     * Asigna los objetos funcionales para la conversi&oacute; de datos.
+     * Assigns the functional converters.
      *
      * @param fromA {@link Function}
      * @param fromB {@link Function}
@@ -91,46 +90,40 @@ public abstract class Converter<A, B> {
     }
 
     /**
-     * Realiza la conversi&oacute;n desde {@link B} a {@link A}.
+     * Converts from {@link B} to {@link A} using the configured function.
      *
-     * @param b {@link B}
-     *
-     * @return {@link A}
+     * @param b value of type B
+     * @return converted A
      */
     public A convertFromB(final B b) {
         return fromB.apply(b);
     }
 
     /**
-     * Realiza la conversi&oacute;n desde {@link A} a {@link B}.
+     * Converts from {@link A} to {@link B} using the configured function.
      *
-     * @param a {@link A}
-     *
-     * @return {@link B}
+     * @param a value of type A
+     * @return converted B
      */
     public B convertFromA(final A a) {
         return fromA.apply(a);
     }
 
     /**
-     * Realiza la conversi&oacute;n desde una colecci&oacute;n con elementos de tipo {@link B} a una colecci&oacute;n con
-     * elementos de tipo {@link A}.
+     * Converts a collection of {@link B} elements to a {@link List} of {@link A} elements.
      *
-     * @param bCollection {@link Collection}
-     *
-     * @return {@link List}
+     * @param bCollection collection of B
+     * @return list of converted A values
      */
     public List<A> createFromB(final Collection<B> bCollection) {
         return bCollection.stream().map(this::convertFromB).toList();
     }
 
     /**
-     * Realiza la conversi&oacute;n desde una colecci&oacute;n con elementos de tipo {@link A} a una colecci&oacute;n con
-     * elementos de tipo {@link B}.
+     * Converts a collection of {@link A} elements to a {@link List} of {@link B} elements.
      *
-     * @param aCollection {@link Collection}
-     *
-     * @return {@link List}
+     * @param aCollection collection of A
+     * @return list of converted B values
      */
     public List<B> createFromA(final Collection<A> aCollection) {
         return aCollection.stream().map(this::convertFromA).toList();

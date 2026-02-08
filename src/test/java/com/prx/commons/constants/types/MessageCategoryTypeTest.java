@@ -16,6 +16,7 @@ package com.prx.commons.constants.types;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.Arrays;
 
@@ -28,6 +29,7 @@ import java.util.Arrays;
 class MessageCategoryTypeTest {
 
     @Test
+    @DisplayName("MessageCategoryType contains expected enum values")
     void keys() {
         for (final var tp : MessageCategoryType.values()) {
             Assertions.assertTrue(Arrays.asList(MessageCategoryType.values()).contains(tp));

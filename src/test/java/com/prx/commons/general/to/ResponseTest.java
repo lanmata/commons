@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -50,6 +51,7 @@ class ResponseTest {
      * </ul>
      */
     @Test
+    @DisplayName("Test Response Constructor and Methods")
     void testConstructor() {
         Response actualResponse = new Response();
         actualResponse.setCode(1);
@@ -65,6 +67,7 @@ class ResponseTest {
     }
 
     @Test
+    @DisplayName("Test Response Getters and Setters")
     void testGettersAndSetters() {
         final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var response = new Response();

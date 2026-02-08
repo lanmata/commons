@@ -12,12 +12,12 @@ import com.prx.commons.constants.httpstatus.type.MessageType;
  * @author Luis Antonio Mata
  */
 public enum ServerErrorKey implements MessageType {
-    INTERNAL_SERVER_ERROR(500, "Error interno del servidor."),
-    NOT_IMPLEMENTED(501, "El servidor no reconoce el método o no tiene la capacidad de cumplirlo."),
-    BAD_GATEWAY(502, "El servidor recibió una respuesta inválida del servidor ascendente."),
-    SERVICE_UNAVAILABLE(503, "El servidor no está disponible actualmente."),
-    GATEWAY_TIMEOUT(504, "El servidor no recibió una respuesta a tiempo de otro servidor."),
-    HTTP_VERSION_NOT_SUPPORTED(505, "La versión HTTP no es soportada por el servidor.");
+    INTERNAL_SERVER_ERROR(500, "Internal server error."),
+    NOT_IMPLEMENTED(501, "The server does not recognize the method or lacks the ability to fulfill it."),
+    BAD_GATEWAY(502, "The server received an invalid response from an upstream server."),
+    SERVICE_UNAVAILABLE(503, "The server is currently unavailable."),
+    GATEWAY_TIMEOUT(504, "The server did not receive a timely response from another server."),
+    HTTP_VERSION_NOT_SUPPORTED(505, "The HTTP version is not supported by the server.");
 
     private final int code;
     private final String status;

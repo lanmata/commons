@@ -10,9 +10,9 @@ import com.prx.commons.constants.httpstatus.type.MessageType;
  * </p>
  */
 public enum InformationCode implements MessageType {
-    CONTINUE(100, "La solicitud ha sido recibida y el proceso puede continuar."),
-    SWITCHING_PROTOCOLS(101, "El servidor acepta cambiar de protocolo."),
-    PROCESSING(102, "El servidor ha recibido y está procesando la solicitud.");
+    CONTINUE(100, "The request has been received and the process can continue."),
+    SWITCHING_PROTOCOLS(101, "The server agrees to switch protocols."),
+    PROCESSING(102, "The server has received and is processing the request.");
 
     private final int code;
     private final String status;

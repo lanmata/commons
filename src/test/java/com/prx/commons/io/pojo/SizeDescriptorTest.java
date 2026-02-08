@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 /**
  * SizeDescriptorTest.
@@ -31,6 +32,7 @@ import org.junit.jupiter.api.Test;
 class SizeDescriptorTest {
 
     @Test
+    @DisplayName("Getters and setters validate state and toString/hashCode behavior")
     void gettersAndSetters() {
         final var sizeDescriptor = new SizeDescriptor();
 
@@ -46,19 +48,8 @@ class SizeDescriptorTest {
         );
     }
 
-    /**
-     * Methods under test:
-     *
-     * <ul>
-     *   <li>{@link SizeDescriptor#SizeDescriptor()}
-     *   <li>{@link SizeDescriptor#setSize(double)}
-     *   <li>{@link SizeDescriptor#setSizeKey(SizeKey)}
-     *   <li>{@link SizeDescriptor#toString()}
-     *   <li>{@link SizeDescriptor#getSize()}
-     *   <li>{@link SizeDescriptor#getSizeKey()}
-     * </ul>
-     */
     @Test
+    @DisplayName("Default constructor sets size and sizeKey appropriately")
     void testConstructor() {
         SizeDescriptor actualSizeDescriptor = new SizeDescriptor();
         actualSizeDescriptor.setSize(10.0d);
@@ -69,19 +60,8 @@ class SizeDescriptorTest {
         assertEquals("SizeDescriptor{sizeKey=b, size=10.0}", actualToStringResult);
     }
 
-    /**
-     * Methods under test:
-     *
-     * <ul>
-     *   <li>{@link SizeDescriptor#SizeDescriptor(SizeKey, double)}
-     *   <li>{@link SizeDescriptor#setSize(double)}
-     *   <li>{@link SizeDescriptor#setSizeKey(SizeKey)}
-     *   <li>{@link SizeDescriptor#toString()}
-     *   <li>{@link SizeDescriptor#getSize()}
-     *   <li>{@link SizeDescriptor#getSizeKey()}
-     * </ul>
-     */
     @Test
+    @DisplayName("Parameterized constructor preserves values and toString format")
     void testConstructor2() {
         SizeDescriptor actualSizeDescriptor = new SizeDescriptor(SizeKey.BYTES, 10.0d);
         actualSizeDescriptor.setSize(10.0d);

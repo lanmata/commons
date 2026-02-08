@@ -14,12 +14,11 @@
 
 package com.prx.commons.constants.keys;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * SizeKeyTest.
@@ -27,9 +26,11 @@ import java.util.Arrays;
  * @author Luis Antonio Mata
  * @version 1.0.0, 20-10-2020
  */
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class SizeKeyTest {
 
     @Test
+    @DisplayName("Test all keys")
     void keys() {
         for (final var tp : SizeKey.values()) {
             Assertions.assertTrue(Arrays.asList(SizeKey.values()).contains(tp));
@@ -46,8 +47,15 @@ class SizeKeyTest {
      * </ul>
      */
     @Test
+    @DisplayName("Test valueOf and toString methods")
     void testValueOf() {
         assertEquals("b", SizeKey.valueOf("BYTES").toString());
+    }
+
+    @Test
+    @DisplayName("SizeKey values include expected constants")
+    void values() {
+        assertEquals(9, SizeKey.values().length);
     }
 
 }

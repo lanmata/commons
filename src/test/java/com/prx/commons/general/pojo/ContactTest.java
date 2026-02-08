@@ -14,6 +14,7 @@
 package com.prx.commons.general.pojo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.UUID;
 
@@ -44,6 +45,7 @@ class ContactTest {
      * </ul>
      */
     @Test
+    @DisplayName("Constructor sets fields correctly and getters return expected values")
     void testConstructor() {
         var contactID = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         Contact actualContact = new Contact();
@@ -63,6 +65,7 @@ class ContactTest {
     }
 
     @Test
+    @DisplayName("Getters and setters return non-null values after population")
     void testGettersAndSetters() {
         var contact = new Contact();
         var contactType = new ContactType();

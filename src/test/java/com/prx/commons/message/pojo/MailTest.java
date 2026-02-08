@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.HashMap;
 
@@ -33,6 +34,7 @@ import java.util.HashMap;
 class MailTest {
 
     @Test
+    @DisplayName("Getters and setters provide non-null values and hash/equals behave")
     void gettersAndSetters() {
         final var mail = new Mail();
 
@@ -73,6 +75,7 @@ class MailTest {
      * </ul>
      */
     @Test
+    @DisplayName("Constructor sets fields and toString matches expected format")
     void testConstructor() {
         Mail actualMail = new Mail();
         actualMail.setContent("Not all who wander are lost");

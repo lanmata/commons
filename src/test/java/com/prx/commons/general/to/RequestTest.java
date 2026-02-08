@@ -24,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -49,6 +50,7 @@ class RequestTest {
      * </ul>
      */
     @Test
+    @DisplayName("Request default constructor and getters/setters behave correctly")
     void testConstructor() {
         Request actualRequest = new Request();
         actualRequest.setAppName("App Name");
@@ -63,6 +65,7 @@ class RequestTest {
     }
 
     @Test
+    @DisplayName("Getters and setters are not null after population")
     void testGettersAndSetters() {
         final var localDateTime = LocalDateTime.of(2020, 10, 29, 21, 31);
         final var request = new Request();

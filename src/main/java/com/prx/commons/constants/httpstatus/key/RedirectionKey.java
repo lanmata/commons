@@ -10,11 +10,11 @@ import com.prx.commons.constants.httpstatus.type.MessageType;
  * </p>
  */
 public enum RedirectionKey implements MessageType {
-    MULTIPLE_CHOICES(300, "Hay múltiples opciones para el recurso solicitado."),
-    MOVED_PERMANENTLY(301, "El recurso ha sido movido permanentemente."),
-    FOUND(302, "El recurso ha sido encontrado en otra ubicación temporalmente."),
-    SEE_OTHER(303, "El recurso ha sido encontrado."),
-    NOT_MODIFIED(304, "El recurso no ha sido modificado desde la última solicitud.");
+    MULTIPLE_CHOICES(300, "There are multiple options for the requested resource."),
+    MOVED_PERMANENTLY(301, "The resource has been moved permanently."),
+    FOUND(302, "The resource has been found at a different temporary location."),
+    SEE_OTHER(303, "The resource can be found under a different URI."),
+    NOT_MODIFIED(304, "The resource has not been modified since the last request.");
 
     private final int code;
     private final String status;

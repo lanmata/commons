@@ -12,10 +12,10 @@ import com.prx.commons.constants.httpstatus.type.MessageType;
  * @author Luis Antonio Mata
  */
 public enum SuccessKey implements MessageType {
-    OK(200, "La solicitud ha tenido éxito."),
-    CREATED(201, "El recurso ha sido creado correctamente."),
-    ACCEPTED(202, "La solicitud ha sido aceptada para procesamiento."),
-    NO_CONTENT(204, "La solicitud se ha completado sin contenido.");
+    OK(200, "The request was successful."),
+    CREATED(201, "The resource was created successfully."),
+    ACCEPTED(202, "The request has been accepted for processing."),
+    NO_CONTENT(204, "The request completed successfully with no content.");
 
     private final int code;
     private final String status;

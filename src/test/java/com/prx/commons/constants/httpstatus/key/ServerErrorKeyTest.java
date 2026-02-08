@@ -8,6 +8,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("ServerErrorKey enum unit tests")
+@org.junit.jupiter.api.DisplayNameGeneration(org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores.class)
 class ServerErrorKeyTest {
 
     @Test
@@ -58,5 +59,11 @@ class ServerErrorKeyTest {
             assertEquals(i, values[i].ordinal(), "Enum ordinals must be contiguous and start at 0");
         }
     }
-}
 
+    @Test
+    void keys() {
+        for (ServerErrorKey key : ServerErrorKey.values()) {
+            assertNotNull(key.getStatus());
+        }
+    }
+}

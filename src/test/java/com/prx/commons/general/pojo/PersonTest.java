@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -31,6 +32,7 @@ import java.util.UUID;
 class PersonTest {
 
     @Test
+    @DisplayName("Test Getters And Setters")
     void gettersAndSetters() {
         final var person = new Person();
         var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
@@ -75,6 +77,7 @@ class PersonTest {
      * </ul>
      */
     @Test
+    @DisplayName("Constructor initializes fields correctly")
     void testConstructor() {
         var uuid = UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b");
         Person actualPerson = new Person();

@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.prx.commons.constants.httpstatus.key.ClientErrorKey;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.Arrays;
 
@@ -27,6 +28,7 @@ import java.util.Arrays;
  * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3.20200904-01, 21-11-2020
  */
+@org.junit.jupiter.api.DisplayNameGeneration(org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores.class)
 class ClientErrorKeyTest {
 
     @Test
@@ -48,11 +50,11 @@ class ClientErrorKeyTest {
      * </ul>
      */
     @Test
+    @DisplayName("valueOf returns expected ClientErrorKey and status message")
     void testValueOf() {
         ClientErrorKey actualValueOfResult = ClientErrorKey.valueOf("BAD_REQUEST");
         assertEquals(400, actualValueOfResult.getCode());
-        assertEquals("La solicitud no fue comprendida por el servidor, sintaxis incorrecta.",
-                actualValueOfResult.getStatus());
+        assertEquals("The request was malformed or contained invalid syntax.", actualValueOfResult.getStatus());
     }
 
 }

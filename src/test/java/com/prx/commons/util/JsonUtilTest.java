@@ -15,6 +15,7 @@ package com.prx.commons.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -29,6 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class JsonUtilTest {
 
     @Test
+    @DisplayName("Constructor is private and throws when instantiated reflectively")
     void constructor() throws NoSuchMethodException {
         final var constructor = JsonUtil.class.getDeclaredConstructor();
         constructor.setAccessible(true);
@@ -39,6 +41,7 @@ class JsonUtilTest {
      * Method under test: {@link JsonUtil#toJson(Object)}
      */
     @Test
+    @DisplayName("toJson converts objects and primitives to JSON strings")
     void testToJson() {
         assertEquals("\"Obj Source\"", JsonUtil.toJson("Obj Source"));
         assertEquals("null", JsonUtil.toJson(null));

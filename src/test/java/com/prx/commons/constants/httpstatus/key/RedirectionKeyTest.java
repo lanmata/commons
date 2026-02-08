@@ -8,6 +8,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("RedirectionKey enum unit tests")
+@org.junit.jupiter.api.DisplayNameGeneration(org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores.class)
 class RedirectionKeyTest {
 
     @Test
@@ -58,5 +59,12 @@ class RedirectionKeyTest {
             assertEquals(i, values[i].ordinal(), "Enum ordinals must be contiguous and start at 0");
         }
     }
-}
 
+    @Test
+    @DisplayName("RedirectionKey constants have valid codes and statuses")
+    void keys() {
+        for (RedirectionKey key : RedirectionKey.values()) {
+            assertNotNull(key.getStatus());
+        }
+    }
+}

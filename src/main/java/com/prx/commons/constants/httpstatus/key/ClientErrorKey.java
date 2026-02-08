@@ -12,17 +12,17 @@ import com.prx.commons.constants.httpstatus.type.MessageType;
  * @author Luis Antonio Mata
  */
 public enum ClientErrorKey implements MessageType {
-    BAD_REQUEST(400, "La solicitud no fue comprendida por el servidor, sintaxis incorrecta."),
-    UNAUTHORIZED(401, "La solicitud requiere información de autenticación de usuario."),
-    PAYMENT_REQUIRED(402, "Pago requerido para acceder al recurso."),
-    FORBIDDEN(403, "Solicitud no autorizada. El cliente no tiene acceso al contenido."),
-    NOT_FOUND(404, "El recurso solicitado no fue encontrado."),
-    METHOD_NOT_ALLOWED(405, "El método de solicitud no está permitido para el recurso."),
-    NOT_ACCEPTABLE(406, "El recurso solicitado no es aceptable según los encabezados enviados."),
-    CONFLICT(409, "Conflicto con el estado actual del recurso."),
-    GONE(410, "El recurso solicitado ya no está disponible y no lo estará nuevamente."),
-    LENGTH_REQUIRED(411, "Longitud no cumple con la longitud minima requerida"),
-    UNSUPPORTED_MEDIA_TYPE(415, "El tipo de medio de la solicitud no es compatible con el servidor.");
+    BAD_REQUEST(400, "The request was malformed or contained invalid syntax."),
+    UNAUTHORIZED(401, "Authentication is required to access the resource."),
+    PAYMENT_REQUIRED(402, "Payment is required to access the resource."),
+    FORBIDDEN(403, "The request is not authorized. The client does not have access to the content."),
+    NOT_FOUND(404, "The requested resource was not found."),
+    METHOD_NOT_ALLOWED(405, "The request method is not allowed for the resource."),
+    NOT_ACCEPTABLE(406, "The requested resource is not acceptable according to the provided headers."),
+    CONFLICT(409, "There is a conflict with the current state of the resource."),
+    GONE(410, "The requested resource is no longer available and will not be available again."),
+    LENGTH_REQUIRED(411, "The request does not meet the minimum length requirement."),
+    UNSUPPORTED_MEDIA_TYPE(415, "The media type of the request is not supported by the server.");
 
     private final int code;
     private final String status;

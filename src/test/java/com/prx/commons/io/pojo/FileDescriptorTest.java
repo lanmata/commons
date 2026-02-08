@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 import com.prx.commons.constants.keys.SizeKey;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 /**
  * FileDescriptorTest.
@@ -31,6 +32,7 @@ import org.junit.jupiter.api.Test;
 class FileDescriptorTest {
 
     @Test
+    @DisplayName("Test Getters And Setters")
     void gettersAndSetters() {
         final var fileDescriptor = new FileDescriptor();
 
