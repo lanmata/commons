@@ -6,8 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## Version 0.0.3
-- Actualización de las dependencias.
-- Incorporación de clase para comunicación por canal seguro SSL/HTTPS.
-- Incorporación de la clase StandardExcepción para la captura y propagación de fallos.
-- Included authenticate features
+- Documentation: translated build and README docs to English and updated them to reflect centralized versions (see `README.md`, `README-BUILD.md`, and `BUILD_VALIDATION_REPORT.md`).
+- BOM and version management: dependency and plugin versions are centralized in the root `pom.xml` and a BOM is available at `bom/pom.xml` (artifact `com.prx:prx-commons-bom:0.0.1`).
+- Build: default Java version set to 21 in the root `pom.xml`.
+- Tests: prepared to add or update unit tests and test annotations (e.g., add `@DisplayName`) to meet coverage requirements.
+
+## Version 0.0.1
+- Updated dependencies.
+- Added a class for secure SSL/HTTPS channel communication.
+- Added `StandardException` class for capturing and propagating failures.
+- Included authentication features.
