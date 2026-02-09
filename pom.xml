@@ -14,82 +14,81 @@ IMPORTANTE CONSIDERAR:
     <groupId>com.prx</groupId>
     <artifactId>prx-commons</artifactId>
     <name>PRX Commons components</name>
-    <version>1.0.0</version>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+    <version>0.0.1</version>
 
     <developers>
         <developer>
             <id>lmata</id>
             <name>Luis Antonio Mata</name>
             <email>luis.antonio.mata@gmail.com</email>
-            <url>www.prx-dev.com</url>
-            <organization>PRX Dev Innova</organization>
-            <organizationUrl>www.prx.com</organizationUrl>
+            <url>www.umdev-creative.com</url>
+            <organization>UM Dev Creative</organization>
+            <organizationUrl>www.umdev-creative.com</organizationUrl>
         </developer>
     </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <!--        MAVEN-->
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
         <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
         <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
         <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
-        <maven.plugin.pmd.version>3.21.2</maven.plugin.pmd.version>
+        <maven.plugin.pmd.version>3.28.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
-        <maven.surefire.version>3.2.5</maven.surefire.version>
-        <!--        REPOSITORY-->
-        <repsy.account.user>lmata</repsy.account.user>
-        <repsy.account.password>1$Pormenos</repsy.account.password>
-        <!--        SPRING -->
-        <spring-core.version>6.1.13</spring-core.version>
-        <spring-boot.version>3.3.4</spring-boot.version>
-        <spring-cloud.version>2023.0.3</spring-cloud.version>
-        <!--        JUnit 5.x-->
-        <junit.jupiter.version>5.10.3</junit.jupiter.version>
+        <maven.surefire.version>3.5.2</maven.surefire.version>
+        <!--        JUnit 5.x (keep in sync) -->
+        <junit.jupiter.version>5.9.3</junit.jupiter.version>
         <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
-        <!--        Mockito-->
-        <mockserver.junit.jupiter.version>5.11.2</mockserver.junit.jupiter.version>
-        <mockito.version>5.14.2</mockito.version>
         <!--        Coverage and Sonar-->
-        <sonar.organization>prx-open</sonar.organization>
+        <sonar.organization>prx</sonar.organization>
         <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.coverage.exclusions>
         <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.exclusions>
         <project.ruleset>${project.basedir}/ruleset.xml</project.ruleset>
+
+        <!-- Centralized dependency versions -->
+        <jackson.annotations.version>2.20</jackson.annotations.version>
+        <jackson.databind.version>2.20.2</jackson.databind.version>
+        <gson.version>2.13.2</gson.version>
+        <orgjson.version>20250517</orgjson.version>
+        <webjars.locator.version>0.59</webjars.locator.version>
+        <log4j.core.version>2.25.3</log4j.core.version>
+        <jakarta.validation.version>3.0.2</jakarta.validation.version>
+        <asm.version>9.8</asm.version>
+        <!-- Plugin versions centralized -->
+        <build.helper.plugin.version>3.6.1</build.helper.plugin.version>
+        <versions.maven.plugin.version>2.18.0</versions.maven.plugin.version>
+        <maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
+        <maven.javadoc.plugin.version>${maven.plugin.javadoc.version}</maven.javadoc.plugin.version>
     </properties>
 
     <dependencies>
         <!-- Commons dependencies -->
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.annotations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
             <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <version>${spring-boot.version}</version>
-            <optional>true</optional>
         </dependency>
         <!-- Open API Documentation -->
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.8.0</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${orgjson.version}</version>
         </dependency>
         <!-- Unit test dependencies -->
         <dependency>
@@ -104,24 +103,11 @@ IMPORTANTE CONSIDERAR:
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator-core</artifactId>
-            <version>0.59</version>
+            <version>${webjars.locator.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -134,39 +120,80 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.23.1</version>
+            <version>${log4j.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation.version}</version>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!-- JUnit BOM import (keeps JUnit submodules in sync) -->
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>${junit.jupiter.version}</version>
+                <version>${junit.jupiter.core.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- Managed dependencies (BOM-style) -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.databind.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${orgjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>webjars-locator-core</artifactId>
+                <version>${webjars.locator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.validation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <repositories>
         <repository>
-            <id>repsy</id>
-            <name>My Private Maven Repository on Repsy</name>
-            <url>https://repo.repsy.io/mvn/lmata/prx</url>
-        </repository>
-        <repository>
             <id>maven_central</id>
             <name>Maven Central</name>
             <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/lmata/prx</url>
         </repository>
     </repositories>
 
@@ -183,16 +210,11 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>
-                        -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar
-                    </argLine>
-                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
-                        <version>9.1</version>
+                        <version>${asm.version}</version>
                     </dependency>
                 </dependencies>
                 <version>${maven.surefire.version}</version>
@@ -200,17 +222,17 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${build.helper.plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.8.1</version>
+                <version>${versions.maven.plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.4.1</version>
+                <version>${maven.enforcer.plugin.version}</version>
                 <configuration>
                     <rules>
                         <dependencyConvergence/>
@@ -223,6 +245,9 @@ IMPORTANTE CONSIDERAR:
                 <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <release>${maven.compiler.release}</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -315,7 +340,7 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven.plugin.javadoc.version}</version>
+                <version>${maven.javadoc.plugin.version}</version>
                 <configuration>
                     <show>public</show>
                     <nohelp>true</nohelp>

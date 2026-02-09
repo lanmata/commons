@@ -6,10 +6,10 @@ springfox:
     swagger-ui:
       base-url: /documentacion
 swagger:
-  base-package: 'com.prx.commons'
+  base-package: 'com.umdev.commons'
   api-info:
-    title: 'PRX Commons'
-    description: 'Componente de objetos comunes'
+    title: 'UMDEV Commons'
+    description: 'Commons library for UMDEV projects'
     contact:
       name: 'Luis Antonio Mata'
       url: 'www.prx.test'

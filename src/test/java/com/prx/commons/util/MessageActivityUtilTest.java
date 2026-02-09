@@ -12,13 +12,14 @@
  */
 package com.prx.commons.util;
 
-import com.prx.commons.pojo.MessageActivity;
-import com.prx.commons.to.Response;
+import com.prx.commons.message.to.MessageActivity;
+import com.prx.commons.general.to.Response;
 
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -35,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class MessageActivityUtilTest {
 
     @Test
+    @DisplayName("Constructor is private and throws on instantiation via reflection")
     void constructor() throws NoSuchMethodException {
         final var constructor = MessageActivityUtil.class.getDeclaredConstructor();
         constructor.setAccessible(true);
@@ -45,6 +47,7 @@ class MessageActivityUtilTest {
      * Method under test: {@link MessageActivityUtil#toResponse(MessageActivity)}
      */
     @Test
+    @DisplayName("toResponse maps MessageActivity to Response with code and message")
     void testToResponse() {
         MessageActivity<?> messageActivity = new MessageActivity<>();
         messageActivity.setCode(1);
@@ -59,6 +62,7 @@ class MessageActivityUtilTest {
      * Method under test: {@link MessageActivityUtil#toResponse(MessageActivity, Response)}
      */
     @Test
+    @DisplayName("toResponse with existing Response populates fields correctly")
     void testToResponse2() {
         MessageActivity<?> messageActivity = new MessageActivity<>();
         messageActivity.setCode(1);
@@ -75,6 +79,7 @@ class MessageActivityUtilTest {
     }
 
     @Test
+    @DisplayName("toResponse returns non-null Responses for different MessageActivity inputs")
     void toResponse() {
         final var messageActivity = new MessageActivity<Map<Integer, String>>();
         final var messageActivity1 = new MessageActivity<Map<Integer, String>>();

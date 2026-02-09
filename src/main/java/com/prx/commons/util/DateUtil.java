@@ -24,7 +24,10 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Clase utilitaria para gesti&oacute;n y formato de fechas
+ * Utility class for date/time formatting and conversions.
+ *
+ * <p>Provides thread-safe date formatters and helpers to convert between
+ * {@link java.time} types and legacy {@link java.util.Date}/{@link Calendar}.
  *
  * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
@@ -32,67 +35,71 @@ import java.util.Locale;
 public final class DateUtil {
 
     /**
-     * Formato de fecha yyyy/MM/dd, Por ejemplo: 2000/01/30
+     * Date pattern yyyy/MM/dd, example: 2000/01/30
      */
     public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT_WITH_SEPARATOR_DDMMYY;
     /**
-     * Formato de fecha yyyy-MM-dd HH:mm:ss.SSS, Por ejemplo: 2000-01-30 12:30:25.369
+     * Date-time pattern yyyy-MM-dd HH:mm:ss.SSS, example: 2000-01-30 12:30:25.369
      */
     public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT_MIL;
     /**
-     * Patr&oacute;n para fecha yyyy-MM-ddTHH:mm:ss, Por ejemplo: 2000-01-30T12:30:25
+     * Pattern for datetime with 'T' separator yyyy-MM-ddTHH:mm:ss, example: 2000-01-30T12:30:25
      */
     public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT_T;
     /**
-     * Patr&oacute;n para fecha yyyyMMdd, Por ejemplo: 20000130
+     * Pattern for date yyyyMMdd, example: 20000130
      */
     public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT_DDMMYY;
     /**
-     * Patr&oacute;n para fecha yyyyMMdd, Por ejemplo: 20000130
+     * Pattern for datetime without milliseconds yyyy-MM-dd HH:mm:ss
      */
     public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_TIME_FORMAT;
     /**
-     * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
+     * Pattern for date yyyy-MM-dd, example: 2000-01-30
      */
     public static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT;
     /**
-     * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss.SSS, Por ejemplo: 2000-01-30 12:30:25.369
+     * DateTimeFormatter for PATTERN_DATE_TIME_MIL
      */
     public static final DateTimeFormatter DATE_TIME_FORMATTER;
     /**
-     * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
+     * DateTimeFormatter for PATTERN_DATE
      */
     public static final DateTimeFormatter DATE_FORMATTER;
     /**
-     * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss.SSS, Por ejemplo: 2000-01-30 12:30:25.369
+     * Pattern: yyyy-MM-dd HH:mm:ss.SSS
      */
     public static final String PATTERN_DATE_TIME_MIL = "yyyy-MM-dd HH:mm:ss.SSS";
     /**
-     * Patr&oacute;n para fecha yyyy-MM-ddTHH:mm:ss, Por ejemplo: 2000-01-30T12:30:25
+     * Pattern: yyyy-MM-dd HH:mm:ss.S (short milliseconds)
+     */
+    public static final String PATTERN_DATE_TIME_SHORTLY_MILLISECONDS = "yyyy-MM-dd HH:mm:ss.S";
+    /**
+     * Pattern: yyyy-MM-ddTHH:mm:ss
      */
     public static final String PATTERN_DATE_TIME_T = "yyyy-MM-dd'T'HH:mm:ss";
     /**
-     * Patr&oacute;n para fecha yyyyMMddHHmmss, Por ejemplo: 20200130123025
+     * Pattern: yyyyMMddHHmmss
      */
     public static final String PATTERN_DATETIME_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
     /**
-     * Patr&oacute;n para fecha yyyy-MM-dd HH:mm:ss, Por ejemplo: 2000-01-30 12:30:25
+     * Pattern: yyyy-MM-dd HH:mm:ss
      */
     public static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
     /**
-     * Patr&oacute;n para fecha yyMMddHHmmss, Por ejemplo: 200130123025
+     * Pattern: yyMMddHHmmss
      */
     public static final String PATTERN_DATETIME_YYMMDDHHMMSS = "yyMMddHHmmss";
     /**
-     * Patr&oacute;n para fecha yyyy-MM-dd, Por ejemplo: 2000-01-30
+     * Pattern: yyyy-MM-dd
      */
     public static final String PATTERN_DATE = "yyyy-MM-dd";
     /**
-     * Patr&oacute;n para fecha yyyyMMdd, Por ejemplo: 20000130
+     * Pattern: ddMMyyyy
      */
     public static final String PATTERN_DDMMYY = "ddMMyyyy";
     /**
-     * Patr&oacute;n para fecha yyyy/MM/dd, Por ejemplo: 2000/01/30
+     * Pattern: dd/MM/yyyy
      */
     public static final String PATTERN_WIT_SEPARATOR_DDMMYY = "dd/MM/yyyy";
     static {
@@ -110,20 +117,20 @@ public final class DateUtil {
     }
 
     /**
-     * Constructor privado para no permitir creacion de objeto por instancia
+     * Private constructor to prevent instantiation.
      */
     private DateUtil() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Convierte una fecha contenida en un {@link String} a un objeto {@link Calendar}
+     * Converts a date string to a {@link Calendar} using the supplied {@link SimpleDateFormat}.
      *
-     * @param strDateMail Fecha de corrreo, objeto de tipo {@link String}
-     * @param simpleDateFormat Formato de fecha, objeto de tipo {@link SimpleDateFormat}
-     * @param timeDefault Hora por defecto, objeto de tipo {@link boolean}
-     * @return Retorna un objeto de tipo {@link Calendar}
-     * @throws ParseException Lanza una excepci&oacute;n de tipo {@link ParseException}
+     * @param strDateMail date string to parse
+     * @param simpleDateFormat formatter to use
+     * @param timeDefault when true, resets hour/minute/second/millisecond to zero
+     * @return parsed {@link Calendar}
+     * @throws ParseException when parsing fails
      */
     public static Calendar convertStringToCalendar(String strDateMail, SimpleDateFormat simpleDateFormat,
         boolean timeDefault) throws ParseException {
@@ -144,21 +151,21 @@ public final class DateUtil {
     }
 
     /**
-     * Compara dos fechas, retorna true en caso de ser igual  o false en caso de ser distintas.
+     * Compares two LocalDate instances for equality.
      *
-     * @param now Objeto de tipo {@link LocalDateTime}
-     * @param dateTime Objeto de tipo {@link LocalDateTime}
-     * @return Objeto de tipo {@code boolean}
+     * @param now current date
+     * @param dateTime date to compare
+     * @return {@code true} when both dates are equal
      */
     public static boolean validateDate(LocalDate now, LocalDate dateTime) {
         return now.isEqual(dateTime);
     }
 
     /**
-     * Transforma un objeto de tipo {@link LocalDateTime} a tipo {@link Date}
+     * Converts a {@link LocalDateTime} to a legacy {@link Date} instance.
      *
-     * @param localDateTime Objeto de tipo {@link LocalDateTime}
-     * @return Objeto de tipo {@link Date}
+     * @param localDateTime local date-time to convert
+     * @return corresponding {@link Date}
      */
     public static Date toDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());

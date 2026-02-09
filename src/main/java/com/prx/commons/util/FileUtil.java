@@ -13,13 +13,15 @@
 
 package com.prx.commons.util;
 
-import com.prx.commons.enums.keys.SizeKey;
-import com.prx.commons.pojo.SizeDescriptor;
+import com.prx.commons.constants.keys.SizeKey;
+import com.prx.commons.io.pojo.SizeDescriptor;
 
 /**
- * Clase utilitaria para gesti&oacute;n de archivos
+ * Utility class for file size handling.
  *
- * @author &lt;a href='mailto:luis.antonio.mata@gmail.com'&gt;Luis Antonio Mata&lt;/a&gt;
+ * Provides helpers to determine a file size descriptor (unit) based on a byte size.
+ *
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata</a>
  * @version 1.0.3, 29-09-2020
  */
 public final class FileUtil {
@@ -31,11 +33,11 @@ public final class FileUtil {
     private FileUtil(){throw new UnsupportedOperationException();}
 
     /**
-     * Retorna el peso de un archivo
+     * Returns a {@link SizeDescriptor} describing the provided size in bytes using a human-friendly unit.
      *
-     * @param ordinalSize Objeto de tipo {@link int}
-     * @param size Objeto de tipo {@link long}
-     * @return Objeto de tipo {@link SizeDescriptor}
+     * @param ordinalSize the ordinal index for {@link com.prx.commons.constants.keys.SizeKey} to start evaluation
+     * @param size the size in bytes
+     * @return a {@link SizeDescriptor} containing the resolved SizeKey and original size
      */
     public static SizeDescriptor getSizeDescriptor(int ordinalSize, long size){
         long result = size / BYTE_SIZE;

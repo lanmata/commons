@@ -22,8 +22,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Clase para prop&oacute;sitos utilitarios de validaci&oacute;n. Permite determinar: - Tipos de campos. -
- * Duraci&oacute;n de tiempo. - Nulidad o no de objetos.
+ * Utility class for validation helpers. Provides methods to determine:
+ * - field types (alphabetic, numeric)
+ * - time duration calculation
+ * - null / empty checks for strings and lists
+ *
+ * <p>This class is final and provides only static utility methods.
  *
  * @author Luis Mata
  * @version 1.0, 19-Oct-2014 09:38:25 a.m.
@@ -35,16 +39,23 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Determina si el valor de un objeto dado es alfab&eacute;tico. En caso de true, el valor contenido en el objeto de
-     * es tipo alfab&eacute;tico. En caso de false el valor contenido en el objeto de no es tipo alfab&eacute;tico.
+     * Determines whether the provided object contains only alphabetic characters.
+     * <p>
+     * Behavior:
+     * - Returns {@code false} if {@code object} is {@code null}.
+     * - If {@code object} is a {@link String}, its characters are evaluated.
+     * - Otherwise {@code object.toString()} is used.
+     * <p>
+     * Only Unicode letters are considered alphabetic.
      *
-     * @param object Objeto a evaluar, objeto de tipo {@link Object}
-     *
-     * @return boolean Objeto de tipo {@link boolean}
-     *
+     * @param object object to evaluate
+     * @return {@code true} when the value is alphabetic, {@code false} otherwise
      * @author Luis Mata
      */
     public static boolean esAlfabetico(final Object object) {
+        if (object == null) {
+            return false;
+        }
         boolean esValido = true;
         final String valor;
 
@@ -53,7 +64,7 @@ public final class ValidatorCommonsUtil {
         }else {
             valor = object instanceof String ? (String) object : object.toString();
             for (int i = 0; i < valor.length(); i++) {
-                if (Character.isDigit(valor.charAt(i))) {
+                if (!Character.isLetter(valor.charAt(i))) {
                     esValido = false;
                     break;
                 }
@@ -64,16 +75,19 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Determina si el valor de un objeto dado es num&eacute;rico. En caso de true, el valor contenido en el objeto de
-     * es tipo num&eacute;rico. En caso de false el valor contenido en el objeto de no es tipo num&eacute;rico.
+     * Determines whether the provided object is a numeric type.
+     * <p>
+     * Note: {@link String} values are intentionally treated as non-numeric by this overload.
      *
-     * @param object Objeto a evaluar, objeto de tipo {@link Object}
-     *
-     * @return boolean Objeto de tipo {@link Object}
-     *
+     * @param object object to evaluate
+     * @return {@code true} when the object is an instance of Integer, Double, Long or BigDecimal
      * @author Luis Mata
      */
     public static boolean esNumerico(final Object object) {
+        // Strings should not be considered numeric by the Object overload
+        if (object instanceof String) {
+            return false;
+        }
         return object instanceof Integer
                    || object instanceof Double
                    || object instanceof Long
@@ -81,14 +95,17 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Determina si el valor de un objeto dado es num&eacute;rico. En caso de true, el valor contenido en el objeto de
-     * es tipo num&eacute;rico. En caso de false el valor contenido en el objeto de no es tipo num&eacute;rico.
+     * Determines whether the provided string contains only digit characters.
+     * <p>
+     * Returns {@code false} if {@code valor} is {@code null} or empty.
      *
-     * @param valor {@link String}
-     *
-     * @return boolean Objeto de tipo {@link boolean}
+     * @param valor string to evaluate
+     * @return {@code true} when the string contains only digits and is not empty
      */
     public static boolean esNumerico(final String valor) {
+        if (valor == null || valor.isEmpty()) {
+            return false;
+        }
         for (int i = 0; i < valor.length(); i++) {
             if (!Character.isDigit(valor.charAt(i))) {
                 return false;
@@ -99,12 +116,10 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Determina si el valor de un objeto dado es nulo. En caso de true, el
-     * valor contenido en el objeto de es tipo nulo. En caso de false el valor
-     * contenido en el objeto de no es tipo nulo.
+     * Checks whether the provided object reference is {@code null}.
      *
-     * @param objeto Objeto a evaluar, Objeto de tipo {@link Object}
-     * @return boolean, Objeto de tipo {@link boolean}
+     * @param objeto object to evaluate
+     * @return {@code true} when the object is {@code null}; {@code false} otherwise
      *
      * @author Luis Mata
      */
@@ -113,12 +128,12 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Determina si el valor de un objeto de tipo String es <b>vac&iacute;o</b>. En caso de true,el valor contenido en
-     * el objeto de es vacio. En caso de false el valor contenido en el objeto de no es vac&iacute;o.
+     * Checks whether the provided string is empty.
+     * <p>
+     * Note: this method calls {@link String#isEmpty()} and will throw NPE if the argument is {@code null}.
      *
-     * @param valor Objeto de tipo String a evaluar, Objeto de tipo {@link Object}
-     *
-     * @return boolean, Objeto de tipo {@link boolean}
+     * @param valor string to evaluate (must not be {@code null})
+     * @return {@code true} when the string is empty; {@code false} otherwise
      *
      * @author Luis Mata
      */
@@ -127,12 +142,10 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Determina si el valor de un objeto de tipo List es <b>vac&iacute;o</b>. En caso de true,el valor contenido en el
-     * objeto de es vac&iacute;o. En caso de false el valor contenido en el objeto de no es vac&iacute;o.
+     * Checks whether the provided list is empty.
      *
-     * @param valor Objeto de tipo {@link List}
-     *
-     * @return boolean, Objeto de tipo {@link boolean}
+     * @param valor list to evaluate (must not be {@code null})
+     * @return {@code true} when the list is empty; {@code false} otherwise
      *
      * @author Luis Mata
      */
@@ -141,11 +154,10 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Calcula la duraci&oacute;n del tiempo utilizado en base al par&aacute;metro tInicio y el tiempo actual.
+     * Returns the elapsed time in milliseconds between the given start time and the current system time.
      *
-     * @param tiempoInicial Objeto de tipo {@link long}
-     *
-     * @return long Objeto de tipo {@link long}
+     * @param tiempoInicial start time in milliseconds
+     * @return elapsed time in milliseconds
      *
      * @author Luis Mata
      */
@@ -154,16 +166,17 @@ public final class ValidatorCommonsUtil {
     }
 
     /**
-     * Valida la correspondencia inequ&iacute;voca del valorA y valorB
+     * Validates that both strings are non-null, non-empty, and equal.
      *
-     * @param valorA {@link String}
-     * @param valorB {@link String}
-     * @return boolean
+     * @param valorA first string
+     * @param valorB second string
+     * @return {@code true} when both strings are non-null, non-empty and equal; {@code false} otherwise
      */
     public static boolean validaIgualdad(final String valorA, final String valorB) {
-        //Valida
-        return !esNulo(valorA) && !esNulo(valorB) //la NO nulidad
-                   && !esVacio(valorA) && !esVacio(valorB) //que no sea vacío
-                   && valorA.equals(valorB);              //la igualdad literal
+        // Validate
+        return !esNulo(valorA) && !esNulo(valorB) // non-null
+                   && !esVacio(valorA) && !esVacio(valorB) // not empty
+                   && valorA.equals(valorB);              // literal equality
     }
+
 }

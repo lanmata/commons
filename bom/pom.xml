@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.prx</groupId>
+    <artifactId>prx-commons-bom</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+    <name>PRX Commons BOM</name>
+    <description>Bill of Materials for PRX Commons - centralizes dependency and plugin versions for multi-module projects.</description>
+
+    <properties>
+        <!-- Keep in sync with project root properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>21</java.version>
+
+        <!-- Centralized dependency versions -->
+        <jackson.annotations.version>2.20</jackson.annotations.version>
+        <jackson.databind.version>2.20.2</jackson.databind.version>
+        <gson.version>2.13.2</gson.version>
+        <orgjson.version>20250517</orgjson.version>
+        <webjars.locator.version>0.59</webjars.locator.version>
+        <log4j.core.version>2.25.3</log4j.core.version>
+        <jakarta.validation.version>3.0.2</jakarta.validation.version>
+        <asm.version>9.8</asm.version>
+
+        <!-- JUnit BOM version (core) -->
+        <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
+
+        <!-- Plugin versions (optional to expose) -->
+        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+        <maven.surefire.version>3.5.2</maven.surefire.version>
+        <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
+        <maven.plugin.pmd.version>3.28.0</maven.plugin.pmd.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Import JUnit BOM to keep JUnit artifacts consistent -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.jupiter.core.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Managed dependencies (versions centralized here) -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.databind.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${orgjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>webjars-locator-core</artifactId>
+                <version>${webjars.locator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.validation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
+

@@ -13,10 +13,10 @@
  */
 package com.prx.commons.exception;
 
-import com.prx.commons.enums.types.MessageType;
+import com.prx.commons.constants.httpstatus.type.MessageType;
 
 /**
- * StandardException.
+ * StandardException used to represent domain errors with a {@link MessageType} and application identifier.
  *
  * @author Luis Antonio Mata
  * @version 1.0.3.20200904-01, 21-11-2020
@@ -48,7 +48,7 @@ public class StandardException extends RuntimeException {
     /**
      * Constructor
      *
-     * @param app         {@link String}
+     * @param app         {@link String} application identifier
      * @param messageType {@link MessageType}
      */
     public StandardException(final String app, final MessageType messageType) {
@@ -65,34 +65,33 @@ public class StandardException extends RuntimeException {
      * @param throwable   {@link Throwable}
      */
     public StandardException(final String app, final MessageType messageType, Throwable throwable) {
-        super();
+        super(throwable);
         this.messageType = messageType;
         this.application = app;
-        this.initCause(throwable);
     }
 
     /**
-     * Retorna el c&oacute;digo de fallo.
+     * Returns the error code from the associated {@link MessageType}.
      *
-     * @return {@link int}
+     * @return error code as {@link int}
      */
     public int getCode() {
         return this.messageType.getCode();
     }
 
     /**
-     * Retorna el mensaje de estado.
+     * Returns the message type (status) associated with this exception.
      *
-     * @return {@link String}
+     * @return {@link MessageType}
      */
-    public String getStatus() {
-        return this.messageType.getStatus();
+    public MessageType getStatus() {
+        return this.messageType;
     }
 
     /**
-     * Retorna el identificador de la aplicaci&oacute;n ejecutante.
+     * Returns the application identifier associated with the exception.
      *
-     * @return Objeto de tipo {@link String}.
+     * @return application id as {@link String}
      */
     public String getApp() {
         return this.application;
