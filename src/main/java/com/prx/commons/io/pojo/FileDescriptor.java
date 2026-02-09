@@ -16,6 +16,11 @@ package com.prx.commons.io.pojo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+/**
+ * Represents basic file metadata used by IO operations and JSON serialization.
+ *
+ * Contains file name, size descriptor, MIME/type, and path information.
+ */
 @JsonPropertyOrder({"name", "sizeDescriptor", "type", "path"
 })
 public class FileDescriptor {
@@ -29,56 +34,92 @@ public class FileDescriptor {
     @JsonProperty("path")
     private String path;
 
-    ///  Default constructor.
+    /** Default constructor. */
     public FileDescriptor() {
-        //Default constructor.
+        // Default constructor.
     }
 
-    ///  @return the name of the file
+    /**
+     * Returns the file name.
+     *
+     * @return file name
+     */
     public String getName() {
         return this.name;
     }
 
-    ///  @return the size descriptor of the file
+    /**
+     * Returns the size descriptor of the file.
+     *
+     * @return {@link SizeDescriptor}
+     */
     public SizeDescriptor getSizeDescriptor() {
         return this.sizeDescriptor;
     }
 
-    ///  @return the type of the file
+    /**
+     * Returns the file type or MIME type.
+     *
+     * @return file type
+     */
     public String getType() {
         return this.type;
     }
 
-    ///  @return the path of the file
+    /**
+     * Returns the file path.
+     *
+     * @return file path
+     */
     public String getPath() {
         return this.path;
     }
 
-    ///  @param name the name of the file
+    /**
+     * Sets the file name.
+     *
+     * @param name the name to set
+     */
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    ///  @param sizeDescriptor the size descriptor of the file
+    /**
+     * Sets the size descriptor.
+     *
+     * @param sizeDescriptor the size descriptor to set
+     */
     @JsonProperty("sizeDescriptor")
     public void setSizeDescriptor(SizeDescriptor sizeDescriptor) {
         this.sizeDescriptor = sizeDescriptor;
     }
 
-    ///  @param type the type of the file
+    /**
+     * Sets the file type.
+     *
+     * @param type the file type to set
+     */
     @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
     }
 
-    ///  @param path the path of the file
+    /**
+     * Sets the file path.
+     *
+     * @param path the path to set
+     */
     @JsonProperty("path")
     public void setPath(String path) {
         this.path = path;
     }
 
-    ///  @return the string representation of the file descriptor
+    /**
+     * Returns a string representation of the file descriptor.
+     *
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "FileDescriptor{" +

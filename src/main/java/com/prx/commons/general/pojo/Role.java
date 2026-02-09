@@ -21,6 +21,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Represents a role assigned to users, including features and activation flag.
+ */
 @JsonNaming
 public class Role implements Serializable {
 
@@ -43,63 +46,106 @@ public class Role implements Serializable {
     @JsonProperty("active")
     private Boolean active;
 
-    // No-argument constructor
+    /** No-argument constructor. */
     public Role() {
         // Default constructor
     }
 
-    // Getters and setters
-    /// @return UUID id of the role
+    /**
+     * Returns the role identifier.
+     *
+     * @return UUID id of the role
+     */
     public UUID getId() {
         return this.id;
     }
 
-    /// @param id UUID id of the role
+    /**
+     * Sets the role identifier.
+     *
+     * @param id UUID id of the role
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
-    /// @return String name of the role
+    /**
+     * Returns the role name.
+     *
+     * @return name of the role
+     */
     public String getName() {
         return this.name;
     }
 
-    /// @param name String name of the role
+    /**
+     * Sets the role name.
+     *
+     * @param name name of the role
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /// @return String description of the role
+    /**
+     * Returns the role description.
+     *
+     * @return description of the role
+     */
     public String getDescription() {
         return this.description;
     }
 
-    /// @param description String description of the role
+    /**
+     * Sets the role description.
+     *
+     * @param description description of the role
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /// @return List<Feature> features of the role
+    /**
+     * Returns the features associated with this role.
+     *
+     * @return list of {@link Feature}
+     */
     public List<Feature> getFeatures() {
         return this.features;
     }
 
-    /// @param features List<Feature> features of the role
+    /**
+     * Sets the features associated with this role.
+     *
+     * @param features list of features
+     */
     public void setFeatures(List<Feature> features) {
         this.features = features;
     }
 
-    /// @return Boolean active of the role
+    /**
+     * Returns whether the role is active.
+     *
+     * @return active flag
+     */
     public Boolean getActive() {
         return this.active;
     }
 
-    /// @param active Boolean active of the role
+    /**
+     * Sets the active flag for the role.
+     *
+     * @param active active flag
+     */
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-    /// @return String representation of the role
+    /**
+     * Returns a string representation of the role.
+     *
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "Role{id='" + id

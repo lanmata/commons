@@ -22,6 +22,8 @@ import java.util.UUID;
 /**
  * ContactType.
  *
+ * Represents a category of contact information (for example, EMAIL, PHONE).
+ *
  * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
  * @version 1.0.3.20200904-01, 30-01-2021
  */
@@ -32,52 +34,88 @@ public class ContactType implements Serializable {
     private String description;
     private Boolean active;
 
-    ///  Default constructor.
+    /** Default constructor. */
     public ContactType() {
-        //Default constructor
+        // Default constructor
     }
 
-    ///  @return UUID ID.
+    /**
+     * Returns the identifier.
+     *
+     * @return UUID id
+     */
     public UUID getId() {
         return id;
     }
 
-    ///  @param id UUID ID.
+    /**
+     * Sets the identifier.
+     *
+     * @param id UUID id
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
-    ///  @return String Name.
+    /**
+     * Returns the name.
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
-    ///  @param name String Name.
+    /**
+     * Sets the name.
+     *
+     * @param name name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    ///  @return String Description.
+    /**
+     * Returns the description.
+     *
+     * @return description
+     */
     public String getDescription() {
         return description;
     }
 
-    ///  @param description String Description.
+    /**
+     * Sets the description.
+     *
+     * @param description description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    ///  @return Boolean Active.
+    /**
+     * Returns whether the contact type is active.
+     *
+     * @return active flag
+     */
     public Boolean getActive() {
         return active;
     }
 
-    ///  @param active Boolean Active.
+    /**
+     * Sets the active flag.
+     *
+     * @param active active flag
+     */
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-    ///  @return Returns a string representation of the object.
+    /**
+     * Returns a string representation of this contact type.
+     *
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "ContactType{" +

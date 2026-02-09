@@ -23,8 +23,15 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-/// @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
-/// @version 1.0.3, 29-09-2020
+/**
+ * Represents a person with basic identification fields and contact information.
+ *
+ * <p>This POJO includes validation annotations for common constraints and
+ * provides standard getters and setters.</p>
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata</a>
+ * @version 1.0.3, 29-09-2020
+ */
 public class Person implements Serializable {
 
     private UUID id;
@@ -43,83 +50,143 @@ public class Person implements Serializable {
     private LocalDate birthdate;
     private List<Contact> contacts;
 
-    /// Default constructor.
+    /** Default constructor. */
     public Person() {
-        //Default constructor.
+        // Default constructor.
     }
 
-    /// @return the id of the person.
+    /**
+     * Returns the identifier of the person.
+     *
+     * @return the person's UUID identifier
+     */
     public UUID getId() {
         return this.id;
     }
 
-    /// @return the first name of the person.
+    /**
+     * Returns the person's first name.
+     *
+     * @return first name
+     */
     public String getFirstName() {
         return this.firstName;
     }
 
-    /// @return the middle name of the person.
+    /**
+     * Returns the person's middle name.
+     *
+     * @return middle name
+     */
     public String getMiddleName() {
         return this.middleName;
     }
 
-    /// @return the last name of the person.
+    /**
+     * Returns the person's last name.
+     *
+     * @return last name
+     */
     public String getLastName() {
         return this.lastName;
     }
 
-    /// @return the gender of the person.
+    /**
+     * Returns the person's gender code (single character).
+     *
+     * @return gender code
+     */
     public String getGender() {
         return this.gender;
     }
 
-    /// @return the birthdate of the person.
+    /**
+     * Returns the person's birthdate.
+     *
+     * @return birthdate as {@link LocalDate}
+     */
     public LocalDate getBirthdate() {
         return this.birthdate;
     }
 
-    ///  @return Collection of Contact.
+    /**
+     * Returns the contact list associated with the person.
+     *
+     * @return list of {@link Contact} or null if none
+     */
     public List<Contact> getContacts() {
         return this.contacts;
     }
 
-    ///  @param id the id of the person.
+    /**
+     * Sets the person's identifier.
+     *
+     * @param id the UUID to set
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
-    ///  @param firstName the first name of the person.
+    /**
+     * Sets the first name.
+     *
+     * @param firstName the first name to set
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    ///  @param middleName the middle name of the person.
+    /**
+     * Sets the middle name.
+     *
+     * @param middleName the middle name to set
+     */
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
-    ///  @param lastName the last name of the person.
+    /**
+     * Sets the last name.
+     *
+     * @param lastName the last name to set
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    ///  @param gender The gender of the person.
+    /**
+     * Sets the gender code.
+     *
+     * @param gender the gender code to set (single character)
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    ///  @param birthdate the birthdate of the person.
+    /**
+     * Sets the birthdate.
+     *
+     * @param birthdate the birthdate to set
+     */
     @JsonFormat(pattern = DateUtil.PATTERN_DATE)
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
-    /// @param  contacts list
+    /**
+     * Sets the contact list.
+     *
+     * @param contacts list of {@link Contact}
+     */
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
     }
 
-    ///  @return the string representation of the person.
+    /**
+     * Returns a string representation of the person.
+     *
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "Person{" +
