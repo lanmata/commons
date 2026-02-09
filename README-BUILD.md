@@ -1,4 +1,4 @@
-README - Build & Repsy Credentials
+# Build & Repsy Credentials (PRX Commons)
 
 This file explains how to use the PRX Commons BOM and how to provide credentials for the private `repsy` repository.
 
@@ -58,14 +58,14 @@ B. CI variables (recommended for CI pipelines)
 - Set `REPSY_ACCOUNT_USER` and `REPSY_ACCOUNT_PASSWORD` as protected variables in the CI/CD system.
 - In GitLab CI, you can also generate a `settings.xml` dynamically during the job using those variables and then run Maven with `-s settings.xml`.
 
-Example GitLab CI job snippet:
+Example GitLab CI job snippet (uses Maven image matching the project Java version):
 
 ```yaml
 stages:
   - build
 
 build-job:
-  image: maven:3.9.9-eclipse-temurin-25
+  image: maven:3.9.9-eclipse-temurin-21
   stage: build
   script:
     - echo "<settings><servers><server><id>repsy</id><username>${REPSY_ACCOUNT_USER}</username><password>${REPSY_ACCOUNT_PASSWORD}</password></server></servers></settings>" > ci-settings.xml
@@ -98,5 +98,9 @@ Example:
 mvn -f bom/pom.xml deploy -DskipTests
 ```
 
-End of README-BUILD.md
+5) Short note about credentials for README-BUILD.md maintainer
 
+- Provide `repsy` credentials via `~/.m2/settings.xml` or via CI protected variables.
+- Do not store credentials in the repository.
+
+End of README-BUILD.md
