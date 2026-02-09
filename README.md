@@ -5,7 +5,7 @@
 **Spring Boot Version**: 3.5.8  
 **Java Version**: 21  
 **Spring Framework**: 6.2.3  
-**Spring Cloud**: 2025.0.1 (Oakwood)
+**Spring Cloud**: 2025.0.1
 
 ## Overview
 
