@@ -19,10 +19,11 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-/// User.
-///
-/// @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
-/// @version 1.0.3, 29-09-2020
+/**
+ * User.
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
+ */
 public class User implements Serializable {
 
     private UUID id;
@@ -39,79 +40,144 @@ public class User implements Serializable {
     private List<Role> roles;
     private List<Application> applications;
 
-    /// Default constructor.
+    /**
+     * Default constructor.
+     */
     public User() {
         //Default constructor.
     }
 
-    /// @return the id of the user.
+    /**
+     * Returns the user id.
+     *
+     * @return user UUID
+     */
     public UUID getId() {
         return this.id;
     }
 
-    /// @return the alias of the user.
+    /**
+     * Returns the alias (username).
+     *
+     * @return alias
+     */
     public String getAlias() {
         return this.alias;
     }
 
-    /// @return the password of the user.
+    /**
+     * Returns the user's password.
+     *
+     * @return password
+     */
     public String getPassword() {
         return this.password;
     }
 
-    /// @return the email of the user.
+    /**
+     * Returns the user's email address.
+     *
+     * @return email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Returns whether email notifications are enabled.
+     *
+     * @return notificationEmail flag
+     */
     public Boolean getNotificationEmail() {
         return notificationEmail;
     }
 
+    /**
+     * Returns whether SMS notifications are enabled.
+     *
+     * @return notificationSms flag
+     */
     public Boolean getNotificationSms() {
         return notificationSms;
     }
 
+    /**
+     * Returns whether the user has opted out of privacy markers.
+     *
+     * @return privacyOptOut flag
+     */
     public Boolean getPrivacyOptOut() {
         return privacyOptOut;
     }
 
-    /// @return the active status of the user.
+    /**
+     * Returns whether the user is active.
+     *
+     * @return true if active
+     */
     public boolean isActive() {
         return this.active;
     }
 
-    /// @return the person of the user.
+    /**
+     * Returns the associated person details.
+     *
+     * @return {@link Person}
+     */
     public Person getPerson() {
         return this.person;
     }
 
-    /// @return the roles of the user.
+    /**
+     * Returns the roles assigned to the user.
+     *
+     * @return list of {@link Role}
+     */
     public List<Role> getRoles() {
         return this.roles;
     }
 
-    /// @return the applications of the user.
+    /**
+     * Returns the applications available to the user.
+     *
+     * @return list of {@link Application}
+     */
     public List<Application> getApplications() {
         return applications;
     }
 
-    /// @param id of the user.
+    /**
+     * Sets the user id.
+     *
+     * @param id the UUID to set
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
-    /// @param alias of the user.
+    /**
+     * Sets the alias.
+     *
+     * @param alias alias to set
+     */
     public void setAlias(String alias) {
         this.alias = alias;
     }
 
-    /// @param password of the user.
+    /**
+     * Sets the user's password.
+     *
+     * @param password password to set
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /// @param email of the user.
+    /**
+     * Sets the user's email.
+     *
+     * @param email email to set
+     */
     public void setEmail(String email) {
         this.email = email;
     }
@@ -128,27 +194,47 @@ public class User implements Serializable {
         this.privacyOptOut = privacyOptOut;
     }
 
-    /// @param active status of the user.
+    /**
+     * Sets whether the user is active.
+     *
+     * @param active active flag
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    /// @param person of the user.
+    /**
+     * Sets the associated person details.
+     *
+     * @param person the person to associate
+     */
     public void setPerson(Person person) {
         this.person = person;
     }
 
-    /// @param roles of the user.
+    /**
+     * Sets the roles assigned to the user.
+     *
+     * @param roles list of roles
+     */
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
-    /// @param applications of the user.
+    /**
+     * Sets the applications accessible to the user.
+     *
+     * @param applications list of applications
+     */
     public void setApplications(List<Application> applications) {
         this.applications = applications;
     }
 
-    /// @return the string representation of the user.
+    /**
+     * Returns a string representation of the user.
+     *
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "User{" +
