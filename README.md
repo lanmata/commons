@@ -2,10 +2,10 @@
 
 ## Status
 
-**Spring Boot Version**: 4.0.0  
-**Java Version**: 25  
-**Spring Framework**: 7.0.1  
-**Spring Cloud**: 2025.1.0 (Oakwood)
+**Spring Boot Version**: 3.5.8  
+**Java Version**: 21  
+**Spring Framework**: 6.2.3  
+**Spring Cloud**: 2025.0.1 (Oakwood)
 
 ## Overview
 
@@ -13,19 +13,21 @@ PRX Commons is a shared library providing common components, utilities, and cons
 
 ## Migration
 
-This project has been upgraded to Spring Boot 4.0.0 and Java 25. See [MIGRATION_SPRING_BOOT_4.md](MIGRATION_SPRING_BOOT_4.md) for detailed migration documentation.
+This project has been upgraded to Spring Boot 3.5.8 and Java 21.
 
 ## Building
 
 ```bash
-# Requires Java 25
+# Requires Java 21
 mvn clean package
 ```
 
 ## Dependencies
 
-- Spring Boot 4.0.0
-- Spring Framework 7.0.1
-- Spring Cloud 2025.1.0
-- Java 25
+- Spring Boot 3.5.8
+- Spring Framework 6.3.2
+- Spring Cloud 2025.0.1
+- Java 21
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=lanmata_commons)](https://sonarcloud.io/summary/new_code?id=lanmata_commons)
 
