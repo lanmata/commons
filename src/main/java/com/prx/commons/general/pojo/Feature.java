@@ -18,10 +18,14 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import java.io.Serializable;
 import java.util.UUID;
 
-/// Feature.
-///
-/// @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
-/// @version 1.0.3.20200904-01, 31-01-2021
+/**
+ * Feature.
+ *
+ * Represents a capability or permission that can be assigned to roles.
+ *
+ * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
+ * @version 1.0.3.20200904-01, 31-01-2021
+ */
 @JsonNaming
 public class Feature implements Serializable {
     private UUID id;
@@ -29,52 +33,88 @@ public class Feature implements Serializable {
     private String description;
     private Boolean active;
 
-    /// Default constructor.
+    /** Default constructor. */
     public Feature() {
-        //Default constructor.
+        // Default constructor.
     }
 
-    ///  @return the ID of the feature
+    /**
+     * Returns the feature identifier.
+     *
+     * @return feature UUID
+     */
     public UUID getId() {
         return this.id;
     }
 
-    ///  @return the name of the feature
+    /**
+     * Returns the feature name.
+     *
+     * @return name
+     */
     public String getName() {
         return this.name;
     }
 
-    ///  @return the description of the feature
+    /**
+     * Returns the description of the feature.
+     *
+     * @return description
+     */
     public String getDescription() {
         return this.description;
     }
 
-    ///  @return the active status of the feature
+    /**
+     * Returns whether the feature is active.
+     *
+     * @return active flag
+     */
     public Boolean getActive() {
         return this.active;
     }
 
-    ///  @param id the ID of the feature
+    /**
+     * Sets the feature identifier.
+     *
+     * @param id feature UUID
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
-    ///  @param name the name of the feature
+    /**
+     * Sets the feature name.
+     *
+     * @param name name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    ///  @param description the description of the feature
+    /**
+     * Sets the feature description.
+     *
+     * @param description description to set
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    ///  @param active the active status of the feature
+    /**
+     * Sets whether the feature is active.
+     *
+     * @param active active flag
+     */
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-    ///  @return the string representation of the feature
+    /**
+     * Returns string representation of the feature.
+     *
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "Feature{" +

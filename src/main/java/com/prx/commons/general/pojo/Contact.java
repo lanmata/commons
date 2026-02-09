@@ -17,10 +17,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
 import java.util.UUID;
 
-/// Contact.
-///
-/// @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
-/// @version 1.0.3, 29-09-2020
+/**
+ * Contact.
+ *
+ * Represents a contact entry with a content value and contact type.
+ *
+ * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
+ * @version 1.0.3, 29-09-2020
+ */
 @JsonPropertyOrder({"id", "content", "contactType", "active"})
 public class Contact implements Serializable {
 
@@ -29,53 +33,88 @@ public class Contact implements Serializable {
     private ContactType contactType;
     private Boolean active;
 
-    /// Default constructor.
+    /** Default constructor. */
     public Contact() {
-        //Default constructor
+        // Default constructor
     }
 
-    /// Getters and Setters.
-    /// @return id of the contact.
+    /**
+     * Returns the identifier of the contact.
+     *
+     * @return contact UUID
+     */
     public UUID getId() {
         return this.id;
     }
 
-    /// @return content of the contact.
+    /**
+     * Returns contact content string (for example, email or phone number).
+     *
+     * @return content
+     */
     public String getContent() {
         return this.content;
     }
 
-    /// @return contact type of the contact.
+    /**
+     * Returns the type of contact.
+     *
+     * @return {@link ContactType}
+     */
     public ContactType getContactType() {
         return this.contactType;
     }
 
-    /// @return active of the contact.
+    /**
+     * Returns whether the contact is active.
+     *
+     * @return active flag
+     */
     public Boolean getActive() {
         return this.active;
     }
 
-    /// @param id of the contact.
+    /**
+     * Sets the contact identifier.
+     *
+     * @param id contact UUID
+     */
     public void setId(UUID id) {
         this.id = id;
     }
 
-    /// @param content of the contact.
+    /**
+     * Sets the content string for the contact.
+     *
+     * @param content content to set
+     */
     public void setContent(String content) {
         this.content = content;
     }
 
-    /// @param contactType of the contact.
+    /**
+     * Sets the contact type.
+     *
+     * @param contactType the contact type to set
+     */
     public void setContactType(ContactType contactType) {
         this.contactType = contactType;
     }
 
-    /// @param active of the contact.
+    /**
+     * Sets whether the contact is active.
+     *
+     * @param active active flag
+     */
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-    /// @return the string representation of the contact.
+    /**
+     * Returns string representation of the contact.
+     *
+     * @return string representation
+     */
     @Override
     public String toString() {
         return "Contact{" +
