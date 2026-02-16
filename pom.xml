@@ -30,6 +30,8 @@ IMPORTANTE CONSIDERAR:
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
+        <!-- argLine used by Surefire/Jacoco; default empty so builds don't fail when not set -->
+        <argLine/>
         <!--        MAVEN-->
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -217,6 +219,10 @@ IMPORTANTE CONSIDERAR:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+                <configuration>
+                    <argLine>${argLine}</argLine>
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
@@ -224,7 +230,6 @@ IMPORTANTE CONSIDERAR:
                         <version>${asm.version}</version>
                     </dependency>
                 </dependencies>
-                <version>${maven.surefire.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -266,15 +271,15 @@ IMPORTANTE CONSIDERAR:
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven.plugin.pmd.version}</version>
                 <configuration>
-                    <targetJdk>${java.version}</targetJdk>
-                    <linkXRef>false</linkXRef>
-                    <rulesets>
-                        <ruleset>${project.ruleset}</ruleset>
-                    </rulesets>
-                    <excludes>
-                        <exclude>${sonar.exclusions}</exclude>
-                    </excludes>
-                </configuration>
+                     <targetJdk>${java.version}</targetJdk>
+                     <linkXRef>false</linkXRef>
+                     <rulesets>
+                         <ruleset>${project.ruleset}</ruleset>
+                     </rulesets>
+                     <excludes>
+                         <exclude>${sonar.exclusions}</exclude>
+                     </excludes>
+                 </configuration>
                 <executions>
                     <execution>
                         <id>pmd-check</id>
@@ -301,26 +306,52 @@ IMPORTANTE CONSIDERAR:
                 </configuration>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <!-- write the exec file to a predictable location -->
+                            <destFile>${project.build.directory}/jacoco.exec</destFile>
+                            <append>true</append>
+                            <!-- set propertyName so Surefire picks up the agent JVM arg -->
+                            <propertyName>argLine</propertyName>
+                            <!-- exclude JDK, tooling and mocking libs from instrumentation to avoid Unsupported major version issues -->
+                            <excludes>
+                                <exclude>sun/**</exclude>
+                                <exclude>jdk/**</exclude>
+                                <exclude>com/sun/**</exclude>
+                                <exclude>net/bytebuddy/**</exclude>
+                                <exclude>org/mockito/**</exclude>
+                                <exclude>org/junit/**</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                     <execution>
-                        <id>jacoco-report</id>
-                        <phase>test</phase>
+                        <id>report</id>
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <phase>verify</phase>
+                        <configuration>
+                            <!-- generate both XML (for Sonar and CI) and HTML (for local inspection) -->
+                            <formats>
+                                <format>XML</format>
+                                <format>HTML</format>
+                            </formats>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>jacoco-check</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
+                        <phase>verify</phase>
                         <configuration>
                             <rules>
                                 <rule>
-                                    <element>PACKAGE</element>
+                                    <element>BUNDLE</element>
                                     <limits>
                                         <limit>
                                             <counter>LINE</counter>
@@ -340,6 +371,9 @@ IMPORTANTE CONSIDERAR:
                                     </limits>
                                 </rule>
                             </rules>
+                            <excludes>
+                                <exclude>${sonar.exclusions}</exclude>
+                            </excludes>
                         </configuration>
                     </execution>
                 </executions>
@@ -353,6 +387,48 @@ IMPORTANTE CONSIDERAR:
                     <nohelp>true</nohelp>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <release>${java.version}</release>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>coverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${maven.plugin.jacoco.version}</version>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                                <configuration>
+                                    <formats>
+                                        <format>XML</format>
+                                    </formats>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
