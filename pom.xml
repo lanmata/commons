@@ -34,27 +34,22 @@ IMPORTANTE CONSIDERAR:
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.14.1</maven.compiler.plugin.version>
         <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
         <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
-        <maven.plugin.jacoco.version>0.8.12</maven.plugin.jacoco.version>
+        <maven.plugin.jacoco.version>0.8.14</maven.plugin.jacoco.version>
         <maven.plugin.pmd.version>3.28.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
         <maven.surefire.version>3.5.2</maven.surefire.version>
+
         <!--        JUnit 5.x (keep in sync) -->
-        <junit.jupiter.version>5.9.3</junit.jupiter.version>
-        <junit.jupiter.core.version>5.9.3</junit.jupiter.core.version>
-        <!--        Coverage and Sonar-->
-        <sonar.organization>prx</sonar.organization>
-        <sonar.coverage.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.coverage.exclusions>
-        <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.exclusions>
-        <project.ruleset>${project.basedir}/ruleset.xml</project.ruleset>
+        <junit.jupiter.version>5.14.1</junit.jupiter.version>
 
         <!-- Centralized dependency versions -->
         <jackson.annotations.version>2.20</jackson.annotations.version>
         <jackson.databind.version>2.20.2</jackson.databind.version>
-        <gson.version>2.13.2</gson.version>
-        <orgjson.version>20250517</orgjson.version>
+        <google.gson.version>2.13.2</google.gson.version>
+        <org.json.version>20250517</org.json.version>
         <webjars.locator.version>0.59</webjars.locator.version>
         <log4j.core.version>2.25.3</log4j.core.version>
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
@@ -64,6 +59,18 @@ IMPORTANTE CONSIDERAR:
         <versions.maven.plugin.version>2.18.0</versions.maven.plugin.version>
         <maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
         <maven.javadoc.plugin.version>${maven.plugin.javadoc.version}</maven.javadoc.plugin.version>
+
+        <!--        Coverage and Sonar-->
+        <sonar.organization>lamm</sonar.organization>
+        <sonar.projectKey>lanmata-commons</sonar.projectKey>
+        <sonar.projectName>lanmata-commons</sonar.projectName>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <!-- Do not exclude all Java files — previous config removed all Java from Sonar analysis. Keep resource/config exclusions only. -->
+        <sonar.exclusions>**/*.xml,**/*Application.*,**/config/*,**/mapper/*</sonar.exclusions>
+        <sonar.coverage.exclusions>${sonar.exclusions}</sonar.coverage.exclusions>
+        <!-- Include only production sources for coverage reporting (exclude tests). Adjust glob if your sources live elsewhere) -->
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <project.ruleset>${project.basedir}/ruleset.xml</project.ruleset>
     </properties>
 
     <dependencies>
@@ -81,14 +88,14 @@ IMPORTANTE CONSIDERAR:
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
+            <version>${google.gson.version}</version>
             <type>jar</type>
         </dependency>
         <!-- Open API Documentation -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>${orgjson.version}</version>
+            <version>${org.json.version}</version>
         </dependency>
         <!-- Unit test dependencies -->
         <dependency>
@@ -135,7 +142,7 @@ IMPORTANTE CONSIDERAR:
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>${junit.jupiter.core.version}</version>
+                <version>${junit.jupiter.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

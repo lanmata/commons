@@ -11,11 +11,11 @@ jobs:
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.3.1
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v4.7.1
         with:
           java-version: 21
           distribution: 'zulu' # Alternative distribution options are available.
@@ -34,4 +34,4 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=lanmata_commons
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=lanmata-commons

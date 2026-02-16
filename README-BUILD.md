@@ -1,8 +1,8 @@
-# Build & Repsy Credentials (PRX Commons)
+# Build & Repsy Credentials (UM Dev Creative Commons)
 
-This file explains how to use the PRX Commons BOM and how to provide credentials for the private `repsy` repository.
+This file explains how to use the UM Dev Creative Commons BOM and how to provide credentials for the private `repsy` repository.
 
-1) Using the PRX BOM in other modules
+1) Using the UM Dev Creative BOM in other modules
 
 If you have multiple modules that should share the same dependency versions, import the BOM in your module's POM:
 
