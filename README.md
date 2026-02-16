@@ -143,20 +143,20 @@ Documentation
 Tech stack and versions (alphabetically)
 ----------------------------------------
 
-| Technology | Version | Source |
-|---|---:|---|
-| ASM | 9.8 | `pom.xml` property `asm.version` |
-| Gson | 2.13.2 | `pom.xml` property `google.gson.version` |
-| Jackson Annotations | 2.20 | `pom.xml` property `jackson.annotations.version` |
-| Jackson Databind | 2.20.2 | `pom.xml` property `jackson.databind.version` |
-| JaCoCo (Maven plugin) | 0.8.14 | `pom.xml` property `maven.plugin.jacoco.version` |
-| Jakarta Validation API | 3.0.2 | `pom.xml` property `jakarta.validation.version` |
-| Java (language/runtime) | 21 | `pom.xml` property `java.version` |
-| JUnit Jupiter | 5.14.1 | `pom.xml` property `junit.jupiter.version` |
-| Log4j Core | 2.25.3 | `pom.xml` property `log4j.core.version` |
-| Maven | detected | `pom.xml` present in repository root |
+| Technology |  Version | Source |
+|---|---------:|---|
+| ASM |      9.8 | `pom.xml` property `asm.version` |
+| Gson |   2.13.2 | `pom.xml` property `google.gson.version` |
+| Jackson Annotations |     2.20 | `pom.xml` property `jackson.annotations.version` |
+| Jackson Databind |   2.20.2 | `pom.xml` property `jackson.databind.version` |
+| JaCoCo (Maven plugin) |   0.8.14 | `pom.xml` property `maven.plugin.jacoco.version` |
+| Jakarta Validation API |    3.0.2 | `pom.xml` property `jakarta.validation.version` |
+| Java (language/runtime) |       21 | `pom.xml` property `java.version` |
+| JUnit Jupiter |   5.14.1 | `pom.xml` property `junit.jupiter.version` |
+| Log4j Core |   2.25.3 | `pom.xml` property `log4j.core.version` |
+| Maven |       3.8 | `pom.xml` present in repository root |
 | org.json (JSON library) | 20250517 | `pom.xml` property `org.json.version` |
-| webjars-locator-core | 0.59 | `pom.xml` property `webjars.locator.version` |
+| webjars-locator-core |     0.59 | `pom.xml` property `webjars.locator.version` |
 
 Notes
 -----
