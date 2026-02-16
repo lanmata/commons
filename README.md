@@ -1,7 +1,7 @@
 # UM Dev Creative Commons
 
 ## Qodana Badges
-
+[![Qodana](https://github.com/lanmata/commons/actions/workflows/qodana_code_quality.yml/badge.svg)](https://github.com/lanmata/commons/actions/workflows/qodana_code_quality.yml)
 ## Sonar Cloud badges
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=lanmata-commons)](https://sonarcloud.io/summary/new_code?id=lanmata-commons)
 
