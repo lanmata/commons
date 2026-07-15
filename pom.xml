@@ -11,9 +11,9 @@ IMPORTANTE CONSIDERAR:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.prx</groupId>
-    <artifactId>prx-commons</artifactId>
-    <name>PRX Commons components</name>
+    <groupId>com.umdc</groupId>
+    <artifactId>commons</artifactId>
+    <name>UMDC Commons components</name>
     <version>0.0.1</version>
 
     <developers>
@@ -38,29 +38,29 @@ IMPORTANTE CONSIDERAR:
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.plugin.version>3.14.1</maven.compiler.plugin.version>
         <maven.resource.plugin.version>3.3.1</maven.resource.plugin.version>
+        <maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
         <maven.plugin.javadoc.version>3.6.3</maven.plugin.javadoc.version>
         <maven.plugin.jacoco.version>0.8.14</maven.plugin.jacoco.version>
         <maven.plugin.pmd.version>3.28.0</maven.plugin.pmd.version>
         <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
         <maven.surefire.version>3.5.2</maven.surefire.version>
+        <maven.javadoc.plugin.version>${maven.plugin.javadoc.version}</maven.javadoc.plugin.version>
 
-        <!--        JUnit 5.x (keep in sync) -->
-        <junit.jupiter.version>5.14.1</junit.jupiter.version>
+        <!--        JUnit 6.x (keep in sync) -->
+        <junit.jupiter.version>6.0.3</junit.jupiter.version>
 
         <!-- Centralized dependency versions -->
         <jackson.annotations.version>2.20</jackson.annotations.version>
-        <jackson.databind.version>2.20.2</jackson.databind.version>
+        <jackson.databind.version>2.21.4</jackson.databind.version>
         <google.gson.version>2.13.2</google.gson.version>
-        <org.json.version>20250517</org.json.version>
+        <org.json.version>20260522</org.json.version>
         <webjars.locator.version>0.59</webjars.locator.version>
-        <log4j.core.version>2.25.3</log4j.core.version>
-        <jakarta.validation.version>3.0.2</jakarta.validation.version>
+        <log4j.core.version>2.25.4</log4j.core.version>
+        <jakarta.validation.version>3.1.1</jakarta.validation.version>
         <asm.version>9.8</asm.version>
         <!-- Plugin versions centralized -->
         <build.helper.plugin.version>3.6.1</build.helper.plugin.version>
         <versions.maven.plugin.version>2.18.0</versions.maven.plugin.version>
-        <maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
-        <maven.javadoc.plugin.version>${maven.plugin.javadoc.version}</maven.javadoc.plugin.version>
 
         <!--        Coverage and Sonar-->
         <sonar.organization>lamm</sonar.organization>
@@ -193,24 +193,24 @@ IMPORTANTE CONSIDERAR:
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>maven_central</id>
-            <name>Maven Central</name>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-central</id>
+            <name>Maven Central Plugin Repo</name>
             <url>https://repo.maven.apache.org/maven2/</url>
-        </repository>
-        <repository>
+        </pluginRepository>
+        <pluginRepository>
             <id>repsy</id>
-            <name>My Private Maven Repository on Repsy</name>
-            <url>https://repo.repsy.io/mvn/lmata/prx</url>
-        </repository>
-    </repositories>
+            <name>Repsy Plugin Repo</name>
+            <url>https://repo.repsy.io/lmata/prx</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <distributionManagement>
         <repository>
             <id>repsy</id>
             <name>My Private Maven Repository on Repsy</name>
-            <url>https://repo.repsy.io/mvn/lmata/prx</url>
+            <url>https://repo.repsy.io/lmata/prx</url>
         </repository>
     </distributionManagement>
 
@@ -260,6 +260,7 @@ IMPORTANTE CONSIDERAR:
                     <release>${maven.compiler.release}</release>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -385,13 +386,6 @@ IMPORTANTE CONSIDERAR:
                 <configuration>
                     <show>public</show>
                     <nohelp>true</nohelp>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <release>${java.version}</release>
                 </configuration>
             </plugin>
         </plugins>
