@@ -51,7 +51,7 @@ class PersonToStringTest {
 
         // set addresses and verify branch that includes addresses
         Address a = new Address();
-        a.setAddress("123 Main St");
+        a.setContent("123 Main St");
         p.setAddresses(List.of(a));
         String s2 = p.toString();
         assertTrue(s2.contains("addresses="));
