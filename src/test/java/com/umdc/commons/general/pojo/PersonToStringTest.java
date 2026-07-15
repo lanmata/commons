@@ -34,5 +34,27 @@ class PersonToStringTest {
         String s2 = p.toString();
         assertTrue(s2.contains("contacts="));
     }
+
+    @Test
+    @DisplayName("toString omits addresses when null and includes when present")
+    void toStringAddressesBranch() {
+        Person p = new Person();
+        p.setId(UUID.fromString("7cde528b-3f13-4d0d-8573-d22996b17d3b"));
+        p.setFirstName("John");
+        p.setLastName("Doe");
+        p.setGender("M");
+        p.setBirthdate(LocalDate.of(1990, Month.JANUARY, 1));
+
+        String s1 = p.toString();
+        // when addresses is null, string should not contain 'addresses='
+        assertFalse(s1.contains("addresses="));
+
+        // set addresses and verify branch that includes addresses
+        Address a = new Address();
+        a.setAddress("123 Main St");
+        p.setAddresses(List.of(a));
+        String s2 = p.toString();
+        assertTrue(s2.contains("addresses="));
+    }
 }
 
