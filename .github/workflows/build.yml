@@ -9,7 +9,10 @@ on:
 jobs:
   build:
     name: Build and analyze
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     steps:
       - uses: actions/checkout@v4.3.1
         with:
@@ -31,7 +34,8 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: Build and test
+        run: mvn -B verify
       - name: Build and analyze
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=lanmata-commons
+        if: ${{ github.event_name != 'pull_request' && env.SONAR_TOKEN != '' }}
+        run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=lanmata-commons -Dsonar.scanner.skipJreProvisioning=true

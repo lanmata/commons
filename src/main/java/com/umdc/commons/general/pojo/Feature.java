@@ -16,6 +16,7 @@ package com.umdc.commons.general.pojo;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -32,6 +33,7 @@ public class Feature implements Serializable {
     private String name;
     private String description;
     private Boolean active;
+    private List<UUID> roleIds;
 
     /** Default constructor. */
     public Feature() {
@@ -111,6 +113,25 @@ public class Feature implements Serializable {
     }
 
     /**
+     * Returns the ids of the roles this feature should be linked to.
+     * Only used on creation to link the new feature to existing roles.
+     *
+     * @return list of role UUIDs
+     */
+    public List<UUID> getRoleIds() {
+        return this.roleIds;
+    }
+
+    /**
+     * Sets the ids of the existing roles to link this feature to.
+     *
+     * @param roleIds list of role UUIDs
+     */
+    public void setRoleIds(List<UUID> roleIds) {
+        this.roleIds = roleIds;
+    }
+
+    /**
      * Returns string representation of the feature.
      *
      * @return string representation
@@ -122,6 +143,7 @@ public class Feature implements Serializable {
                 "', name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", active=" + active +
+                ", roleIds=" + roleIds +
                 '}';
     }
 }

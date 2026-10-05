@@ -14,32 +14,106 @@
 package com.umdc.commons.general.pojo;
 
 /**
- * AuditEventType.
- *
- * Classifies the security events recorded in {@link AuditEvent} and
- * {@link ManagedClientAuditEvent}. Mirrors the {@code audit_event_type_ck}
- * check constraint on the {@code audit_event} table.
- *
- * @author <a href='mailto:luis.antonio.mata@gmail.com'>Luis Antonio Mata.</a>
+ * Enumeration of supported security audit event types.
+ * <p>
+ * These values map directly to the {@code CHECK} constraint defined on the
+ * {@code general.audit_event.event_type} column in PostgreSQL.
+ * </p>
  */
 public enum AuditEventType {
+
+    /**
+     * Successful user authentication.
+     */
     LOGIN_SUCCESS,
+
+    /**
+     * Failed authentication attempt.
+     */
     LOGIN_FAILURE,
+
+    /**
+     * User-initiated password change.
+     */
     PASSWORD_CHANGE,
+
+    /**
+     * A role was assigned to a user.
+     */
     ROLE_ASSIGNED,
+
+    /**
+     * A role was removed from a user.
+     */
     ROLE_REVOKED,
+
+    /**
+     * User explicitly logged out.
+     */
     LOGOUT,
+
+    /**
+     * Account locked due to too many failed attempts.
+     */
     ACCOUNT_LOCKED,
+
+    /**
+     * Account unlocked by an administrator.
+     */
     ACCOUNT_UNLOCKED,
+
+    /**
+     * Session token was refreshed / renewed.
+     */
     TOKEN_REFRESH,
+
+    /**
+     * A password reset request was initiated.
+     */
     PASSWORD_RESET_REQUEST,
+    /**
+     * Managed client registered by an admin.
+     */
     CLIENT_REGISTERED,
+
+    /**
+     * Managed client metadata updated.
+     */
     CLIENT_UPDATED,
+
+    /**
+     * Managed client deactivated (active = false).
+     */
     CLIENT_DEACTIVATED,
+
+    /**
+     * Managed client record deleted.
+     */
     CLIENT_DELETED,
+
+    /**
+     * Client secret rotated; grace period started.
+     */
     CLIENT_SECRET_ROTATED,
+
+    /**
+     * M2M access token issued successfully.
+     */
     CLIENT_TOKEN_ISSUED,
+
+    /**
+     * M2M token issuance failed (bad credentials or inactive client).
+     */
     CLIENT_TOKEN_ISSUE_FAILED,
+
+    /**
+     * All active tokens revoked for a client.
+     */
     CLIENT_TOKEN_REVOKED,
+
+    /**
+     * Token introspection endpoint called.
+     */
     CLIENT_INTROSPECTION_CALLED
+
 }

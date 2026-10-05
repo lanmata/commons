@@ -99,7 +99,7 @@ class MessengerTest {
         user.setAlias("Alias");
         user.setEmailAccount("username@domain.ext");
         user.setId(uuid);
-        user.setPassword("iloveyou");
+        user.setPassword(System.getProperty("test.user.password", UUID.randomUUID().toString()));
         user.setPerson(person);
         user.setRoles(new ArrayList<>());
         user.setApplications(List.of(application));
