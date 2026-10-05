@@ -18,8 +18,9 @@ swagger:
 security:
   discovery:
     client:
-      name: prx-backbone-rest
-      trust-store-file: prx_backbone_rest.jks
-      trust-store-password: prx-backbone-rest
+      name: ${backbone-alias}
+      trust-store-file: ${backbone-truststore-location}
+      trust-store-password: ${backbone-truststore-password}
+      trust-store-type: ${backbone-truststore-type}
       max-total-connections: 10
       max-connections-per-host: 10

@@ -6,6 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Feature.roleIds` (`List<UUID>`) with getter/setter, included in `toString()`; used on creation to link a feature to existing roles.
+- `LICENSE` file.
+
+### Changed (BREAKING)
+- Maven coordinates changed from `com.prx:prx-commons` to `com.umdc:commons`; Java packages moved from `com.prx.commons` to `com.umdc.commons`.
+- `User.email` renamed to `User.emailAccount` (`getEmailAccount`/`setEmailAccount`).
+- Project version bumped from `0.0.1` to `0.0.3`.
+- Dependency upgrades: JUnit Jupiter 6.0.3 -> 6.1.3, Jackson annotations 2.20 -> 2.22, Jackson databind 2.21.4 -> 2.22.3, Gson 2.13.2 -> 2.14.0, org.json 20260522 -> 20260814, Log4j Core 2.25.4 -> 2.26.1.
+- `jackson-core` is now managed in `dependencyManagement` (added `jackson.version.core` property).
+- `AuditEventType` Javadoc rewritten: every constant is documented and the enum is described as mapping to the `general.audit_event.event_type` CHECK constraint.
+- `.gitignore` now ignores `commons.iml` and `dependencies_tree.txt`.
+
+### Security
+- Tests (`UserTest`, `MessengerTest`) no longer use hardcoded passwords; they use the `test.user.password` system property or a random UUID.
+
+### Previously unreleased
 - Documentation: translated build and README docs to English and updated them to reflect centralized versions (see `README.md`, `README-BUILD.md`, and `BUILD_VALIDATION_REPORT.md`).
 - BOM and version management: dependency and plugin versions are centralized in the root `pom.xml` and a BOM is available at `bom/pom.xml` (artifact `com.prx:prx-commons-bom:0.0.1`).
 - Build: default Java version set to 21 in the root `pom.xml`.

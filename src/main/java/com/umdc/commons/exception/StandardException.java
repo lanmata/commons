@@ -1,0 +1,100 @@
+/*
+ * @(#)${NAME}.java.
+ *
+ * Copyright (c) Luis Antonio Mata Mata. All rights reserved.
+ *
+ * All rights to this product are owned by Luis Antonio Mata Mata and may only
+ * be used under the terms of its associated license document. You may NOT
+ * copy, modify, sublicense, or distribute this source file or portions of
+ * it unless previously authorized in writing by Luis Antonio Mata Mata.
+ * In any event, this notice and the above copyright must always be included
+ * verbatim with this file.
+ *
+ */
+package com.umdc.commons.exception;
+
+import com.umdc.commons.constants.httpstatus.type.MessageType;
+
+/**
+ * StandardException used to represent domain errors with a {@link MessageType} and application identifier.
+ *
+ * @author Luis Antonio Mata
+ * @version 1.0.3.20200904-01, 21-11-2020
+ */
+public class StandardException extends RuntimeException {
+
+    private final MessageType messageType;
+    private final String application;
+    private static final String APP_NODEF = "NO-DEF";
+
+    /**
+     * Constructor.
+     *
+     * @param messageType {@link MessageType}
+     */
+    public StandardException(final MessageType messageType) {
+        this(APP_NODEF, messageType);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param messageType {@link MessageType}
+     */
+    public StandardException(final MessageType messageType, Throwable throwable) {
+        this(APP_NODEF, messageType, throwable);
+    }
+
+    /**
+     * Constructor
+     *
+     * @param app         {@link String} application identifier
+     * @param messageType {@link MessageType}
+     */
+    public StandardException(final String app, final MessageType messageType) {
+        super();
+        this.messageType = messageType;
+        this.application = app;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param app         {@link String}
+     * @param messageType {@link MessageType}
+     * @param throwable   {@link Throwable}
+     */
+    public StandardException(final String app, final MessageType messageType, Throwable throwable) {
+        super(throwable);
+        this.messageType = messageType;
+        this.application = app;
+    }
+
+    /**
+     * Returns the error code from the associated {@link MessageType}.
+     *
+     * @return error code as {@link int}
+     */
+    public int getCode() {
+        return this.messageType.getCode();
+    }
+
+    /**
+     * Returns the message type (status) associated with this exception.
+     *
+     * @return {@link MessageType}
+     */
+    public MessageType getStatus() {
+        return this.messageType;
+    }
+
+    /**
+     * Returns the application identifier associated with the exception.
+     *
+     * @return application id as {@link String}
+     */
+    public String getApp() {
+        return this.application;
+    }
+
+}
