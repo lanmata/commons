@@ -227,7 +227,7 @@ IMPORTANTE CONSIDERAR:
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <argLine>${argLine}</argLine>
+                    <argLine>@{argLine}</argLine>
                 </configuration>
                 <dependencies>
                     <dependency>
