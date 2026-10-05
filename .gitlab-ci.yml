@@ -10,9 +10,12 @@ sonarcloud-check:
   script:
     - mvn verify sonar:sonar -Dsonar.projectKey=prx-open_commons -s ci_settings.xml
   only:
-    - merge_requests
-    - master
-    - develop
+    refs:
+      - merge_requests
+      - master
+      - develop
+    variables:
+      - $SONAR_TOKEN
 qodana:
   image:
     name: jetbrains/qodana-jvm-community:2024.1
