@@ -46,8 +46,9 @@ class UserTest {
     @DisplayName("Set and get password")
     void setAndGetPassword() {
         User user = new User();
-        user.setPassword("password123");
-        assertEquals("password123", user.getPassword());
+        String testPassword = System.getProperty("test.user.password", UUID.randomUUID().toString());
+        user.setPassword(testPassword);
+        assertEquals(testPassword, user.getPassword());
     }
 
     @Test
