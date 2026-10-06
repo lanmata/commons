@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `Feature.roleIds` (`List<UUID>`) with getter/setter, included in `toString()`; used on creation to link a feature to existing roles.
 - `LICENSE` file.
+- README: centered header, grouped technology badges linking to each project, and a tech stack table covering all `pom.xml` versions (including Jackson Core and the Maven Compiler, PMD and Surefire plugins).
 
 ### Changed (BREAKING)
 - Maven coordinates changed from `com.prx:prx-commons` to `com.umdc:commons`; Java packages moved from `com.prx.commons` to `com.umdc.commons`.
@@ -17,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependency upgrades: JUnit Jupiter 6.0.3 -> 6.1.3, Jackson annotations 2.20 -> 2.22, Jackson databind 2.21.4 -> 2.22.3, Gson 2.13.2 -> 2.14.0, org.json 20260522 -> 20260814, Log4j Core 2.25.4 -> 2.26.1.
 - `jackson-core` is now managed in `dependencyManagement` (added `jackson.version.core` property).
 - `AuditEventType` Javadoc rewritten: every constant is documented and the enum is described as mapping to the `general.audit_event.event_type` CHECK constraint.
+- README: dependency badges, requirements, known issues, CI example and tech stack table updated to the `pom.xml` versions (Java 25, JUnit 6.1.3, Jackson 2.22.x, Gson 2.14.0, Log4j 2.26.1, org.json 20260814, Jakarta Validation 3.1.1); layout aligned with the mercury and backbone-rest READMEs; license section now points to `LICENSE`.
 - `.gitignore` now ignores `commons.iml` and `dependencies_tree.txt`.
 
 ### Security
