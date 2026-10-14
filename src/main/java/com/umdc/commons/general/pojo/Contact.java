@@ -25,7 +25,7 @@ import java.util.UUID;
  * @author <a href="mailto:luis.antonio.mata@gmail.com">Luis Antonio Mata.</a>
  * @version 1.0.3, 29-09-2020
  */
-@JsonPropertyOrder({"id", "content", "contactType", "personId", "applicationId", "active"})
+@JsonPropertyOrder({"id", "content", "contactType", "personId", "applicationId", "ownerType", "ownerId", "active"})
 public class Contact implements Serializable {
 
     private UUID id;
@@ -33,6 +33,8 @@ public class Contact implements Serializable {
     private ContactType contactType;
     private UUID personId;
     private UUID applicationId;
+    private String ownerType;
+    private UUID ownerId;
     private Boolean active;
 
     /** Default constructor. */
@@ -90,6 +92,14 @@ public class Contact implements Serializable {
      *
      * @return active flag
      */
+    public String getOwnerType() {
+        return this.ownerType;
+    }
+
+    public UUID getOwnerId() {
+        return this.ownerId;
+    }
+
     public Boolean getActive() {
         return this.active;
     }
@@ -144,6 +154,14 @@ public class Contact implements Serializable {
      *
      * @param active active flag
      */
+    public void setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+    }
+
+    public void setOwnerId(UUID ownerId) {
+        this.ownerId = ownerId;
+    }
+
     public void setActive(Boolean active) {
         this.active = active;
     }
@@ -161,6 +179,8 @@ public class Contact implements Serializable {
                 ", contactType=" + contactType +
                 ", personId=" + personId +
                 ", applicationId=" + applicationId +
+                ", ownerType=" + ownerType +
+                ", ownerId=" + ownerId +
                 ", active=" + active +
                 '}';
     }

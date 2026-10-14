@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added (0.0.4-SNAPSHOT)
+- `Contact.ownerType` / `Contact.ownerId` (getters, setters, `toString()`, `@JsonPropertyOrder`) for contacts of an
+  external owner (e.g. a merchant of an application) that is neither a person nor an application.
+
 ### Added
 - `Feature.roleIds` (`List<UUID>`) with getter/setter, included in `toString()`; used on creation to link a feature to existing roles.
 - `LICENSE` file.
