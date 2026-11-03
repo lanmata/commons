@@ -104,3 +104,24 @@ mvn -f bom/pom.xml deploy -DskipTests
 - Do not store credentials in the repository.
 
 End of README-BUILD.md
+
+## Repository credentials (user and technical guide)
+
+The private PRX artifacts are resolved from Repsy. `ci_settings.xml` reads the login from the environment, so nothing secret is
+versioned:
+
+```mermaid
+flowchart LR
+    ENV["REPSY_ACCOUNT_USER<br/>REPSY_ACCOUNT_PASSWORD"] --> S["ci_settings.xml<br/>${env.*}"]
+    S --> M["mvn -s ci_settings.xml verify"]
+    M --> R[("Repsy<br/>repo.repsy.io/mvn/lmata/prx")]
+```
+
+Build locally with the same file:
+
+```bash
+export REPSY_ACCOUNT_USER=<user> REPSY_ACCOUNT_PASSWORD=<password>
+mvn -s ci_settings.xml verify
+```
+
+`CiSettingsHygieneTest` fails the build if a literal username or password is written in `ci_settings.xml`.
