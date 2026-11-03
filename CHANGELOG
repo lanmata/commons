@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+- **`ci_settings.xml` no longer carries the Repsy credentials in clear text.** The account login was versioned in this public
+  repository; it now reads `${env.REPSY_ACCOUNT_USER}` and `${env.REPSY_ACCOUNT_PASSWORD}`, like `persistence`. Removing it from
+  the file does not remove it from the git history, so the Repsy password has to be rotated. `CiSettingsHygieneTest` fails the
+  build if a literal credential comes back.
+
 ### Added (0.0.4-SNAPSHOT)
 - `Contact.ownerType` / `Contact.ownerId` (getters, setters, `toString()`, `@JsonPropertyOrder`) for contacts of an
   external owner (e.g. a merchant of an application) that is neither a person nor an application.
