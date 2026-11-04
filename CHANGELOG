@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `Jackson3SerializationTest` (Role JSON round-trip with `tools.jackson`) and a JaCoCo method-coverage rule (minimum 85%).
 - Added `docs/user-guide.md` and `docs/technical-guide.md` (Markdown, Mermaid diagrams) describing the migration.
 
+### Fixed
+- Aligned `jackson.annotations.version` in `bom/pom.xml` (2.20) with the root `pom.xml` (2.22).
+- Removed the unused `org.webjars:webjars-locator-core` dependency (and its `webjars.locator.version` property) from `pom.xml` and `bom/pom.xml`; it was the only source of a Jackson 2 `jackson-core` (2.17.1) on the classpath. Only `jackson-annotations` remains under `com.fasterxml.jackson`, as required by Jackson 3.
+
 ### Security
 - **`ci_settings.xml` no longer carries the Repsy credentials in clear text.** The account login was versioned in this public
   repository; it now reads `${env.REPSY_ACCOUNT_USER}` and `${env.REPSY_ACCOUNT_PASSWORD}`, like `persistence`. Removing it from

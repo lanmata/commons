@@ -29,7 +29,6 @@ dependency versions for UM Dev Creative applications.
 [![org.json](https://img.shields.io/badge/org.json-20260814-blue?logo=json&style=flat-square)](https://github.com/stleary/JSON-java)
 [![Log4j](https://img.shields.io/badge/Log4j-2.26.1-red?logo=apache&style=flat-square)](https://logging.apache.org/log4j/)
 [![Jakarta Validation](https://img.shields.io/badge/Jakarta%20Validation-3.1.1-blue?style=flat-square)](https://jakarta.ee/specifications/bean-validation/)
-[![WebJars](https://img.shields.io/badge/WebJars-0.59-blue?style=flat-square)](https://www.webjars.org/)
 [![ASM](https://img.shields.io/badge/ASM-9.8-lightgrey?style=flat-square)](https://asm.ow2.io/)
 
 [![JUnit](https://img.shields.io/badge/JUnit-6.1.3-red?logo=junit&style=flat-square)](https://junit.org/)
@@ -180,7 +179,6 @@ Alphabetically sorted list of the technologies used, the version declared in the
 | Maven PMD Plugin | 3.28.0 | `pom.xml` property `maven.plugin.pmd.version` |
 | Maven Surefire Plugin | 3.5.2 | `pom.xml` property `maven.surefire.version` |
 | org.json (JSON library) | 20260814 | `pom.xml` property `org.json.version` |
-| webjars-locator-core | 0.59 | `pom.xml` property `webjars.locator.version` |
 
 Notes
 -----
