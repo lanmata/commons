@@ -51,8 +51,7 @@ IMPORTANTE CONSIDERAR:
 
         <!-- Centralized dependency versions -->
         <jackson.annotations.version>2.22</jackson.annotations.version>
-        <jackson.databind.version>2.22.3</jackson.databind.version>
-        <jackson.version.core>2.22.3</jackson.version.core>
+        <jackson.databind.version>3.1.8</jackson.databind.version>
         <google.gson.version>2.14.0</google.gson.version>
         <org.json.version>20260814</org.json.version>
         <webjars.locator.version>0.59</webjars.locator.version>
@@ -87,7 +86,7 @@ IMPORTANTE CONSIDERAR:
             <version>${jackson.annotations.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
+            <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.databind.version}</version>
         </dependency>
@@ -155,7 +154,7 @@ IMPORTANTE CONSIDERAR:
 
             <!-- Managed dependencies (BOM-style) -->
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
+                <groupId>tools.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson.databind.version}</version>
             </dependency>
@@ -165,7 +164,7 @@ IMPORTANTE CONSIDERAR:
                 <version>${jackson.annotations.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
+                <groupId>tools.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.databind.version}</version>
             </dependency>
@@ -367,6 +366,11 @@ IMPORTANTE CONSIDERAR:
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>0.8</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>METHOD</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.85</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

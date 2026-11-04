@@ -13,7 +13,7 @@
 
 package com.umdc.commons.general.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.annotation.JsonNaming;
 
 import java.io.Serializable;
 import java.util.List;

@@ -13,7 +13,7 @@
 
 package com.umdc.commons.io.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.annotation.JsonNaming;
 import com.umdc.commons.constants.keys.SizeKey;
 
 /**

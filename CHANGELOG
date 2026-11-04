@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed (BREAKING)
+- Migrated to Jackson 3: `jackson-databind`/`jackson-core` now use `tools.jackson.core` 3.1.8 and `@JsonNaming` is imported from `tools.jackson.databind.annotation` (`jackson-annotations` stays on `com.fasterxml.jackson.annotation`). Removed the `jackson.version.core` property.
+- Added `Jackson3SerializationTest` (Role JSON round-trip with `tools.jackson`) and a JaCoCo method-coverage rule (minimum 85%).
+- Added `docs/user-guide.md` and `docs/technical-guide.md` (Markdown, Mermaid diagrams) describing the migration.
+
 ### Security
 - **`ci_settings.xml` no longer carries the Repsy credentials in clear text.** The account login was versioned in this public
   repository; it now reads `${env.REPSY_ACCOUNT_USER}` and `${env.REPSY_ACCOUNT_PASSWORD}`, like `persistence`. Removing it from

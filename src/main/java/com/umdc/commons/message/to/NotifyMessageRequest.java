@@ -13,7 +13,7 @@
 
 package com.umdc.commons.message.to;
 
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.annotation.JsonNaming;
 import com.umdc.commons.general.to.Request;
 
 import java.util.List;
