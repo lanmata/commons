@@ -12,7 +12,7 @@
  */
 package com.umdc.commons.message.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.annotation.JsonNaming;
 
 import java.io.Serializable;
 import java.util.Map;

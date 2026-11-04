@@ -13,7 +13,7 @@
 
 package com.umdc.commons.general.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.annotation.JsonNaming;
 
 /**
  * Marker class for social contact details. Expand as needed to include

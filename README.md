@@ -24,7 +24,7 @@ dependency versions for UM Dev Creative applications.
 [![Java](https://img.shields.io/badge/Java-25%20LTS-blue?logo=java&style=flat-square)](https://www.oracle.com/java/)
 [![Maven](https://img.shields.io/badge/Maven->=3.8-red?logo=apachemaven&style=flat-square)](https://maven.apache.org/)
 
-[![Jackson](https://img.shields.io/badge/Jackson-2.22.3-blue?logo=jackson&style=flat-square)](https://github.com/FasterXML/jackson)
+[![Jackson](https://img.shields.io/badge/Jackson-3.1.8-blue?logo=jackson&style=flat-square)](https://github.com/FasterXML/jackson)
 [![Gson](https://img.shields.io/badge/Gson-2.14.0-orange?logo=google&style=flat-square)](https://github.com/google/gson)
 [![org.json](https://img.shields.io/badge/org.json-20260814-blue?logo=json&style=flat-square)](https://github.com/stleary/JSON-java)
 [![Log4j](https://img.shields.io/badge/Log4j-2.26.1-red?logo=apache&style=flat-square)](https://logging.apache.org/log4j/)
@@ -167,8 +167,8 @@ Alphabetically sorted list of the technologies used, the version declared in the
 | ASM | 9.8 | `pom.xml` property `asm.version` |
 | Gson | 2.14.0 | `pom.xml` property `google.gson.version` |
 | Jackson Annotations | 2.22 | `pom.xml` property `jackson.annotations.version` |
-| Jackson Core | 2.22.3 | `pom.xml` managed dependency (uses `jackson.databind.version`) |
-| Jackson Databind | 2.22.3 | `pom.xml` property `jackson.databind.version` |
+| Jackson Core | 3.1.8 | `tools.jackson.core`, managed in `pom.xml` (uses `jackson.databind.version`) |
+| Jackson Databind | 3.1.8 | `tools.jackson.core` — `pom.xml` property `jackson.databind.version` |
 | JaCoCo (Maven plugin) | 0.8.14 | `pom.xml` property `maven.plugin.jacoco.version` |
 | Jakarta Validation API | 3.1.1 | `pom.xml` property `jakarta.validation.version` |
 | Java (language/runtime) | 25 | `pom.xml` property `java.version` |
