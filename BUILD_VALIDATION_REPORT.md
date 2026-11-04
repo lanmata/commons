@@ -14,7 +14,6 @@ Key versions (from `pom.xml` / `bom/pom.xml`):
 - Jackson Databind: 2.20.2
 - Gson: 2.13.2
 - org.json (json): 20250517
-- webjars-locator-core: 0.59
 - Log4j Core: 2.25.3
 - Jakarta Validation API: 3.0.2
 - ASM: 9.8
