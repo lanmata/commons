@@ -114,6 +114,31 @@ public enum AuditEventType {
     /**
      * Token introspection endpoint called.
      */
-    CLIENT_INTROSPECTION_CALLED
+    CLIENT_INTROSPECTION_CALLED,
+
+    /**
+     * Successful sign-in through an external identity provider (social federation).
+     */
+    FEDERATED_LOGIN,
+
+    /**
+     * A federated sign-in was rejected (invalid state or token, unknown user, e-mail not allowed...).
+     */
+    FEDERATION_FAILED,
+
+    /**
+     * An external identity was linked to a user.
+     */
+    FEDERATION_LINKED,
+
+    /**
+     * An external identity was unlinked from a user.
+     */
+    FEDERATION_UNLINKED,
+
+    /**
+     * An identity provider setting was created, changed, enabled, disabled or deleted.
+     */
+    FEDERATION_PROVIDER_CHANGED
 
 }

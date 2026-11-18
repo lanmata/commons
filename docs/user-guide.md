@@ -24,3 +24,7 @@ Role back = mapper.readValue(json, Role.class);
 
 ## Compatibility
 Projects that still import `com.fasterxml.jackson.databind` must migrate their imports (backbone-rest already did).
+
+## Federation audit event types (0.0.4)
+
+`AuditEventType` now includes `FEDERATED_LOGIN`, `FEDERATION_FAILED`, `FEDERATION_LINKED`, `FEDERATION_UNLINKED` and `FEDERATION_PROVIDER_CHANGED`. Services that record audit events can use them to trace sign-ins through external identity providers (Google, Microsoft, Apple, GitHub, Meta). Existing values are unchanged.

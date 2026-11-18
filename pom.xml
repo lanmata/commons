@@ -14,7 +14,7 @@ IMPORTANTE CONSIDERAR:
     <groupId>com.umdc</groupId>
     <artifactId>commons</artifactId>
     <name>UMDC Commons components</name>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
     <developers>
         <developer>

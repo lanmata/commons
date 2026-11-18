@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `AuditEventType` gains `FEDERATED_LOGIN`, `FEDERATION_FAILED`, `FEDERATION_LINKED`, `FEDERATION_UNLINKED` and `FEDERATION_PROVIDER_CHANGED` for the social-federation feature of backbone-rest. Additive; version bumped to 0.0.4. Backbone must extend the `audit_event_type_ck` CHECK constraint (migration `V10`) before it records them. Tested by `AuditEventTypeFederationTest`.
+
 ### Changed (BREAKING)
 - Migrated to Jackson 3: `jackson-databind`/`jackson-core` now use `tools.jackson.core` 3.1.8 and `@JsonNaming` is imported from `tools.jackson.databind.annotation` (`jackson-annotations` stays on `com.fasterxml.jackson.annotation`). Removed the `jackson.version.core` property.
 - Added `Jackson3SerializationTest` (Role JSON round-trip with `tools.jackson`) and a JaCoCo method-coverage rule (minimum 85%).
