@@ -30,3 +30,14 @@ flowchart LR
     T --> J[JaCoCo check: line 80%, method 85%]
     J --> R[Artifact commons]
 ```
+
+## Federation audit event types (0.0.4)
+
+```mermaid
+flowchart LR
+    F[backbone-rest federation module] -->|AuditEventService.save| E[AuditEventType.FEDERATED_LOGIN / FEDERATION_*]
+    E --> T[(general.audit_event.event_type)]
+    T -->|CHECK audit_event_type_ck| M[V10 migration in backbone-rest]
+```
+
+The enum values map to the `CHECK` constraint of `general.audit_event.event_type`; adding a value here requires the matching `ALTER TABLE` in the consumer's migrations. Covered by `AuditEventTypeFederationTest`.
